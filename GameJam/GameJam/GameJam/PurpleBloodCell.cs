@@ -99,7 +99,7 @@ namespace GameJam
 
                 // killing player
 
-                if ((VirusHelper.VirusPosition - Position).Length() < 30)
+                if ((VirusHelper.VirusPosition - Position).Length() < (VirusHelper.Virus.Texture.Width/2.0f)*VirusHelper.Virus.Scale)
                 {
                     SoundEffectPlayer.PlaySquelch();
                     GameStateManager.CurrentGameState = GameState.GameOver;

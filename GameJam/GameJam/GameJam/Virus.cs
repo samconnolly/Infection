@@ -24,6 +24,8 @@ namespace GameJam
         bool accing;
         public int viruslingNo;
         List<Virusling> viruslingList;
+        public List<Virusling> deathList;
+
         Random random;
         Texture2D miniTex;
         Texture2D tex;
@@ -39,6 +41,13 @@ namespace GameJam
         // player
         int player;
 
+        //test circles
+        
+        Circle circle1;
+        Circle circle2;
+        Circle circle3;
+        bool circles = true;
+
         public Virus(Texture2D texture, Texture2D miniTexture, Vector2 position, int Player = 1)
             : base(texture)
         {
@@ -52,6 +61,7 @@ namespace GameJam
             accing = false;
             viruslingNo = 2;
             viruslingList = new List<Virusling> { };
+            deathList = new List<Virusling> { };
             random = new Random();
             miniTex = miniTexture;
             tex = texture;
@@ -60,7 +70,9 @@ namespace GameJam
 
             AddViruslings(viruslingNo);
 
-            
+            circle1 = new Circle(this.Position, VirusHelper.radius1, 2, Color.Red);
+            circle2 = new Circle(this.Position, VirusHelper.radius2, 2, Color.Red);
+            circle3 = new Circle(this.Position, VirusHelper.radius3, 2, Color.Red);
 
         }
 
@@ -226,13 +238,184 @@ namespace GameJam
             }
 
             // ------------ viruslings ---------------------
-            
-            //if (InputHelper.WasButtonPressed(Keys.V))
-            //{
-            //    AddViruslings(1);
-            //}
+
+            // CHEAT
+            if (InputHelper.WasButtonPressed(Keys.V))
+            {
+                AddViruslings(1);
+            }
+
+            // MOD ============================
+
+            if (InputHelper.IsButtonDown(Keys.D1))
+            {
 
 
+                if (InputHelper.IsButtonDown(Keys.LeftShift))
+                {
+                    VirusHelper.Radius1 -= 1;
+                }
+
+                else
+                {
+                    VirusHelper.Radius1 += 1;
+                }
+            }
+
+            if (InputHelper.IsButtonDown(Keys.D2))
+            {
+
+
+                if (InputHelper.IsButtonDown(Keys.LeftShift))
+                {
+                    VirusHelper.Radius2 -= 1;
+                }
+
+                else
+                {
+                    VirusHelper.Radius2 += 1;
+                }
+            }
+
+            if (InputHelper.IsButtonDown(Keys.D3))
+            {
+
+
+                if (InputHelper.IsButtonDown(Keys.LeftShift))
+                {
+                    VirusHelper.Radius3 -= 1;
+                }
+
+                else
+                {
+                    VirusHelper.Radius3 += 1;
+                }
+            }
+
+            if (InputHelper.IsButtonDown(Keys.D4))
+            {
+
+
+                if (InputHelper.IsButtonDown(Keys.LeftShift))
+                {
+                    VirusHelper.InnerSlow -= 0.1f;
+                }
+
+                else
+                {
+                    VirusHelper.InnerSlow += 0.1f;
+                }
+            }
+
+            if (InputHelper.IsButtonDown(Keys.D5))
+            {
+
+
+                if (InputHelper.IsButtonDown(Keys.LeftShift))
+                {
+                    VirusHelper.OuterSlow -= 0.1f;
+                }
+
+                else
+                {
+                    VirusHelper.OuterSlow += 0.1f;
+                }
+            }
+
+            if (InputHelper.IsButtonDown(Keys.D6))
+            {
+
+
+                if (InputHelper.IsButtonDown(Keys.LeftShift))
+                {
+                    VirusHelper.InnerAccn -= 0.1f;
+                }
+
+                else
+                {
+                    VirusHelper.InnerAccn += 0.1f;
+                }
+            }
+
+            if (InputHelper.IsButtonDown(Keys.D7))
+            {
+
+
+                if (InputHelper.IsButtonDown(Keys.LeftShift))
+                {
+                    VirusHelper.OuterAccn -= 0.1f;
+                }
+
+                else
+                {
+                    VirusHelper.OuterAccn += 0.1f;
+                }
+            }
+
+            if (InputHelper.IsButtonDown(Keys.D8))
+            {
+
+
+                if (InputHelper.IsButtonDown(Keys.LeftShift))
+                {
+                    VirusHelper.OuterOuterAccn -= 0.1f;
+                }
+
+                else
+                {
+                    VirusHelper.OuterOuterAccn += 0.1f;
+                }
+            }
+
+            if (InputHelper.IsButtonDown(Keys.D9))
+            {
+
+
+                if (InputHelper.IsButtonDown(Keys.LeftShift))
+                {
+                    VirusHelper.OuterOuterOuterAccn -= 0.1f;
+                }
+
+                else
+                {
+                    VirusHelper.OuterOuterOuterAccn += 0.1f;
+                }
+            }
+
+            if (InputHelper.IsButtonDown(Keys.D0))
+            {
+
+
+                if (InputHelper.IsButtonDown(Keys.LeftShift))
+                {
+                    VirusHelper.OuterOuterSlow -= 0.1f;
+                }
+
+                else
+                {
+                    VirusHelper.OuterOuterSlow += 0.1f;
+                }
+            }
+
+            if (InputHelper.WasButtonPressed(Keys.Add))
+            {
+                VirusHelper.Rotation *= -1;
+            }
+
+            if (InputHelper.IsButtonDown(Keys.F1))
+            {
+                if (InputHelper.IsButtonDown(Keys.LeftShift))
+                {
+                    this.Scale *= 0.99f;
+                }
+
+                else
+                {
+                    this.Scale *= 1.01f;
+                }
+            }
+
+            // =================================
 
             if (player == 1)
             {
@@ -250,9 +433,34 @@ namespace GameJam
                 VirusHelper.ViruslingsP2 = viruslingList;
             }
 
+
+            // get rid of dead viruslings
+
+            
+            foreach (Virusling v in deathList)
+            {
+                VirusHelper.Viruslings.Remove(v);
+                VirusHelper.Virus.viruslingNo -= 1;
+            }
+
             foreach (Virusling virusling in viruslingList)
             {                
                 virusling.Update(gameTime, batch);
+            }
+
+            if (circles == true)
+            {
+                circle1.position = Position;
+                circle2.position = Position;
+                circle3.position = Position;
+
+                circle1.radius = VirusHelper.Radius1;
+                circle2.radius = VirusHelper.Radius2;
+                circle3.radius = VirusHelper.Radius3;
+
+                circle1.Update();
+                circle2.Update();
+                circle3.Update();
             }
 
             base.Update(gameTime, batch);
@@ -268,6 +476,15 @@ namespace GameJam
             foreach (Virusling virusling in viruslingList)
             {
                 virusling.Draw(gameTime, batch, layer);
+            }
+
+            if (circles == true)
+            {
+                circle1.Draw(batch);
+                circle2.Draw(batch);
+                circle3.Draw(batch);
+
+            
             }
         }
 

@@ -66,12 +66,8 @@ namespace GameJam
 
             // movement
 
-            double theta = random.NextDouble() - 0.5;
 
-            Velocity = new Vector2((float)(Velocity.X * Math.Cos(theta)) - (float)(Velocity.Y * Math.Sin(theta)),
-                                        (float)(Velocity.X * Math.Sin(theta)) + (float)(Velocity.Y * Math.Cos(theta)));
-
-            if ((groupCentre - Position).Length() > 50)
+            if ((groupCentre - Position).Length() > 150)
             {
                 Vector2 extra = (groupCentre - Position);
                 extra.Normalize();
@@ -101,7 +97,7 @@ namespace GameJam
                 {
                     Vector2 add = (Position - gbc.Position);
                     add.Normalize();
-                    away += add;
+                    away += add*1.5f;
                 }
             }
 
@@ -109,6 +105,12 @@ namespace GameJam
             {
                 away.Normalize();
             }
+
+
+            double theta = random.NextDouble() - 0.5;
+
+            Velocity = new Vector2((float)(Velocity.X * Math.Cos(theta)) - (float)(Velocity.Y * Math.Sin(theta)),
+                                        (float)(Velocity.X * Math.Sin(theta)) + (float)(Velocity.Y * Math.Cos(theta)));
 
             Velocity += away;
 

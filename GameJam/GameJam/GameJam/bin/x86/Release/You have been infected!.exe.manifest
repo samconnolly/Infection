@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="68096">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="80896">
       <assemblyIdentity name="You have been infected!" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>JNe5wBz5LkMTfY8/zorBS1plBjA=</dsig:DigestValue>
+        <dsig:DigestValue>rPruTTT0jrePyqr/cG0I1TzwCmA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -110,7 +110,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>1cAe2mrKjgC7VVAUm4vsJvWadY4=</dsig:DigestValue>
+      <dsig:DigestValue>uHAkUE0hBqjAItAF+N9u95syS1I=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Beneath.xnb" size="125">
@@ -155,7 +155,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>29NyI6yXdWBMBxJE9G4hsg/mvLQ=</dsig:DigestValue>
+      <dsig:DigestValue>IV1ce2K9Q2Lq0tCSENvVgN1YM90=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Controlled Chaos.xnb" size="134">
@@ -210,6 +210,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>JXT9YxPGms9IVkMAoSsmfT5k1S8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\font3.xnb" size="3006">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>U6q7LCByY13DNAqwxWOYCUla5as=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\gball.xnb" size="264">

@@ -34,6 +34,8 @@ namespace GameJam
         private List<SpriteBase> _addList;
 
         private SpriteFont font;
+        private SpriteFont font2;
+        private SpriteFont font3;
         
         private bool _isPlayingMusic = false;
         private bool _isMuted = false;
@@ -44,11 +46,14 @@ namespace GameJam
         private Texture2D _pauseTexture;
 
         private Spawn spawn;
+        private SpawnII spawn2;
         private int spawnTimer = 0;
         private int level = 0;
         private bool spawning = false;
         private bool health = false;
         List<SpriteBase> add = new List<SpriteBase> { };
+
+        private bool kill = false;
 
         public GameModule(Game game)
             : base(game)
@@ -91,7 +96,7 @@ namespace GameJam
             Texture2D viruslingTexture = this.Game.Content.Load<Texture2D>("virusling");
             _virus = new Virus(virusTexture, viruslingTexture,new Vector2(180,120));
             _virus2 = new Virus(virusTexture2, viruslingTexture,new Vector2(880,120), 2);
-
+            
             // Initial cells...
             Texture2D whiteBloodCellTexture = this.Game.Content.Load<Texture2D>("whiteblood");
             Texture2D whiteBloodCellTextureHit = this.Game.Content.Load<Texture2D>("whitebloodhit");
@@ -150,6 +155,16 @@ namespace GameJam
                                 blueCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn, missileTexture, 
                                 purpleCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn,
                                 orangeCellTexture,whiteBloodCellTextureHit,whiteBloodCellTextureSpawn,crossTexture,bombTexture);
+
+
+            _cells = new List<SpriteBase> { };
+
+            spawn2 = new SpawnII(whiteBloodCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn,
+                                redBloodCellTexture, proliferateTexture, doubleTexture, reproduceTexture,
+                                greenCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn,
+                                blueCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn, missileTexture,
+                                purpleCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn,
+                                orangeCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn, crossTexture, bombTexture);
                       
 
             //Load atmospheric music.
@@ -158,8 +173,11 @@ namespace GameJam
             //Load Sound effects.
             SoundEffectPlayer.LoadContent(this.Game);
 
-            // load font
+            // load fonts
             font = this.Game.Content.Load<SpriteFont>("font");
+            font2 = this.Game.Content.Load<SpriteFont>("font2");
+            font3 = this.Game.Content.Load<SpriteFont>("font3");
+        
         }
 
         internal override void UnloadContent()
@@ -174,7 +192,7 @@ namespace GameJam
             CellsHelper.Cells = _cells;
             CellsHelper.AddCells = _addList;
             
-            if (_cells.Count <= 0)
+            if (_cells.Count <= 0 && kill == false)
             {
                 spawning = true;
             }
@@ -188,7 +206,9 @@ namespace GameJam
                 if (spawnTimer >= 1000 && health == false)
                 {
                     health = true;
-                    add = spawn.SpawnRed(1);
+                    //add = spawn.SpawnRed(1);
+                    add = spawn2.SpawnRed(1);
+                
                 }
 
                 else if (spawnTimer >= 2000)
@@ -197,7 +217,8 @@ namespace GameJam
                     health = false;
                     spawning = false;
                     level += 1;
-                    add = spawn.SpawnEnemies(level);
+                    //add = spawn.SpawnEnemies(level);
+                    add = spawn2.SpawnEnemies(level);
                 }
 
                 if (add.Count() > 0)
@@ -233,6 +254,23 @@ namespace GameJam
                     _isMuted = true;
                 }
             }
+
+             // Destroy Everything!
+            if (InputHelper.WasButtonPressed(Keys.K))
+            {
+                _cells = new List<SpriteBase> { };
+
+                if (kill == false)
+                {
+                    kill = true;
+                }
+
+                else
+                {
+                    kill = false;
+                }
+            }
+               
 
             //Update accordingly
             if (_isPaused)
@@ -323,6 +361,23 @@ namespace GameJam
             // Draw score
 
             batch.DrawString(font ,ScoreHelper.Score.ToString(),new Vector2(520,40),Color.White);
+
+            // circles
+
+            batch.DrawString(font3,"1: Radius 1: " + VirusHelper.Radius1.ToString(), new Vector2(20, 40), Color.White);
+            batch.DrawString(font3, "2: Radius 2: " + VirusHelper.Radius2.ToString(), new Vector2(20, 70), Color.White);
+            batch.DrawString(font3, "3: Radius 3: " + VirusHelper.Radius3.ToString(), new Vector2(20, 100), Color.White);
+
+            batch.DrawString(font3, "4: Inner Slow: " + VirusHelper.InnerSlow.ToString(), new Vector2(20, 130), Color.White);
+            batch.DrawString(font3, "5: Outer Slow: " + VirusHelper.OuterSlow.ToString(), new Vector2(20, 160), Color.White);
+
+            batch.DrawString(font3, "6: Inner Accn: " + VirusHelper.InnerAccn.ToString(), new Vector2(20, 190), Color.White);
+            batch.DrawString(font3, "7: Outer Accn: " + VirusHelper.OuterAccn.ToString(), new Vector2(20, 220), Color.White);
+            batch.DrawString(font3, "8: V Outer Accn: " + VirusHelper.OuterOuterAccn.ToString(), new Vector2(20, 250), Color.White);
+
+            batch.DrawString(font3, "9: VV Outer Accn: " + VirusHelper.OuterOuterOuterAccn.ToString(), new Vector2(20, 280), Color.White);
+
+            batch.DrawString(font3, "0: V Outer Slow: " + VirusHelper.OuterOuterSlow.ToString(), new Vector2(20, 310), Color.White);
         }
 
         #endregion

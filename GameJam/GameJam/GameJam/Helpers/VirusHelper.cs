@@ -20,7 +20,22 @@ namespace GameJam
         private static Vector2 _velocity2;
         private static List<Virusling> _viruslings2;
         private static Virus _virus2;
+
         
+        public static float radius1 = 40.0f;
+        public static float radius2 = 80.0f;
+        public static float radius3 = 250.0f;
+
+        public static float islow = 0.5f;
+        public static float oslow = 0.5f;
+        public static float ooslow = 1.0f;
+
+        public static float iaccn = 0.99f;
+        public static float oaccn = 5.0f;
+        public static float ooaccn = 5.0f;
+        public static float oooaccn = 20.0f;
+
+        public static int rot = 1;
 
         public static Vector2 VirusPosition
         {
@@ -68,6 +83,72 @@ namespace GameJam
         {
             get { return _virus2; }
             set { _virus2 = value; }
+        }
+
+        public static float Radius1
+        {
+            get { return radius1; }
+            set { radius1 = value; }
+        }
+
+        public static float Radius2
+        {
+            get { return radius2; }
+            set { radius2 = value; }
+        }
+
+        public static float Radius3
+        {
+            get { return radius3; }
+            set { radius3 = value; }
+        }
+
+        public static float InnerSlow
+        {
+            get { return islow; }
+            set { islow = value; }
+        }
+
+        public static float OuterSlow
+        {
+            get { return oslow; }
+            set { oslow = value; }
+        }
+
+        public static float OuterOuterSlow
+        {
+            get { return ooslow; }
+            set { ooslow = value; }
+        }
+
+        public static float InnerAccn
+        {
+            get { return iaccn; }
+            set { iaccn = value; }
+        }
+
+        public static float OuterAccn
+        {
+            get { return oaccn; }
+            set { oaccn = value; }
+        }
+
+        public static float OuterOuterAccn
+        {
+            get { return ooaccn; }
+            set { ooaccn = value; }
+        }
+
+        public static float OuterOuterOuterAccn
+        {
+            get { return oooaccn; }
+            set { oooaccn = value; }
+        }
+
+        public static int Rotation
+        {
+            get { return rot; }
+            set { rot = value; }
         }
 
     }

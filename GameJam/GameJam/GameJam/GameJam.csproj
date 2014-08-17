@@ -143,6 +143,9 @@
     <Compile Include="BlueBloodCellGroup.cs" />
     <Compile Include="Bomb.cs" />
     <Compile Include="Circle.cs" />
+    <Compile Include="SpawnII.cs" />
+    <Compile Include="Enemy.cs" />
+    <Compile Include="EnemyGroup.cs" />
     <Compile Include="OrangeBloodCell.cs" />
     <Compile Include="OrangeBloodCellGroup.cs" />
     <Compile Include="PurpleBloodCell.cs" />

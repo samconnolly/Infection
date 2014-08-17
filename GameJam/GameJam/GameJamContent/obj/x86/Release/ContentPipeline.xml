@@ -7,17 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\font.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\font.xnb</Output>
       <Time>2014-05-14T22:14:13.3974074+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Copy of SpriteFont1.spritefont</Source>
-      <Name>font2</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\font2.xnb</Output>
-      <Time>2014-05-12T00:04:23.2714889+01:00</Time>
     </Item>
     <Item>
       <Source>Beneath.mp3</Source>
@@ -25,8 +16,8 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Beneath.xnb</Output>
-      <Extra>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Beneath.wma</Extra>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Beneath.xnb</Output>
+      <Extra>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Beneath.wma</Extra>
       <Time>2014-05-11T22:36:31.6499694+01:00</Time>
     </Item>
     <Item>
@@ -35,8 +26,8 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Controlled Chaos.xnb</Output>
-      <Extra>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Controlled Chaos.wma</Extra>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Controlled Chaos.xnb</Output>
+      <Extra>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Controlled Chaos.wma</Extra>
       <Time>2014-05-11T22:36:31.7729764+01:00</Time>
     </Item>
     <Item>
@@ -45,7 +36,7 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch 1.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch 1.xnb</Output>
       <Time>2014-05-11T22:36:31.7889774+01:00</Time>
     </Item>
     <Item>
@@ -54,7 +45,7 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch 2.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch 2.xnb</Output>
       <Time>2014-05-11T22:36:31.7899774+01:00</Time>
     </Item>
     <Item>
@@ -63,7 +54,7 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch 3.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch 3.xnb</Output>
       <Time>2014-05-11T22:36:31.7909775+01:00</Time>
     </Item>
     <Item>
@@ -72,7 +63,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Virus_Spritesheet.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Virus_Spritesheet.xnb</Output>
       <Time>2014-05-11T22:36:31.817979+01:00</Time>
     </Item>
     <Item>
@@ -81,7 +72,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T01B.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T01B.xnb</Output>
       <Time>2014-05-11T22:36:31.7919775+01:00</Time>
     </Item>
     <Item>
@@ -90,7 +81,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T01M.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T01M.xnb</Output>
       <Time>2014-05-11T22:36:31.7929776+01:00</Time>
     </Item>
     <Item>
@@ -99,7 +90,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T01R.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T01R.xnb</Output>
       <Time>2014-05-11T22:36:31.7939776+01:00</Time>
     </Item>
     <Item>
@@ -108,7 +99,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T02B.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T02B.xnb</Output>
       <Time>2014-05-11T22:36:31.7949777+01:00</Time>
     </Item>
     <Item>
@@ -117,7 +108,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T02M.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T02M.xnb</Output>
       <Time>2014-05-11T22:36:31.7959778+01:00</Time>
     </Item>
     <Item>
@@ -126,7 +117,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T02R.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T02R.xnb</Output>
       <Time>2014-05-11T22:36:31.7979779+01:00</Time>
     </Item>
     <Item>
@@ -135,7 +126,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T03B.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T03B.xnb</Output>
       <Time>2014-05-11T22:36:31.7989779+01:00</Time>
     </Item>
     <Item>
@@ -144,7 +135,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T03M.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T03M.xnb</Output>
       <Time>2014-05-11T22:36:31.7989779+01:00</Time>
     </Item>
     <Item>
@@ -153,7 +144,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T03R.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T03R.xnb</Output>
       <Time>2014-05-11T22:36:31.799978+01:00</Time>
     </Item>
     <Item>
@@ -162,7 +153,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T04B.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T04B.xnb</Output>
       <Time>2014-05-11T22:36:31.800978+01:00</Time>
     </Item>
     <Item>
@@ -171,7 +162,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T04M.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T04M.xnb</Output>
       <Time>2014-05-11T22:36:31.800978+01:00</Time>
     </Item>
     <Item>
@@ -180,7 +171,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T04R.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T04R.xnb</Output>
       <Time>2014-05-11T22:36:31.8019781+01:00</Time>
     </Item>
     <Item>
@@ -189,7 +180,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T05B.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T05B.xnb</Output>
       <Time>2014-05-11T22:36:31.8029782+01:00</Time>
     </Item>
     <Item>
@@ -198,7 +189,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T05M.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T05M.xnb</Output>
       <Time>2014-05-11T22:36:31.8039782+01:00</Time>
     </Item>
     <Item>
@@ -207,7 +198,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T05R.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T05R.xnb</Output>
       <Time>2014-05-11T22:36:31.8049783+01:00</Time>
     </Item>
     <Item>
@@ -216,7 +207,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T06B.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T06B.xnb</Output>
       <Time>2014-05-11T22:36:31.8049783+01:00</Time>
     </Item>
     <Item>
@@ -225,7 +216,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T06M.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T06M.xnb</Output>
       <Time>2014-05-11T22:36:31.8059783+01:00</Time>
     </Item>
     <Item>
@@ -234,7 +225,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T06R.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T06R.xnb</Output>
       <Time>2014-05-11T22:36:31.8069784+01:00</Time>
     </Item>
     <Item>
@@ -243,7 +234,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T07B.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T07B.xnb</Output>
       <Time>2014-05-11T22:36:31.8069784+01:00</Time>
     </Item>
     <Item>
@@ -252,7 +243,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T07M.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T07M.xnb</Output>
       <Time>2014-05-11T22:36:31.8079784+01:00</Time>
     </Item>
     <Item>
@@ -261,7 +252,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T07R.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T07R.xnb</Output>
       <Time>2014-05-11T22:36:31.8089785+01:00</Time>
     </Item>
     <Item>
@@ -270,7 +261,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T08B.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T08B.xnb</Output>
       <Time>2014-05-11T22:36:31.8099786+01:00</Time>
     </Item>
     <Item>
@@ -279,7 +270,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T08M.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T08M.xnb</Output>
       <Time>2014-05-11T22:36:31.8109786+01:00</Time>
     </Item>
     <Item>
@@ -288,7 +279,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T08R.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T08R.xnb</Output>
       <Time>2014-05-11T22:36:31.8109786+01:00</Time>
     </Item>
     <Item>
@@ -297,7 +288,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T09B.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T09B.xnb</Output>
       <Time>2014-05-11T22:36:31.8119787+01:00</Time>
     </Item>
     <Item>
@@ -306,7 +297,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T09M.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T09M.xnb</Output>
       <Time>2014-05-11T22:36:31.8129787+01:00</Time>
     </Item>
     <Item>
@@ -315,7 +306,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\T09R.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T09R.xnb</Output>
       <Time>2014-05-11T22:36:31.8139788+01:00</Time>
     </Item>
     <Item>
@@ -324,7 +315,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\whiteblood.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\whiteblood.xnb</Output>
       <Time>2014-05-11T22:36:31.8189791+01:00</Time>
     </Item>
     <Item>
@@ -333,7 +324,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\spore.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\spore.xnb</Output>
       <Time>2014-05-11T22:36:31.7849771+01:00</Time>
     </Item>
     <Item>
@@ -342,7 +333,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\virus.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\virus.xnb</Output>
       <Time>2014-05-11T22:36:31.817979+01:00</Time>
     </Item>
     <Item>
@@ -351,7 +342,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Large Background.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Large Background.xnb</Output>
       <Time>2014-05-11T22:36:31.782977+01:00</Time>
     </Item>
     <Item>
@@ -360,7 +351,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\gball.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\gball.xnb</Output>
       <Time>2014-05-11T22:36:31.8189791+01:00</Time>
     </Item>
     <Item>
@@ -369,7 +360,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\pball.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\pball.xnb</Output>
       <Time>2014-05-11T22:36:31.8199791+01:00</Time>
     </Item>
     <Item>
@@ -378,7 +369,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\yball.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\yball.xnb</Output>
       <Time>2014-05-11T22:36:31.8199791+01:00</Time>
     </Item>
     <Item>
@@ -387,7 +378,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\redblood.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\redblood.xnb</Output>
       <Time>2014-05-11T22:36:31.6509695+01:00</Time>
     </Item>
     <Item>
@@ -396,7 +387,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\double.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\double.xnb</Output>
       <Time>2014-05-11T22:36:31.7749766+01:00</Time>
     </Item>
     <Item>
@@ -405,7 +396,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\proliferate.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\proliferate.xnb</Output>
       <Time>2014-05-11T22:36:31.7839771+01:00</Time>
     </Item>
     <Item>
@@ -414,7 +405,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\reproduce.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\reproduce.xnb</Output>
       <Time>2014-05-11T22:36:31.7849771+01:00</Time>
     </Item>
     <Item>
@@ -423,7 +414,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\boss.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\boss.xnb</Output>
       <Time>2014-05-11T22:36:31.782977+01:00</Time>
     </Item>
     <Item>
@@ -432,7 +423,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Title screen copy.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Title screen copy.xnb</Output>
       <Time>2014-05-11T22:36:31.816979+01:00</Time>
     </Item>
     <Item>
@@ -441,8 +432,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Pause Menu copy.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Pause Menu copy.xnb</Output>
       <Time>2014-05-11T22:36:31.7839771+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Fanal Score.png</Source>
+      <Name>Final Score</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Final Score.xnb</Output>
+      <Time>2014-05-11T22:36:31.7769767+01:00</Time>
     </Item>
     <Item>
       <Source>White cell hit copy.png</Source>
@@ -450,7 +450,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\whitebloodhit.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\whitebloodhit.xnb</Output>
       <Time>2014-05-11T22:40:39.1371249+01:00</Time>
     </Item>
     <Item>
@@ -459,7 +459,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\virusling.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\virusling.xnb</Output>
       <Time>2014-05-11T22:45:22.0563069+01:00</Time>
     </Item>
     <Item>
@@ -468,7 +468,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\whitebloodspawn.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\whitebloodspawn.xnb</Output>
       <Time>2014-07-08T23:02:22.7938801+01:00</Time>
     </Item>
     <Item>
@@ -477,7 +477,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\bluecell.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\bluecell.xnb</Output>
       <Time>2014-07-10T18:57:29.9427301+01:00</Time>
     </Item>
     <Item>
@@ -486,7 +486,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\greencell.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\greencell.xnb</Output>
       <Time>2014-07-10T18:57:29.9427301+01:00</Time>
     </Item>
     <Item>
@@ -495,17 +495,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\purplecell.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\purplecell.xnb</Output>
       <Time>2014-07-10T18:57:29.9427301+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Fanal Score.png</Source>
-      <Name>Final Score</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\Final Score.xnb</Output>
-      <Time>2014-05-11T22:36:31.7769767+01:00</Time>
     </Item>
     <Item>
       <Source>virus p2.png</Source>
@@ -513,7 +504,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\virusp2.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\virusp2.xnb</Output>
       <Time>2014-07-13T11:11:59.1553736+01:00</Time>
     </Item>
     <Item>
@@ -522,7 +513,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\bomb.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\bomb.xnb</Output>
       <Time>2014-07-15T11:20:04.502267+01:00</Time>
     </Item>
     <Item>
@@ -531,7 +522,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\cross.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\cross.xnb</Output>
       <Time>2014-07-15T11:20:05.232268+01:00</Time>
     </Item>
     <Item>
@@ -540,8 +531,26 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\orangecell.xnb</Output>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\orangecell.xnb</Output>
       <Time>2014-07-15T11:18:29.5650537+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Copy of SpriteFont1.spritefont</Source>
+      <Name>font2</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\font2.xnb</Output>
+      <Time>2014-08-17T13:21:15.4916792+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Copy of Copy of SpriteFont1.spritefont</Source>
+      <Name>font3</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\font3.xnb</Output>
+      <Time>2014-08-17T13:21:20.1149436+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -549,10 +558,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Release</BuildConfiguration>
       <CompressContent>true</CompressContent>
-      <RootDirectory>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJamContent\</RootDirectory>
-      <LoggerRootDirectory>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\</LoggerRootDirectory>
-      <IntermediateDirectory>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJamContent\obj\x86\Release\</IntermediateDirectory>
-      <OutputDirectory>K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\</OutputDirectory>
+      <RootDirectory>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJamContent\</RootDirectory>
+      <LoggerRootDirectory>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\</LoggerRootDirectory>
+      <IntermediateDirectory>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJamContent\obj\x86\Release\</IntermediateDirectory>
+      <OutputDirectory>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

@@ -107,6 +107,7 @@ namespace GameJam
         public float Scale
         {
             get { return this._scale; }
+            set { _scale = value; }
         }
 
         #endregion
@@ -163,21 +164,21 @@ namespace GameJam
             //Check not going off the Top of screen.
             if (Position.Y <= Rectangle.Height / 2.0f * Scale)
             {
-                Position = new Vector2(Position.X, Rectangle.Height/ 2.0f);
+                Position = new Vector2(Position.X, (Rectangle.Height / 2.0f) * Scale);
                 Bounce(new Vector2(Position.X, 10), Vector2.Zero);
             }
 
             //Check not going off the right hand screen.
             if (Position.X*ViewPortHelper.XScale >= (ViewPortHelper.X - _texture.Width / 2.0 * Scale))
             {
-                Position = new Vector2((ViewPortHelper.X/ViewPortHelper.XScale - _texture.Width / 2.0f), Position.Y);
+                Position = new Vector2((ViewPortHelper.X / ViewPortHelper.XScale - _texture.Width / 2.0f * Scale), Position.Y);
                 Bounce(new Vector2(-10, Position.Y), Vector2.Zero);
             }
 
             //Check not going off the Bottom of screen.
             if (Position.Y * ViewPortHelper.YScale >= (ViewPortHelper.Y - _texture.Height / 2.0 * Scale))
             {
-                Position = new Vector2(Position.X, (ViewPortHelper.Y / ViewPortHelper.YScale - _texture.Height / 2.0f));
+                Position = new Vector2(Position.X, (ViewPortHelper.Y / ViewPortHelper.YScale - _texture.Height / 2.0f * Scale));
                 Bounce(new Vector2(Position.X, -10), Vector2.Zero);
             }
         }
