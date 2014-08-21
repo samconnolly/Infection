@@ -14,53 +14,85 @@ namespace GameJam
 {
     public class Bomb : SpriteBase
     {
-        private int fallTime;
-        private int fallTimer = 0;
-        private int boomTime = 1000;
+        private float fallSpeed;
         private Texture2D tex;
         private Texture2D crossTex;
+        private Vector2 crossPosition;
+        private Rectangle drawRect;
+        private float fallOffset = -15;
 
-        public Bomb(Texture2D texture,Texture2D CrossTexture, Vector2 target, int falltime)
+        private int frate;
+        private int timer = 0;
+
+        public Bomb(Texture2D texture,Texture2D CrossTexture, Vector2 target, float speed)
             : base(texture)
         {
             tex = texture;
             crossTex = CrossTexture;
-            fallTime = falltime;
+            fallSpeed = speed;
 
-            this.Texture = crossTex;
-            this.Position = target;
+            Texture = tex;
+            crossPosition = target;
+            drawRect = new Rectangle(0, 0, crossTex.Width, crossTex.Height);
+
+            Position = new Vector2(target.X, 0);
+            SheetSize = new Vector2(4, 1);
+            Scale = 0.2f;
+
+            frate = ViewPortHelper.FrameRate;
         }
 
         public override void Update(GameTime gameTime, SpriteBatch bactch)
         {
-            fallTimer += gameTime.ElapsedGameTime.Milliseconds;
-
-            
-            if (fallTimer > fallTime + boomTime)
+            // falling
+            if (Position.Y < crossPosition.Y + fallOffset)
             {
+                Position += new Vector2(0, 1) * fallSpeed;
+            }
+
+            // killing
+            if ((this.Position - VirusHelper.VirusPosition).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale && Position.Y >= crossPosition.Y + fallOffset)
+            {
+                ScoreHelper.PlayerHit();
                 DeathHelper.KillCell.Add(this);
-            }
-
-            else if (fallTimer > fallTime)
-            {
-                this.Texture = tex;
-            }
-
-            if ((this.Position - VirusHelper.VirusPosition).Length() < tex.Width && fallTimer > fallTime)
-            {
-                SoundEffectPlayer.PlaySquelch();
-                GameStateManager.CurrentGameState = GameState.GameOver;
-                GameStateManager.HasChanged = true;
             }
             else if (InputHelper.Players == 2)
             {
-                if ((this.Position - VirusHelper.VirusPositionP2).Length() < tex.Width && fallTimer > fallTime)
+                if ((this.Position - VirusHelper.VirusPositionP2).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale && Position.Y >= crossPosition.Y + fallOffset)
                 {
-                    SoundEffectPlayer.PlaySquelch();
-                    GameStateManager.CurrentGameState = GameState.GameOver;
-                    GameStateManager.HasChanged = true;
+                    ScoreHelper.PlayerHit();
+                    DeathHelper.KillCell.Add(this);
                 }
             }
+
+            // anim
+            if (Position.Y > crossPosition.Y + fallOffset)
+            {
+                timer += gameTime.ElapsedGameTime.Milliseconds;
+
+                if (timer > frate)
+                {                    
+                    XFrame += 1;
+                    timer = 0;
+                    if (XFrame > 3)
+                    {
+                        DeathHelper.KillCell.Add(this);
+                    }
+                }
+            }
+
+        }
+
+        public override void Draw(GameTime gameTime, SpriteBatch batch, float layer)
+        {
+            // draw warning
+            if (Position.Y < crossPosition.Y + fallOffset)
+            {
+                batch.Draw(crossTex, crossPosition - DrawOffset * Scale, drawRect, Color.White, 0, Vector2.Zero, Scale, SpriteEffects.None, layer);
+            }
+
+            // draw bomb
+            base.Draw(gameTime, batch, layer);
         }
     }
 }

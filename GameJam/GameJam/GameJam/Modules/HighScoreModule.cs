@@ -8,14 +8,15 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GameJam
 {
-    public class FinalScoreModule : ModuleBase
+    public class HighScoreModule : ModuleBase
     {
         private SpriteFont _font;
+        private SpriteFont _font2;
         private string _title = "0";
         private Vector2 _position;
         private Texture2D _finalTexture;
 
-        public FinalScoreModule(Game game)
+        public HighScoreModule(Game game)
             :base(game)
         {
 
@@ -38,8 +39,9 @@ namespace GameJam
             //Final Texture
             _finalTexture = this.Game.Content.Load<Texture2D>("Final Score");
             _font = this.Game.Content.Load<SpriteFont>("font2");
+            _font2 = this.Game.Content.Load<SpriteFont>("font");
             Vector2 fontDim = _font.MeasureString(_title);
-            _position = new Vector2((ViewPortHelper.X / (ViewPortHelper.XScale*2.0f) - (fontDim.X / 2)), ViewPortHelper.Y / (ViewPortHelper.YScale*2.0f));
+            _position = new Vector2(540, 20);
 
             if (ScoreHelper.Score > ScoreHelper.HighScores[ScoreHelper.HighScores.Count() - 1])
             {
@@ -78,8 +80,15 @@ namespace GameJam
 
         internal override void Draw(GameTime gameTime, SpriteBatch batch)
         {
-            batch.DrawString(_font, _title, _position, Color.Black,0.0f,Vector2.Zero,1.0f,SpriteEffects.None,0.0f);
-            batch.DrawString(_font, "High Score: " + ScoreHelper.HighScores[0].ToString(), _position + new Vector2(-250, 230), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+            batch.DrawString(_font, "High Scores", _position + new Vector2(-250, 0), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+
+            int n = 0;
+            foreach (int score in ScoreHelper.HighScores)
+            {
+                batch.DrawString(_font2, (n+1).ToString() + ". " + score.ToString(), _position + new Vector2(-250, 100 + n*40), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                n += 1;
+            }
+            
             batch.Draw(_finalTexture,Vector2.Zero,null,Color.White,0,Vector2.Zero,1.0f,SpriteEffects.None, 1.0f);
         }
 

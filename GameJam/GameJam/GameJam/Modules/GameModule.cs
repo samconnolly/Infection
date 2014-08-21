@@ -13,15 +13,10 @@ namespace GameJam
     {
         private Virus _virus;
         private Virus _virus2;
-        private WhiteBloodCellGroup _whiteBloodCellGroup;
         private RedBloodCellGroup _redBloodCellGroup;
         private RedBloodCellGroup _redBloodCellGroup2;
-        private GreenBloodCellGroup _greenCellGroup;
-        private BlueBloodCellGroup _blueCellGroup;
-        private PurpleBloodCellGroup _purpleCellGroup;
-        private OrangeBloodCellGroup _orangeCellGroup;
-        
 
+        private EnemyGroup testEnemies;
         //private AntiViralNodule _antiViralNodule;
 
         //private Proliferate _proliferate;
@@ -45,15 +40,19 @@ namespace GameJam
         private bool _isPaused = false;
         private Texture2D _pauseTexture;
 
-        private Spawn spawn;
         private SpawnII spawn2;
         private int spawnTimer = 0;
-        private int level = 0;
+        private int level = 1;
+        private int wave = 1;
         private bool spawning = false;
         private bool health = false;
         List<SpriteBase> add = new List<SpriteBase> { };
 
         private bool kill = false;
+
+        // pause menu
+        private int selected = 0;
+        private int tree = 0;
 
         public GameModule(Game game)
             : base(game)
@@ -91,22 +90,19 @@ namespace GameJam
             _pauseTexture = this.Game.Content.Load<Texture2D>("Pause Menu copy");
 
             //Load virus Testure.
-            Texture2D virusTexture = this.Game.Content.Load<Texture2D>("virus");
+            Texture2D virusTexture = this.Game.Content.Load<Texture2D>("player");
+            Texture2D eyeTexture = this.Game.Content.Load<Texture2D>("eyes");
             Texture2D virusTexture2 = this.Game.Content.Load<Texture2D>("virusp2");
-            Texture2D viruslingTexture = this.Game.Content.Load<Texture2D>("virusling");
-            _virus = new Virus(virusTexture, viruslingTexture,new Vector2(180,120));
-            _virus2 = new Virus(virusTexture2, viruslingTexture,new Vector2(880,120), 2);
+            Texture2D viruslingTexture = this.Game.Content.Load<Texture2D>("nanites");
+            _virus = new Virus(virusTexture, viruslingTexture,eyeTexture, new Vector2(380,320));
+            
+            _virus2 = new Virus(virusTexture2, viruslingTexture, eyeTexture, new Vector2(880, 120), 2);
             
             // Initial cells...
-            Texture2D whiteBloodCellTexture = this.Game.Content.Load<Texture2D>("whiteblood");
-            Texture2D whiteBloodCellTextureHit = this.Game.Content.Load<Texture2D>("whitebloodhit");
-            Texture2D whiteBloodCellTextureSpawn = this.Game.Content.Load<Texture2D>("whitebloodspawn");
-            _whiteBloodCellGroup = new WhiteBloodCellGroup(whiteBloodCellTexture,whiteBloodCellTextureHit,whiteBloodCellTextureSpawn, new Vector2(500, 500),3);
-            _cells.Add(_whiteBloodCellGroup);
-
+            
             Texture2D redBloodCellTexture = this.Game.Content.Load<Texture2D>("redblood");
-            _redBloodCellGroup = new RedBloodCellGroup(redBloodCellTexture, new Vector2(200, 200),3);
-            _redBloodCellGroup2 = new RedBloodCellGroup(redBloodCellTexture, new Vector2(700, 200),3);
+            _redBloodCellGroup = new RedBloodCellGroup(redBloodCellTexture, new Vector2(100, 100), 3);
+            _redBloodCellGroup2 = new RedBloodCellGroup(redBloodCellTexture, new Vector2(500, 100), 3);
             _cells.Add(_redBloodCellGroup);
 
             if (InputHelper.Players == 2)
@@ -114,24 +110,17 @@ namespace GameJam
                 _cells.Add(_redBloodCellGroup2);
             }
 
-            Texture2D greenCellTexture = this.Game.Content.Load<Texture2D>("greencell");
-            _greenCellGroup = new GreenBloodCellGroup(greenCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn, new Vector2(700, 650), 5);
-            _cells.Add(_greenCellGroup);
+            Texture2D gruntTexture = this.Game.Content.Load<Texture2D>("grunt");
+            Texture2D chargerTexture = this.Game.Content.Load<Texture2D>("charger");
+            Texture2D sleeperTexture = this.Game.Content.Load<Texture2D>("sleeper");
+            Texture2D artilleryTexture = this.Game.Content.Load<Texture2D>("artillery");
+            Texture2D turretTexture = this.Game.Content.Load<Texture2D>("turret");
 
-            Texture2D blueCellTexture = this.Game.Content.Load<Texture2D>("bluecell");
-            Texture2D missileTexture = this.Game.Content.Load<Texture2D>("yball");
-            _blueCellGroup = new BlueBloodCellGroup(blueCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn, missileTexture, new Vector2(130, 600), 1);
-            _cells.Add(_blueCellGroup);
-
-            Texture2D purpleCellTexture = this.Game.Content.Load<Texture2D>("purplecell");
-            _purpleCellGroup = new PurpleBloodCellGroup(purpleCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn, new Vector2(300, 300), 1);
-            _cells.Add(_purpleCellGroup);
-
-            Texture2D orangeCellTexture = this.Game.Content.Load<Texture2D>("orangecell");
             Texture2D bombTexture = this.Game.Content.Load<Texture2D>("bomb");
             Texture2D crossTexture = this.Game.Content.Load<Texture2D>("cross");
-            _orangeCellGroup = new OrangeBloodCellGroup(orangeCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn,crossTexture, bombTexture, new Vector2(400, 400), 1);
-            _cells.Add(_orangeCellGroup);
+            Texture2D missileTexture = this.Game.Content.Load<Texture2D>("missile");
+
+            Texture2D spawnTexture = this.Game.Content.Load<Texture2D>("whitebloodspawn");
 
             //// AntiViral Nodule
             //Texture2D antiViralNoduleTexture = this.Game.Content.Load<Texture2D>("boss");
@@ -148,23 +137,17 @@ namespace GameJam
             //_cells.Add(_proliferate);
             //_cells.Add(_doubleUp);
             //_cells.Add(_reproduce);
+            
+            testEnemies = new EnemyGroup(turretTexture, spawnTexture, new Vector2(300, 300), 3, 1, 3, new Vector2(6, 5),bombTexture,crossTexture);
 
-            spawn = new Spawn(whiteBloodCellTexture, whiteBloodCellTextureHit,whiteBloodCellTextureSpawn, 
-                                redBloodCellTexture, proliferateTexture, doubleTexture, reproduceTexture,
-                                greenCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn, 
-                                blueCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn, missileTexture, 
-                                purpleCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn,
-                                orangeCellTexture,whiteBloodCellTextureHit,whiteBloodCellTextureSpawn,crossTexture,bombTexture);
+            //_cells.Add(testEnemies);
 
 
-            _cells = new List<SpriteBase> { };
-
-            spawn2 = new SpawnII(whiteBloodCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn,
-                                redBloodCellTexture, proliferateTexture, doubleTexture, reproduceTexture,
-                                greenCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn,
-                                blueCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn, missileTexture,
-                                purpleCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn,
-                                orangeCellTexture, whiteBloodCellTextureHit, whiteBloodCellTextureSpawn, crossTexture, bombTexture);
+            spawn2 = new SpawnII(redBloodCellTexture,
+                                    gruntTexture,chargerTexture,
+                                        sleeperTexture,turretTexture,artilleryTexture,
+                                            missileTexture, crossTexture, bombTexture, spawnTexture,
+                                                proliferateTexture, doubleTexture, reproduceTexture);
                       
 
             //Load atmospheric music.
@@ -177,7 +160,11 @@ namespace GameJam
             font = this.Game.Content.Load<SpriteFont>("font");
             font2 = this.Game.Content.Load<SpriteFont>("font2");
             font3 = this.Game.Content.Load<SpriteFont>("font3");
-        
+
+            if (ScoreHelper.Hardcore == false)
+            {
+                ScoreHelper.Lives = 3;
+            }
         }
 
         internal override void UnloadContent()
@@ -216,7 +203,14 @@ namespace GameJam
                     spawnTimer = 0;
                     health = false;
                     spawning = false;
-                    level += 1;
+                    wave += 1;
+
+                    if (wave > 5)
+                    {
+                        wave = 1;
+                        level += 1;
+                    }
+
                     //add = spawn.SpawnEnemies(level);
                     add = spawn2.SpawnEnemies(level);
                 }
@@ -275,6 +269,30 @@ namespace GameJam
             //Update accordingly
             if (_isPaused)
             {
+                // key assignments
+                if (InputHelper.ForceKeys == true)
+                {
+                    InputHelper.Keys = 1;
+                }
+                else if (InputHelper.CurrentGamePadStatePlayer1.IsConnected == false && InputHelper.CurrentGamePadStatePlayer2.IsConnected == false)
+                {
+                    InputHelper.Keys = 1;
+                }
+                else if (InputHelper.CurrentGamePadStatePlayer1.IsConnected == false && InputHelper.CurrentGamePadStatePlayer2.IsConnected == true)
+                {
+                    InputHelper.Keys = 1;
+                }
+                else if (InputHelper.CurrentGamePadStatePlayer1.IsConnected == true && InputHelper.CurrentGamePadStatePlayer2.IsConnected == false)
+                {
+                    InputHelper.Keys = 2;
+                }
+                else
+                {
+                    InputHelper.Keys = 0;
+                }
+
+                // menu
+
                 if (InputHelper.WasButtonPressed(Keys.Escape) || InputHelper.WasPadButtonPressedP1(Buttons.B))
                 {
                     GameStateManager.CurrentGameState = GameState.MainMenu;
@@ -283,6 +301,91 @@ namespace GameJam
                 if (InputHelper.WasButtonPressed(Keys.R) || InputHelper.WasPadButtonPressedP1(Buttons.A))
                 {
                     _isPaused = false;
+                }
+                if (InputHelper.WasButtonPressed(Keys.Down) | InputHelper.WasPadThumbstickDownP1())
+                {
+                    selected += 1;
+                }
+                else if (InputHelper.WasButtonPressed(Keys.Up) | InputHelper.WasPadThumbstickUpP1())
+                {
+                    selected -= 1;
+                }
+                if (selected > 5)
+                {
+                    selected = 0;
+                }
+                else if (selected < 0)
+                {
+                    selected = 5;
+                }
+
+                if (InputHelper.WasButtonPressed(Keys.Enter) | InputHelper.WasButtonPressed(Keys.Space) | InputHelper.WasPadButtonPressedP1(Buttons.A))
+                {
+                    if (tree == 0)
+                    {
+                        if (selected == 0)
+                        {
+                            _isPaused = false;
+                        }
+                        if (selected == 1)
+                        {
+                            ViewPortHelper.ToggleFullscreen();
+                        }
+                        if (selected == 2)
+                        {
+                            if (_isMuted)
+                            {
+                                MediaPlayer.Resume();
+                                _isMuted = false;
+                            }
+                            else
+                            {
+                                MediaPlayer.Pause();
+                                _isMuted = true;
+                            }
+                        }
+                        if (selected == 3)
+                        {
+                            tree = 1;
+                            selected = 0;
+                        }
+                        if (selected == 4)
+                        {
+                            GameStateManager.CurrentGameState = GameState.InGame;
+                            GameStateManager.HasChanged = true;
+                            _isPaused = false;
+                        }
+                        if (selected == 5)
+                        {
+                            GameStateManager.CurrentGameState = GameState.MainMenu;
+                            GameStateManager.HasChanged = true;
+                            _isPaused = false;
+                        }
+                    }
+
+                    else if (tree == 1)
+                    {
+                        if (selected == 0)
+                        {
+                            // controls!
+                        }
+                        else if (selected == 1)
+                        {
+                            if (InputHelper.ForceKeys == false)
+                            {
+                                InputHelper.ForceKeys = true;
+                            }
+                            else
+                            {
+                                InputHelper.ForceKeys = false;
+                            }
+                        }
+                        else
+                        {
+                            tree = 0;
+                            selected = 0;
+                        }
+                    }
                 }
             }
             else
@@ -329,55 +432,100 @@ namespace GameJam
             {
                 _isPaused = true;
             }
+
+
         }
 
         internal override void Draw(GameTime gameTime, SpriteBatch batch)
         {
-            if(_isPaused)
+            if (_isPaused)
             {
-                batch.Draw(_pauseTexture, new Vector2(0, 0), Color.White);
+                List<Color>  colours = new List<Color> { Color.White, Color.White, Color.White, Color.White, Color.White, Color.White };
+                colours[selected] = Color.Black;
+
+                if (tree == 0)
+                {
+                    batch.DrawString(font, "Resume", new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Toggle Fullscreen", new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Mute", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Controls", new Vector2(200, 450), colours[3], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Restart", new Vector2(200, 500), colours[4], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Exit", new Vector2(200, 550), colours[5], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                }
+                else if (tree == 1)
+                {
+
+                    batch.DrawString(font, "Show Controls", new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Toggle keys/pad", new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Back", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+
+                    batch.DrawString(font, "Pad 1 Connected: " + InputHelper.CurrentGamePadStatePlayer1.IsConnected.ToString(), new Vector2(200, 450), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Pad 2 Connected: " + InputHelper.CurrentGamePadStatePlayer2.IsConnected.ToString(), new Vector2(200, 500), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+
+                    string p1 = "pad";
+                    string p2 = "pad";
+                    if (InputHelper.Keys == 1)
+                    {
+                        p1 = "keys";
+                    }
+                    else if (InputHelper.Keys == 2)
+                    {
+                        p2 = "keys";
+                    }
+
+                    batch.DrawString(font, "P1: " + p1.ToString(), new Vector2(200, 550), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "P2: " + p2.ToString(), new Vector2(200, 600), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                }
+                batch.Draw(_pauseTexture, new Vector2(0, 0),null, Color.White,0,Vector2.Zero,1.0f,SpriteEffects.None,0.5f);
             }
 
-            //Draw the Virus.
-            _virus.Draw(gameTime, batch,0.2f);
-
-            if (InputHelper.Players == 2)
+            else
             {
-                _virus2.Draw(gameTime, batch, 0.2f);
+                //Draw the Virus.
+                _virus.Draw(gameTime, batch, 0.2f);
+
+                if (InputHelper.Players == 2)
+                {
+                    _virus2.Draw(gameTime, batch, 0.2f);
+                }
+
+                float cellLayer = 0;
+
+                //Draw all cells.
+                foreach (SpriteBase sprite in _cells)
+                {
+                    sprite.Draw(gameTime, batch, 0.5f + cellLayer);
+                    cellLayer += 0.0001f;
+                }
+
+                //Draw the background.
+                _background.Draw(gameTime, batch);
+
+                // Draw score
+                batch.DrawString(font, "Level: " + level.ToString() + " Wave:" + wave.ToString(), new Vector2(400, 20), Color.White);
+                batch.DrawString(font, "Score: " + ScoreHelper.Score.ToString(), new Vector2(520, 60), Color.White);
+                if (ScoreHelper.Hardcore == false)
+                {
+                    batch.DrawString(font, "Lives: " + ScoreHelper.Lives.ToString(), new Vector2(520, 100), Color.White);
+                }
+
+                // circles
+
+                batch.DrawString(font3, "1: Radius 1: " + VirusHelper.Radius1.ToString(), new Vector2(20, 20), Color.White);
+                batch.DrawString(font3, "2: Radius 2: " + VirusHelper.Radius2.ToString(), new Vector2(20, 40), Color.White);
+                batch.DrawString(font3, "3: Radius 3: " + VirusHelper.Radius3.ToString(), new Vector2(20, 60), Color.White);
+
+                batch.DrawString(font3, "4: Inner Slow: " + VirusHelper.InnerSlow.ToString(), new Vector2(20, 80), Color.White);
+                batch.DrawString(font3, "5: Outer Slow: " + VirusHelper.OuterSlow.ToString(), new Vector2(20, 100), Color.White);
+
+                batch.DrawString(font3, "6: Inner Accn: " + VirusHelper.InnerAccn.ToString(), new Vector2(20, 120), Color.White);
+                batch.DrawString(font3, "7: Outer Accn: " + VirusHelper.OuterAccn.ToString(), new Vector2(20, 140), Color.White);
+                batch.DrawString(font3, "8: V Outer Accn: " + VirusHelper.OuterOuterAccn.ToString(), new Vector2(20, 160), Color.White);
+
+                batch.DrawString(font3, "9: VV Outer Accn: " + VirusHelper.OuterOuterOuterAccn.ToString(), new Vector2(20, 180), Color.White);
+
+                batch.DrawString(font3, "0: V Outer Slow: " + VirusHelper.OuterOuterSlow.ToString(), new Vector2(20, 200), Color.White);
             }
-
-            float cellLayer = 0;
-
-            //Draw all cells.
-            foreach (SpriteBase sprite in _cells)
-            {
-                sprite.Draw(gameTime, batch,0.5f + cellLayer);
-                cellLayer += 0.0001f;
-            }
-
-            //Draw the background.
-            _background.Draw(gameTime, batch);
-
-            // Draw score
-
-            batch.DrawString(font ,ScoreHelper.Score.ToString(),new Vector2(520,40),Color.White);
-
-            // circles
-
-            batch.DrawString(font3,"1: Radius 1: " + VirusHelper.Radius1.ToString(), new Vector2(20, 40), Color.White);
-            batch.DrawString(font3, "2: Radius 2: " + VirusHelper.Radius2.ToString(), new Vector2(20, 70), Color.White);
-            batch.DrawString(font3, "3: Radius 3: " + VirusHelper.Radius3.ToString(), new Vector2(20, 100), Color.White);
-
-            batch.DrawString(font3, "4: Inner Slow: " + VirusHelper.InnerSlow.ToString(), new Vector2(20, 130), Color.White);
-            batch.DrawString(font3, "5: Outer Slow: " + VirusHelper.OuterSlow.ToString(), new Vector2(20, 160), Color.White);
-
-            batch.DrawString(font3, "6: Inner Accn: " + VirusHelper.InnerAccn.ToString(), new Vector2(20, 190), Color.White);
-            batch.DrawString(font3, "7: Outer Accn: " + VirusHelper.OuterAccn.ToString(), new Vector2(20, 220), Color.White);
-            batch.DrawString(font3, "8: V Outer Accn: " + VirusHelper.OuterOuterAccn.ToString(), new Vector2(20, 250), Color.White);
-
-            batch.DrawString(font3, "9: VV Outer Accn: " + VirusHelper.OuterOuterOuterAccn.ToString(), new Vector2(20, 280), Color.White);
-
-            batch.DrawString(font3, "0: V Outer Slow: " + VirusHelper.OuterOuterSlow.ToString(), new Vector2(20, 310), Color.White);
         }
 
         #endregion

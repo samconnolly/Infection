@@ -18,16 +18,18 @@ namespace GameJam
         public List<Enemy> group;
         Random random = new Random();
 
-        public EnemyGroup(Texture2D texture, Texture2D hitTexture, Texture2D spawnTexture, Vector2 position, int n, int movement, int attack, Texture2D missileTexture= null, Texture2D crossTexture= null)
+        public EnemyGroup(Texture2D texture, Texture2D spawnTexture, Vector2 position, int n, int movement, int attack,Vector2 sheetDimensions, Texture2D missileTexture= null, Texture2D crossTexture= null)
             : base(texture)
         {
             count = n;
             group = new List<Enemy>{};
 
+            int colour = random.Next(5);
+
             for (int i=0; i<n;i++)
             {
                 Vector2 posvar = new Vector2(50,50) - new Vector2((float)random.NextDouble()*100,(float)random.NextDouble()*100);
-                group.Add(new Enemy(texture,hitTexture,spawnTexture, position + posvar,movement, attack,missileTexture,crossTexture));
+                group.Add(new Enemy(texture, spawnTexture, position + posvar, movement, attack, sheetDimensions,colour, missileTexture, crossTexture));
 
                 foreach (Enemy wbc in group)
                 {

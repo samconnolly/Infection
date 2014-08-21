@@ -13,6 +13,7 @@ namespace GameJam
         InGame,
         Paused,
         GameOver,
+        Highscore,
         Closing,
     }
 }

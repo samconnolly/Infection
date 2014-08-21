@@ -28,6 +28,7 @@ namespace GameJam
         private static int _windowedWidth;
         private static int _windowedHeight;
         private static float _aspectRatio;
+        public static int _frameRate = 60;
 
         
 
@@ -134,6 +135,44 @@ namespace GameJam
             set { _game = value; }
             get { return _game; }
         }
+
+        public static int FrameRate
+        {
+            set { _frameRate = value; }
+            get { return _frameRate; }
+        }
+
+        public static void ToggleFullscreen()
+        {
+            if (GraphicsDeviceManager.IsFullScreen == true)
+            {
+                GraphicsDeviceManager.PreferredBackBufferHeight = WindowedHeight;
+                GraphicsDeviceManager.PreferredBackBufferWidth = WindowedWidth;
+
+                GraphicsDeviceManager.IsFullScreen = false;
+                GraphicsDeviceManager.ApplyChanges();
+
+                GraphicsDevice.Viewport = new Viewport(0, 0, WindowedWidth, WindowedHeight);
+                SetViewPort(WindowedWidth, WindowedHeight);
+                SetDrawScale(1, 1);
+            }
+
+            else
+            {
+
+                GraphicsDeviceManager.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+                GraphicsDeviceManager.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+
+                GraphicsDeviceManager.IsFullScreen = true;
+                GraphicsDeviceManager.ApplyChanges();
+
+                GraphicsDevice.Viewport = new Viewport(XOffset, YOffset, ScreenWidth, ScreenHeight);
+                SetViewPort(ScreenWidth, ScreenHeight);
+                SetDrawScale((float)((double)ScreenWidth / (double)WindowedWidth),
+                                                (float)((double)ScreenHeight / (double)WindowedHeight));
+            }
+        }
+
 
     }
 }

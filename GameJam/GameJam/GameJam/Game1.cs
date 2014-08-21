@@ -76,7 +76,7 @@ namespace GameJam
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);            
         }
 
         protected override void UnloadContent()
@@ -99,6 +99,11 @@ namespace GameJam
                 {
                     case GameState.MainMenu:
                         this.CurrentModule = new MainMenuModule(this);
+                        this.CurrentModule.Initialize();
+                        this.CurrentModule.LoadContent(spriteBatch);
+                        break;
+                    case GameState.Highscore:
+                        this.CurrentModule = new HighScoreModule(this);
                         this.CurrentModule.Initialize();
                         this.CurrentModule.LoadContent(spriteBatch);
                         break;

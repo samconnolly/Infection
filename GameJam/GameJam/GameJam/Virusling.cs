@@ -53,11 +53,20 @@ namespace GameJam
 
         public int player = 1;
 
+        private int colour = 5;
+        private int colours = 6;
+        private int width;
+        private int height;
+
         public Virusling(Texture2D texture, Vector2 startPosition, int Player = 1)
             : base(texture)
         {
+            Scale = 0.1f;
+
             Position = startPosition;
-            Rectangle = new Rectangle(0, 0, texture.Width, texture.Height);
+            width = texture.Width;
+            height = texture.Height / colours;
+            SheetSize = new Vector2(1, colours);
             
             acceleration = new Vector2(0, 0);
             target = new Vector2(300, 300);
@@ -188,7 +197,7 @@ namespace GameJam
 
             // ===== Collision with player =====
 
-            if ((diff).Length() <= (VirusHelper.Virus.Rectangle.Width / 2.0f) * Scale && blast == false)
+            if ((diff).Length() <= (VirusHelper.Virus.width / 2.0 * VirusHelper.Virus.Scale) && blast == false)
             {
                 if (player == 1)
                 {
@@ -210,7 +219,7 @@ namespace GameJam
             //-- outwards ---
             if (player == 1)
             {
-                if ((InputHelper.WasButtonPressed(Keys.Q) || InputHelper.WasPadButtonPressedP1(Buttons.B)) && diff.Length() < 100f)
+                if (((InputHelper.WasButtonPressed(Keys.Q) && InputHelper.Keys == player) || (InputHelper.WasPadButtonPressedP1(Buttons.B) && InputHelper.Keys != player)) && diff.Length() < 100f)
                 {
                     blast = true;
                     blastTimer = 0;
@@ -218,7 +227,7 @@ namespace GameJam
             }
             else if (player == 2)
             {
-                if ((InputHelper.WasButtonPressed(Keys.Q) || InputHelper.WasPadButtonPressedP2(Buttons.B)) && diff.Length() < 100f)
+                if ((InputHelper.WasButtonPressed(Keys.Q) && InputHelper.Keys == player || (InputHelper.WasPadButtonPressedP2(Buttons.B) && InputHelper.Keys != player)) && diff.Length() < 100f)
                 {
                     blast = true;
                     blastTimer = 0;
@@ -244,7 +253,7 @@ namespace GameJam
             //--- directionwise ---
             if (player == 1)
             {
-                if ((InputHelper.WasButtonPressed(Keys.E) || InputHelper.WasPadButtonPressedP1(Buttons.A)) && diff.Length() < 100f)
+                if (((InputHelper.WasButtonPressed(Keys.E) && InputHelper.Keys == player) || (InputHelper.WasPadButtonPressedP1(Buttons.A) && InputHelper.Keys != player)) && diff.Length() < 100f)
                 {
                     shoot = true;
                     shootTimer = 0;
@@ -252,7 +261,7 @@ namespace GameJam
             }
             else if (player == 2)
             {
-                if ((InputHelper.WasButtonPressed(Keys.E) || InputHelper.WasPadButtonPressedP2(Buttons.A)) && diff.Length() < 100f)
+                if (((InputHelper.WasButtonPressed(Keys.E) && InputHelper.Keys == player) || (InputHelper.WasPadButtonPressedP2(Buttons.A) && InputHelper.Keys != player)) && diff.Length() < 100f)
                 {
                     shoot = true;
                     shootTimer = 0;
@@ -297,31 +306,9 @@ namespace GameJam
             // getting hit by purple's energy blast
 
             foreach (var group in CellsHelper.Cells)
-            {
-                if (group is PurpleBloodCellGroup)
-                {
-                    PurpleBloodCellGroup cellGroup = group as PurpleBloodCellGroup;
-
-                    foreach (PurpleBloodCell cell in cellGroup.group)
-                    {
-                        if (cell.firing == true)
-                        {
-                            if ((Position - cell.Position).Length() < cell.circle.radius)
-                            {
-                                Vector2 bounceDir = (Position - cell.Position);
-                                bounceDir.Normalize();
-                                Velocity += bounceDir*10;
-                                //Bounce(bounceDir, Vector2.Zero);
-
-
-                            }
-                        }
-                    }
-                }
-
+            {                
                 if (group is EnemyGroup)
                 {
-
                     EnemyGroup enemyGroup = group as EnemyGroup;
 
                     foreach (Enemy cell in enemyGroup.group)
@@ -351,6 +338,10 @@ namespace GameJam
                     }
                 }
             }
+
+            // colour
+            YFrame = colour;
+            
 
             Position += Velocity;
 

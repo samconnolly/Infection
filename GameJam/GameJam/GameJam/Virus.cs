@@ -29,6 +29,7 @@ namespace GameJam
         Random random;
         Texture2D miniTex;
         Texture2D tex;
+        Texture2D eyeTex;
 
         // power ups
 
@@ -48,11 +49,30 @@ namespace GameJam
         Circle circle3;
         bool circles = true;
 
-        public Virus(Texture2D texture, Texture2D miniTexture, Vector2 position, int Player = 1)
+        // frames
+        private int dir = 0;
+        private int directions = 3;
+        private int colour = 4;
+        private int colours = 7;
+        public int width;
+        public int height;
+        
+        private int eyeColours = 6;
+        public int eyeColour = 0;
+        private Rectangle eyeRect;
+        private int eyeWidth;
+        private int eyeHeight;
+        private List<Vector2> eyeOffset = new List<Vector2> { new Vector2(-0, -235), new Vector2(-230, -235), new Vector2(-125, -235) };
+        
+        public Virus(Texture2D texture, Texture2D miniTexture,Texture2D eyeTexture, Vector2 position, int Player = 1)
             : base(texture)
         {
+            Scale = 0.1f;
+
             Position = position;
-            Rectangle = new Rectangle(0, 0, texture.Width, texture.Height);
+            width = texture.Width/directions;
+            height = texture.Height/colours;
+            SheetSize = new Vector2(directions, colours);
             Velocity = new Vector2(0,0);
             acceleration = new Vector2(0,0);
             maxSpeed = 4.0f;
@@ -65,6 +85,11 @@ namespace GameJam
             random = new Random();
             miniTex = miniTexture;
             tex = texture;
+
+            eyeTex = eyeTexture;
+            eyeWidth = eyeTex.Width / directions;
+            eyeHeight= eyeTex.Height / eyeColours;            
+            eyeRect = new Rectangle(0, 0, eyeWidth,eyeHeight);
 
             player = Player;
 
@@ -83,7 +108,7 @@ namespace GameJam
             {
                 // create an offset vector outside the virus
                 double length = random.NextDouble() + 1.1;
-                Vector2 edge = new Vector2(Rectangle.Width / 2.0f,Rectangle.Width / 2.0f);
+                Vector2 edge = new Vector2(Rectangle.Width * Scale / 2.0f, Rectangle.Width * Scale / 2.0f);
 
                 Vector2 startOffset = edge * (float) length;
 
@@ -152,37 +177,40 @@ namespace GameJam
 
             acceleration = Vector2.Zero; // reset acc'n
 
-            // check for key presses
+            // ============= check for key presses =============================
 
             accing = false;
 
-            if (InputHelper.IsButtonDown(Keys.Up) || InputHelper.IsButtonDown(Keys.W))
+            if (InputHelper.Keys == player)
             {
-                acceleration += new Vector2(0, -1);
-                accing = true;
+
+                if (InputHelper.IsButtonDown(Keys.Up) || InputHelper.IsButtonDown(Keys.W))
+                {
+                    acceleration += new Vector2(0, -1);
+                    accing = true;
+                }
+
+                if (InputHelper.IsButtonDown(Keys.Down) || InputHelper.IsButtonDown(Keys.S))
+                {
+                    acceleration += new Vector2(0, 1);
+                    accing = true;
+                }
+
+                if (InputHelper.IsButtonDown(Keys.Left) || InputHelper.IsButtonDown(Keys.A))
+                {
+                    acceleration += new Vector2(-1, 0);
+                    accing = true;
+                }
+
+                if (InputHelper.IsButtonDown(Keys.Right) || InputHelper.IsButtonDown(Keys.D))
+                {
+                    acceleration += new Vector2(1, 0);
+                    accing = true;
+                }
             }
+            // ============= check for button presses =============================
 
-            if (InputHelper.IsButtonDown(Keys.Down) || InputHelper.IsButtonDown(Keys.S))
-            {
-                acceleration += new Vector2(0, 1);
-                accing = true;
-            }
-
-            if (InputHelper.IsButtonDown(Keys.Left) || InputHelper.IsButtonDown(Keys.A))
-            {
-                acceleration += new Vector2(-1, 0);
-                accing = true;
-            }
-
-            if (InputHelper.IsButtonDown(Keys.Right) || InputHelper.IsButtonDown(Keys.D))
-            {
-                acceleration += new Vector2(1,0 );
-                accing = true;
-            }
-
-            // check for button presses
-
-            if (player == 1)
+            else if (player == 1)
             {
                 if (InputHelper.LeftThumbstickDirectionP1.Length() > 0)
                 {
@@ -199,6 +227,8 @@ namespace GameJam
                     accing = true;
                 }
             }
+
+            // ================================================================================
 
             // slow down if not no key is down
             if (accing == false && Velocity != Vector2.Zero)
@@ -463,6 +493,31 @@ namespace GameJam
                 circle3.Update();
             }
 
+            // frames
+
+            if (Velocity.X > 0 && Math.Abs(Velocity.X) > Math.Abs(Velocity.Y) && 
+                ((InputHelper.Players == player && InputHelper.IsButtonDown(Keys.Right))
+                | (InputHelper.LeftThumbstickDirectionP1).X > 0))
+            {
+                dir = 1;
+            }
+            else if (Velocity.X < 0 && Math.Abs(Velocity.X) > Math.Abs(Velocity.Y) &&
+                ((InputHelper.Players == player && InputHelper.IsButtonDown(Keys.Left))
+                | (InputHelper.LeftThumbstickDirectionP1).X < 0))
+            {
+                dir = 0;
+            }
+            else
+            {
+                dir = 2;
+            }
+
+            XFrame = dir;
+            YFrame = colour;
+
+            eyeRect.X = dir * eyeWidth;
+            eyeRect.Y = eyeColour * eyeHeight;
+
             base.Update(gameTime, batch);
 
 
@@ -470,7 +525,8 @@ namespace GameJam
 
         public override void Draw(GameTime gameTime, SpriteBatch batch, float layer)
         {
-                        
+            batch.Draw(eyeTex, (Position - ((DrawOffset + eyeOffset[dir]) * Scale)), eyeRect, Color.White, 0.0f, Vector2.Zero, Scale, SpriteEffects.None, layer + 0.01f);
+                                    
             base.Draw(gameTime, batch, layer);
 
             foreach (Virusling virusling in viruslingList)

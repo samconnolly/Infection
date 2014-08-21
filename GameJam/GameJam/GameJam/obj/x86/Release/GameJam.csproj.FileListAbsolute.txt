@@ -78,40 +78,9 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Sq
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch 2.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch 3.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Virus_Spritesheet.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T01B.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T01M.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T01R.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T02B.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T02M.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T02R.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T03B.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T03M.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T03R.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T04B.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T04M.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T04R.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T05B.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T05M.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T05R.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T06B.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T06M.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T06R.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T07B.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T07M.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T07R.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T08B.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T08M.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T08R.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T09B.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T09M.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\T09R.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\whiteblood.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\spore.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\virus.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Large Background.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\gball.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\pball.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\yball.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\redblood.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\double.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\proliferate.xnb
@@ -120,16 +89,11 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\bo
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Title screen copy.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Pause Menu copy.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Final Score.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\whitebloodhit.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\virusling.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\whitebloodspawn.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\bluecell.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\greencell.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\purplecell.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\virusp2.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\bomb.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\cross.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\orangecell.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Beneath.wma
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Controlled Chaos.wma
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\You have been infected!.exe.manifest
@@ -145,3 +109,12 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Release\You have b
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Release\You have been infected!.pdb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\font3.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\font2.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\player.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\eyes.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\grunt.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\nanites.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\charger.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\sleeper.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\artillery.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\turret.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\missile.xnb

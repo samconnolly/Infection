@@ -139,19 +139,12 @@
     <Compile Include="Background\Wall.cs" />
     <Compile Include="Background\TileRef.cs" />
     <Compile Include="Background\Tile.cs" />
-    <Compile Include="BlueBloodCell.cs" />
-    <Compile Include="BlueBloodCellGroup.cs" />
     <Compile Include="Bomb.cs" />
     <Compile Include="Circle.cs" />
+    <Compile Include="Modules\HighScoreModule.cs" />
     <Compile Include="SpawnII.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="EnemyGroup.cs" />
-    <Compile Include="OrangeBloodCell.cs" />
-    <Compile Include="OrangeBloodCellGroup.cs" />
-    <Compile Include="PurpleBloodCell.cs" />
-    <Compile Include="PurpleBloodCellGroup.cs" />
-    <Compile Include="GreenBloodCell.cs" />
-    <Compile Include="GreenBloodCellGroup.cs" />
     <Compile Include="DoubleUp.cs" />
     <Compile Include="GameState\GameState.cs" />
     <Compile Include="GameState\GameStateManager.cs" />
@@ -178,12 +171,9 @@
     <Compile Include="RedBloodCellGroup.cs" />
     <Compile Include="Reproduce.cs" />
     <Compile Include="SoundEffectPlayer.cs" />
-    <Compile Include="Spawn.cs" />
     <Compile Include="SpriteBase.cs" />
     <Compile Include="Virus.cs" />
     <Compile Include="Virusling.cs" />
-    <Compile Include="WhiteBloodCell.cs" />
-    <Compile Include="WhiteBloodCellGroup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

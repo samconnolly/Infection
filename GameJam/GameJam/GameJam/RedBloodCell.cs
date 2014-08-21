@@ -43,7 +43,7 @@ namespace GameJam
             // infection!
             float distance = (Position - VirusHelper.VirusPosition).Length();
 
-            if (distance < (Rectangle.Width / 2.0f + VirusHelper.Virus.Rectangle.Width / 2.0f) * Scale)
+            if (distance < (Rectangle.Width / 2.0f +( VirusHelper.Virus.width / 2.0f)* VirusHelper.Virus.Scale ))
             {
                     hitBy = 1;
                     Die();
@@ -55,7 +55,7 @@ namespace GameJam
             {
                 float distance2 = (Position - VirusHelper.VirusPositionP2).Length();
 
-                if (distance2 < (Rectangle.Width / 2.0f + VirusHelper.VirusP2.Rectangle.Width / 2.0f) * Scale)
+                if (distance2 < (Rectangle.Width / 2.0f + VirusHelper.VirusP2.width / 2.0f) * Scale)
                 {
                     hitBy = 2;
                     Die();

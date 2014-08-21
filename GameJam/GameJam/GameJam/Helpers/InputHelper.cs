@@ -24,6 +24,8 @@ namespace GameJam
         private static MouseState _previousMouseState;
         private static GamePadState _previousGamePadStateP1;
         private static GamePadState _previousGamePadStateP2;
+        private static int keys = 0;
+        private static bool forceKeys = false;
 
         private static bool _keyLock = false;
 
@@ -178,7 +180,27 @@ namespace GameJam
         public static Vector2 LeftThumbstickDirectionP2
         {
             get { return CurrentGamePadStatePlayer2.ThumbSticks.Left; }
-        }            
+        }
+
+        public static bool WasPadThumbstickUpP1()
+        {
+            bool pressed = false;
+            if (InputHelper.LeftThumbstickDirectionP1.Y > 0 && InputHelper.PreviousGamePadStatePlayer1.ThumbSticks.Left.Y == 0)
+            {
+                pressed = true;
+            }
+            return pressed;
+        }
+
+        public static bool WasPadThumbstickDownP1()
+        {
+            bool pressed = false;
+            if (InputHelper.LeftThumbstickDirectionP1.Y < 0 && InputHelper.PreviousGamePadStatePlayer1.ThumbSticks.Left.Y == 0)
+            {
+                pressed = true;
+            }
+            return pressed;
+        }
 
         public static bool WasMouseClicked()
         {
@@ -208,6 +230,18 @@ namespace GameJam
         public static void SetGamePadStatePlayer2()
         {
             CurrentGamePadStatePlayer2 = GamePad.GetState(Microsoft.Xna.Framework.PlayerIndex.Two);
+        }
+
+        public static int Keys
+        {
+            get { return keys; }
+            set { keys = value; }
+        }
+
+        public static bool ForceKeys
+        {
+            get { return forceKeys; }
+            set { forceKeys = value; }
         }
 
         #endregion        

@@ -7,40 +7,9 @@ Content\Squelch 1.xnb
 Content\Squelch 2.xnb
 Content\Squelch 3.xnb
 Content\Virus_Spritesheet.xnb
-Content\T01B.xnb
-Content\T01M.xnb
-Content\T01R.xnb
-Content\T02B.xnb
-Content\T02M.xnb
-Content\T02R.xnb
-Content\T03B.xnb
-Content\T03M.xnb
-Content\T03R.xnb
-Content\T04B.xnb
-Content\T04M.xnb
-Content\T04R.xnb
-Content\T05B.xnb
-Content\T05M.xnb
-Content\T05R.xnb
-Content\T06B.xnb
-Content\T06M.xnb
-Content\T06R.xnb
-Content\T07B.xnb
-Content\T07M.xnb
-Content\T07R.xnb
-Content\T08B.xnb
-Content\T08M.xnb
-Content\T08R.xnb
-Content\T09B.xnb
-Content\T09M.xnb
-Content\T09R.xnb
-Content\whiteblood.xnb
 Content\spore.xnb
 Content\virus.xnb
 Content\Large Background.xnb
-Content\gball.xnb
-Content\pball.xnb
-Content\yball.xnb
 Content\redblood.xnb
 Content\double.xnb
 Content\proliferate.xnb
@@ -49,15 +18,19 @@ Content\boss.xnb
 Content\Title screen copy.xnb
 Content\Pause Menu copy.xnb
 Content\Final Score.xnb
-Content\whitebloodhit.xnb
 Content\virusling.xnb
 Content\whitebloodspawn.xnb
-Content\bluecell.xnb
-Content\greencell.xnb
-Content\purplecell.xnb
 Content\virusp2.xnb
 Content\bomb.xnb
-Content\cross.xnb
-Content\orangecell.xnb
 Content\font2.xnb
 Content\font3.xnb
+Content\player.xnb
+Content\eyes.xnb
+Content\grunt.xnb
+Content\nanites.xnb
+Content\charger.xnb
+Content\sleeper.xnb
+Content\artillery.xnb
+Content\turret.xnb
+Content\missile.xnb
+Content\cross.xnb

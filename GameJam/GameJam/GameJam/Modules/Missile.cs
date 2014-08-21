@@ -28,6 +28,17 @@ namespace GameJam
             Velocity *= speed;
             this.Velocity = Velocity;
             this.Position = position;
+            SheetSize = new Vector2(4, 1);
+            Scale = 0.2f;
+            XFrame = 1;
+            if (Velocity.Y < 0)
+            {
+                Rotation = (float)Math.Atan((double)(-Velocity.X / Velocity.Y));
+            }
+            else
+            {
+                Rotation = (float)Math.Atan((double)(-Velocity.X / Velocity.Y)) + (float)Math.PI;
+            }
         }
 
         public override void Update(GameTime gameTime, SpriteBatch bactch)
@@ -44,23 +55,22 @@ namespace GameJam
             {
                 DeathHelper.KillCell.Add(this);
             }
-                  
 
-            else if ((this.Position - VirusHelper.VirusPosition).Length() < tex.Width)
+
+            else if ((this.Position - VirusHelper.VirusPosition).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale)
             {
-                SoundEffectPlayer.PlaySquelch();
-                GameStateManager.CurrentGameState = GameState.GameOver;
-                GameStateManager.HasChanged = true;                
+                ScoreHelper.PlayerHit();
+                DeathHelper.KillCell.Add(this);
             }
             else if (InputHelper.Players == 2)
             {
-                if ((this.Position - VirusHelper.VirusPositionP2).Length() < tex.Width)
+                if ((this.Position - VirusHelper.VirusPositionP2).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale)
                 {
-                    SoundEffectPlayer.PlaySquelch();
-                    GameStateManager.CurrentGameState = GameState.GameOver;
-                    GameStateManager.HasChanged = true;
+                    ScoreHelper.PlayerHit();
+                    DeathHelper.KillCell.Add(this);
                 }
             }
+
         }
     }
 }
