@@ -9,6 +9,8 @@ namespace GameJam
     {
         private static List<SpriteBase> _cellList;
         private static List<SpriteBase> _addList = new List<SpriteBase> { };
+        private static bool _freeze = false;
+        private static bool _antidote = false;
 
         public static List<SpriteBase> Cells
         {
@@ -20,6 +22,18 @@ namespace GameJam
         {
             get { return _addList; }
             set { _addList = value; }
+        }
+
+        public static bool Freeze
+        {
+            get { return _freeze; }
+            set { _freeze = value; }
+        }
+
+        public static bool Antidote
+        {
+            get { return _antidote; }
+            set { _antidote = value; }
         }
     }
 }

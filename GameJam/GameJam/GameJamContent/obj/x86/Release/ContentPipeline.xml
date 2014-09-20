@@ -309,6 +309,33 @@
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\cross.xnb</Output>
       <Time>2014-08-21T21:28:13.8340316+01:00</Time>
     </Item>
+    <Item>
+      <Source>laser.png</Source>
+      <Name>laser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\laser.xnb</Output>
+      <Time>2014-08-25T11:34:43.1626752+01:00</Time>
+    </Item>
+    <Item>
+      <Source>heart.png</Source>
+      <Name>heart</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\heart.xnb</Output>
+      <Time>2014-08-26T21:15:46.5650125+01:00</Time>
+    </Item>
+    <Item>
+      <Source>powerups.png</Source>
+      <Name>powerups</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\powerups.xnb</Output>
+      <Time>2014-08-26T21:15:46.5660126+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

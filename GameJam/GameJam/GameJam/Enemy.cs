@@ -151,6 +151,71 @@ namespace GameJam
             }
         }
 
+        public bool LaserCollision(int player)
+        {
+            bool hit = false;
+            Vector2 start;
+            Vector2 vector;
+            float yLow;
+            float yHigh;
+            int side;
+            int pside;
+            Vector2 end;
+
+            if (player == 1)
+            {
+                start = (VirusHelper.Virus.Position + VirusHelper.Virus.laserOffset);
+                vector = new Vector2(VirusHelper.Virus.laserRect.Width * (float)Math.Cos(VirusHelper.Virus.laserRot),
+                                           VirusHelper.Virus.laserRect.Width * (float)Math.Sin(VirusHelper.Virus.laserRot));
+
+                end = vector + start;
+                float gradient = vector.Y / vector.X;
+
+                yLow = (Position.X - VirusHelper.Virus.Position.X) * gradient + VirusHelper.Virus.Position.Y + VirusHelper.Virus.laserOffset.Y;
+                yHigh = (Position.X + Rectangle.Width * Scale - VirusHelper.Virus.Position.X) * gradient + VirusHelper.Virus.Position.Y + VirusHelper.Virus.laserOffset.Y;
+
+            }
+
+            else
+            {
+                start = (VirusHelper.VirusP2.Position + VirusHelper.VirusP2.laserOffset);
+                vector = new Vector2(VirusHelper.VirusP2.laserRect.Width * (float)Math.Cos(VirusHelper.VirusP2.laserRot),
+                                           VirusHelper.VirusP2.laserRect.Width * (float)Math.Sin(VirusHelper.VirusP2.laserRot));
+                end = vector + start;
+                float gradient = vector.Y / vector.X;
+
+                yLow = (Position.X - VirusHelper.VirusP2.Position.X) * gradient + VirusHelper.VirusP2.Position.Y + VirusHelper.VirusP2.laserOffset.Y;
+                yHigh = (Position.X + Rectangle.Width * Scale - VirusHelper.VirusP2.Position.X) * gradient + VirusHelper.VirusP2.Position.Y + VirusHelper.VirusP2.laserOffset.Y;
+
+            }
+
+            if (end.X > start.X)
+            {
+                side = 1;
+            }
+            else
+            {
+                side = 0;
+            }
+
+            if (Position.X > start.X)
+            {
+                pside = 1;
+            }
+            else
+            {
+                pside = 0;
+            }
+            
+            if (((Position.Y < yLow && Position.Y + Rectangle.Height*Scale > yLow)
+                 | (Position.Y < yHigh && Position.Y + Rectangle.Height*Scale > yHigh)) && side == pside)
+            {
+                hit = true;
+            }
+
+            return hit;
+        }
+
         public override void Update(GameTime gameTime, SpriteBatch bactch)
         {
             
@@ -193,7 +258,7 @@ namespace GameJam
 
                 if ((VirusHelper.VirusPosition - Position).Length() < (VirusHelper.Virus.width) * VirusHelper.Virus.Scale)
                 {
-                    ScoreHelper.PlayerHit();
+                    ScoreHelper.PlayerHit(VirusHelper.Virus);
                     dead = true;
                 }
 
@@ -201,7 +266,7 @@ namespace GameJam
                 {
                     if ((VirusHelper.VirusPositionP2 - Position).Length() < (VirusHelper.Virus.width) * VirusHelper.Virus.Scale)
                     {
-                        ScoreHelper.PlayerHit();
+                        ScoreHelper.PlayerHit(VirusHelper.VirusP2);
                         dead = true;
                     }
                 }
@@ -231,7 +296,6 @@ namespace GameJam
                     foreach (Virusling v in VirusHelper.ViruslingsP2)
                     {
 
-
                         if ((v.Position - this.Position).Length() < (Rectangle.Height / 2.0f + v.Rectangle.Width * v.Scale / 2.0f) * Scale)
                         {
                             deadSpore = Hit(v);
@@ -248,6 +312,27 @@ namespace GameJam
                 {
                     VirusHelper.Viruslings.Remove(v);
                     VirusHelper.Virus.viruslingNo -= 1;
+                }
+
+                // ----- getting hit by laser --------
+
+                if (VirusHelper.Virus.laser == true)
+                {
+                    if (LaserCollision(1) == true)
+                    {
+                        LaserHit(1);
+                    }
+                }
+
+                if (InputHelper.Players == 2)
+                {
+                    if (VirusHelper.VirusP2.laser == true)
+                    {
+                        if (LaserCollision(2) == true)
+                        {
+                            LaserHit(2);
+                        }
+                    }
                 }
 
 
@@ -590,7 +675,10 @@ namespace GameJam
                     Velocity += away*slow;
                 }
 
-                Position += Velocity;
+                if (CellsHelper.Freeze == false)
+                {
+                    Position += Velocity;
+                }
 
                 // ------- death of the cell ------------------------
 
@@ -717,6 +805,20 @@ namespace GameJam
             {
                 return null;
             }
+        }
+
+        public void LaserHit(int player)
+        {
+            SoundEffectPlayer.PlaySquelch();
+
+            hit = true;
+            hitTimer = 0;
+            ////////////////
+            hitBy = player;
+            ////////////////
+            frame = 5;
+
+            hitPoints -= 1;            
         }
     }
 }

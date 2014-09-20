@@ -36,9 +36,9 @@ namespace GameJam
             set { _lives = value; }
         }
 
-        public static void PlayerHit()
+        public static void PlayerHit(Virus player)
         {
-            if (_hardcore == true)
+            if (_hardcore == true && VirusHelper.Virus.invincible == false)
             {
                 SoundEffectPlayer.PlaySquelch();
                 GameStateManager.CurrentGameState = GameState.GameOver;
@@ -49,7 +49,7 @@ namespace GameJam
             {
                 _lives -= 1;
 
-                if (_lives == 0)
+                if (_lives == 0 && VirusHelper.Virus.invincible == false)
                 {
                     SoundEffectPlayer.PlaySquelch();
                     GameStateManager.CurrentGameState = GameState.GameOver;

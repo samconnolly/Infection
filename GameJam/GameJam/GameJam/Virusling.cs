@@ -34,7 +34,10 @@ namespace GameJam
         float ooaccn;
         float oooaccn;
 
+        float repel;
+
         int rot;
+        float rotSpeed;
 
         float err;
         Random random;
@@ -50,6 +53,9 @@ namespace GameJam
         int blastTimer = 0;
         int blastTime = 100;
         bool blast = false;
+
+        int homingDist = 100;
+        float homingSpeed = 10;
 
         public int player = 1;
 
@@ -86,16 +92,26 @@ namespace GameJam
             ooaccn = VirusHelper.OuterOuterAccn;
             oooaccn = VirusHelper.OuterOuterOuterAccn;
 
-            rot = VirusHelper.Rotation;
+            repel = VirusHelper.Repel;
 
             random = new Random();
-
-            err = (1600 - random.Next(800)) * 0.001f;
-
+            
             Velocity = new Vector2((float)random.NextDouble() - 0.5f, (float)random.NextDouble() - 0.5f);
 
             player = Player;
-        }        
+        }   
+     
+        public void Pulse()
+        {
+            blast = true;
+            blastTimer = 0;
+        }
+
+        public void Stream()
+        {
+            shoot = true;
+            shootTimer = 0;
+        }
 
 
         public override void Update(GameTime gameTime, SpriteBatch batch)
@@ -113,6 +129,8 @@ namespace GameJam
             oaccn = VirusHelper.OuterAccn;
             ooaccn = VirusHelper.OuterOuterAccn;
             oooaccn = VirusHelper.OuterOuterOuterAccn;
+
+            repel = VirusHelper.Repel;
 
             rot = VirusHelper.Rotation;
 
@@ -148,24 +166,34 @@ namespace GameJam
             Vector2 diff = (target - Position);
 
             acceleration = Vector2.Zero;
-            
+            radius = VirusHelper.Radius1;
+
+
             // ===== outside orbit ==============
-            if (diff.Length() > radius)
+            if (diff.Length() > radius2)
             {
-                Velocity = iaccn * Velocity;
-            }
+                Velocity *= islow;
+                acceleration -= iaccn * Velocity;
 
+            }
+            
             // ==== inside orbit ===============
-            if (diff.Length() <= radius)
+            if (diff.Length() <= radius2)
             {
-                Velocity = rot*new Vector2((float)(diff.X * Math.Cos(Math.PI / 2.0)) - (float)(diff.Y * Math.Sin(Math.PI / 2.0)),
-                                            (float)(diff.X * Math.Sin(Math.PI / 2.0)) + (float)(diff.Y * Math.Cos(Math.PI / 2.0))) * 0.05f * err;               
+                acceleration = Vector2.Zero;
+                //err = (1600 - random.Next(800)) * 0.001f;
+                err = 1.2f - (float)random.NextDouble()*0.4f;
+                rot = VirusHelper.Rotation;
+                rotSpeed = VirusHelper.RotationSpeed;
+                Velocity = rot * new Vector2((float)(diff.X * Math.Cos(Math.PI / 2.0)) - (float)(diff.Y * Math.Sin(Math.PI / 2.0)),
+                                            (float)(diff.X * Math.Sin(Math.PI / 2.0)) + (float)(diff.Y * Math.Cos(Math.PI / 2.0))) *1.5f* rotSpeed *err;
+                Velocity += diff * Velocity.Length() * 0.001f;
             }
 
-            // === inside inner radius ============
-            else if (diff.Length() < radius2)
+            // === inside radius ============
+            else if (diff.Length() < radius3)
             {
-                acceleration = -islow * Velocity;
+                //acceleration = -islow * Velocity;
                 acceleration += diff;
                 acceleration.Normalize();
                 acceleration *= accelerationMagnitude * oaccn;
@@ -174,25 +202,33 @@ namespace GameJam
             }
 
             // === inside inner radius ============
-            else if (diff.Length() < radius3 && diff.Length() > radius2)
-            {
-                acceleration = -oslow * Velocity;
-                acceleration += diff;
-                acceleration.Normalize();
-                acceleration *= accelerationMagnitude * oaccn;
+            //else if (diff.Length() < radius3 && diff.Length() > radius2)
+            //{
+            //    acceleration = -oslow * Velocity;
+            //    acceleration += diff;
+            //    acceleration.Normalize();
+            //    acceleration *= accelerationMagnitude * oaccn;
 
-                Velocity += acceleration;
-            }
+            //    Velocity += acceleration;
+            //}
 
             // ==== limiting radius ============
             else if (diff.Length() > radius3)
             {
-                acceleration = - ooslow * Velocity ;
+                //acceleration = - ooslow * Velocity ;
                 acceleration += diff;
                 acceleration.Normalize();
                 acceleration *= accelerationMagnitude * oooaccn;
 
                 Velocity += acceleration;
+            }
+
+            if (diff.Length() < radius)
+            {
+                Vector2 outward;
+                outward = diff;
+                outward.Normalize();
+                Velocity -= outward * ooaccn;
             }
 
             // ===== Collision with player =====
@@ -202,12 +238,12 @@ namespace GameJam
                 if (player == 1)
                 {
                     Velocity = VirusHelper.VirusVelocity;
-                    Velocity -= diff * 0.02f;
+                    Velocity -= diff * repel;
                 }
                 else if (player == 2)
                 {
                     Velocity = VirusHelper.VirusVelocityP2;
-                    Velocity -= diff * 0.02f;
+                    Velocity -= diff * repel;
                 }
 
             }
@@ -215,24 +251,8 @@ namespace GameJam
             //----------------------------------------------------------------------------------------------------------------
             // ========= Abilities ===========================================================================================
             //----------------------------------------------------------------------------------------------------------------
-
-            //-- outwards ---
-            if (player == 1)
-            {
-                if (((InputHelper.WasButtonPressed(Keys.Q) && InputHelper.Keys == player) || (InputHelper.WasPadButtonPressedP1(Buttons.B) && InputHelper.Keys != player)) && diff.Length() < 100f)
-                {
-                    blast = true;
-                    blastTimer = 0;
-                }
-            }
-            else if (player == 2)
-            {
-                if ((InputHelper.WasButtonPressed(Keys.Q) && InputHelper.Keys == player || (InputHelper.WasPadButtonPressedP2(Buttons.B) && InputHelper.Keys != player)) && diff.Length() < 100f)
-                {
-                    blast = true;
-                    blastTimer = 0;
-                }
-            }
+                        
+            //-- pulse ---
 
             if (blast == true && (blastTimer < blastTime | diff.Length() <= radius))
             {
@@ -250,23 +270,7 @@ namespace GameJam
                 blast = false;
             }
             
-            //--- directionwise ---
-            if (player == 1)
-            {
-                if (((InputHelper.WasButtonPressed(Keys.E) && InputHelper.Keys == player) || (InputHelper.WasPadButtonPressedP1(Buttons.A) && InputHelper.Keys != player)) && diff.Length() < 100f)
-                {
-                    shoot = true;
-                    shootTimer = 0;
-                }
-            }
-            else if (player == 2)
-            {
-                if (((InputHelper.WasButtonPressed(Keys.E) && InputHelper.Keys == player) || (InputHelper.WasPadButtonPressedP2(Buttons.A) && InputHelper.Keys != player)) && diff.Length() < 100f)
-                {
-                    shoot = true;
-                    shootTimer = 0;
-                }
-            }
+            //--- stream ---           
 
             if (shoot == true && (shootTimer < shootTime | diff.Length() <= radius))
             {
@@ -301,6 +305,30 @@ namespace GameJam
             else
             {
                 shoot = false;
+            }
+
+            // -- homing --
+
+            if ((player == 1 && VirusHelper.Virus.homing == true) ||
+                    (player == 2 && VirusHelper.VirusP2.homing == true))
+            {
+                foreach (var enemies in CellsHelper.Cells)
+                {
+                    if (enemies is EnemyGroup)
+                    {
+                        foreach (Enemy enemy in (enemies as EnemyGroup).group)
+                        {
+                            Vector2 close = enemy.Position - Position;
+
+                            if (close.Length() <= homingDist)
+                            {
+                                close.Normalize();;
+                                
+                                Velocity = close*homingSpeed;
+                            }
+                        }
+                    }
+                }
             }
 
             // getting hit by purple's energy blast

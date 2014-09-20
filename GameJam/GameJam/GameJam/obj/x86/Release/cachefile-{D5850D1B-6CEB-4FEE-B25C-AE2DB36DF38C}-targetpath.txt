@@ -34,3 +34,6 @@ Content\artillery.xnb
 Content\turret.xnb
 Content\missile.xnb
 Content\cross.xnb
+Content\laser.xnb
+Content\heart.xnb
+Content\powerups.xnb

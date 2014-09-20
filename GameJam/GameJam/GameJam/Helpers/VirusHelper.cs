@@ -22,20 +22,23 @@ namespace GameJam
         private static Virus _virus2;
 
         
-        public static float radius1 = 40.0f;
-        public static float radius2 = 80.0f;
+        public static float radius1 = 30.0f;
+        public static float radius2 = 40.0f;
         public static float radius3 = 250.0f;
 
-        public static float islow = 0.5f;
+        public static float islow = 0.999f;
         public static float oslow = 0.5f;
         public static float ooslow = 1.0f;
 
-        public static float iaccn = 0.99f;
+        public static float iaccn = 3.0f;
         public static float oaccn = 5.0f;
-        public static float ooaccn = 5.0f;
+        public static float ooaccn = 1.0f;
         public static float oooaccn = 20.0f;
 
+        public static float repel = 0.001f;
+
         public static int rot = 1;
+        public static float rotSpeed = 0.05f;
 
         public static Vector2 VirusPosition
         {
@@ -149,6 +152,18 @@ namespace GameJam
         {
             get { return rot; }
             set { rot = value; }
+        }
+
+        public static float RotationSpeed
+        {
+            get { return rotSpeed; }
+            set { rotSpeed = value; }
+        }
+
+        public static float Repel
+        {
+            get { return repel; }
+            set { repel = value; }
         }
 
     }

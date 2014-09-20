@@ -53,14 +53,14 @@ namespace GameJam
             // killing
             if ((this.Position - VirusHelper.VirusPosition).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale && Position.Y >= crossPosition.Y + fallOffset)
             {
-                ScoreHelper.PlayerHit();
+                ScoreHelper.PlayerHit(VirusHelper.Virus);
                 DeathHelper.KillCell.Add(this);
             }
             else if (InputHelper.Players == 2)
             {
                 if ((this.Position - VirusHelper.VirusPositionP2).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale && Position.Y >= crossPosition.Y + fallOffset)
                 {
-                    ScoreHelper.PlayerHit();
+                    ScoreHelper.PlayerHit(VirusHelper.VirusP2);
                     DeathHelper.KillCell.Add(this);
                 }
             }

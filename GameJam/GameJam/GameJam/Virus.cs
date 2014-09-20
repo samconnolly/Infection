@@ -18,7 +18,7 @@ namespace GameJam
         //Vector2 Velocity;
         Vector2 acceleration;
         public Vector2 direction;
-        float maxSpeed;
+        public float maxSpeed;
         float accelerationMagnitude;
         float deccelerationMagnitude;
         bool accing;
@@ -33,11 +33,32 @@ namespace GameJam
 
         // power ups
 
+        public int activePowerup = 4;
+
         public bool reproduce = false;
         private int reproductionTime = 5000;
         private int reproductionTimer = 0;
         private int reproductionCount = 0;
-        private int reproductionTotal = 15;
+        private int reproductionTotal = 10;
+        
+        public bool invincible = false;
+        public int invinceTimer = 0;
+        public int invinceTime = 20000;
+
+        public bool homing = false;
+        public int homingTimer = 0;
+        public int homingTime = 20000;
+
+        private int freezeTimer = 0;
+        private int freezeTime = 3000;
+
+        public bool laser = false;
+        private int laserTimer = 0;
+        private int laserTime = 500;
+        private Texture2D laserTex;
+        public Rectangle laserRect;
+        public float laserRot = 0.0f;
+        public Vector2 laserOffset;
 
         // player
         int player;
@@ -47,7 +68,7 @@ namespace GameJam
         Circle circle1;
         Circle circle2;
         Circle circle3;
-        bool circles = true;
+        bool circles = false;
 
         // frames
         private int dir = 0;
@@ -64,7 +85,7 @@ namespace GameJam
         private int eyeHeight;
         private List<Vector2> eyeOffset = new List<Vector2> { new Vector2(-0, -235), new Vector2(-230, -235), new Vector2(-125, -235) };
         
-        public Virus(Texture2D texture, Texture2D miniTexture,Texture2D eyeTexture, Vector2 position, int Player = 1)
+        public Virus(Texture2D texture, Texture2D miniTexture,Texture2D eyeTexture, Texture2D laserTexture, Vector2 position, int Player = 1)
             : base(texture)
         {
             Scale = 0.1f;
@@ -86,6 +107,9 @@ namespace GameJam
             miniTex = miniTexture;
             tex = texture;
 
+            laserTex = laserTexture;
+            laserRect = new Rectangle(0, 0, laserTex.Width, laserTex.Height);
+
             eyeTex = eyeTexture;
             eyeWidth = eyeTex.Width / directions;
             eyeHeight= eyeTex.Height / eyeColours;            
@@ -99,9 +123,29 @@ namespace GameJam
             circle2 = new Circle(this.Position, VirusHelper.radius2, 2, Color.Red);
             circle3 = new Circle(this.Position, VirusHelper.radius3, 2, Color.Red);
 
+            if (Velocity.Y < 0)
+            {
+                laserRot = (float)Math.Atan((double)(-Velocity.X / Velocity.Y));
+            }
+            else
+            {
+                laserRot = (float)Math.Atan((double)(-Velocity.X / Velocity.Y)) + (float)Math.PI;
+            }
+
         }
 
-        
+        public void Invincible()
+        {
+            invincible = true;
+            invinceTimer = 0;
+        }
+
+        public void Homing()
+        {
+            homing = true;
+            homingTimer = 0;
+        }
+
         public void AddViruslings(int n)
         {
             for (int x = 0; x < n; x++)
@@ -154,8 +198,11 @@ namespace GameJam
 
         public override void Update(GameTime gameTime, SpriteBatch batch)
         {
-            // power ups
+            // ----- power ups -------
 
+            // -- passive --
+
+            // repoduce
             if (reproduce == true)
             {
                 reproductionTimer += gameTime.ElapsedGameTime.Milliseconds;
@@ -172,8 +219,196 @@ namespace GameJam
                     }
                 }
             }
-               
+            
+            // -- active --
 
+            // button presses 
+
+            if (player == 1)
+            {
+                if (((InputHelper.WasButtonPressed(Keys.Space) && InputHelper.Keys == player) ||
+                        (InputHelper.WasPadButtonPressedP1(Buttons.A) && InputHelper.Keys != player)))
+                {
+                    // invincibility
+                    if (activePowerup == 1)
+                    {
+                        Invincible();
+                    }
+
+                    // pulse
+                    if (activePowerup == 2)
+                    {
+                        foreach (Virusling v in viruslingList)
+                        {
+                            v.Pulse();
+                        }
+                    }
+
+                    // stream
+                    if (activePowerup == 3)
+                    {
+                        foreach (Virusling v in viruslingList)
+                        {
+                            v.Stream();
+                        }
+                    }
+
+                    // laser
+                    if (activePowerup == 4)
+                    {
+                        laser = true;
+                        laserTimer = 0;
+                    }
+
+                    // freeze
+                    if (activePowerup == 5)
+                    {
+                        CellsHelper.Freeze = true;
+                        freezeTimer = 0;
+                    }
+
+                    // antidote
+                    if (activePowerup == 6)
+                    {
+                        CellsHelper.Antidote = true;
+                    }
+                }
+            }
+            else if (player == 2)
+            {
+                if (((InputHelper.WasButtonPressed(Keys.Space) && InputHelper.Keys == player) ||
+                        (InputHelper.WasPadButtonPressedP1(Buttons.A) && InputHelper.Keys != player)))
+                {
+                    // invincibility
+                    if (activePowerup == 1)
+                    {
+                        Invincible();
+                    }
+
+                    // pulse
+                    if (activePowerup == 2)
+                    {
+                        foreach (Virusling v in viruslingList)
+                        {
+                            v.Pulse();
+                        }
+                    }
+
+                    // stream
+                    if (activePowerup == 3)
+                    {
+                        foreach (Virusling v in viruslingList)
+                        {
+                            v.Stream();
+                        }
+                    }
+
+                    // laser
+                    if (activePowerup == 4)
+                    {
+                        laser = true;
+                        laserTimer = 0;
+                    }
+
+                    // freeze
+                    if (activePowerup == 5)
+                    {
+                        CellsHelper.Freeze = true;
+                        freezeTimer = 0;
+                    }
+
+                    // antidote
+                    if (activePowerup == 6)
+                    {
+                        CellsHelper.Cells = new List<SpriteBase> { };
+                    }
+                }
+            }
+
+            // invincible
+
+            if (invincible == true)
+            {
+                invinceTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+                if (invinceTimer > invinceTime)
+                {
+                    invincible = false;
+                }
+            }
+
+            // homing
+
+            if (homing == true)
+            {
+                homingTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+                if (homingTimer > homingTime)
+                {
+                    homing = false;
+                }
+            }
+
+            // -- laser --
+                
+            if (laser == true)
+            {
+                // rotation
+                if (Velocity.Length() > 0.05f)
+                {
+                    if (Velocity.Y < 0)
+                    {
+                        laserRot = (float)Math.Atan((double)(-Velocity.X / Velocity.Y)) - (float)(Math.PI / 2);
+                    }
+                    else
+                    {
+                        laserRot = (float)Math.Atan((double)(-Velocity.X / Velocity.Y)) + (float)(Math.PI / 2);
+                    }
+                }
+
+                // offset
+
+                if (0.0f <= laserRot && laserRot < (float)(Math.PI / 2))
+                {
+                    laserOffset = new Vector2(0, -laserRect.Height/2);// -new Vector2(0, Rectangle.Height * Scale);
+                }
+
+                else if ((float)(Math.PI / 2) <= laserRot && laserRot < (float)(Math.PI))
+                {
+                    laserOffset = new Vector2(laserRect.Height/2, 0);
+                }
+
+                else if ((float)(Math.PI) <= laserRot && laserRot < (float)((3*Math.PI) / 2))
+                {
+                    laserOffset = new Vector2(0, laserRect.Height/2);
+                }
+
+                else
+                {
+                    laserOffset = new Vector2(-laserRect.Height/2, 0);
+                }
+
+                // firing
+            
+                laserTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+                if (laserTimer > laserTime)
+                {
+                    laser = false;
+                }
+            }
+
+            // -- freeze --
+
+            if (CellsHelper.Freeze == true)
+            {
+                freezeTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+                if (freezeTimer > freezeTime)
+                {
+                    CellsHelper.Freeze = false;
+                }
+            }
 
             acceleration = Vector2.Zero; // reset acc'n
 
@@ -277,6 +512,16 @@ namespace GameJam
 
             // MOD ============================
 
+            if (InputHelper.WasButtonPressed(Keys.Enter))
+            {
+                activePowerup += 1;
+
+                if (activePowerup > 6)
+                {
+                    activePowerup = 0;
+                }
+            }
+
             if (InputHelper.IsButtonDown(Keys.D1))
             {
 
@@ -358,12 +603,12 @@ namespace GameJam
 
                 if (InputHelper.IsButtonDown(Keys.LeftShift))
                 {
-                    VirusHelper.InnerAccn -= 0.1f;
+                    VirusHelper.InnerAccn -= 0.01f;
                 }
 
                 else
                 {
-                    VirusHelper.InnerAccn += 0.1f;
+                    VirusHelper.InnerAccn += 0.01f;
                 }
             }
 
@@ -532,6 +777,11 @@ namespace GameJam
             foreach (Virusling virusling in viruslingList)
             {
                 virusling.Draw(gameTime, batch, layer);
+            }
+
+            if (laser == true)
+            {
+                batch.Draw(laserTex, Position + laserOffset, laserRect, Color.White, laserRot, Vector2.Zero, 1.0f, SpriteEffects.None, layer+0.01f);//LAZER TEX !!!!!!!!
             }
 
             if (circles == true)
