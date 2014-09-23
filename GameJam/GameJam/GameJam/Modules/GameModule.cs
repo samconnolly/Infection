@@ -147,7 +147,7 @@ namespace GameJam
                                                 powerupTexture, specialTexture);
                       
             // initial powerup(s)
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 400), 2));
+            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 400), 2));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 300), 8));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 500), 3));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 500), 4));
