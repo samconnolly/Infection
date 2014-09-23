@@ -30,10 +30,13 @@ namespace GameJam
         Texture2D miniTex;
         Texture2D tex;
         Texture2D eyeTex;
+        Texture2D powerupTex;
+        Rectangle powerupRect;
+        List<int> powerupList = new List<int> { 3, 10, 8, 7, 0, 6 };
 
         // power ups
 
-        public int activePowerup = 4;
+        public int activePowerup = 0;
 
         public bool reproduce = false;
         private int reproductionTime = 5000;
@@ -85,7 +88,7 @@ namespace GameJam
         private int eyeHeight;
         private List<Vector2> eyeOffset = new List<Vector2> { new Vector2(-0, -235), new Vector2(-230, -235), new Vector2(-125, -235) };
         
-        public Virus(Texture2D texture, Texture2D miniTexture,Texture2D eyeTexture, Texture2D laserTexture, Vector2 position, int Player = 1)
+        public Virus(Texture2D texture, Texture2D miniTexture,Texture2D eyeTexture, Texture2D laserTexture, Texture2D powerupTexture, Vector2 position, int Player = 1)
             : base(texture)
         {
             Scale = 0.1f;
@@ -106,6 +109,8 @@ namespace GameJam
             random = new Random();
             miniTex = miniTexture;
             tex = texture;
+            powerupTex = powerupTexture;
+            powerupRect = new Rectangle(0, 0, powerupTex.Width / 11, powerupTex.Height);
 
             laserTex = laserTexture;
             laserRect = new Rectangle(0, 0, laserTex.Width, laserTex.Height);
@@ -763,6 +768,11 @@ namespace GameJam
             eyeRect.X = dir * eyeWidth;
             eyeRect.Y = eyeColour * eyeHeight;
 
+            if (activePowerup != 0)
+            {
+                powerupRect.X = (powerupList[activePowerup - 1]) * powerupRect.Width;
+            }
+
             base.Update(gameTime, batch);
 
 
@@ -788,9 +798,13 @@ namespace GameJam
             {
                 circle1.Draw(batch);
                 circle2.Draw(batch);
-                circle3.Draw(batch);
+                circle3.Draw(batch);            
+            }
 
-            
+            // HUD - power up active
+            if (activePowerup != 0)
+            {
+                batch.Draw(powerupTex, new Vector2(700, 30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
             }
         }
 

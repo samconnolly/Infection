@@ -19,7 +19,6 @@ namespace GameJam
 
         Texture2D ChargerTex;
         
-        Texture2D RBCTex;
         Texture2D GruntTex;
         Texture2D SleeperTex;
         Texture2D ArtilleyTex;
@@ -51,8 +50,7 @@ namespace GameJam
 
         Random random = new Random();
 
-        public SpawnII(Texture2D RBCTexture,
-                            Texture2D GruntTexture, Texture2D ChargerTexture,
+        public SpawnII(Texture2D GruntTexture, Texture2D ChargerTexture,
                                 Texture2D SleeperTexture, Texture2D TurretTexture, Texture2D ArtilleyTexture,
                                         Texture2D missileTexture, Texture2D crossTexture, Texture2D bombTexture, Texture2D TextureSpawn,
                                             Texture2D powerupTexture, Texture2D heartTexture)
@@ -65,7 +63,6 @@ namespace GameJam
             ChargerTex = ChargerTexture;
             SpawnTex = TextureSpawn;
             
-            RBCTex = RBCTexture;
             GruntTex = GruntTexture;
             SleeperTex = SleeperTexture;
             ArtilleyTex = ArtilleyTexture;
@@ -528,26 +525,6 @@ namespace GameJam
             }
 
             return spawnList;
-        }
-
-        public List<SpriteBase> SpawnRed(int n)
-        {
-            List<SpriteBase> spawnList = new List<SpriteBase> { };
-
-            for (int x = 0; x < n; x++)
-            {
-                int num = random.Next(2) + 2;
-                                
-                int pos = random.Next(4);
-
-                Vector2 offset = new Vector2((float)(random.NextDouble() * 60.0 - 15), (float)(random.NextDouble() * 60.0 - 15));
-
-                spawnList.Add(new RedBloodCellGroup(RBCTex, spawnPoints[pos] + offset, num));
-                
-            }
-
-            return spawnList;
-        }
-
+        }        
     }
 }

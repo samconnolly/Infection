@@ -13,8 +13,6 @@ namespace GameJam
     {
         private Virus _virus;
         private Virus _virus2;
-        private RedBloodCellGroup _redBloodCellGroup;
-        private RedBloodCellGroup _redBloodCellGroup2;
 
         private EnemyGroup testEnemies;
         //private AntiViralNodule _antiViralNodule;
@@ -104,22 +102,15 @@ namespace GameJam
             Texture2D viruslingTexture = this.Game.Content.Load<Texture2D>("nanites");
             Texture2D laserTexture = this.Game.Content.Load<Texture2D>("laser");
 
-            _virus = new Virus(virusTexture, viruslingTexture,eyeTexture,laserTexture, new Vector2(380,320));
             
-            _virus2 = new Virus(virusTexture2, viruslingTexture, eyeTexture, laserTexture, new Vector2(880, 120), 2);
-            
-            // Initial cells...
-            
-            Texture2D redBloodCellTexture = this.Game.Content.Load<Texture2D>("redblood");
-            _redBloodCellGroup = new RedBloodCellGroup(redBloodCellTexture, new Vector2(100, 100), 3);
-            _redBloodCellGroup2 = new RedBloodCellGroup(redBloodCellTexture, new Vector2(500, 100), 3);
-            //_cells.Add(_redBloodCellGroup);
+            //// mega awesome powerups
+            Texture2D powerupTexture = this.Game.Content.Load<Texture2D>("powerups");
+            Texture2D specialTexture = this.Game.Content.Load<Texture2D>("specials");
 
-            if (InputHelper.Players == 2)
-            {
-                _cells.Add(_redBloodCellGroup2);
-            }
+            _virus = new Virus(virusTexture, viruslingTexture,eyeTexture,laserTexture,specialTexture, new Vector2(380,320));
 
+            _virus2 = new Virus(virusTexture2, viruslingTexture, eyeTexture, laserTexture, specialTexture, new Vector2(880, 120), 2);
+            
             Texture2D gruntTexture = this.Game.Content.Load<Texture2D>("grunt");
             Texture2D chargerTexture = this.Game.Content.Load<Texture2D>("charger");
             Texture2D sleeperTexture = this.Game.Content.Load<Texture2D>("sleeper");
@@ -137,9 +128,6 @@ namespace GameJam
             //_antiViralNodule = new AntiViralNodule(antiViralNoduleTexture, new Vector2(750, 650));
             //_cells.Add(_antiViralNodule);
 
-            //// mega awesome powerups
-            Texture2D powerupTexture = this.Game.Content.Load<Texture2D>("powerups");
-            Texture2D heartTexture = this.Game.Content.Load<Texture2D>("heart");
 
             //_proliferate = new Proliferate(proliferateTexture, new Vector2(30,30));
             //_doubleUp = new DoubleUp(doubleTexture, new Vector2(450,450));
@@ -153,15 +141,25 @@ namespace GameJam
             //_cells.Add(testEnemies);
 
 
-            spawn2 = new SpawnII(redBloodCellTexture,
-                                    gruntTexture,chargerTexture,
+            spawn2 = new SpawnII(gruntTexture,chargerTexture,
                                         sleeperTexture,turretTexture,artilleryTexture,
                                             missileTexture, crossTexture, bombTexture, spawnTexture,
-                                                powerupTexture,heartTexture);
+                                                powerupTexture, specialTexture);
                       
             // initial powerup(s)
-            _items.Add(new PowerUpBase(powerupTexture,heartTexture,new Vector2(400,400),2));
-            _items.Add(new PowerUpBase(powerupTexture,heartTexture,new Vector2(500,500),8));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 400), 2));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 300), 8));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 500), 3));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 500), 4));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(300, 500), 7));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 500), 10));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 500), 15));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(600, 500), 16));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(700, 500), 17));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(800, 500), 18));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(900, 500), 19));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 600), 20));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 600), 21));
 
             //Load atmospheric music.
             beneath = this.Game.Content.Load<Song>("Beneath");

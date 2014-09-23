@@ -166,8 +166,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="RedBloodCell.cs" />
-    <Compile Include="RedBloodCellGroup.cs" />
     <Compile Include="SoundEffectPlayer.cs" />
     <Compile Include="SpriteBase.cs" />
     <Compile Include="Virus.cs" />

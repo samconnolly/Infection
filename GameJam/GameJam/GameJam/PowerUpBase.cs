@@ -15,12 +15,13 @@ namespace GameJam
     class PowerUpBase : SpriteBase
     {
         int type;
-        private List<int> cells = new List<int> { 8, 8, 0, 2, 8, 8, 3, 1, 1, 4, 1, 1, 1, 1, 0, 5, 6, 7, 5, 6, 7 };
+        int nspecials = 11;
+        private List<int> cells = new List<int> { 8, 8, 14, 10, 8, 8, 13, 1, 1, 18, 1, 1, 1, 1, 11, 12, 19, 17, 16, 9, 15 };
         private List<string> names = new List<string>{"+3","+5","Proliferate", "Double", "-2", "-4", "Reverse", "Orbit Up", 
                                                         "Orbit Down", "Homing", "Radius Up", "Radius Down", "Speed Up","Speed Down", 
                                                             "Health Up", "Invincibility", "Pulse", "Stream", "Laser", "Freeze", "Antidote"};
 
-        public PowerUpBase(Texture2D texture, Texture2D heartTexture, Vector2 position, int Type)
+        public PowerUpBase(Texture2D texture, Texture2D specialTexture, Vector2 position, int Type)
             : base(texture)
         {
             Position = position;
@@ -28,11 +29,12 @@ namespace GameJam
             type = Type;
             Scale = 0.3f;
 
-            if (type == 15)
+            if (cells[type - 1] > 8)
             {
-                Texture = heartTexture;
-                Rectangle = new Rectangle(0, 0, heartTexture.Width, heartTexture.Height);
+                Texture = specialTexture;
+                Rectangle = new Rectangle(0, 0, specialTexture.Width/nspecials, specialTexture.Height);
                 DrawOffset = new Vector2(Rectangle.Width / 2.0f, Rectangle.Height / 2.0f);
+                XFrame = cells[type - 1] - 9;
             }
             else
             {

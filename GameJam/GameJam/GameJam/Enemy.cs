@@ -14,7 +14,7 @@ namespace GameJam
 {
     class Enemy:SpriteBase
     {
-        int hitPoints = 3;
+        int hitPoints = 15;
         float dieChance = 0.1f;
 
         //Vector2 Velocity;

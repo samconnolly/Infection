@@ -121,3 +121,4 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\mi
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\laser.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\heart.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\powerups.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\specials.xnb

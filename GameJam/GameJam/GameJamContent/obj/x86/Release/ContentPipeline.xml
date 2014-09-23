@@ -336,6 +336,15 @@
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\powerups.xnb</Output>
       <Time>2014-08-26T21:15:46.5660126+01:00</Time>
     </Item>
+    <Item>
+      <Source>specials.png</Source>
+      <Name>specials</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\specials.xnb</Output>
+      <Time>2014-09-23T19:46:14.2235418+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="80384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="78336">
       <assemblyIdentity name="You have been infected!" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>TMGnDCE3OsfsdX5za5Xd0eHV9YE=</dsig:DigestValue>
+        <dsig:DigestValue>9FflKkrGB1zTNVUbMy+J8rhrd+E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -354,6 +354,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>6xmWiSJ1sMxixhJcDmuh5Mn3/yk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\specials.xnb" size="209304">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ke0qzB9asNi55YutN5GBJ9FRAMM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\spore.xnb" size="562">
