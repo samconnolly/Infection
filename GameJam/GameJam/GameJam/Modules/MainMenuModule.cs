@@ -89,22 +89,26 @@ namespace GameJam
                     {
                         InputHelper.Players = 1;
                         tree = 1;
+                        max = 2;
                     }
                     else if (selected == 1)
                     {
                         InputHelper.Players = 2;
                         tree = 1;
                         selected = 0;
+                        max = 2;
                     }
                     else if (selected == 2)
                     {
                         tree = 2;
                         selected = 0;
+                        max = 2;
                     }
                     else if (selected == 3)
                     {
                         tree = 3;
                         selected = 0;
+                        max = 2;
                     }
                     else if (selected == 4)
                     {
@@ -135,6 +139,7 @@ namespace GameJam
                     {
                         tree = 0;
                         selected = 0;
+                        max = 5;
                     }
                     
                 }
@@ -162,6 +167,7 @@ namespace GameJam
                     {
                         tree = 0;
                         selected = 0;
+                        max = 5;
                     }
                 }
 
@@ -188,12 +194,21 @@ namespace GameJam
                     {
                         tree = 0;
                         selected = 0;
+                        max = 5;
                     }
                 }
 
                 
             }
-
+            if (tree != 0)
+            {
+                if (InputHelper.WasPadButtonPressedP1(Buttons.B))
+                {
+                    tree = 0;
+                    selected = 0;
+                    max = 5;
+                }
+            }
             // exit game
             if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Escape))
             {
