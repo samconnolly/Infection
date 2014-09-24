@@ -32,6 +32,9 @@ namespace GameJam
 
         Texture2D powerupTex;
         Texture2D heartTex;
+        int radiusCount = 0;
+        int speedCount = 0;
+        int orbitCount = 0;
 
         Vector2 dim = new Vector2(6, 5);
 
@@ -421,11 +424,29 @@ namespace GameJam
 
                     if (num == 0)
                     {
-                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 13));
+                        if (speedCount < 2)
+                        {
+                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 13));
+                            speedCount += 1;
+                        }
+                        else
+                        {
+                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 13));
+                            speedCount += 1;
+                        }
                     }
                     else if (num == 1)
                     {
-                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 14));
+                        if (speedCount > -2)
+                        {
+                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 14));
+                            speedCount -= 1;
+                        }
+                        else
+                        {
+                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 13));
+                            speedCount += 1;
+                        }
                     }
                     else
                     {
@@ -469,19 +490,55 @@ namespace GameJam
                 }
                 else if (num == 4)
                 {
-                    spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 8));
+                    if (orbitCount < 2)
+                    {
+                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 8));
+                        orbitCount += 1;
+                    }
+                    else
+                    {
+                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 9));
+                        orbitCount -= 1;
+                    }
                 }
                 else if (num == 5)
                 {
-                    spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 9));
+                    if (orbitCount > -2)
+                    {
+                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 9));
+                        orbitCount -= 1;
+                    }
+                    else
+                    {
+                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 8));
+                        orbitCount += 1;
+                    }
                 }
                 else if (num == 6)
                 {
-                    spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 11));
+                    if (radiusCount < 2)
+                    {
+                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 11));
+                        radiusCount += 1;
+                    }
+                    else
+                    {
+                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 12));
+                        radiusCount -= 1;
+                    }
                 }
                 else if (num == 7)
                 {
-                    spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 12));
+                    if (radiusCount > -2)
+                    {
+                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 12));
+                        radiusCount -= 1;
+                    }
+                    else
+                    {
+                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, spawnPoints[pos], 11));
+                        radiusCount += 1;
+                    }
                 }
                 else if (num == 8)
                 {

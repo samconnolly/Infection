@@ -14,7 +14,7 @@ namespace GameJam
 {
     class Enemy:SpriteBase
     {
-        int hitPoints = 15;
+        int hitPoints = 10;
         float dieChance = 0.1f;
 
         //Vector2 Velocity;
@@ -128,6 +128,7 @@ namespace GameJam
             circle = new Circle(Vector2.Zero, 2, 2, Color.White);
 
             frate = ViewPortHelper.FrameRate;
+            Scale = 0.2f;
         }
 
 
@@ -217,8 +218,7 @@ namespace GameJam
         }
 
         public override void Update(GameTime gameTime, SpriteBatch bactch)
-        {
-            
+        {            
             // once spawned, do this... standard behaviour
             if (active == true)
             {
@@ -698,8 +698,10 @@ namespace GameJam
                     
                     ScoreHelper.Score += 1;
                 }
-
                 
+                XFrame = frame;
+                YFrame = colour;
+
             }
 
 
@@ -721,16 +723,18 @@ namespace GameJam
 
                     if (sframe > nframes)
                     {
-                        frame = 0;
+                        sframe = 0;
                     }
                 }
 
-                Rectangle = new Rectangle(sframe * normalTex.Width,0,Rectangle.Width,Rectangle.Height);
+                Rectangle = new Rectangle(sframe * spawnTex.Width / 3, 0, spawnTex.Width / 3, spawnTex.Height);
+                Scale = 1.0f;
 
                 // spawn delay
                 if (spawnTimer < spawnTime)
                 {
                     spawnTimer += gameTime.ElapsedGameTime.Milliseconds;
+                    SheetSize = new Vector2(3, 1);
                 }
 
                 else
@@ -739,8 +743,12 @@ namespace GameJam
                     active = true;
                     Texture = normalTex;
                     Rectangle = new Rectangle(0, 0, Texture.Width / frames, Texture.Height / colours);
-                    
+                    Scale = 0.2f;
+                    SheetSize = new Vector2(frames, colours);
+                    XFrame = frame;
+                    YFrame = colour;
                 }
+
             }
 
             if (firing == true)
@@ -754,12 +762,7 @@ namespace GameJam
                     shock = false;
                 }
             }
-
-            Scale = 0.2f;
-
-            XFrame = frame;
-            YFrame = colour;
-
+            
             base.Update(gameTime, bactch);
         }
 
@@ -771,7 +774,7 @@ namespace GameJam
             {
                 circle.Draw(batch);
             }
-                       
+                                               
            base.Draw(gameTime, batch, layer);
             
         }
@@ -798,7 +801,8 @@ namespace GameJam
 
             if (random.NextDouble() < dieChance)
             {
-                return v;
+                //return v;
+                return null;
             }
 
             else

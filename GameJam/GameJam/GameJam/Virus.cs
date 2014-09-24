@@ -33,6 +33,10 @@ namespace GameJam
         Texture2D powerupTex;
         Rectangle powerupRect;
         List<int> powerupList = new List<int> { 3, 10, 8, 7, 0, 6 };
+        bool powerupActive = false;
+        bool powerupTiming = false;
+        int powerupTimer = 0;
+        int powerupTime = 500;
 
         // power ups
 
@@ -71,7 +75,8 @@ namespace GameJam
         Circle circle1;
         Circle circle2;
         Circle circle3;
-        bool circles = false;
+        Circle circle4;
+        bool circles = true;
 
         // frames
         private int dir = 0;
@@ -127,6 +132,7 @@ namespace GameJam
             circle1 = new Circle(this.Position, VirusHelper.radius1, 2, Color.Red);
             circle2 = new Circle(this.Position, VirusHelper.radius2, 2, Color.Red);
             circle3 = new Circle(this.Position, VirusHelper.radius3, 2, Color.Red);
+            circle4 = new Circle(new Vector2(730,60), 34, 2, Color.White);
 
             if (Velocity.Y < 0)
             {
@@ -243,6 +249,9 @@ namespace GameJam
                     // pulse
                     if (activePowerup == 2)
                     {
+                        powerupActive = true;
+                        powerupTiming = true;
+
                         foreach (Virusling v in viruslingList)
                         {
                             v.Pulse();
@@ -252,6 +261,9 @@ namespace GameJam
                     // stream
                     if (activePowerup == 3)
                     {
+                        powerupActive = true;
+                        powerupTiming = true;
+
                         foreach (Virusling v in viruslingList)
                         {
                             v.Stream();
@@ -275,6 +287,9 @@ namespace GameJam
                     // antidote
                     if (activePowerup == 6)
                     {
+                        powerupActive = true;
+                        powerupTiming = true;
+
                         CellsHelper.Antidote = true;
                     }
                 }
@@ -296,6 +311,7 @@ namespace GameJam
                         foreach (Virusling v in viruslingList)
                         {
                             v.Pulse();
+
                         }
                     }
 
@@ -335,10 +351,12 @@ namespace GameJam
             if (invincible == true)
             {
                 invinceTimer += gameTime.ElapsedGameTime.Milliseconds;
+                powerupActive = true;
 
                 if (invinceTimer > invinceTime)
                 {
                     invincible = false;
+                    powerupActive = false;
                 }
             }
 
@@ -347,7 +365,7 @@ namespace GameJam
             if (homing == true)
             {
                 homingTimer += gameTime.ElapsedGameTime.Milliseconds;
-
+                
                 if (homingTimer > homingTime)
                 {
                     homing = false;
@@ -394,12 +412,14 @@ namespace GameJam
                 }
 
                 // firing
-            
+
+                powerupActive = true;
                 laserTimer += gameTime.ElapsedGameTime.Milliseconds;
 
                 if (laserTimer > laserTime)
                 {
                     laser = false;
+                    powerupActive = false;
                 }
             }
 
@@ -408,11 +428,35 @@ namespace GameJam
             if (CellsHelper.Freeze == true)
             {
                 freezeTimer += gameTime.ElapsedGameTime.Milliseconds;
+                powerupActive = true;
 
                 if (freezeTimer > freezeTime)
                 {
                     CellsHelper.Freeze = false;
+                    powerupActive = false;
                 }
+            }
+
+            if (powerupTiming == true)
+            {
+                powerupTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+                if (powerupTimer >= powerupTime)
+                {
+                    powerupTiming = false;
+                    powerupActive = false;
+                    powerupTimer = 0;
+                }
+            }
+            if (powerupActive == false)
+            {
+                circle4.color = Color.White;
+                circle4.Update();
+            }
+            else
+            {
+                circle4.color = Color.Red;
+                circle4.Update();
             }
 
             acceleration = Vector2.Zero; // reset acc'n
@@ -801,7 +845,11 @@ namespace GameJam
                 circle3.Draw(batch);            
             }
 
-            // HUD - power up active
+            circle4.Draw(batch);
+            // HUD - power up
+
+
+
             if (activePowerup != 0)
             {
                 batch.Draw(powerupTex, new Vector2(700, 30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);

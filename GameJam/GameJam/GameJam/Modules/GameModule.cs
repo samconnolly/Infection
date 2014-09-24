@@ -83,6 +83,26 @@ namespace GameJam
             _items = new List<SpriteBase>();
             _addList = new List<SpriteBase>();
             _deadList = new List<SpriteBase>();
+
+
+            
+        VirusHelper.Radius1 = 30.0f;
+        VirusHelper.Radius2 = 40.0f;
+        VirusHelper.Radius3 = 250.0f;
+
+        VirusHelper.InnerSlow = 0.999f;
+        VirusHelper.OuterSlow = 0.5f;
+        VirusHelper.OuterOuterSlow = 1.0f;
+
+        VirusHelper.InnerAccn = 3.0f;
+        VirusHelper.OuterAccn = 5.0f;
+        VirusHelper.OuterOuterAccn = 1.0f;
+        VirusHelper.OuterOuterOuterAccn = 20.0f;
+
+        VirusHelper.Repel = 0.001f;
+
+        VirusHelper.Rotation = 1;
+        VirusHelper.RotationSpeed = 0.05f;
         }
 
         internal override void LoadContent(SpriteBatch batch)
@@ -132,7 +152,8 @@ namespace GameJam
             //_proliferate = new Proliferate(proliferateTexture, new Vector2(30,30));
             //_doubleUp = new DoubleUp(doubleTexture, new Vector2(450,450));
             //_reproduce = new Reproduce(reproduceTexture, new Vector2(30,400));
-            //_cells.Add(_proliferate);
+            
+            _cells.Add(new EnemyGroup(gruntTexture,spawnTexture,new Vector2(800,300),1,1,1,new Vector2(6,5)));
             //_cells.Add(_doubleUp);
             //_cells.Add(_reproduce);
             
