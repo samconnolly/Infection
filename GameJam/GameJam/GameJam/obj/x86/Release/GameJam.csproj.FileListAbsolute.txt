@@ -77,9 +77,7 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Co
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch 1.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch 2.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch 3.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Virus_Spritesheet.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\spore.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\virus.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Large Background.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\redblood.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\double.xnb
@@ -91,7 +89,6 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Pa
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Final Score.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\virusling.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\whitebloodspawn.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\virusp2.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\bomb.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\cross.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Beneath.wma

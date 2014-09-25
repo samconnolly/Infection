@@ -76,15 +76,6 @@
       <Time>2014-05-11T22:36:31.7909775+01:00</Time>
     </Item>
     <Item>
-      <Source>Virus_Spritesheet.png</Source>
-      <Name>Virus_Spritesheet</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Virus_Spritesheet.xnb</Output>
-      <Time>2014-05-11T22:36:31.817979+01:00</Time>
-    </Item>
-    <Item>
       <Source>Spore alpha final.png</Source>
       <Name>spore</Name>
       <Importer>TextureImporter</Importer>
@@ -92,15 +83,6 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\spore.xnb</Output>
       <Time>2014-05-11T22:36:31.7849771+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Virus Alpha Final.png</Source>
-      <Name>virus</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\virus.xnb</Output>
-      <Time>2014-05-11T22:36:31.817979+01:00</Time>
     </Item>
     <Item>
       <Source>Large Background.png</Source>
@@ -200,15 +182,6 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\whitebloodspawn.xnb</Output>
       <Time>2014-07-08T23:02:22.7938801+01:00</Time>
-    </Item>
-    <Item>
-      <Source>virus p2.png</Source>
-      <Name>virusp2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\virusp2.xnb</Output>
-      <Time>2014-07-13T11:11:59.1553736+01:00</Time>
     </Item>
     <Item>
       <Source>bomb.png</Source>
@@ -335,6 +308,15 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\powerups.xnb</Output>
       <Time>2014-08-26T21:15:46.5660126+01:00</Time>
+    </Item>
+    <Item>
+      <Source>specials.png</Source>
+      <Name>specials</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\specials.xnb</Output>
+      <Time>2014-09-23T19:46:14.2235418+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

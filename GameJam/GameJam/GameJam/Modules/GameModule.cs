@@ -25,6 +25,8 @@ namespace GameJam
         private List<SpriteBase> _items;
         private List<SpriteBase> _deadList;
         private List<SpriteBase> _addList;
+        private List<Virus> _virusList;
+        private List<Virus> _deadPlayerList;
 
         private SpriteFont font;
         private SpriteFont font2;
@@ -83,9 +85,9 @@ namespace GameJam
             _items = new List<SpriteBase>();
             _addList = new List<SpriteBase>();
             _deadList = new List<SpriteBase>();
-
-
-            
+            _virusList = new List<Virus>();
+            _deadPlayerList = new List<Virus>();
+                        
         VirusHelper.Radius1 = 30.0f;
         VirusHelper.Radius2 = 40.0f;
         VirusHelper.Radius3 = 250.0f;
@@ -103,6 +105,9 @@ namespace GameJam
 
         VirusHelper.Rotation = 1;
         VirusHelper.RotationSpeed = 0.05f;
+
+        ScoreHelper.DeadPlayers = _deadPlayerList;
+        ScoreHelper.LivePlayers = _virusList;
         }
 
         internal override void LoadContent(SpriteBatch batch)
@@ -118,7 +123,7 @@ namespace GameJam
             //Load virus Testure.
             Texture2D virusTexture = this.Game.Content.Load<Texture2D>("player");
             Texture2D eyeTexture = this.Game.Content.Load<Texture2D>("eyes");
-            Texture2D virusTexture2 = this.Game.Content.Load<Texture2D>("virusp2");
+            Texture2D virusTexture2 = this.Game.Content.Load<Texture2D>("player");
             Texture2D viruslingTexture = this.Game.Content.Load<Texture2D>("nanites");
             Texture2D laserTexture = this.Game.Content.Load<Texture2D>("laser");
 
@@ -128,9 +133,15 @@ namespace GameJam
             Texture2D specialTexture = this.Game.Content.Load<Texture2D>("specials");
 
             _virus = new Virus(virusTexture, viruslingTexture,eyeTexture,laserTexture,specialTexture, new Vector2(380,320));
-
             _virus2 = new Virus(virusTexture2, viruslingTexture, eyeTexture, laserTexture, specialTexture, new Vector2(880, 120), 2);
-            
+
+            _virusList.Add(_virus);
+
+            if (InputHelper.Players == 2)
+            {
+                _virusList.Add(_virus2);
+            }
+
             Texture2D gruntTexture = this.Game.Content.Load<Texture2D>("grunt");
             Texture2D chargerTexture = this.Game.Content.Load<Texture2D>("charger");
             Texture2D sleeperTexture = this.Game.Content.Load<Texture2D>("sleeper");
@@ -153,7 +164,7 @@ namespace GameJam
             //_doubleUp = new DoubleUp(doubleTexture, new Vector2(450,450));
             //_reproduce = new Reproduce(reproduceTexture, new Vector2(30,400));
             
-            _cells.Add(new EnemyGroup(gruntTexture,spawnTexture,new Vector2(800,300),1,1,1,new Vector2(6,5)));
+            _cells.Add(new EnemyGroup(gruntTexture,spawnTexture,new Vector2(800,600),1,1,1,new Vector2(6,5)));
             //_cells.Add(_doubleUp);
             //_cells.Add(_reproduce);
             
@@ -168,8 +179,13 @@ namespace GameJam
                                                 powerupTexture, specialTexture);
                       
             // initial powerup(s)
-            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 400), 2));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 300), 8));
+            if (InputHelper.Players == 2)
+            {
+                _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 400), 2));
+            }
+            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 600), 2));
+            
+            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 300), 8));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 500), 3));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 500), 4));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(300, 500), 7));
@@ -180,14 +196,11 @@ namespace GameJam
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(800, 500), 18));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(900, 500), 19));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 600), 20));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 600), 21));
+            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 600), 21));
 
             //Load atmospheric music.
             beneath = this.Game.Content.Load<Song>("Beneath");
-
-            //Load Sound effects.
-            SoundEffectPlayer.LoadContent(this.Game);
-
+            
             // load fonts
             font = this.Game.Content.Load<SpriteFont>("font");
             font2 = this.Game.Content.Load<SpriteFont>("font2");
@@ -200,6 +213,7 @@ namespace GameJam
             if (ScoreHelper.Hardcore == false)
             {
                 ScoreHelper.Lives = 3;
+                ScoreHelper.LivesP2 = 3;
             }
         }
 
@@ -452,12 +466,23 @@ namespace GameJam
             else
             {
                 //Update The virus sprite.
-                _virus.Update(gameTime, batch);
-
-                if (InputHelper.Players == 2)
+                foreach (Virus virus in _virusList)
                 {
-                    _virus2.Update(gameTime, batch);
+                    virus.Update(gameTime, batch);
                 }
+                
+                _deadPlayerList = ScoreHelper.DeadPlayers;
+
+                if (_deadPlayerList.Count > 0)
+                {
+                    foreach (Virus virus in _deadPlayerList)
+                    {
+                        _virusList.Remove(virus);
+                    }
+                }
+
+                _deadPlayerList = new List<Virus> { };
+                ScoreHelper.LivePlayers = _virusList;
 
                 //Update all cells.
                 foreach (SpriteBase sprite in _cells)
@@ -569,11 +594,9 @@ namespace GameJam
             else
             {
                 //Draw the Virus.
-                _virus.Draw(gameTime, batch, 0.2f);
-
-                if (InputHelper.Players == 2)
+                foreach (Virus virus in _virusList)
                 {
-                    _virus2.Draw(gameTime, batch, 0.2f);
+                    virus.Draw(gameTime, batch, 0.2f);
                 }
 
                 float cellLayer = 0;
@@ -601,6 +624,10 @@ namespace GameJam
                 if (ScoreHelper.Hardcore == false)
                 {
                     batch.DrawString(font, "Lives: " + ScoreHelper.Lives.ToString(), new Vector2(520, 100), Color.White);
+                    if (InputHelper.Players == 2)
+                    {
+                        batch.DrawString(font, "P2 Lives: " + ScoreHelper.LivesP2.ToString(), new Vector2(520, 150), Color.White);
+                    }
                 }
 
                 // circles

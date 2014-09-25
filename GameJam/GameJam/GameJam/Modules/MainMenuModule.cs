@@ -102,7 +102,7 @@ namespace GameJam
                     {
                         tree = 2;
                         selected = 0;
-                        max = 2;
+                        max = 4;
                     }
                     else if (selected == 3)
                     {
@@ -150,7 +150,34 @@ namespace GameJam
                     {
                         ViewPortHelper.ToggleFullscreen();
                     }
+
                     else if (selected == 1)
+                    {
+                        float newVolume = MediaPlayer.Volume + 0.1f;
+                        if (newVolume > 1.09999f)
+                        {
+                            newVolume = 0;
+                        }
+                        else if (newVolume > 1.0f)
+                        {
+                            newVolume = 1.0f;
+                        }
+                        MediaPlayer.Volume = newVolume;
+                    }
+                    else if (selected == 2)
+                    {
+                        float newVolume = SoundEffectPlayer.Volume + 0.1f;
+                        if (newVolume > 1.09999f)
+                        {
+                            newVolume = 0;
+                        }
+                        else if (newVolume > 1.0f)
+                        {
+                            newVolume = 1.0f;
+                        }
+                        SoundEffectPlayer.AdjustVolume(newVolume);
+                    }
+                    else if (selected == 3)
                     {
                         if (_isMuted)
                         {
@@ -315,8 +342,10 @@ namespace GameJam
             else if (tree == 2)
             {
                 batch.DrawString(font, "Toggle Fullscreen", new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Mute Music", new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Back", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Music Volume:" + ((int)(MediaPlayer.Volume * 100)).ToString(), new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "SFX Volume:"+((int)(SoundEffectPlayer.Volume*100)).ToString(), new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Mute Music", new Vector2(200, 450), colours[3], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Back", new Vector2(200, 500), colours[4], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
             }
             else if (tree == 3)
             {

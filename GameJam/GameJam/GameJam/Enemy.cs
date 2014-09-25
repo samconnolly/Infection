@@ -256,18 +256,12 @@ namespace GameJam
 
                 // ---------- killing player ----------------------------------------------------------------------------------------------------------
 
-                if ((VirusHelper.VirusPosition - Position).Length() < (VirusHelper.Virus.width) * VirusHelper.Virus.Scale)
+                foreach (Virus virus in ScoreHelper.LivePlayers)
                 {
-                    ScoreHelper.PlayerHit(VirusHelper.Virus);
-                    dead = true;
-                }
-
-                if (InputHelper.Players == 2)
-                {
-                    if ((VirusHelper.VirusPositionP2 - Position).Length() < (VirusHelper.Virus.width) * VirusHelper.Virus.Scale)
+                    if ((virus.Position - Position).Length() < (virus.width) * virus.Scale)
                     {
-                        ScoreHelper.PlayerHit(VirusHelper.VirusP2);
-                        dead = true;
+                        ScoreHelper.PlayerHit(virus);
+                        dead = true;                       
                     }
                 }
                 
@@ -276,27 +270,11 @@ namespace GameJam
                 deathList = new List<Virusling> { };
                 deadSpore = null;
 
-                foreach (Virusling v in VirusHelper.Viruslings)
+                foreach (Virus virus in ScoreHelper.LivePlayers)
                 {
-
-
-                    if ((v.Position - this.Position ).Length() < (Rectangle.Height*Scale / 2.0f + v.Rectangle.Width*v.Scale / 2.0f))
+                    foreach (Virusling v in virus.viruslingList)
                     {
-                        deadSpore = Hit(v);
-                    }
-
-                    if (deadSpore != null)
-                    {
-                        deathList.Add(deadSpore);
-                    }
-                }
-
-                if (InputHelper.Players == 2)
-                {
-                    foreach (Virusling v in VirusHelper.ViruslingsP2)
-                    {
-
-                        if ((v.Position - this.Position).Length() < (Rectangle.Height / 2.0f + v.Rectangle.Width * v.Scale / 2.0f) * Scale)
+                        if ((v.Position - this.Position ).Length() < (Rectangle.Height*Scale / 2.0f + v.Rectangle.Width*v.Scale / 2.0f))
                         {
                             deadSpore = Hit(v);
                         }
@@ -315,26 +293,16 @@ namespace GameJam
                 }
 
                 // ----- getting hit by laser --------
-
-                if (VirusHelper.Virus.laser == true)
+                foreach (Virus virus in ScoreHelper.LivePlayers)
                 {
-                    if (LaserCollision(1) == true)
+                    if (virus.laser == true)
                     {
-                        LaserHit(1);
-                    }
-                }
-
-                if (InputHelper.Players == 2)
-                {
-                    if (VirusHelper.VirusP2.laser == true)
-                    {
-                        if (LaserCollision(2) == true)
+                        if (LaserCollision(virus.player) == true)
                         {
-                            LaserHit(2);
+                            LaserHit(virus.player);
                         }
                     }
                 }
-
 
                 //==============================================================================================================================================
                 //------------- movement, attacks --------------------------------------------------------------------------------------------------------------
@@ -352,17 +320,27 @@ namespace GameJam
 
                     else if (InputHelper.Players == 2)
                     {
-                        float p1Dist = (Position - VirusHelper.VirusPosition).Length();
-                        float p2Dist = (Position - VirusHelper.VirusPositionP2).Length();
-
-                        if (p1Dist < p2Dist)
+                        if (ScoreHelper.LivePlayers.Count() > 1)
                         {
-                            attackAim = VirusHelper.VirusPosition;
-                        }
+                            float p1Dist = (Position - VirusHelper.VirusPosition).Length();
+                            float p2Dist = (Position - VirusHelper.VirusPositionP2).Length();
 
+                            if (p1Dist < p2Dist)
+                            {
+                                attackAim = VirusHelper.VirusPosition;
+                            }
+
+                            else
+                            {
+                                attackAim = VirusHelper.VirusPositionP2;
+                            }
+                        }
                         else
                         {
-                            attackAim = VirusHelper.VirusPositionP2;
+                            if (ScoreHelper.LivePlayers.Count() > 0)
+                            {
+                                attackAim = ScoreHelper.LivePlayers[0].Position;
+                            }
                         }
                     }
 
@@ -436,10 +414,13 @@ namespace GameJam
                         // attack
                         if (attackTimer >= attackTime)
                         {
-                            if ((Position - attackAim).Length() <= VirusHelper.Virus.Rectangle.Width * VirusHelper.Virus.Scale / 2.0f)
+                            foreach (Virus virus in ScoreHelper.LivePlayers)
                             {
-                                attacking = false;
-                                retreating = true;
+                                if ((Position - attackAim).Length() <= virus.Rectangle.Width * virus.Scale / 2.0f)
+                                {
+                                    attacking = false;
+                                    retreating = true;
+                                }
                             }
 
                             if ((Position - attackAim).Length() >= retreatDistance && retreating == true)

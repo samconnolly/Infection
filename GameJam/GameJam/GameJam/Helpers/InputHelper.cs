@@ -27,6 +27,8 @@ namespace GameJam
         private static int keys = 0;
         private static bool forceKeys = false;
 
+        private static Random _random = new Random();
+
         private static bool _keyLock = false;
 
         private static int _players = 1;
@@ -242,6 +244,11 @@ namespace GameJam
         {
             get { return forceKeys; }
             set { forceKeys = value; }
+        }
+
+        public static Random Random
+        {
+            get { return _random; }
         }
 
         #endregion        

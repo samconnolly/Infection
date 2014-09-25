@@ -14,6 +14,7 @@ namespace GameJam
 {
     public class Virus:SpriteBase
     {
+        public bool dead = false;
         
         //Vector2 Velocity;
         Vector2 acceleration;
@@ -23,7 +24,7 @@ namespace GameJam
         float deccelerationMagnitude;
         bool accing;
         public int viruslingNo;
-        List<Virusling> viruslingList;
+        public List<Virusling> viruslingList;
         public List<Virusling> deathList;
 
         Random random;
@@ -68,7 +69,7 @@ namespace GameJam
         public Vector2 laserOffset;
 
         // player
-        int player;
+        public int player;
 
         //test circles
         
@@ -92,7 +93,11 @@ namespace GameJam
         private int eyeWidth;
         private int eyeHeight;
         private List<Vector2> eyeOffset = new List<Vector2> { new Vector2(-0, -235), new Vector2(-230, -235), new Vector2(-125, -235) };
-        
+
+        private int hitTime = 500;
+        private int hitTimer = 0;
+        public bool hit = false;
+
         public Virus(Texture2D texture, Texture2D miniTexture,Texture2D eyeTexture, Texture2D laserTexture, Texture2D powerupTexture, Vector2 position, int Player = 1)
             : base(texture)
         {
@@ -126,13 +131,26 @@ namespace GameJam
             eyeRect = new Rectangle(0, 0, eyeWidth,eyeHeight);
 
             player = Player;
+            if (player == 2)
+            {
+                colour = 2;
+                eyeColour = 1;
+            }
 
             AddViruslings(viruslingNo);
 
             circle1 = new Circle(this.Position, VirusHelper.radius1, 2, Color.Red);
             circle2 = new Circle(this.Position, VirusHelper.radius2, 2, Color.Red);
             circle3 = new Circle(this.Position, VirusHelper.radius3, 2, Color.Red);
-            circle4 = new Circle(new Vector2(730,60), 34, 2, Color.White);
+
+            if (player == 1)
+            {
+                circle4 = new Circle(new Vector2(730, 60), 34, 2, Color.White);
+            }
+            else
+            {
+                circle4 = new Circle(new Vector2(830, 60), 34, 2, Color.White);
+            }
 
             if (Velocity.Y < 0)
             {
@@ -297,7 +315,7 @@ namespace GameJam
             else if (player == 2)
             {
                 if (((InputHelper.WasButtonPressed(Keys.Space) && InputHelper.Keys == player) ||
-                        (InputHelper.WasPadButtonPressedP1(Buttons.A) && InputHelper.Keys != player)))
+                        (InputHelper.WasPadButtonPressedP2(Buttons.A) && InputHelper.Keys != player)))
                 {
                     // invincibility
                     if (activePowerup == 1)
@@ -308,16 +326,21 @@ namespace GameJam
                     // pulse
                     if (activePowerup == 2)
                     {
+                        powerupActive = true;
+                        powerupTiming = true;
+
                         foreach (Virusling v in viruslingList)
                         {
                             v.Pulse();
-
                         }
                     }
 
                     // stream
                     if (activePowerup == 3)
                     {
+                        powerupActive = true;
+                        powerupTiming = true;
+
                         foreach (Virusling v in viruslingList)
                         {
                             v.Stream();
@@ -341,7 +364,10 @@ namespace GameJam
                     // antidote
                     if (activePowerup == 6)
                     {
-                        CellsHelper.Cells = new List<SpriteBase> { };
+                        powerupActive = true;
+                        powerupTiming = true;
+
+                        CellsHelper.Antidote = true;
                     }
                 }
             }
@@ -817,6 +843,20 @@ namespace GameJam
                 powerupRect.X = (powerupList[activePowerup - 1]) * powerupRect.Width;
             }
 
+            // hit
+            if (hit == true)
+            {
+                hitTimer += gameTime.ElapsedGameTime.Milliseconds;
+                base.Colour = Color.Red;
+
+                if (hitTimer >= hitTime)
+                {
+                    hit = false;
+                    hitTimer = 0;
+                    base.Colour = Color.White;
+                }
+            }
+
             base.Update(gameTime, batch);
 
 
@@ -845,14 +885,25 @@ namespace GameJam
                 circle3.Draw(batch);            
             }
 
-            circle4.Draw(batch);
-            // HUD - power up
-
-
-
-            if (activePowerup != 0)
+            if (player == 1)
             {
-                batch.Draw(powerupTex, new Vector2(700, 30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                circle4.Draw(batch);
+                // HUD - power up
+
+                if (activePowerup != 0)
+                {
+                    batch.Draw(powerupTex, new Vector2(700, 30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                }
+            }
+            else
+            {
+                circle4.Draw(batch);
+                // HUD - power up
+
+                if (activePowerup != 0)
+                {
+                    batch.Draw(powerupTex, new Vector2(800, 30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                }
             }
         }
 

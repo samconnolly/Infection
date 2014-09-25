@@ -99,6 +99,10 @@ namespace GameJam
             Velocity = new Vector2((float)random.NextDouble() - 0.5f, (float)random.NextDouble() - 0.5f);
 
             player = Player;
+            if (player == 2)
+            {
+                colour = 4;
+            }
         }   
      
         public void Pulse()

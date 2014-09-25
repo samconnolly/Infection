@@ -79,9 +79,7 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Cont
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch 1.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch 2.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch 3.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Virus_Spritesheet.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\spore.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\virus.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Large Background.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\redblood.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\double.xnb
@@ -93,7 +91,6 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Paus
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Final Score.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\virusling.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\whitebloodspawn.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\virusp2.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\bomb.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\player.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\eyes.xnb
@@ -121,3 +118,4 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Debug\You have bee
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Debug\You have been infected!.application
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Debug\You have been infected!.exe
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Debug\You have been infected!.pdb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\specials.xnb

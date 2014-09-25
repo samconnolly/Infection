@@ -48,101 +48,111 @@ namespace GameJam
         {
             // collected
             float distance = (Position - VirusHelper.VirusPosition).Length();
+            
 
-            if (distance < (Rectangle.Width / 2.0f * Scale + VirusHelper.Virus.Rectangle.Width * VirusHelper.Virus.Scale / 2.0f))
+            if (distance < (Rectangle.Width / 2.0f * Scale + VirusHelper.Virus.Rectangle.Width * VirusHelper.Virus.Scale / 2.0f) && VirusHelper.Virus.dead == false)
             {
-                PowerUp();                
-            }            
+                PowerUp(1);                
+            }
+            if (InputHelper.Players == 2)
+            {
+                float distance2 = (Position - VirusHelper.VirusPositionP2).Length();
+
+                if (distance2 < (Rectangle.Width / 2.0f * Scale + VirusHelper.VirusP2.Rectangle.Width * VirusHelper.VirusP2.Scale / 2.0f) && VirusHelper.VirusP2.dead == false)
+                {
+                    PowerUp(2);
+                }
+            }
 
             base.Update(gameTime, bactch);
         }
 
-        public virtual void PowerUp()
+        public virtual void PowerUp(int player)
         {
             // do one of all the thingies! (by ype)
             if (type == 1)
             {
-                PlusThree();
+                PlusThree(player);
             }
             else if (type == 2)
             {
-                PlusFive();
+                PlusFive(player);
             }
             else if (type == 3)
             {
-                Proliferate();
+                Proliferate(player);
             }
             else if (type == 4)
             {
-                Double();
+                Double(player);
             }
             else if (type == 5)
             {
-                MinusTwo();
+                MinusTwo(player);
             }
             else if (type == 6)
             {
-                MinusFour();
+                MinusFour(player);
             }
             else if (type == 7)
             {
-                Reverse();
+                Reverse(player);
             }
             else if (type == 8)
             {
-                OrbitUp();
+                OrbitUp(player);
             }
             else if (type == 9)
             {
-                OrbitDown();
+                OrbitDown(player);
             }
             else if (type == 10)
             {
-                Homing();
+                Homing(player);
             }
             else if (type == 11)
             {
-                RadiusUp();
+                RadiusUp(player);
             }
             else if (type == 12)
             {
-                RadiusDown();
+                RadiusDown(player);
             }
             else if (type == 13)
             {
-                SpeedUp();
+                SpeedUp(player);
             }
             else if (type == 14)
             {
-                SpeedDown();
+                SpeedDown(player);
             }
             else if (type == 15)
             {
-                HealthUp();
+                HealthUp(player);
             }
             else if (type == 16)
             {
-                Invincibility();
+                Invincibility(player);
             }
             else if (type == 17)
             {
-                Pulse();
+                Pulse(player);
             }
             else if (type == 18)
             {
-                Stream();
+                Stream(player);
             }
             else if (type == 19)
             {
-                Laser();
+                Laser(player);
             }
             else if (type == 20)
             {
-                Freeze();
+                Freeze(player);
             }            
             else
             {
-                Antidote();
+                Antidote(player);
             }
 
             Die();
@@ -150,132 +160,264 @@ namespace GameJam
 
         // ------------------ passive ---------------------
 
-        public void PlusThree()
+        public void PlusThree(int player)
         {
-            VirusHelper.Virus.AddViruslings(3);            
-        }
-
-        public void PlusFive()
-        {
-            VirusHelper.Virus.AddViruslings(5);
-        }
-
-        public void MinusTwo()
-        {
-            if (VirusHelper.Viruslings.Count > 2)
+            if (player == 1)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    VirusHelper.Viruslings.RemoveAt(0);
-                }
+                VirusHelper.Virus.AddViruslings(3);
             }
-        }
-
-        public void MinusFour()
-        {
-            if (VirusHelper.Viruslings.Count > 2)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    VirusHelper.Viruslings.RemoveAt(0);
-                }
-            }
-        }
-
-        public void Proliferate()
-        {
-            VirusHelper.Virus.reproduce = true;           
-        }
-
-        public void Double()
-        {
-            if (VirusHelper.Virus.viruslingNo == 0)
-            {
-                VirusHelper.Virus.AddViruslings(2);
-            }
-
             else
             {
-                VirusHelper.Virus.AddViruslings(VirusHelper.Virus.viruslingNo);
+                VirusHelper.VirusP2.AddViruslings(3);
             }
         }
 
-        public void Reverse()
+        public void PlusFive(int player)
         {
+            if (player == 1)
+            {
+                VirusHelper.Virus.AddViruslings(5);
+            }
+            else
+            {
+                VirusHelper.VirusP2.AddViruslings(5);
+            }
+        }
+
+        public void MinusTwo(int player)
+        {
+            if (player == 1)
+            {
+                if (VirusHelper.Viruslings.Count > 2)
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        VirusHelper.Viruslings.RemoveAt(0);
+                    }
+                }
+            }
+            else
+            {
+                if (VirusHelper.ViruslingsP2.Count > 2)
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        VirusHelper.ViruslingsP2.RemoveAt(0);
+                    }
+                }
+            }            
+        }
+
+        public void MinusFour(int player)
+        {
+            if (player == 1)
+            {
+                if (VirusHelper.Viruslings.Count > 2)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        VirusHelper.Viruslings.RemoveAt(0);
+                    }
+                }
+            }
+            else
+            {
+                if (VirusHelper.ViruslingsP2.Count > 2)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        VirusHelper.ViruslingsP2.RemoveAt(0);
+                    }
+                }
+            } 
+        }
+
+        public void Proliferate(int player)
+        {
+            if (player == 1)
+            {
+                VirusHelper.Virus.reproduce = true; 
+            }
+            else
+            {
+                VirusHelper.VirusP2.reproduce = true; 
+            }          
+        }
+
+        public void Double(int player)
+        {
+            if (player == 1)
+            {
+                if (VirusHelper.Virus.viruslingNo == 0)
+                {
+                    VirusHelper.Virus.AddViruslings(2);
+                }
+
+                else
+                {
+                    VirusHelper.Virus.AddViruslings(VirusHelper.Virus.viruslingNo);
+                }
+            }
+            else
+            {
+                if (VirusHelper.VirusP2.viruslingNo == 0)
+                {
+                    VirusHelper.VirusP2.AddViruslings(2);
+                }
+
+                else
+                {
+                    VirusHelper.VirusP2.AddViruslings(VirusHelper.Virus.viruslingNo);
+                }
+            }  
+
+            
+        }
+
+        public void Reverse(int player)
+        {
+            //// NOT 2P YET!!
             VirusHelper.Rotation *= -1;
         }
 
-        public void OrbitUp()
+        public void OrbitUp(int player)
         {
+            //// NOT 2P YET!!
             VirusHelper.RotationSpeed += 0.02f; // problematic!!
             //VirusHelper.InnerAccn -= 0.05f;
         }
 
-        public void OrbitDown()
+        public void OrbitDown(int player)
         {
+            //// NOT 2P YET!!
             VirusHelper.RotationSpeed -= 0.02f; // problematic!!
         }
 
-        public void Homing()
+        public void Homing(int player)
         {
-            VirusHelper.Virus.Homing();
+            if (player == 1)
+            {
+                VirusHelper.Virus.Homing();
+            }
+            else
+            {
+                VirusHelper.VirusP2.Homing();
+            }
         }
 
-        public void RadiusUp()
+        public void RadiusUp(int player)
         {
+            //// NOT 2P YET!!
             VirusHelper.Radius1 += 10f;
         }
 
-        public void RadiusDown()
+        public void RadiusDown(int player)
         {
+            //// NOT 2P YET!!
             VirusHelper.Radius1 -= 10f;
         }
 
-        public void SpeedUp()
+        public void SpeedUp(int player)
         {
-            VirusHelper.Virus.maxSpeed += 1;
+            if (player == 1)
+            {
+                VirusHelper.Virus.maxSpeed += 1;
+            }
+            else
+            {
+                VirusHelper.VirusP2.maxSpeed += 1;
+            }
         }
 
-        public void SpeedDown()
+        public void SpeedDown(int player)
         {
-            VirusHelper.Virus.maxSpeed -= 1;
+            if (player == 1)
+            {
+                VirusHelper.Virus.maxSpeed -= 1;
+            }
+            else
+            {
+                VirusHelper.VirusP2.maxSpeed -= 1;
+            }
         }
 
-        public void HealthUp()
+        public void HealthUp(int player)
         {
             ScoreHelper.Lives += 1;
         }
 
         // ------------------ active ------------------
 
-        public void Invincibility()
+        public void Invincibility(int player)
         {
-            VirusHelper.Virus.activePowerup = 1;
+            if (player == 1)
+            {
+                VirusHelper.Virus.activePowerup = 1;
+            }
+            else
+            {
+                VirusHelper.VirusP2.activePowerup = 1;
+            }
         }
 
-        public void Pulse()
+        public void Pulse(int player)
         {
-            VirusHelper.Virus.activePowerup = 2;
+            if (player == 1)
+            {
+                VirusHelper.Virus.activePowerup = 2;
+            }
+            else
+            {
+                VirusHelper.VirusP2.activePowerup = 2;
+            }
         }
 
-        public void Stream()
+        public void Stream(int player)
         {
-            VirusHelper.Virus.activePowerup = 3;
+            if (player == 1)
+            {
+                VirusHelper.Virus.activePowerup = 3;
+            }
+            else
+            {
+                VirusHelper.VirusP2.activePowerup = 3;
+            }
         }
 
-        public void Laser()
+        public void Laser(int player)
         {
-            VirusHelper.Virus.activePowerup = 4;
+            if (player == 1)
+            {
+                VirusHelper.Virus.activePowerup = 4;
+            }
+            else
+            {
+                VirusHelper.VirusP2.activePowerup = 4;
+            }
         }
 
-        public void Freeze()
+        public void Freeze(int player)
         {
-            VirusHelper.Virus.activePowerup = 5;
+            if (player == 1)
+            {
+                VirusHelper.Virus.activePowerup = 5;
+            }
+            else
+            {
+                VirusHelper.VirusP2.activePowerup = 5;
+            }
         }
 
-        public void Antidote()
+        public void Antidote(int player)
         {
-            VirusHelper.Virus.activePowerup = 6;
+            if (player == 1)
+            {
+                VirusHelper.Virus.activePowerup = 6;
+            }
+            else
+            {
+                VirusHelper.VirusP2.activePowerup = 6;
+            }
         }
 
         // --- get used -----

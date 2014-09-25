@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="87552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="90624">
       <assemblyIdentity name="You have been infected!" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>NWlNLKQRuuunbPzfll8OXmWWkvU=</dsig:DigestValue>
+        <dsig:DigestValue>38JXakq3UKF8QYoWoVAC4hEdsII=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -356,6 +356,15 @@
       <dsig:DigestValue>Nnp+27RVp2wUNGNmFg4aGxW84WQ=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="Content\specials.xnb" size="1760187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>HYvpsGjIEFfJYWf1msOrhO5XoOU=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Content\spore.xnb" size="587">
     <hash>
       <dsig:Transforms>
@@ -410,24 +419,6 @@
       <dsig:DigestValue>IEogrmeDckLWNaVNGD0iPL4DjwA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\virus.xnb" size="3787">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>0ShlSSMbQ1evY88dBSuWlZeQ0w8=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\Virus_Spritesheet.xnb" size="16187">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>nq2gZfVw9yK++eLFOEvjULjwn04=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="Content\virusling.xnb" size="587">
     <hash>
       <dsig:Transforms>
@@ -435,15 +426,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>tiSDptetKASDEE5dhpxiuJr23dY=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\virusp2.xnb" size="3787">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>E71QdLF/OshlzhHMArrvo2yVI5Y=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\whitebloodspawn.xnb" size="10987">

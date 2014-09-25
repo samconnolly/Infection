@@ -8,9 +8,7 @@ Content\Controlled Chaos.wma
 Content\Squelch 1.xnb
 Content\Squelch 2.xnb
 Content\Squelch 3.xnb
-Content\Virus_Spritesheet.xnb
 Content\spore.xnb
-Content\virus.xnb
 Content\Large Background.xnb
 Content\redblood.xnb
 Content\double.xnb
@@ -22,7 +20,6 @@ Content\Pause Menu copy.xnb
 Content\Final Score.xnb
 Content\virusling.xnb
 Content\whitebloodspawn.xnb
-Content\virusp2.xnb
 Content\bomb.xnb
 Content\player.xnb
 Content\eyes.xnb
@@ -37,3 +34,4 @@ Content\cross.xnb
 Content\laser.xnb
 Content\heart.xnb
 Content\powerups.xnb
+Content\specials.xnb

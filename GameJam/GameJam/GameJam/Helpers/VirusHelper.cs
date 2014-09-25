@@ -63,7 +63,7 @@ namespace GameJam
             get { return _virus; }
             set { _virus = value; }
         }
-
+        
         public static Vector2 VirusPositionP2
         {
             get { return _position2; }

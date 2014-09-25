@@ -25,6 +25,8 @@ namespace GameJam
         private int _xframe = 0;
         private int _yframe = 0;
 
+        private Color _colour = Color.White;
+
         private float _rotation = 0;
 
         private bool bounced = false;
@@ -122,6 +124,12 @@ namespace GameJam
         {
             get { return this._scale; }
             set { _scale = value; }
+        }
+
+        public Color Colour
+        {
+            get { return this._colour; }
+            set { _colour = value; }
         }
 
         public Vector2 SheetSize
@@ -236,7 +244,7 @@ namespace GameJam
 
         public virtual void Draw(GameTime gameTime, SpriteBatch batch, float layer)
         {
-            batch.Draw(_texture, _position - _drawoffset*Scale, _rectangle, Color.White, _rotation, Vector2.Zero, Scale, SpriteEffects.None, layer);
+            batch.Draw(_texture, _position - _drawoffset*Scale, _rectangle, _colour, _rotation, Vector2.Zero, Scale, SpriteEffects.None, layer);
         }
 
         #endregion

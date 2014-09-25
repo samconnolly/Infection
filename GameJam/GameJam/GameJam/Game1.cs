@@ -76,7 +76,10 @@ namespace GameJam
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);            
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            //Load Sound effects.
+            SoundEffectPlayer.LoadContent(this);           
         }
 
         protected override void UnloadContent()
