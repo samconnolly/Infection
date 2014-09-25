@@ -61,6 +61,7 @@ namespace GameJam
         // pause menu
         private int selected = 0;
         private int tree = 0;
+        private int max = 5;
 
         public GameModule(Game game)
             : base(game)
@@ -370,8 +371,17 @@ namespace GameJam
 
                 if (InputHelper.WasButtonPressed(Keys.Escape) || InputHelper.WasPadButtonPressedP1(Buttons.B))
                 {
-                    GameStateManager.CurrentGameState = GameState.MainMenu;
-                    GameStateManager.HasChanged = true;
+                    if (tree == 0)
+                    {
+                        GameStateManager.CurrentGameState = GameState.MainMenu;
+                        GameStateManager.HasChanged = true;
+                    }
+                    else
+                    {
+                        tree = 0;
+                        selected = 0;
+                        max = 5;
+                    }
                 }
                 if (InputHelper.WasButtonPressed(Keys.R) || InputHelper.WasPadButtonPressedP1(Buttons.A))
                 {
@@ -385,13 +395,13 @@ namespace GameJam
                 {
                     selected -= 1;
                 }
-                if (selected > 5)
+                if (selected > max)
                 {
                     selected = 0;
                 }
                 else if (selected < 0)
                 {
-                    selected = 5;
+                    selected = max;
                 }
 
                 if (InputHelper.WasButtonPressed(Keys.Enter) | InputHelper.WasButtonPressed(Keys.Space) | InputHelper.WasPadButtonPressedP1(Buttons.A))
@@ -408,21 +418,15 @@ namespace GameJam
                         }
                         if (selected == 2)
                         {
-                            if (_isMuted)
-                            {
-                                MediaPlayer.Resume();
-                                _isMuted = false;
-                            }
-                            else
-                            {
-                                MediaPlayer.Pause();
-                                _isMuted = true;
-                            }
+                            tree = 1;
+                            selected = 0;
+                            max = 2;
                         }
                         if (selected == 3)
                         {
-                            tree = 1;
+                            tree = 2;
                             selected = 0;
+                            max = 2;
                         }
                         if (selected == 4)
                         {
@@ -437,8 +441,42 @@ namespace GameJam
                             _isPaused = false;
                         }
                     }
-
                     else if (tree == 1)
+                    {
+                         if (selected == 0)
+                        {
+                            float newVolume = MediaPlayer.Volume + 0.1f;
+                            if (newVolume > 1.09999f)
+                            {
+                                newVolume = 0;
+                            }
+                            else if (newVolume > 1.0f)
+                            {
+                                newVolume = 1.0f;
+                            }
+                            MediaPlayer.Volume = newVolume;
+                        }
+                        else if (selected == 1)
+                        {
+                            float newVolume = SoundEffectPlayer.Volume + 0.1f;
+                            if (newVolume > 1.09999f)
+                            {
+                                newVolume = 0;
+                            }
+                            else if (newVolume > 1.0f)
+                            {
+                                newVolume = 1.0f;
+                            }
+                            SoundEffectPlayer.AdjustVolume(newVolume);
+                        }
+                        else
+                        {
+                            tree = 0;
+                            selected = 0;
+                            max = 5;
+                        }
+                    }
+                    else if (tree == 2)
                     {
                         if (selected == 0)
                         {
@@ -459,6 +497,7 @@ namespace GameJam
                         {
                             tree = 0;
                             selected = 0;
+                            max = 5;
                         }
                     }
                 }
@@ -559,12 +598,18 @@ namespace GameJam
                 {
                     batch.DrawString(font, "Resume", new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                     batch.DrawString(font, "Toggle Fullscreen", new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                    batch.DrawString(font, "Mute", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Sound Options", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                     batch.DrawString(font, "Controls", new Vector2(200, 450), colours[3], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                     batch.DrawString(font, "Restart", new Vector2(200, 500), colours[4], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                     batch.DrawString(font, "Exit", new Vector2(200, 550), colours[5], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 }
                 else if (tree == 1)
+                {
+                    batch.DrawString(font, "Music Volume:" + ((int)(MediaPlayer.Volume * 100)).ToString(), new Vector2(200, 350), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "SFX Volume:" + ((int)(SoundEffectPlayer.Volume * 100)).ToString(), new Vector2(200, 400), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Back", new Vector2(200, 450), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                }
+                else if (tree == 2)
                 {
 
                     batch.DrawString(font, "Show Controls", new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
