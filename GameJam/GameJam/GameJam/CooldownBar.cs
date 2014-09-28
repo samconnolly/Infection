@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace GameJam
 {
-    class HealthBar
+    class CooldownBar
     {
         private Texture2D dummyTexture;
         public Vector2 position;
@@ -29,11 +29,11 @@ namespace GameJam
         public float value;
         public int width = 50;
         public int height = 10;
-               
-        public HealthBar(Vector2 position, int health)
+
+        public CooldownBar(Vector2 position, int time)
         {
-            this.init = health;
-            this.value = health;
+            this.init = time;
+            this.value = time;
 
             dummyTexture = new Texture2D(ViewPortHelper.GraphicsDevice, 1, 1);
             dummyTexture.SetData(new Color[] { Color.Gray });
@@ -84,10 +84,10 @@ namespace GameJam
         {           
 
             // outline
-            sbatch.Draw(dummyTexture, position, box, boxColour, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 0.115f);
+            sbatch.Draw(dummyTexture, position, box, boxColour, -(float)(Math.PI / 2), Vector2.Zero, 1.0f, SpriteEffects.None, 0.115f);
 
             // bar
-            sbatch.Draw(dummyTexture, position + new Vector2(2, 2), bar, barColour, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 0.11f);
+            sbatch.Draw(dummyTexture, position + new Vector2(2, -2), bar, barColour, -(float)(Math.PI/2), Vector2.Zero, 1.0f, SpriteEffects.None, 0.11f);
 
         }
 

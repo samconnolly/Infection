@@ -34,6 +34,7 @@ namespace GameJam
         private int selected = 0;
         private int max = 5;
         private int tree = 0;
+        private bool mouseover = false;
               
         public MainMenuModule(Game game)
             :base(game)
@@ -43,14 +44,10 @@ namespace GameJam
 
         #region ModuleBase Overrides
 
-        public override bool IsMouseVisible
-        {
-            get { return false; }
-        }
 
         internal override void Initialize()
         {
-            
+            IsMouseVisible = true;
         }
 
         internal override void LoadContent(SpriteBatch batch)
@@ -81,7 +78,36 @@ namespace GameJam
                 _isPlayingMusic = true;
             }
 
-            if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Enter) || InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Space) || InputHelper.WasPadButtonPressedP1(Buttons.A))
+
+            // menu control
+            mouseover = false;
+
+            if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Up) || InputHelper.WasPadThumbstickUpP1())
+            {
+                selected -= 1;
+            }
+            else if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Down) || InputHelper.WasPadThumbstickDownP1())
+            {
+                selected += 1;
+            }
+            else if (InputHelper.CurrentMouseState.X > 200 && InputHelper.CurrentMouseState.X < 500)
+            {
+                for (int i = 0; i < max + 1; i++)
+                {
+                    if (InputHelper.CurrentMouseState.Y >= 300 + i * 50 && InputHelper.CurrentMouseState.Y < 300 + (i + 1) * 50)
+                    {
+                        selected = i;
+                        mouseover = true;
+                    }
+                }
+            }
+
+            if (selected > max) { selected = 0; }
+            if (selected < 0) { selected = max; }
+
+            if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Enter) || InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Space) 
+                    || InputHelper.WasPadButtonPressedP1(Buttons.A)
+                        || (InputHelper.WasMouseClicked() && mouseover == true))
             {
                 if (tree == 0)
                 {
@@ -161,7 +187,7 @@ namespace GameJam
                         else if (newVolume > 1.0f)
                         {
                             newVolume = 1.0f;
-                        }
+                        }      
                         MediaPlayer.Volume = newVolume;
                     }
                     else if (selected == 2)
@@ -241,20 +267,7 @@ namespace GameJam
             {
                 Game.Exit();
             }
-
-            // menu control
-            if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Up) || InputHelper.WasPadThumbstickUpP1())
-            {
-                selected -= 1;
-            }
-            if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Down) || InputHelper.WasPadThumbstickDownP1())
-            {
-                selected += 1;
-            }
-
-            if (selected > max) { selected = 0; }
-            if (selected < 0) { selected = max; }
-
+            
             // switch number of players
             //if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.P) || InputHelper.WasPadButtonPressedP1(Buttons.Y))
             //{

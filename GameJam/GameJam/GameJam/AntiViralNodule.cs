@@ -31,7 +31,7 @@ namespace GameJam
             Rectangle = new Rectangle(0, 0, texture.Width, texture.Height);
             random = new Random();
 
-            health = new HealthBar(ViewPortHelper.GraphicsDevice, Position + new Vector2(20, -20), hitPoints);
+            health = new HealthBar( Position + new Vector2(20, -20), hitPoints);
         }
 
 

@@ -26,6 +26,7 @@ namespace GameJam
         private static GamePadState _previousGamePadStateP2;
         private static int keys = 0;
         private static bool forceKeys = false;
+        private static Game _game;
 
         private static Random _random = new Random();
 
@@ -34,6 +35,13 @@ namespace GameJam
         private static int _players = 1;
 
         #region Properties - Public Static
+
+        public static Game Game
+        {
+            get { return _game;  }
+            set { _game = value; }
+        }
+
 
         public static KeyboardState CurrentKeyState
         {

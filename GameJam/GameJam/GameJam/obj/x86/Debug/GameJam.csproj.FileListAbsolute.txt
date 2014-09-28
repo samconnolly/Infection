@@ -119,3 +119,4 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Debug\You have bee
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Debug\You have been infected!.exe
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Debug\You have been infected!.pdb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\specials.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\cursor.xnb

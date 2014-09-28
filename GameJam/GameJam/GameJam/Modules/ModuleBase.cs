@@ -11,6 +11,7 @@ namespace GameJam
     {
         private Texture2D _backgroundTexture;
         private Game _game;
+        private bool _isMouseVisible;
 
         public ModuleBase(Game game)
         {
@@ -23,7 +24,11 @@ namespace GameJam
             set { this._backgroundTexture = value; }
         }
 
-        public abstract bool IsMouseVisible { get;}
+        public bool IsMouseVisible 
+        {
+            get { return this._isMouseVisible; }
+            set { this._isMouseVisible = value; }
+        }
 
         public Game Game
         {

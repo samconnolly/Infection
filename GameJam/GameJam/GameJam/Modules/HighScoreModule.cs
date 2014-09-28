@@ -24,14 +24,12 @@ namespace GameJam
 
         #region ModuleBase Overrides
 
-        public override bool IsMouseVisible
-        {
-            get { return false; }
-        }
+        
 
         internal override void Initialize()
         {
             _title = ScoreHelper.Score.ToString();
+            IsMouseVisible = true;
         }
 
         internal override void LoadContent(SpriteBatch batch)

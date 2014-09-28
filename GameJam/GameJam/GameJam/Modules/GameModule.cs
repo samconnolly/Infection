@@ -62,6 +62,7 @@ namespace GameJam
         private int selected = 0;
         private int tree = 0;
         private int max = 5;
+        private bool mouseover = false;
 
         public GameModule(Game game)
             : base(game)
@@ -74,10 +75,10 @@ namespace GameJam
 
         #region ModuleBase Overrides
 
-        public override bool IsMouseVisible
-        {
-            get { return false; }
-        }
+        //public override bool IsMouseVisible
+        //{
+        //    get { return false; }
+        //}
 
         internal override void Initialize()
         {
@@ -89,26 +90,28 @@ namespace GameJam
             _virusList = new List<Virus>();
             _deadPlayerList = new List<Virus>();
                         
-        VirusHelper.Radius1 = 30.0f;
-        VirusHelper.Radius2 = 40.0f;
-        VirusHelper.Radius3 = 250.0f;
+            VirusHelper.Radius1 = 30.0f;
+            VirusHelper.Radius2 = 40.0f;
+            VirusHelper.Radius3 = 250.0f;
 
-        VirusHelper.InnerSlow = 0.999f;
-        VirusHelper.OuterSlow = 0.5f;
-        VirusHelper.OuterOuterSlow = 1.0f;
+            VirusHelper.InnerSlow = 0.999f;
+            VirusHelper.OuterSlow = 0.5f;
+            VirusHelper.OuterOuterSlow = 1.0f;
 
-        VirusHelper.InnerAccn = 3.0f;
-        VirusHelper.OuterAccn = 5.0f;
-        VirusHelper.OuterOuterAccn = 1.0f;
-        VirusHelper.OuterOuterOuterAccn = 20.0f;
+            VirusHelper.InnerAccn = 3.0f;
+            VirusHelper.OuterAccn = 5.0f;
+            VirusHelper.OuterOuterAccn = 1.0f;
+            VirusHelper.OuterOuterOuterAccn = 20.0f;
 
-        VirusHelper.Repel = 0.001f;
+            VirusHelper.Repel = 0.001f;
 
-        VirusHelper.Rotation = 1;
-        VirusHelper.RotationSpeed = 0.05f;
+            VirusHelper.Rotation = 1;
+            VirusHelper.RotationSpeed = 0.05f;
 
-        ScoreHelper.DeadPlayers = _deadPlayerList;
-        ScoreHelper.LivePlayers = _virusList;
+            ScoreHelper.DeadPlayers = _deadPlayerList;
+            ScoreHelper.LivePlayers = _virusList;
+
+            IsMouseVisible = false;
         }
 
         internal override void LoadContent(SpriteBatch batch)
@@ -192,12 +195,12 @@ namespace GameJam
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(300, 500), 7));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 500), 10));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 500), 15));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(600, 500), 16));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(700, 500), 17));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(800, 500), 18));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(900, 500), 19));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 600), 20));
-            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 600), 21));
+            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(600, 500), 16)); // invincibility
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(700, 500), 17));// pulse
+           // _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(800, 500), 18)); // stream
+            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(900, 500), 19));// laser
+            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 600), 20));// freeze
+            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 600), 21));//antidote
 
             //Load atmospheric music.
             beneath = this.Game.Content.Load<Song>("Beneath");
@@ -340,11 +343,13 @@ namespace GameJam
                     kill = false;
                 }
             }
-               
+
+
 
             //Update accordingly
             if (_isPaused)
             {
+
                 // key assignments
                 if (InputHelper.ForceKeys == true)
                 {
@@ -373,8 +378,8 @@ namespace GameJam
                 {
                     if (tree == 0)
                     {
-                        GameStateManager.CurrentGameState = GameState.MainMenu;
-                        GameStateManager.HasChanged = true;
+                        _isPaused = false;
+                        InputHelper.Game.IsMouseVisible = false;
                     }
                     else
                     {
@@ -386,6 +391,7 @@ namespace GameJam
                 if (InputHelper.WasButtonPressed(Keys.R) || InputHelper.WasPadButtonPressedP1(Buttons.A))
                 {
                     _isPaused = false;
+                    InputHelper.Game.IsMouseVisible = IsMouseVisible;
                 }
                 if (InputHelper.WasButtonPressed(Keys.Down) | InputHelper.WasPadThumbstickDownP1())
                 {
@@ -395,6 +401,18 @@ namespace GameJam
                 {
                     selected -= 1;
                 }
+                else if (InputHelper.CurrentMouseState.X > 200 && InputHelper.CurrentMouseState.X < 500)
+                {
+                    for (int i = 0; i < max + 1; i++)
+                    {
+                        if (InputHelper.CurrentMouseState.Y >= 300 + i * 50 && InputHelper.CurrentMouseState.Y < 300 + (i + 1) * 50)
+                        {
+                            selected = i;
+                            mouseover = true;
+                        }
+                    }
+                }
+
                 if (selected > max)
                 {
                     selected = 0;
@@ -404,13 +422,14 @@ namespace GameJam
                     selected = max;
                 }
 
-                if (InputHelper.WasButtonPressed(Keys.Enter) | InputHelper.WasButtonPressed(Keys.Space) | InputHelper.WasPadButtonPressedP1(Buttons.A))
+                if (InputHelper.WasButtonPressed(Keys.Enter) | InputHelper.WasButtonPressed(Keys.Space) | InputHelper.WasPadButtonPressedP1(Buttons.A) | (InputHelper.WasMouseClicked() && mouseover == true))
                 {
                     if (tree == 0)
                     {
                         if (selected == 0)
                         {
                             _isPaused = false;
+                            InputHelper.Game.IsMouseVisible = false;
                         }
                         if (selected == 1)
                         {
@@ -433,13 +452,13 @@ namespace GameJam
                             GameStateManager.CurrentGameState = GameState.InGame;
                             GameStateManager.HasChanged = true;
                             _isPaused = false;
+                            InputHelper.Game.IsMouseVisible = false;
                         }
                         if (selected == 5)
                         {
                             GameStateManager.CurrentGameState = GameState.MainMenu;
                             GameStateManager.HasChanged = true;
-                            _isPaused = false;
-                        }
+                           }
                     }
                     else if (tree == 1)
                     {
@@ -504,6 +523,15 @@ namespace GameJam
             }
             else
             {
+
+                //Check to see if we are paused.
+                if (InputHelper.WasButtonPressed(Keys.Escape) || InputHelper.WasPadButtonPressedP1(Buttons.Start))
+                {
+                    _isPaused = true;
+                    IsMouseVisible = true;
+                    InputHelper.Game.IsMouseVisible = IsMouseVisible;
+                }
+
                 //Update The virus sprite.
                 foreach (Virus virus in _virusList)
                 {
@@ -577,14 +605,6 @@ namespace GameJam
 
                 usedItems = new List<SpriteBase> { };
             }
-
-            //Check to see if we are paused.
-            if (InputHelper.WasButtonPressed(Keys.Escape) || InputHelper.WasPadButtonPressedP1(Buttons.Start))
-            {
-                _isPaused = true;
-            }
-
-
         }
 
         internal override void Draw(GameTime gameTime, SpriteBatch batch)
@@ -605,9 +625,9 @@ namespace GameJam
                 }
                 else if (tree == 1)
                 {
-                    batch.DrawString(font, "Music Volume:" + ((int)(MediaPlayer.Volume * 100)).ToString(), new Vector2(200, 350), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                    batch.DrawString(font, "SFX Volume:" + ((int)(SoundEffectPlayer.Volume * 100)).ToString(), new Vector2(200, 400), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                    batch.DrawString(font, "Back", new Vector2(200, 450), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Music Volume:" + ((int)(MediaPlayer.Volume * 100)).ToString(), new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "SFX Volume:" + ((int)(SoundEffectPlayer.Volume * 100)).ToString(), new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Back", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 }
                 else if (tree == 2)
                 {

@@ -27,6 +27,8 @@ namespace GameJam
         public List<Virusling> viruslingList;
         public List<Virusling> deathList;
 
+        private CooldownBar coolDownBar;
+
         Random random;
         Texture2D miniTex;
         Texture2D tex;
@@ -39,6 +41,8 @@ namespace GameJam
         int powerupTimer = 0;
         int powerupTime = 500;
 
+        private int antidoteTime = 5000;
+
         // power ups
 
         public int activePowerup = 0;
@@ -50,24 +54,29 @@ namespace GameJam
         private int reproductionTotal = 10;
         
         public bool invincible = false;
+        public bool cooldown = false;
         public int invinceTimer = 0;
-        public int invinceTime = 20000;
+        public int invinceTime = 2000;
+        private int invinceCoolTime = 3000;
 
         public bool homing = false;
         public int homingTimer = 0;
         public int homingTime = 20000;
 
-        private int freezeTimer = 0;
         private int freezeTime = 3000;
+        private int freezeCoolTime = 3000;
+        private int cooldownTimer = 0;
+        private int cooldownTime = 0;
 
         public bool laser = false;
-        private int laserTimer = 0;
-        private int laserTime = 500;
+        public bool laserOn = false;
+        private int laserFireTime = 500;
+        private int laserTime = 3000;
         private Texture2D laserTex;
         public Rectangle laserRect;
         public float laserRot = 0.0f;
         public Vector2 laserOffset;
-
+        
         // player
         public int player;
 
@@ -146,10 +155,12 @@ namespace GameJam
             if (player == 1)
             {
                 circle4 = new Circle(new Vector2(730, 60), 34, 2, Color.White);
+                coolDownBar = new CooldownBar(new Vector2(770, 85), 100);
             }
             else
             {
                 circle4 = new Circle(new Vector2(830, 60), 34, 2, Color.White);
+                coolDownBar = new CooldownBar(new Vector2(870, 85), 100);
             }
 
             if (Velocity.Y < 0)
@@ -165,8 +176,10 @@ namespace GameJam
 
         public void Invincible()
         {
-            invincible = true;
-            invinceTimer = 0;
+            if (cooldown == false)
+            {
+                invincible = true;
+            }
         }
 
         public void Homing()
@@ -253,10 +266,11 @@ namespace GameJam
 
             // button presses 
 
-            if (player == 1)
+            if ((player == 1 && (((InputHelper.WasButtonPressed(Keys.Space) && InputHelper.Keys == player) ||
+                        (InputHelper.WasPadButtonPressedP1(Buttons.A) && InputHelper.Keys != player)))) | (player == 2 &&
+             (((InputHelper.WasButtonPressed(Keys.Space) && InputHelper.Keys == player) ||
+                        (InputHelper.WasPadButtonPressedP2(Buttons.A) && InputHelper.Keys != player)))))
             {
-                if (((InputHelper.WasButtonPressed(Keys.Space) && InputHelper.Keys == player) ||
-                        (InputHelper.WasPadButtonPressedP1(Buttons.A) && InputHelper.Keys != player)))
                 {
                     // invincibility
                     if (activePowerup == 1)
@@ -291,100 +305,59 @@ namespace GameJam
                     // laser
                     if (activePowerup == 4)
                     {
-                        laser = true;
-                        laserTimer = 0;
+                        if (cooldown == false)
+                        {
+                            laser = true;
+                            coolDownBar.value = laserTime;
+                            coolDownBar.init = laserTime;
+                        }
                     }
 
                     // freeze
                     if (activePowerup == 5)
                     {
-                        CellsHelper.Freeze = true;
-                        freezeTimer = 0;
+                        if (CellsHelper.Freeze == false && cooldown == false)
+                        {
+                            CellsHelper.Freeze = true;
+                        }
                     }
 
                     // antidote
                     if (activePowerup == 6)
                     {
-                        powerupActive = true;
-                        powerupTiming = true;
-
-                        CellsHelper.Antidote = true;
+                        if (cooldown == false)
+                        {
+                            powerupActive = true;
+                            powerupTiming = true;
+                            cooldown = true;
+                            cooldownTime = antidoteTime;
+                            coolDownBar.init = antidoteTime;
+                            coolDownBar.value = antidoteTime;
+                            CellsHelper.Antidote = true;
+                        }
                     }
                 }
             }
-            else if (player == 2)
-            {
-                if (((InputHelper.WasButtonPressed(Keys.Space) && InputHelper.Keys == player) ||
-                        (InputHelper.WasPadButtonPressedP2(Buttons.A) && InputHelper.Keys != player)))
-                {
-                    // invincibility
-                    if (activePowerup == 1)
-                    {
-                        Invincible();
-                    }
-
-                    // pulse
-                    if (activePowerup == 2)
-                    {
-                        powerupActive = true;
-                        powerupTiming = true;
-
-                        foreach (Virusling v in viruslingList)
-                        {
-                            v.Pulse();
-                        }
-                    }
-
-                    // stream
-                    if (activePowerup == 3)
-                    {
-                        powerupActive = true;
-                        powerupTiming = true;
-
-                        foreach (Virusling v in viruslingList)
-                        {
-                            v.Stream();
-                        }
-                    }
-
-                    // laser
-                    if (activePowerup == 4)
-                    {
-                        laser = true;
-                        laserTimer = 0;
-                    }
-
-                    // freeze
-                    if (activePowerup == 5)
-                    {
-                        CellsHelper.Freeze = true;
-                        freezeTimer = 0;
-                    }
-
-                    // antidote
-                    if (activePowerup == 6)
-                    {
-                        powerupActive = true;
-                        powerupTiming = true;
-
-                        CellsHelper.Antidote = true;
-                    }
-                }
-            }
-
+                        
             // invincible
 
             if (invincible == true)
             {
-                invinceTimer += gameTime.ElapsedGameTime.Milliseconds;
+                cooldownTimer += gameTime.ElapsedGameTime.Milliseconds;
                 powerupActive = true;
 
-                if (invinceTimer > invinceTime)
+                if (cooldownTimer > invinceTime && invincible == true)
                 {
                     invincible = false;
                     powerupActive = false;
+                    cooldownTimer = 0;
+                    coolDownBar.init = invinceCoolTime;
+                    coolDownBar.value = invinceCoolTime;
+                    cooldown = true;
+                    cooldownTime = invinceCoolTime;
                 }
             }
+            
 
             // homing
 
@@ -402,50 +375,56 @@ namespace GameJam
                 
             if (laser == true)
             {
-                // rotation
-                if (Velocity.Length() > 0.05f)
-                {
-                    if (Velocity.Y < 0)
+                cooldownTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+                
+                    // rotation
+                    if (Velocity.Length() > 0.05f)
                     {
-                        laserRot = (float)Math.Atan((double)(-Velocity.X / Velocity.Y)) - (float)(Math.PI / 2);
+                        if (Velocity.Y < 0)
+                        {
+                            laserRot = (float)Math.Atan((double)(-Velocity.X / Velocity.Y)) - (float)(Math.PI / 2);
+                        }
+                        else
+                        {
+                            laserRot = (float)Math.Atan((double)(-Velocity.X / Velocity.Y)) + (float)(Math.PI / 2);
+                        }
                     }
+
+                    // offset
+
+                    if (0.0f <= laserRot && laserRot < (float)(Math.PI / 2))
+                    {
+                        laserOffset = new Vector2(0, -laserRect.Height / 2);// -new Vector2(0, Rectangle.Height * Scale);
+                    }
+
+                    else if ((float)(Math.PI / 2) <= laserRot && laserRot < (float)(Math.PI))
+                    {
+                        laserOffset = new Vector2(laserRect.Height / 2, 0);
+                    }
+
+                    else if ((float)(Math.PI) <= laserRot && laserRot < (float)((3 * Math.PI) / 2))
+                    {
+                        laserOffset = new Vector2(0, laserRect.Height / 2);
+                    }
+
                     else
                     {
-                        laserRot = (float)Math.Atan((double)(-Velocity.X / Velocity.Y)) + (float)(Math.PI / 2);
+                        laserOffset = new Vector2(-laserRect.Height / 2, 0);
                     }
-                }
 
-                // offset
+                    // firing
 
-                if (0.0f <= laserRot && laserRot < (float)(Math.PI / 2))
-                {
-                    laserOffset = new Vector2(0, -laserRect.Height/2);// -new Vector2(0, Rectangle.Height * Scale);
-                }
+                    powerupActive = true;
+                
 
-                else if ((float)(Math.PI / 2) <= laserRot && laserRot < (float)(Math.PI))
-                {
-                    laserOffset = new Vector2(laserRect.Height/2, 0);
-                }
 
-                else if ((float)(Math.PI) <= laserRot && laserRot < (float)((3*Math.PI) / 2))
-                {
-                    laserOffset = new Vector2(0, laserRect.Height/2);
-                }
-
-                else
-                {
-                    laserOffset = new Vector2(-laserRect.Height/2, 0);
-                }
-
-                // firing
-
-                powerupActive = true;
-                laserTimer += gameTime.ElapsedGameTime.Milliseconds;
-
-                if (laserTimer > laserTime)
+                if (cooldownTimer > laserFireTime)
                 {
                     laser = false;
                     powerupActive = false;
+                    cooldown = true;
+                    cooldownTime = laserTime;
                 }
             }
 
@@ -453,16 +432,34 @@ namespace GameJam
 
             if (CellsHelper.Freeze == true)
             {
-                freezeTimer += gameTime.ElapsedGameTime.Milliseconds;
+                cooldownTimer += gameTime.ElapsedGameTime.Milliseconds;
                 powerupActive = true;
 
-                if (freezeTimer > freezeTime)
+                if (cooldownTimer > freezeTime)
                 {
                     CellsHelper.Freeze = false;
                     powerupActive = false;
+                    cooldownTimer = 0;
+                    cooldown = true;
+                    cooldownTime = freezeCoolTime;
+                    coolDownBar.init = freezeCoolTime; 
+                    coolDownBar.value = freezeCoolTime;
+                }
+            }
+            
+            // cool down
+            if (cooldown == true)
+            {
+                cooldownTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+                if (cooldownTimer > cooldownTime)
+                {
+                    cooldown = false;
+                    cooldownTimer = 0;
                 }
             }
 
+            // activation
             if (powerupTiming == true)
             {
                 powerupTimer += gameTime.ElapsedGameTime.Milliseconds;
@@ -484,6 +481,10 @@ namespace GameJam
                 circle4.color = Color.Red;
                 circle4.Update();
             }
+
+
+            coolDownBar.Subtract(gameTime.ElapsedGameTime.Milliseconds);
+            coolDownBar.Update();
 
             acceleration = Vector2.Zero; // reset acc'n
 
@@ -891,8 +892,15 @@ namespace GameJam
                 // HUD - power up
 
                 if (activePowerup != 0)
-                {
-                    batch.Draw(powerupTex, new Vector2(700, 30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                {                    
+                    if (cooldown == true)
+                    {
+                        batch.Draw(powerupTex, new Vector2(700, 30), powerupRect, Color.Gray, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                    }
+                    else
+                    {
+                        batch.Draw(powerupTex, new Vector2(700, 30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                    }
                 }
             }
             else
@@ -901,9 +909,21 @@ namespace GameJam
                 // HUD - power up
 
                 if (activePowerup != 0)
-                {
-                    batch.Draw(powerupTex, new Vector2(800, 30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                {                    
+                    if (cooldown == true)
+                    {
+                        batch.Draw(powerupTex, new Vector2(800, 30), powerupRect, Color.Gray, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                    }
+                    else
+                    {
+                        batch.Draw(powerupTex, new Vector2(800, 30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                    }
                 }
+            }
+
+            if (cooldownTimer > 0 && cooldown == true)
+            {
+                coolDownBar.Draw(batch);
             }
         }
 

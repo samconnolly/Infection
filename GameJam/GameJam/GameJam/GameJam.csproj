@@ -141,6 +141,7 @@
     <Compile Include="Background\Tile.cs" />
     <Compile Include="Bomb.cs" />
     <Compile Include="Circle.cs" />
+    <Compile Include="CooldownBar.cs" />
     <Compile Include="Helpers\FontHelper.cs" />
     <Compile Include="Modules\HighScoreModule.cs" />
     <Compile Include="SpawnII.cs" />

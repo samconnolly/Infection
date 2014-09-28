@@ -94,6 +94,7 @@ namespace GameJam
             InputHelper.SetMouseState();
             InputHelper.SetGamePadStatePlayer1();
             InputHelper.SetGamePadStatePlayer2();
+            InputHelper.Game = this;
 
             //Workout which GameState you are in and load the right module.
             if (GameStateManager.HasChanged)

@@ -35,3 +35,4 @@ Content\laser.xnb
 Content\heart.xnb
 Content\powerups.xnb
 Content\specials.xnb
+Content\cursor.xnb
