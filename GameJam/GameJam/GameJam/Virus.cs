@@ -86,7 +86,7 @@ namespace GameJam
         Circle circle2;
         Circle circle3;
         Circle circle4;
-        bool circles = true;
+        bool circles = false;
 
         // frames
         private int dir = 0;

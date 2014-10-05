@@ -20,35 +20,60 @@ namespace GameJam
         private Vector2 crossPosition;
         private Rectangle drawRect;
         private float fallOffset = -15;
+        private bool red = false;
+        private int redTime = 200;
+        private int redTimer = 0;
+        private Vector2 start;
+        private bool up = true;
+        private Vector2 offset;
 
         private int frate;
         private int timer = 0;
 
-        public Bomb(Texture2D texture,Texture2D CrossTexture, Vector2 target, float speed)
+        public Bomb(Texture2D texture,Texture2D CrossTexture,Vector2 startPos, Vector2 target, float speed)
             : base(texture)
         {
             tex = texture;
             crossTex = CrossTexture;
+            start = startPos;
             fallSpeed = speed;
 
             Texture = tex;
             crossPosition = target;
             drawRect = new Rectangle(0, 0, crossTex.Width, crossTex.Height);
 
-            Position = new Vector2(target.X, 0);
+            Position = startPos;
             SheetSize = new Vector2(4, 1);
-            Scale = 0.2f;
+            Scale = 0.4f;
 
             frate = ViewPortHelper.FrameRate;
+            offset = DrawOffset;
         }
 
         public override void Update(GameTime gameTime, SpriteBatch bactch)
         {
-            // falling
-            if (Position.Y < crossPosition.Y + fallOffset)
+            if (up == true)
             {
-                Position += new Vector2(0, 1) * fallSpeed;
+                Position -= new Vector2(0, 1) * fallSpeed;
+
+                if (Position.Y < -30)
+                {
+                    Position = new Vector2(crossPosition.X, 0);
+                    up = false;
+                }
             }
+
+            if (up == false)
+            {
+                // falling
+                if (Position.Y < crossPosition.Y + fallOffset)
+                {
+                    Position += new Vector2(0, 1) * fallSpeed;
+                }
+            }
+           
+
+            
 
             // killing
             if ((this.Position - VirusHelper.VirusPosition).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale && Position.Y >= crossPosition.Y + fallOffset)
@@ -66,7 +91,7 @@ namespace GameJam
             }
 
             // anim
-            if (Position.Y > crossPosition.Y + fallOffset)
+            if (Position.Y > crossPosition.Y + fallOffset && up == false)
             {
                 timer += gameTime.ElapsedGameTime.Milliseconds;
 
@@ -81,14 +106,47 @@ namespace GameJam
                 }
             }
 
+            // flashing
+            redTimer += gameTime.ElapsedGameTime.Milliseconds;
+            if (redTimer > redTime)
+            {
+                redTimer = 0;
+                if (red == true)
+                {
+                    red = false;
+                }
+                else
+                {
+                    red = true;
+                }
+            }
+
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch batch, float layer)
         {
             // draw warning
-            if (Position.Y < crossPosition.Y + fallOffset)
+            if (Position.Y < crossPosition.Y + fallOffset && up == false)
             {
-                batch.Draw(crossTex, crossPosition - DrawOffset * Scale, drawRect, Color.White, 0, Vector2.Zero, Scale, SpriteEffects.None, layer);
+                if (red == true)
+                {
+                    batch.Draw(crossTex, crossPosition - DrawOffset * Scale, drawRect, Color.Red, 0, Vector2.Zero, Scale, SpriteEffects.None, layer);
+                }
+                else
+                {
+                    batch.Draw(crossTex, crossPosition - DrawOffset * Scale, drawRect, Color.White, 0, Vector2.Zero, Scale, SpriteEffects.None, layer);
+                }
+            }
+
+            if (up == true)
+            {
+                Rotation = (float)Math.PI;
+                DrawOffset = -offset;
+            }
+            else
+            {
+                Rotation = 0;
+                DrawOffset = offset;
             }
 
             // draw bomb

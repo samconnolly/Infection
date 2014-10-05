@@ -139,7 +139,7 @@ namespace GameJam
 
         public void Bomb()
         {
-            CellsHelper.AddCells.Add(new Bomb(missileTex, crossTex, attackAim, fallSpeed));
+            CellsHelper.AddCells.Add(new Bomb(missileTex, crossTex,Position, attackAim, fallSpeed));
         }
 
         public void Wave()

@@ -174,7 +174,7 @@ namespace GameJam
             
             testEnemies = new EnemyGroup(turretTexture, spawnTexture, new Vector2(300, 300), 3, 1, 3, new Vector2(6, 5),bombTexture,crossTexture);
 
-            //_cells.Add(testEnemies);
+            _cells.Add(testEnemies);
 
 
             spawn2 = new SpawnII(gruntTexture,chargerTexture,
@@ -189,18 +189,18 @@ namespace GameJam
             }
             _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 600), 2));
             
-            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 300), 8));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 300), 8));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 500), 3));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 500), 4));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(300, 500), 7));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 500), 10));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 500), 15));
-            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(600, 500), 16)); // invincibility
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(600, 500), 16)); // invincibility
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(700, 500), 17));// pulse
            // _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(800, 500), 18)); // stream
-            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(900, 500), 19));// laser
-            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 600), 20));// freeze
-            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 600), 21));//antidote
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(900, 500), 19));// laser
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 600), 20));// freeze
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 600), 21));//antidote
 
             //Load atmospheric music.
             beneath = this.Game.Content.Load<Song>("Beneath");
@@ -697,22 +697,22 @@ namespace GameJam
 
                 // circles
 
-                batch.DrawString(font3, "1: Radius 1: " + VirusHelper.Radius1.ToString(), new Vector2(20, 20), Color.White);
-                batch.DrawString(font3, "2: Radius 2: " + VirusHelper.Radius2.ToString(), new Vector2(20, 40), Color.White);
-                batch.DrawString(font3, "3: Radius 3: " + VirusHelper.Radius3.ToString(), new Vector2(20, 60), Color.White);
+                //batch.DrawString(font3, "1: Radius 1: " + VirusHelper.Radius1.ToString(), new Vector2(20, 20), Color.White);
+                //batch.DrawString(font3, "2: Radius 2: " + VirusHelper.Radius2.ToString(), new Vector2(20, 40), Color.White);
+                //batch.DrawString(font3, "3: Radius 3: " + VirusHelper.Radius3.ToString(), new Vector2(20, 60), Color.White);
 
-                batch.DrawString(font3, "4: fractional Slowing: " + VirusHelper.InnerSlow.ToString(), new Vector2(20, 80), Color.White);
-                //batch.DrawString(font3, "5: Outer Slow: " + VirusHelper.OuterSlow.ToString(), new Vector2(20, 100), Color.White);
+                //batch.DrawString(font3, "4: fractional Slowing: " + VirusHelper.InnerSlow.ToString(), new Vector2(20, 80), Color.White);
+                ////batch.DrawString(font3, "5: Outer Slow: " + VirusHelper.OuterSlow.ToString(), new Vector2(20, 100), Color.White);
 
-                batch.DrawString(font3, "6: reverse slowing: " + VirusHelper.InnerAccn.ToString(), new Vector2(20, 120), Color.White);
-                batch.DrawString(font3, "7: inward accn: " + VirusHelper.OuterAccn.ToString(), new Vector2(20, 140), Color.White);
-                batch.DrawString(font3, "8: repel Accn: " + VirusHelper.OuterOuterAccn.ToString(), new Vector2(20, 160), Color.White);
+                //batch.DrawString(font3, "6: reverse slowing: " + VirusHelper.InnerAccn.ToString(), new Vector2(20, 120), Color.White);
+                //batch.DrawString(font3, "7: inward accn: " + VirusHelper.OuterAccn.ToString(), new Vector2(20, 140), Color.White);
+                //batch.DrawString(font3, "8: repel Accn: " + VirusHelper.OuterOuterAccn.ToString(), new Vector2(20, 160), Color.White);
 
-                batch.DrawString(font3, "9: strong inward accn: " + VirusHelper.OuterOuterOuterAccn.ToString(), new Vector2(20, 180), Color.White);
+                //batch.DrawString(font3, "9: strong inward accn: " + VirusHelper.OuterOuterOuterAccn.ToString(), new Vector2(20, 180), Color.White);
 
                 //batch.DrawString(font3, "0: V Outer Slow: " + VirusHelper.OuterOuterSlow.ToString(), new Vector2(20, 200), Color.White);
 
-                batch.DrawString(font3, "Enter: Active Powerup: " + VirusHelper.Virus.activePowerup.ToString(), new Vector2(20, 220), Color.White);
+                //batch.DrawString(font3, "Enter: Active Powerup: " + VirusHelper.Virus.activePowerup.ToString(), new Vector2(20, 220), Color.White);
             }
         }
 
