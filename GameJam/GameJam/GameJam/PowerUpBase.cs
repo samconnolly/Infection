@@ -504,7 +504,7 @@ namespace GameJam
             {
                 if (pickup == 1)
                 {
-                    batch.Draw(textTex, new Vector2(850, 630) + textOffset, textRect, Color.White, 0.0f, Vector2.Zero, Scale, SpriteEffects.None, layer);
+                    batch.Draw(textTex, new Vector2(50, 630) + textOffset, textRect, Color.White, 0.0f, Vector2.Zero, Scale, SpriteEffects.None, layer);
                 }
                 else
                 {
