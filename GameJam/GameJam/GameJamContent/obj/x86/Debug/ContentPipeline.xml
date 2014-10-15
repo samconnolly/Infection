@@ -94,15 +94,6 @@
       <Time>2014-05-11T22:36:31.782977+01:00</Time>
     </Item>
     <Item>
-      <Source>Blood cell copy.png</Source>
-      <Name>redblood</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\redblood.xnb</Output>
-      <Time>2014-05-11T22:36:31.6509695+01:00</Time>
-    </Item>
-    <Item>
       <Source>Double copy.png</Source>
       <Name>double</Name>
       <Importer>TextureImporter</Importer>
@@ -326,6 +317,24 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\cursor.xnb</Output>
       <Time>2014-09-27T20:05:35.1711335+01:00</Time>
+    </Item>
+    <Item>
+      <Source>circle_both.png</Source>
+      <Name>circle_both</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\circle_both.xnb</Output>
+      <Time>2014-10-09T22:46:28.8745713+01:00</Time>
+    </Item>
+    <Item>
+      <Source>powerupText.png</Source>
+      <Name>powerupText</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\powerupText.xnb</Output>
+      <Time>2014-10-12T18:24:33.48751+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

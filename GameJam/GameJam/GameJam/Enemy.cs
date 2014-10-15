@@ -54,6 +54,12 @@ namespace GameJam
         bool hit = false;
         int hitBy = 1;
 
+        private bool telegraph = false;
+        private int telegraphTime = 500;
+        private bool celebrating = false;
+        private int celebratingTime = 500;
+        private int celebratingTimer = 0;
+
         public bool dead = false;
 
         public int movement;
@@ -70,8 +76,16 @@ namespace GameJam
         Texture2D spawnTex;
         Texture2D missileTex;
         Texture2D crossTex;
+        Texture2D circleTex;
+
+        private Bomb bomb;
+        private Missile missile;
 
         public Circle circle;
+        private float circleInitialScale = 0.22f;
+        private float circleScale = 0.22f;
+        private int circleTimer = 0;
+        private Rectangle  circleRect;
 
         float fireSpeed = 10.0f;
         int fireTimeMin = 3000;
@@ -94,7 +108,7 @@ namespace GameJam
         private int frame = 0;
         
         public Enemy(Texture2D texture, Texture2D spawnTexture, Vector2 position, int movementType, int attackType,
-            Vector2 sheetDimensions, int skinColour, Texture2D missileTexture = null, Texture2D crossTexture = null)
+            Vector2 sheetDimensions, int skinColour, Texture2D missileTexture = null, Texture2D crossTexture = null, Texture2D circleTexture = null)
             : base(texture)
         {
             Position = position;
@@ -110,7 +124,11 @@ namespace GameJam
             spawnTex = spawnTexture;
             missileTex = missileTexture;
             crossTex = crossTexture;
-
+            circleTex = circleTexture;
+            if (circleTex != null)
+            {
+                circleRect = new Rectangle(0, 0, circleTex.Width / 2, circleTex.Height);
+            }
             movement = movementType;
             attack = attackType;
 
@@ -134,12 +152,14 @@ namespace GameJam
 
         public void Fire()
         {
-            CellsHelper.AddCells.Add(new Missile(missileTex, this.Position + new Vector2(Rectangle.Width / 2 * Scale, Rectangle.Height / 2 * Scale), attackAim, fireSpeed));
+            missile = new Missile(missileTex, this.Position + new Vector2(Rectangle.Width / 2 * Scale, Rectangle.Height / 2 * Scale), attackAim, fireSpeed);
+            CellsHelper.AddCells.Add(missile);
         }
 
         public void Bomb()
         {
-            CellsHelper.AddCells.Add(new Bomb(missileTex, crossTex,Position, attackAim, fallSpeed));
+            bomb = new Bomb(missileTex, crossTex, Position, attackAim, fallSpeed);
+            CellsHelper.AddCells.Add(bomb);
         }
 
         public void Wave()
@@ -147,7 +167,7 @@ namespace GameJam
             if (firing == false)
             {
                 firing = true;
-                circle.position = Position + new Vector2(Rectangle.Width / 2 * Scale, Rectangle.Height / 2 * Scale);
+                circle.position = Position;
                 circle.radius = (normalTex.Width/frames) / 2;
             }
         }
@@ -447,6 +467,8 @@ namespace GameJam
                                 Velocity = norm;
                                 Velocity *= fast;
                             }
+
+                            frame = 3;
                         }
 
 
@@ -489,11 +511,17 @@ namespace GameJam
                 {
                     fireTimer += gameTime.ElapsedGameTime.Milliseconds;
 
+                    if (fireTimer > fireTime - telegraphTime)
+                    {
+                        telegraph = true;
+                    }
+
                     if (fireTimer > fireTime)
                     {
                         fireTimer = 0;
                         Bomb();
                         fireTime = (int)(random.NextDouble() * (fireTimeMax - fireTimeMin) + fireTimeMin);
+                        telegraph = false;
                     }
                 }
 
@@ -501,11 +529,17 @@ namespace GameJam
                 {
                     fireTimer += gameTime.ElapsedGameTime.Milliseconds;
 
+                    if (fireTimer > fireTime - telegraphTime)
+                    {
+                        telegraph = true;
+                    }
+
                     if (fireTimer > fireTime)
                     {
                         fireTimer = 0;
                         Wave();
                         fireTime = (int)(random.NextDouble() * (fireTimeMax - fireTimeMin) + fireTimeMin);
+                        telegraph = false;
                     }
                 }
 
@@ -514,11 +548,17 @@ namespace GameJam
                 {
                     fireTimer += gameTime.ElapsedGameTime.Milliseconds;
 
+                    if (fireTimer > fireTime - telegraphTime)
+                    {
+                        telegraph = true;
+                    }
+
                     if (fireTimer > fireTime)
                     {
                         fireTimer = 0;
                         Fire();
                         fireTime = (int)(random.NextDouble() * (fireTimeMax - fireTimeMin) + fireTimeMin);
+                        telegraph = false;
                     }
 
                 }
@@ -526,6 +566,11 @@ namespace GameJam
                 else if (attack == 6)
                 {
                     fireTimer += gameTime.ElapsedGameTime.Milliseconds;
+                    
+                    if (fireTimer > fireTime - telegraphTime)
+                    {
+                        telegraph = true;
+                    }
 
                     if (fireTimer > fireTime)
                     {
@@ -533,6 +578,7 @@ namespace GameJam
                         Wave();
                         fireTime = (int)(random.NextDouble() * (fireTimeMax - fireTimeMin) + fireTimeMin);
                         shock = true;
+                        telegraph = false;
                     }
                 }
 
@@ -735,12 +781,58 @@ namespace GameJam
             if (firing == true)
             {
                 circle.radius += gameTime.ElapsedGameTime.Milliseconds / 4.0f;
+                circleTimer += gameTime.ElapsedGameTime.Milliseconds;
+                circleScale += gameTime.ElapsedGameTime.Milliseconds * (1.15f / 2000.0f);
                 circle.Update();
+
+                if (circleTimer > 40)
+                {
+                    circleTimer = 0;
+                    if (circleRect.X == 0)
+                    {
+                        circleRect.X = circleTex.Width / 2;
+                    }
+                    else
+                    {
+                        circleRect.X = 0;
+                    }
+                }
 
                 if (circle.radius > 300)
                 {
                     firing = false;
-                    shock = false;
+                    shock = false;  
+                    circleScale = circleInitialScale;
+                }
+            }
+
+            if (telegraph == true)
+            {
+                XFrame = 4;
+            }
+
+            if ((DeathHelper.KillCell.Contains(bomb) && bomb.hit == true) | (DeathHelper.KillCell.Contains(missile) && missile.hit == true))
+            {
+                celebrating = true;
+                if (missile != null)
+                {
+                    missile.hit = false;
+                }
+                else if (bomb != null)
+                {
+                    bomb.hit = false;
+                }
+            }
+
+            if (celebrating == true)
+            {
+                celebratingTimer += gameTime.ElapsedGameTime.Milliseconds;
+                XFrame = 3;
+                if (celebratingTimer >= celebratingTime)
+                {
+                    celebrating = false;
+                    celebratingTimer = 0;
+                    XFrame = 0;
                 }
             }
             
@@ -753,7 +845,8 @@ namespace GameJam
         {
             if (firing == true)
             {
-                circle.Draw(batch);
+                //circle.Draw(batch);
+                batch.Draw(circleTex, Position + new Vector2(-circleTex.Width/4,-circleTex.Height/2)*circleScale,circleRect, Color.White, 0.0f, Vector2.Zero, circleScale , SpriteEffects.None, layer);
             }
                                                
            base.Draw(gameTime, batch, layer);

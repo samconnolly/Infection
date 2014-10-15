@@ -11,6 +11,7 @@ namespace GameJam
         private static List<SpriteBase> _addList = new List<SpriteBase> { };
         private static bool _freeze = false;
         private static bool _antidote = false;
+        private static int _colours = InputHelper.Random.Next(9);
 
         public static List<SpriteBase> Cells
         {
@@ -34,6 +35,12 @@ namespace GameJam
         {
             get { return _antidote; }
             set { _antidote = value; }
+        }
+
+        public static int Colours
+        {
+            get { return _colours; }
+            set { _colours = value; }
         }
     }
 }

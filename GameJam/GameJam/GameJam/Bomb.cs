@@ -27,6 +27,8 @@ namespace GameJam
         private bool up = true;
         private Vector2 offset;
 
+        public bool hit = false;
+
         private int frate;
         private int timer = 0;
 
@@ -80,6 +82,7 @@ namespace GameJam
             {
                 ScoreHelper.PlayerHit(VirusHelper.Virus);
                 DeathHelper.KillCell.Add(this);
+                hit = true;
             }
             else if (InputHelper.Players == 2)
             {
@@ -87,6 +90,7 @@ namespace GameJam
                 {
                     ScoreHelper.PlayerHit(VirusHelper.VirusP2);
                     DeathHelper.KillCell.Add(this);
+                    hit = true;
                 }
             }
 

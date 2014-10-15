@@ -50,10 +50,13 @@ namespace GameJam
         List<SpriteBase> addItem = new List<SpriteBase> { };
         List<SpriteBase> usedItems = new List<SpriteBase> { };
 
+        private bool itemSpawned = false;
         private int itemTimer = 0;
-        private int itemTime = 20000;
-        private int itemMax = 30000;
+        private int itemTime = 2000; // too low!
+        private int itemMax = 2;
         private int itemMin = 10000;
+        private int itemCount = 0;
+
         private Random rand = new Random();
 
         private bool kill = false;
@@ -92,16 +95,16 @@ namespace GameJam
                         
             VirusHelper.Radius1 = 30.0f;
             VirusHelper.Radius2 = 40.0f;
-            VirusHelper.Radius3 = 250.0f;
+            VirusHelper.Radius3 = 80.0f;
 
             VirusHelper.InnerSlow = 0.999f;
             VirusHelper.OuterSlow = 0.5f;
             VirusHelper.OuterOuterSlow = 1.0f;
 
-            VirusHelper.InnerAccn = 3.0f;
+            VirusHelper.InnerAccn = 4.5f;
             VirusHelper.OuterAccn = 5.0f;
             VirusHelper.OuterOuterAccn = 1.0f;
-            VirusHelper.OuterOuterOuterAccn = 20.0f;
+            VirusHelper.OuterOuterOuterAccn = 10.0f;
 
             VirusHelper.Repel = 0.001f;
 
@@ -135,6 +138,7 @@ namespace GameJam
             //// mega awesome powerups
             Texture2D powerupTexture = this.Game.Content.Load<Texture2D>("powerups");
             Texture2D specialTexture = this.Game.Content.Load<Texture2D>("specials");
+            Texture2D powerupTextTex = this.Game.Content.Load<Texture2D>("powerupText");
 
             _virus = new Virus(virusTexture, viruslingTexture,eyeTexture,laserTexture,specialTexture, new Vector2(380,320));
             _virus2 = new Virus(virusTexture2, viruslingTexture, eyeTexture, laserTexture, specialTexture, new Vector2(880, 120), 2);
@@ -155,6 +159,7 @@ namespace GameJam
             Texture2D bombTexture = this.Game.Content.Load<Texture2D>("bomb");
             Texture2D crossTexture = this.Game.Content.Load<Texture2D>("cross");
             Texture2D missileTexture = this.Game.Content.Load<Texture2D>("missile");
+            Texture2D circleTexture = this.Game.Content.Load<Texture2D>("circle_both");
 
             Texture2D spawnTexture = this.Game.Content.Load<Texture2D>("whitebloodspawn");
 
@@ -168,26 +173,26 @@ namespace GameJam
             //_doubleUp = new DoubleUp(doubleTexture, new Vector2(450,450));
             //_reproduce = new Reproduce(reproduceTexture, new Vector2(30,400));
             
-            _cells.Add(new EnemyGroup(gruntTexture,spawnTexture,new Vector2(800,600),1,1,1,new Vector2(6,5)));
+            _cells.Add(new EnemyGroup(gruntTexture,spawnTexture,new Vector2(800,600),1,1,5,new Vector2(6,5),missileTexture,crossTexture,circleTexture));
             //_cells.Add(_doubleUp);
             //_cells.Add(_reproduce);
             
             testEnemies = new EnemyGroup(turretTexture, spawnTexture, new Vector2(300, 300), 3, 1, 3, new Vector2(6, 5),bombTexture,crossTexture);
 
-            _cells.Add(testEnemies);
+            //_cells.Add(testEnemies);
 
 
             spawn2 = new SpawnII(gruntTexture,chargerTexture,
                                         sleeperTexture,turretTexture,artilleryTexture,
                                             missileTexture, crossTexture, bombTexture, spawnTexture,
-                                                powerupTexture, specialTexture);
+                                                powerupTexture,powerupTextTex, specialTexture, circleTexture);
                       
             // initial powerup(s)
             if (InputHelper.Players == 2)
             {
-                _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 400), 2));
+                _items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(400, 400), 2));
             }
-            _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 600), 2));
+            _items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(400, 600), 2));
             
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 300), 8));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 500), 3));
@@ -240,9 +245,11 @@ namespace GameJam
                 CellsHelper.Antidote = false;
             }
             
-            if (_cells.Count <= 0 && kill == false)
+            if (_cells.Count <= 0 && kill == false && spawning == false)
             {
                 spawning = true;
+                itemSpawned = false;
+                _items = new List<SpriteBase> { };
             }
 
             if (spawning == true)
@@ -257,7 +264,7 @@ namespace GameJam
                 //    health = true;
                 //    //add = spawn.SpawnRed(1);
                 //    add = spawn2.SpawnRed(1);
-                
+
                 //}
 
                 // spawn enemies
@@ -277,7 +284,7 @@ namespace GameJam
                     //add = spawn.SpawnEnemies(level);
                     add = spawn2.SpawnEnemies(level);
                 }
-                
+
                 // add to cell list
                 if (add.Count() > 0)
                 {
@@ -285,23 +292,32 @@ namespace GameJam
                     {
                         _cells.Add(sprite);
                     }
-                }               
+                }
+
+
+                // spawn power-ups 
+
+                //itemTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+                //if (itemTimer >= itemTime)
+                //{
+                //    addItem = spawn2.SpawnPowerUps();
+                //    itemTime = rand.Next(itemMin, itemMax);
+                //    itemTimer = 0;
+                //}
+                if (itemSpawned == false)
+                {
+                    addItem = spawn2.SpawnPowerUps(itemMax, wave);
+                    itemCount += 1;
+                    itemSpawned = true;
+                }
+                
             }
 
-            // spawn power-ups 
-
-            itemTimer += gameTime.ElapsedGameTime.Milliseconds;
-
-            if (itemTimer >= itemTime)
-            {
-                addItem = spawn2.SpawnPowerUps();
-                itemTime = rand.Next(itemMin, itemMax);
-                itemTimer = 0;
-            }
             // cheat!!!
             if (InputHelper.WasButtonPressed(Keys.P))
             {
-                addItem = spawn2.SpawnPowerUps();
+                addItem = spawn2.SpawnPowerUps(1,2);
             }
 
             //Play music if not playing already.
@@ -311,7 +327,6 @@ namespace GameJam
                 MediaPlayer.IsRepeating = true;
                 _isPlayingMusic = true;
             }
-
 
             //Mute music
             if (InputHelper.WasButtonPressed(Keys.M))
@@ -696,23 +711,25 @@ namespace GameJam
                 }
 
                 // circles
+                if (VirusHelper.Virus.circles == true)
+                {
+                    batch.DrawString(font3, "1: Radius 1: " + VirusHelper.Radius1.ToString(), new Vector2(20, 20), Color.White);
+                    batch.DrawString(font3, "2: Radius 2: " + VirusHelper.Radius2.ToString(), new Vector2(20, 40), Color.White);
+                    batch.DrawString(font3, "3: Radius 3: " + VirusHelper.Radius3.ToString(), new Vector2(20, 60), Color.White);
 
-                //batch.DrawString(font3, "1: Radius 1: " + VirusHelper.Radius1.ToString(), new Vector2(20, 20), Color.White);
-                //batch.DrawString(font3, "2: Radius 2: " + VirusHelper.Radius2.ToString(), new Vector2(20, 40), Color.White);
-                //batch.DrawString(font3, "3: Radius 3: " + VirusHelper.Radius3.ToString(), new Vector2(20, 60), Color.White);
+                    batch.DrawString(font3, "4: fractional Slowing: " + VirusHelper.InnerSlow.ToString(), new Vector2(20, 80), Color.White);
+                    //batch.DrawString(font3, "5: Outer Slow: " + VirusHelper.OuterSlow.ToString(), new Vector2(20, 100), Color.White);
 
-                //batch.DrawString(font3, "4: fractional Slowing: " + VirusHelper.InnerSlow.ToString(), new Vector2(20, 80), Color.White);
-                ////batch.DrawString(font3, "5: Outer Slow: " + VirusHelper.OuterSlow.ToString(), new Vector2(20, 100), Color.White);
+                    batch.DrawString(font3, "6: reverse slowing: " + VirusHelper.InnerAccn.ToString(), new Vector2(20, 120), Color.White);
+                    batch.DrawString(font3, "7: inward accn: " + VirusHelper.OuterAccn.ToString(), new Vector2(20, 140), Color.White);
+                    batch.DrawString(font3, "8: repel Accn: " + VirusHelper.OuterOuterAccn.ToString(), new Vector2(20, 160), Color.White);
 
-                //batch.DrawString(font3, "6: reverse slowing: " + VirusHelper.InnerAccn.ToString(), new Vector2(20, 120), Color.White);
-                //batch.DrawString(font3, "7: inward accn: " + VirusHelper.OuterAccn.ToString(), new Vector2(20, 140), Color.White);
-                //batch.DrawString(font3, "8: repel Accn: " + VirusHelper.OuterOuterAccn.ToString(), new Vector2(20, 160), Color.White);
+                    batch.DrawString(font3, "9: strong inward accn: " + VirusHelper.OuterOuterOuterAccn.ToString(), new Vector2(20, 180), Color.White);
 
-                //batch.DrawString(font3, "9: strong inward accn: " + VirusHelper.OuterOuterOuterAccn.ToString(), new Vector2(20, 180), Color.White);
+                    batch.DrawString(font3, "0: V Outer Slow: " + VirusHelper.OuterOuterSlow.ToString(), new Vector2(20, 200), Color.White);
 
-                //batch.DrawString(font3, "0: V Outer Slow: " + VirusHelper.OuterOuterSlow.ToString(), new Vector2(20, 200), Color.White);
-
-                //batch.DrawString(font3, "Enter: Active Powerup: " + VirusHelper.Virus.activePowerup.ToString(), new Vector2(20, 220), Color.White);
+                    batch.DrawString(font3, "Enter: Active Powerup: " + VirusHelper.Virus.activePowerup.ToString(), new Vector2(20, 220), Color.White);
+                }
             }
         }
 

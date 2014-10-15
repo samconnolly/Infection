@@ -20,14 +20,25 @@ namespace GameJam
         private List<string> names = new List<string>{"+3","+5","Proliferate", "Double", "-2", "-4", "Reverse", "Orbit Up", 
                                                         "Orbit Down", "Homing", "Radius Up", "Radius Down", "Speed Up","Speed Down", 
                                                             "Health Up", "Invincibility", "Pulse", "Stream", "Laser", "Freeze", "Antidote"};
+        private int pickup = 0;
+        private Texture2D textTex;
 
-        public PowerUpBase(Texture2D texture, Texture2D specialTexture, Vector2 position, int Type)
+        private bool used = false;
+        private int textTimer = 0;
+        private int textTime = 1000;
+        private Rectangle textRect;
+        private List<int> textX = new List<int> { 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0 };
+        private List<int> textY = new List<int> { 5, 5, 6, 0, 3, 3, 8, 4, 4, 1, 7, 7, 9, 8, 7, 2, 6, 9, 2, 1, 0 };
+        private Vector2 textOffset = Vector2.Zero;
+
+        public PowerUpBase(Texture2D texture, Texture2D specialTexture, Texture2D textTexture, Vector2 position, int Type)
             : base(texture)
         {
             Position = position;
             Rectangle = new Rectangle(0, 0, texture.Width, texture.Height);
             type = Type;
             Scale = 0.3f;
+            textTex = textTexture;
 
             if (cells[type - 1] > 8)
             {
@@ -39,28 +50,47 @@ namespace GameJam
             else
             {
                 SheetSize = new Vector2(9, 1);
-                XFrame = cells[type-1];
+                int colour = cells[type-1] + CellsHelper.Colours;
+                if (colour >= 9) {colour -= 9;}
+                XFrame = colour;
             }
+
+            textRect = new Rectangle(textX[type - 1] * textTex.Width / 2, textY[type - 1] * textTex.Height / 10, textTex.Width / 2, textTex.Height / 10);
         }
 
 
         public override void Update(GameTime gameTime, SpriteBatch bactch)
         {
-            // collected
-            float distance = (Position - VirusHelper.VirusPosition).Length();
-            
-
-            if (distance < (Rectangle.Width / 2.0f * Scale + VirusHelper.Virus.Rectangle.Width * VirusHelper.Virus.Scale / 2.0f) && VirusHelper.Virus.dead == false)
+            // collect
+            if (used != true)
             {
-                PowerUp(1);                
-            }
-            if (InputHelper.Players == 2)
-            {
-                float distance2 = (Position - VirusHelper.VirusPositionP2).Length();
+                float distance = (Position - VirusHelper.VirusPosition).Length();
 
-                if (distance2 < (Rectangle.Width / 2.0f * Scale + VirusHelper.VirusP2.Rectangle.Width * VirusHelper.VirusP2.Scale / 2.0f) && VirusHelper.VirusP2.dead == false)
+
+                if (distance < (Rectangle.Width / 2.0f * Scale + VirusHelper.Virus.Rectangle.Width * VirusHelper.Virus.Scale / 2.0f) && VirusHelper.Virus.dead == false)
                 {
-                    PowerUp(2);
+                    PowerUp(1);
+                    pickup = 1;
+                }
+                if (InputHelper.Players == 2)
+                {
+                    float distance2 = (Position - VirusHelper.VirusPositionP2).Length();
+
+                    if (distance2 < (Rectangle.Width / 2.0f * Scale + VirusHelper.VirusP2.Rectangle.Width * VirusHelper.VirusP2.Scale / 2.0f) && VirusHelper.VirusP2.dead == false)
+                    {
+                        PowerUp(2);
+                        pickup = 2;
+                    }
+                }
+            }
+            else
+            {
+                textTimer += gameTime.ElapsedGameTime.Milliseconds;
+                textOffset += new Vector2(0, -1);
+
+                if (textTimer >= textTime)
+                {
+                    Die();
                 }
             }
 
@@ -155,7 +185,7 @@ namespace GameJam
                 Antidote(player);
             }
 
-            Die();
+            used = true;
         }
 
         // ------------------ passive ---------------------
@@ -432,10 +462,23 @@ namespace GameJam
         public override void Draw(GameTime gameTime, SpriteBatch batch, float layer)
         {            
             // testing!
-
-            batch.DrawString(FontHelper.Fonts[2], names[type-1],Position + new Vector2(0, 0), Color.White);
-
-           base.Draw(gameTime, batch, layer);           
+            //batch.DrawString(FontHelper.Fonts[2], names[type-1],Position + new Vector2(0, 0), Color.White);
+            //
+            if (pickup != 0)
+            {
+                if (pickup == 1)
+                {
+                    batch.Draw(textTex, new Vector2(850, 630) + textOffset, textRect, Color.White, 0.0f, Vector2.Zero, Scale, SpriteEffects.None, layer);
+                }
+                else
+                {
+                    batch.Draw(textTex, new Vector2(850, 630) + textOffset, textRect, Color.Green, 0.0f, Vector2.Zero, Scale, SpriteEffects.None, layer);
+                }
+            }
+            if (used == false)
+            {
+                base.Draw(gameTime, batch, layer);
+            }
         }
 
     }

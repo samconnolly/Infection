@@ -196,7 +196,7 @@ namespace GameJam
                 refl = new Vector2((float)(refl.X * Math.Cos(theta)) - (float)(refl.Y * Math.Sin(theta)),
                                                     (float)(refl.X * Math.Sin(theta)) + (float)(refl.Y * Math.Cos(theta)));
                 // set Velocity
-                Velocity = refl + bouncerVelocity;
+                Velocity = refl/2.0f + bouncerVelocity;
 
                 bounced = true;
             }

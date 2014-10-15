@@ -86,7 +86,7 @@ namespace GameJam
         Circle circle2;
         Circle circle3;
         Circle circle4;
-        bool circles = false;
+        public bool circles = false;
 
         // frames
         private int dir = 0;
@@ -746,6 +746,12 @@ namespace GameJam
                 {
                     VirusHelper.OuterOuterSlow += 0.1f;
                 }
+            }
+
+            if (InputHelper.WasButtonPressed(Keys.C))
+            {
+                if (circles == true) { circles = false; }
+                else { circles = true; }
             }
 
             if (InputHelper.WasButtonPressed(Keys.Add))

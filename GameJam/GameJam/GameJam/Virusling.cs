@@ -191,6 +191,15 @@ namespace GameJam
                 rotSpeed = VirusHelper.RotationSpeed;
                 Velocity = rot * new Vector2((float)(diff.X * Math.Cos(Math.PI / 2.0)) - (float)(diff.Y * Math.Sin(Math.PI / 2.0)),
                                             (float)(diff.X * Math.Sin(Math.PI / 2.0)) + (float)(diff.Y * Math.Cos(Math.PI / 2.0))) *1.5f* rotSpeed *err;
+                //if (player == 1)
+                //{
+                //    Velocity += VirusHelper.Virus.Velocity*0.2f;
+                //}
+                //else if (player == 2)
+                //{
+                //    Velocity += VirusHelper.VirusP2.Velocity;
+                //}
+
                 Velocity += diff * Velocity.Length() * 0.001f;
             }
 

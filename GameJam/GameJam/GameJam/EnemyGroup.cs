@@ -17,7 +17,8 @@ namespace GameJam
         public int count;
         public List<Enemy> group;
 
-        public EnemyGroup(Texture2D texture, Texture2D spawnTexture, Vector2 position, int n, int movement, int attack,Vector2 sheetDimensions, Texture2D missileTexture= null, Texture2D crossTexture= null)
+        public EnemyGroup(Texture2D texture, Texture2D spawnTexture, Vector2 position, int n, int movement, int attack,Vector2 sheetDimensions, 
+                            Texture2D missileTexture= null, Texture2D crossTexture= null, Texture2D circleTexture = null)
             : base(texture)
         {
             count = n;
@@ -28,7 +29,7 @@ namespace GameJam
             for (int i=0; i<n;i++)
             {
                 Vector2 posvar = new Vector2(50, 50) - new Vector2((float)InputHelper.Random.NextDouble() * 100, (float)InputHelper.Random.NextDouble() * 100);
-                group.Add(new Enemy(texture, spawnTexture, position + posvar, movement, attack, sheetDimensions,colour, missileTexture, crossTexture));
+                group.Add(new Enemy(texture, spawnTexture, position + posvar, movement, attack, sheetDimensions,colour, missileTexture, crossTexture, circleTexture));
 
                 foreach (Enemy wbc in group)
                 {

@@ -24,16 +24,16 @@ namespace GameJam
         
         public static float radius1 = 30.0f;
         public static float radius2 = 40.0f;
-        public static float radius3 = 250.0f;
+        public static float radius3 = 150.0f;
 
         public static float islow = 0.999f;
         public static float oslow = 0.5f;
         public static float ooslow = 1.0f;
 
-        public static float iaccn = 3.0f;
+        public static float iaccn = 4.0f;
         public static float oaccn = 5.0f;
         public static float ooaccn = 1.0f;
-        public static float oooaccn = 20.0f;
+        public static float oooaccn = 10.0f;
 
         public static float repel = 0.001f;
 

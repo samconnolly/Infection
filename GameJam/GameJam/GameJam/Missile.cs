@@ -16,6 +16,7 @@ namespace GameJam
     {
         private float speed;
         private Texture2D tex;
+        public bool hit = false;
        
         public Missile(Texture2D texture,Vector2 position, Vector2 target, float moveSpeed)
             : base(texture)
@@ -61,6 +62,7 @@ namespace GameJam
             {
                 ScoreHelper.PlayerHit(VirusHelper.Virus);
                 DeathHelper.KillCell.Add(this);
+                hit = true;
             }
             else if (InputHelper.Players == 2)
             {
@@ -68,6 +70,7 @@ namespace GameJam
                 {
                     ScoreHelper.PlayerHit(VirusHelper.VirusP2);
                     DeathHelper.KillCell.Add(this);
+                    hit = true;
                 }
             }
 
