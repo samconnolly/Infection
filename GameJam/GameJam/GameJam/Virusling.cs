@@ -120,23 +120,42 @@ namespace GameJam
 
         public override void Update(GameTime gameTime, SpriteBatch batch)
         {
+            if (player == 1)
+            {
+                radius = VirusHelper.Radius1;
+                radius2 = VirusHelper.Radius2;
+                radius3 = VirusHelper.Radius3;
 
-            radius = VirusHelper.Radius1;
-            radius2 = VirusHelper.Radius2;
-            radius3 = VirusHelper.Radius3;
+                islow = VirusHelper.InnerSlow;
+                oslow = VirusHelper.OuterSlow;
+                ooslow = VirusHelper.OuterOuterSlow;
 
-            islow = VirusHelper.InnerSlow;
-            oslow = VirusHelper.OuterSlow;
-            ooslow = VirusHelper.OuterOuterSlow;
+                iaccn = VirusHelper.InnerAccn;
+                oaccn = VirusHelper.OuterAccn;
+                ooaccn = VirusHelper.OuterOuterAccn;
+                oooaccn = VirusHelper.OuterOuterOuterAccn;
 
-            iaccn = VirusHelper.InnerAccn;
-            oaccn = VirusHelper.OuterAccn;
-            ooaccn = VirusHelper.OuterOuterAccn;
-            oooaccn = VirusHelper.OuterOuterOuterAccn;
+                repel = VirusHelper.Repel;
+                rot = VirusHelper.Rotation;
+            }
+            else
+            {
+                radius = VirusHelper.Radius1P2;
+                radius2 = VirusHelper.Radius2P2;
+                radius3 = VirusHelper.Radius3P2;
 
-            repel = VirusHelper.Repel;
+                islow = VirusHelper.InnerSlowP2;
+                oslow = VirusHelper.OuterSlowP2;
+                ooslow = VirusHelper.OuterOuterSlowP2;
 
-            rot = VirusHelper.Rotation;
+                iaccn = VirusHelper.InnerAccnP2;
+                oaccn = VirusHelper.OuterAccnP2;
+                ooaccn = VirusHelper.OuterOuterAccnP2;
+                oooaccn = VirusHelper.OuterOuterOuterAccnP2;
+
+                repel = VirusHelper.RepelP2;
+                rot = VirusHelper.RotationP2;
+            }
 
             // avoid too much damage
 

@@ -640,8 +640,8 @@ namespace GameJam
                 }
                 else if (tree == 1)
                 {
-                    batch.DrawString(font, "Music Volume:" + ((int)(MediaPlayer.Volume * 100)).ToString(), new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                    batch.DrawString(font, "SFX Volume:" + ((int)(SoundEffectPlayer.Volume * 100)).ToString(), new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Music Volume -" + ((int)(MediaPlayer.Volume * 100)).ToString(), new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "SFX Volume -" + ((int)(SoundEffectPlayer.Volume * 100)).ToString(), new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                     batch.DrawString(font, "Back", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 }
                 else if (tree == 2)
@@ -651,8 +651,8 @@ namespace GameJam
                     batch.DrawString(font, "Toggle keys/pad", new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                     batch.DrawString(font, "Back", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
 
-                    batch.DrawString(font, "Pad 1 Connected: " + InputHelper.CurrentGamePadStatePlayer1.IsConnected.ToString(), new Vector2(200, 450), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                    batch.DrawString(font, "Pad 2 Connected: " + InputHelper.CurrentGamePadStatePlayer2.IsConnected.ToString(), new Vector2(200, 500), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Pad 1 Connected - " + InputHelper.CurrentGamePadStatePlayer1.IsConnected.ToString(), new Vector2(200, 450), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Pad 2 Connected - " + InputHelper.CurrentGamePadStatePlayer2.IsConnected.ToString(), new Vector2(200, 500), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
 
                     string p1 = "pad";
                     string p2 = "pad";
@@ -665,8 +665,8 @@ namespace GameJam
                         p2 = "keys";
                     }
 
-                    batch.DrawString(font, "P1: " + p1.ToString(), new Vector2(200, 550), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                    batch.DrawString(font, "P2: " + p2.ToString(), new Vector2(200, 600), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "P1 - " + p1.ToString(), new Vector2(200, 550), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "P2 - " + p2.ToString(), new Vector2(200, 600), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 }
                 batch.Draw(_pauseTexture, new Vector2(0, 0),null, Color.White,0,Vector2.Zero,1.0f,SpriteEffects.None,0.5f);
             }
@@ -699,36 +699,40 @@ namespace GameJam
                 _background.Draw(gameTime, batch);
 
                 // Draw score
-                batch.DrawString(font, "Level: " + level.ToString() + " Wave:" + wave.ToString(), new Vector2(400, 20), Color.White);
-                batch.DrawString(font, "Score: " + ScoreHelper.Score.ToString(), new Vector2(520, 60), Color.White);
+                batch.DrawString(font, "Level - " + level.ToString() + " Wave -" + wave.ToString(), new Vector2(400, 20), Color.White);
+                batch.DrawString(font, "Score - " + ScoreHelper.Score.ToString(), new Vector2(450, 60), Color.White);
                 if (ScoreHelper.Hardcore == false)
                 {
-                    batch.DrawString(font, "Lives: " + ScoreHelper.Lives.ToString(), new Vector2(520, 100), Color.White);
                     if (InputHelper.Players == 2)
                     {
-                        batch.DrawString(font, "P2 Lives: " + ScoreHelper.LivesP2.ToString(), new Vector2(520, 150), Color.White);
+                        batch.DrawString(font, "P1 Lives - " + ScoreHelper.Lives.ToString(), new Vector2(120, 40), Color.White);
+                        batch.DrawString(font, "P2 Lives - " + ScoreHelper.LivesP2.ToString(), new Vector2(760, 40), Color.White);
+                    }
+                    else
+                    {
+                        batch.DrawString(font, "Lives - " + ScoreHelper.Lives.ToString(), new Vector2(120, 40), Color.White);
                     }
                 }
 
                 // circles
                 if (VirusHelper.Virus.circles == true)
                 {
-                    batch.DrawString(font3, "1: Radius 1: " + VirusHelper.Radius1.ToString(), new Vector2(20, 20), Color.White);
-                    batch.DrawString(font3, "2: Radius 2: " + VirusHelper.Radius2.ToString(), new Vector2(20, 40), Color.White);
-                    batch.DrawString(font3, "3: Radius 3: " + VirusHelper.Radius3.ToString(), new Vector2(20, 60), Color.White);
+                    batch.DrawString(font3, "1 - Radius 1 - " + VirusHelper.Radius1.ToString(), new Vector2(20, 20), Color.White);
+                    batch.DrawString(font3, "2 - Radius 2 - " + VirusHelper.Radius2.ToString(), new Vector2(20, 40), Color.White);
+                    batch.DrawString(font3, "3 - Radius 3 - " + VirusHelper.Radius3.ToString(), new Vector2(20, 60), Color.White);
 
-                    batch.DrawString(font3, "4: fractional Slowing: " + VirusHelper.InnerSlow.ToString(), new Vector2(20, 80), Color.White);
-                    //batch.DrawString(font3, "5: Outer Slow: " + VirusHelper.OuterSlow.ToString(), new Vector2(20, 100), Color.White);
+                    batch.DrawString(font3, "4 - fractional Slowing - " + VirusHelper.InnerSlow.ToString(), new Vector2(20, 80), Color.White);
+                    //batch.DrawString(font3, "5 - Outer Slow - " + VirusHelper.OuterSlow.ToString(), new Vector2(20, 100), Color.White);
 
-                    batch.DrawString(font3, "6: reverse slowing: " + VirusHelper.InnerAccn.ToString(), new Vector2(20, 120), Color.White);
-                    batch.DrawString(font3, "7: inward accn: " + VirusHelper.OuterAccn.ToString(), new Vector2(20, 140), Color.White);
-                    batch.DrawString(font3, "8: repel Accn: " + VirusHelper.OuterOuterAccn.ToString(), new Vector2(20, 160), Color.White);
+                    batch.DrawString(font3, "6 - reverse slowing - " + VirusHelper.InnerAccn.ToString(), new Vector2(20, 120), Color.White);
+                    batch.DrawString(font3, "7 - inward accn - " + VirusHelper.OuterAccn.ToString(), new Vector2(20, 140), Color.White);
+                    batch.DrawString(font3, "8 - repel Accn - " + VirusHelper.OuterOuterAccn.ToString(), new Vector2(20, 160), Color.White);
 
-                    batch.DrawString(font3, "9: strong inward accn: " + VirusHelper.OuterOuterOuterAccn.ToString(), new Vector2(20, 180), Color.White);
+                    batch.DrawString(font3, "9 - strong inward accn - " + VirusHelper.OuterOuterOuterAccn.ToString(), new Vector2(20, 180), Color.White);
 
-                    batch.DrawString(font3, "0: V Outer Slow: " + VirusHelper.OuterOuterSlow.ToString(), new Vector2(20, 200), Color.White);
+                    batch.DrawString(font3, "0 - V Outer Slow - " + VirusHelper.OuterOuterSlow.ToString(), new Vector2(20, 200), Color.White);
 
-                    batch.DrawString(font3, "Enter: Active Powerup: " + VirusHelper.Virus.activePowerup.ToString(), new Vector2(20, 220), Color.White);
+                    batch.DrawString(font3, "Enter - Active Powerup - " + VirusHelper.Virus.activePowerup.ToString(), new Vector2(20, 220), Color.White);
                 }
             }
         }

@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="97792">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="100352">
       <assemblyIdentity name="You have been infected!" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>emSlHNI3B+aUKwYdeWHv07wNyf4=</dsig:DigestValue>
+        <dsig:DigestValue>caMGJ6UOXbabooVxooXEcDMK55w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -239,13 +239,13 @@
       <dsig:DigestValue>D8+WW7P9bjVIiy5znGKwT5vY1so=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\font2.xnb" size="150702">
+  <file name="Content\font2.xnb" size="218286">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>ldGQF+fgR5ntQimHWxjQezWH67o=</dsig:DigestValue>
+      <dsig:DigestValue>I9ZfWoUl1wPd1vJ3hWR1Mvhyr64=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\font3.xnb" size="16046">

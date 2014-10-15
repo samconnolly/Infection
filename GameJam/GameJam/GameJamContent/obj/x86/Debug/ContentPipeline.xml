@@ -11,15 +11,6 @@
       <Time>2014-10-15T21:23:46.5509421+01:00</Time>
     </Item>
     <Item>
-      <Source>Copy of SpriteFont1.spritefont</Source>
-      <Name>font2</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\font2.xnb</Output>
-      <Time>2014-08-17T13:21:15.4916792+01:00</Time>
-    </Item>
-    <Item>
       <Source>Copy of Copy of SpriteFont1.spritefont</Source>
       <Name>font3</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -344,6 +335,15 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\HighScore.xnb</Output>
       <Time>2014-10-15T21:38:15.253629+01:00</Time>
+    </Item>
+    <Item>
+      <Source>SpriteFon2.spritefont</Source>
+      <Name>font2</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\font2.xnb</Output>
+      <Time>2014-10-15T21:59:40.1961235+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

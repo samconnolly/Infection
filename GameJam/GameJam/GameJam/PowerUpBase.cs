@@ -306,21 +306,38 @@ namespace GameJam
 
         public void Reverse(int player)
         {
-            //// NOT 2P YET!!
-            VirusHelper.Rotation *= -1;
+            if (player == 1)
+            {
+                VirusHelper.Rotation *= -1;
+            }
+            else
+            {
+                VirusHelper.RotationP2 *= -1;
+            }
         }
 
         public void OrbitUp(int player)
         {
-            //// NOT 2P YET!!
-            VirusHelper.RotationSpeed += 0.02f; // problematic!!
-            //VirusHelper.InnerAccn -= 0.05f;
+            if (player == 1)
+            {
+                VirusHelper.RotationSpeed += 0.02f; // problematic!!
+            }
+            else
+            {
+                VirusHelper.RotationSpeedP2 += 0.02f; // problematic!!
+            }
         }
 
         public void OrbitDown(int player)
         {
-            //// NOT 2P YET!!
-            VirusHelper.RotationSpeed -= 0.02f; // problematic!!
+            if (player == 1)
+            {
+                VirusHelper.RotationSpeed -= 0.02f; // problematic!!
+            }
+            else
+            {
+                VirusHelper.RotationSpeedP2 -= 0.02f; // problematic!!
+            }
         }
 
         public void Homing(int player)
@@ -337,14 +354,26 @@ namespace GameJam
 
         public void RadiusUp(int player)
         {
-            //// NOT 2P YET!!
-            VirusHelper.Radius1 += 10f;
+            if (player == 1)
+            {
+                VirusHelper.Radius1 += 10f;
+            }
+            else
+            {
+                VirusHelper.Radius1P2 += 10f;
+            }
         }
 
         public void RadiusDown(int player)
         {
-            //// NOT 2P YET!!
-            VirusHelper.Radius1 -= 10f;
+            if (player == 1)
+            {
+                VirusHelper.Radius1 -= 10f;
+            }
+            else
+            {
+                VirusHelper.Radius1P2 -= 10f;
+            }
         }
 
         public void SpeedUp(int player)
@@ -373,7 +402,14 @@ namespace GameJam
 
         public void HealthUp(int player)
         {
-            ScoreHelper.Lives += 1;
+            if (player == 1)
+            {
+                ScoreHelper.Lives += 1;
+            }
+            else
+            {
+                ScoreHelper.LivesP2 += 1;
+            }
         }
 
         // ------------------ active ------------------

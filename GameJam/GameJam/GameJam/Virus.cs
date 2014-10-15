@@ -154,12 +154,12 @@ namespace GameJam
 
             if (player == 1)
             {
-                circle4 = new Circle(new Vector2(730, 60), 34, 2, Color.White);
+                circle4 = new Circle(new Vector2(60, 60), 34, 2, Color.White);
                 coolDownBar = new CooldownBar(new Vector2(770, 85), 100);
             }
             else
             {
-                circle4 = new Circle(new Vector2(830, 60), 34, 2, Color.White);
+                circle4 = new Circle(new Vector2(1020, 60), 34, 2, Color.White);
                 coolDownBar = new CooldownBar(new Vector2(870, 85), 100);
             }
 
@@ -901,11 +901,11 @@ namespace GameJam
                 {                    
                     if (cooldown == true)
                     {
-                        batch.Draw(powerupTex, new Vector2(700, 30), powerupRect, Color.Gray, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                        batch.Draw(powerupTex, circle4.position + new Vector2(-30,-30), powerupRect, Color.Gray, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
                     }
                     else
                     {
-                        batch.Draw(powerupTex, new Vector2(700, 30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                        batch.Draw(powerupTex, circle4.position + new Vector2(-30, -30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
                     }
                 }
             }
@@ -918,11 +918,11 @@ namespace GameJam
                 {                    
                     if (cooldown == true)
                     {
-                        batch.Draw(powerupTex, new Vector2(800, 30), powerupRect, Color.Gray, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                        batch.Draw(powerupTex, circle4.position + new Vector2(-30, -30), powerupRect, Color.Gray, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
                     }
                     else
                     {
-                        batch.Draw(powerupTex, new Vector2(800, 30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
+                        batch.Draw(powerupTex, circle4.position + new Vector2(-30, -30), powerupRect, Color.White, 0.0f, Vector2.Zero, 0.3f, SpriteEffects.None, 0.01f);
                     }
                 }
             }

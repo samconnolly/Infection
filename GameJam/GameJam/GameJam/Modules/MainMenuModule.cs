@@ -359,8 +359,8 @@ namespace GameJam
             else if (tree == 2)
             {
                 batch.DrawString(font, "Toggle Fullscreen", menuOffset + new Vector2(0, 0), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Music Volume:" + ((int)(MediaPlayer.Volume * 100)).ToString(), menuOffset + new Vector2(0, 50), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "SFX Volume:" + ((int)(SoundEffectPlayer.Volume * 100)).ToString(), menuOffset + new Vector2(0, 100), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Music Volume -" + ((int)(MediaPlayer.Volume * 100)).ToString(), menuOffset + new Vector2(0, 50), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "SFX Volume -" + ((int)(SoundEffectPlayer.Volume * 100)).ToString(), menuOffset + new Vector2(0, 100), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 batch.DrawString(font, "Mute Music", menuOffset + new Vector2(0, 150), colours[3], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 batch.DrawString(font, "Back", menuOffset + new Vector2(0, 200), colours[4], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
             }

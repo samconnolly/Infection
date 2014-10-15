@@ -76,7 +76,7 @@ namespace GameJam
         internal override void Draw(GameTime gameTime, SpriteBatch batch)
         {
             batch.DrawString(_font, _title, _position, Color.Black,0.0f,Vector2.Zero,1.0f,SpriteEffects.None,0.0f);
-            batch.DrawString(_font, "High Score: " + ScoreHelper.HighScores[0].ToString(), _position + new Vector2(-250, 230), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+            batch.DrawString(_font, "High Score: " + ScoreHelper.HighScores[0].ToString(), _position + new Vector2(-180, 230), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
             batch.Draw(_finalTexture,Vector2.Zero,null,Color.White,0,Vector2.Zero,1.0f,SpriteEffects.None, 1.0f);
         }
 

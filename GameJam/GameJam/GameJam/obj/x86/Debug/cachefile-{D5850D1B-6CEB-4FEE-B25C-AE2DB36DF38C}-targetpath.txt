@@ -1,5 +1,4 @@
 Content\font.xnb
-Content\font2.xnb
 Content\font3.xnb
 Content\Beneath.xnb
 Content\Beneath.wma
@@ -38,3 +37,4 @@ Content\cursor.xnb
 Content\circle_both.xnb
 Content\powerupText.xnb
 Content\HighScore.xnb
+Content\font2.xnb

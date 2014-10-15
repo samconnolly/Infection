@@ -35,10 +35,30 @@ namespace GameJam
         public static float ooaccn = 1.0f;
         public static float oooaccn = 10.0f;
 
+
+        public static float radius1P2 = 30.0f;
+        public static float radius2P2 = 40.0f;
+        public static float radius3P2 = 150.0f;
+
+        public static float islowP2 = 0.999f;
+        public static float oslowP2 = 0.5f;
+        public static float ooslowP2 = 1.0f;
+
+        public static float iaccnP2 = 4.0f;
+        public static float oaccnP2 = 5.0f;
+        public static float ooaccnP2 = 1.0f;
+        public static float oooaccnP2 = 10.0f;
+
         public static float repel = 0.001f;
 
         public static int rot = 1;
         public static float rotSpeed = 0.05f;
+
+
+        public static float repelP2 = 0.001f;
+
+        public static int rotP2 = 1;
+        public static float rotSpeedP2 = 0.05f;
 
         public static Vector2 VirusPosition
         {
@@ -164,6 +184,84 @@ namespace GameJam
         {
             get { return repel; }
             set { repel = value; }
+        }
+
+        public static float Radius1P2
+        {
+            get { return radius1P2; }
+            set { radius1P2 = value; }
+        }
+
+        public static float Radius2P2
+        {
+            get { return radius2P2; }
+            set { radius2P2 = value; }
+        }
+
+        public static float Radius3P2
+        {
+            get { return radius3P2; }
+            set { radius3P2 = value; }
+        }
+
+        public static float InnerSlowP2
+        {
+            get { return islowP2; }
+            set { islowP2 = value; }
+        }
+
+        public static float OuterSlowP2
+        {
+            get { return oslowP2; }
+            set { oslowP2 = value; }
+        }
+
+        public static float OuterOuterSlowP2
+        {
+            get { return ooslowP2; }
+            set { ooslowP2 = value; }
+        }
+
+        public static float InnerAccnP2
+        {
+            get { return iaccnP2; }
+            set { iaccnP2 = value; }
+        }
+
+        public static float OuterAccnP2
+        {
+            get { return oaccnP2; }
+            set { oaccnP2 = value; }
+        }
+
+        public static float OuterOuterAccnP2
+        {
+            get { return ooaccnP2; }
+            set { ooaccnP2 = value; }
+        }
+
+        public static float OuterOuterOuterAccnP2
+        {
+            get { return oooaccnP2; }
+            set { oooaccnP2 = value; }
+        }
+
+        public static int RotationP2
+        {
+            get { return rotP2; }
+            set { rotP2 = value; }
+        }
+
+        public static float RotationSpeedP2
+        {
+            get { return rotSpeedP2; }
+            set { rotSpeedP2 = value; }
+        }
+
+        public static float RepelP2
+        {
+            get { return repelP2; }
+            set { repelP2 = value; }
         }
 
     }
