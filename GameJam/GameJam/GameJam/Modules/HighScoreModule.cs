@@ -35,7 +35,7 @@ namespace GameJam
         internal override void LoadContent(SpriteBatch batch)
         {
             //Final Texture
-            _finalTexture = this.Game.Content.Load<Texture2D>("Final Score");
+            _finalTexture = this.Game.Content.Load<Texture2D>("HighScore");
             _font = this.Game.Content.Load<SpriteFont>("font2");
             _font2 = this.Game.Content.Load<SpriteFont>("font");
             Vector2 fontDim = _font.MeasureString(_title);
@@ -83,7 +83,7 @@ namespace GameJam
             int n = 0;
             foreach (int score in ScoreHelper.HighScores)
             {
-                batch.DrawString(_font2, (n+1).ToString() + ". " + score.ToString(), _position + new Vector2(-250, 100 + n*40), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(_font2, (n+1).ToString() + ". " + score.ToString(), _position + new Vector2(-150, 100 + n*40), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 n += 1;
             }
             

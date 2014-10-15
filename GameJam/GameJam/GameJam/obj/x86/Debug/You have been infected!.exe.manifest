@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="97280">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="97792">
       <assemblyIdentity name="You have been infected!" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>bo+lL1CN5xJrBMEMKvzDS+3NURQ=</dsig:DigestValue>
+        <dsig:DigestValue>emSlHNI3B+aUKwYdeWHv07wNyf4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -230,13 +230,13 @@
       <dsig:DigestValue>/X9s1Oz+9zRWDxHIaVFx/LpPBs8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\font.xnb" size="41134">
+  <file name="Content\font.xnb" size="58542">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>hL+ZmYBGvA/t9pzSxLq+MW8+4uo=</dsig:DigestValue>
+      <dsig:DigestValue>D8+WW7P9bjVIiy5znGKwT5vY1so=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\font2.xnb" size="150702">
@@ -273,6 +273,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>MpdwPLbIl6SQ2nXfxLe1ne0Y2jU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\HighScore.xnb" size="3110587">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>MVeMG8htDoMHuhyZvqHJhxGfbME=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Large Background.xnb" size="3110587">
@@ -425,7 +434,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>4qrVi2+tJMhprlFjoV+q32f323g=</dsig:DigestValue>
+      <dsig:DigestValue>XOCJKbNLpsDdRAKoczLQLzehkE4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\turret.xnb" size="7296187">

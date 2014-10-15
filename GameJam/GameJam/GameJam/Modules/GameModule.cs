@@ -420,7 +420,7 @@ namespace GameJam
                 {
                     for (int i = 0; i < max + 1; i++)
                     {
-                        if (InputHelper.CurrentMouseState.Y >= 300 + i * 50 && InputHelper.CurrentMouseState.Y < 300 + (i + 1) * 50)
+                        if (InputHelper.CurrentMouseState.Y != InputHelper.PreviousMouseState.Y && InputHelper.CurrentMouseState.Y >= 300 + i * 50 && InputHelper.CurrentMouseState.Y < 300 + (i + 1) * 50)
                         {
                             selected = i;
                             mouseover = true;

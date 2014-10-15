@@ -35,6 +35,8 @@ namespace GameJam
         private int max = 5;
         private int tree = 0;
         private bool mouseover = false;
+
+        private Vector2 menuOffset = new Vector2(450, 350);
               
         public MainMenuModule(Game game)
             :base(game)
@@ -90,13 +92,16 @@ namespace GameJam
             {
                 selected += 1;
             }
-            else if (InputHelper.CurrentMouseState.X > 200 && InputHelper.CurrentMouseState.X < 500)
+            else if (InputHelper.CurrentMouseState.X > menuOffset.X && InputHelper.CurrentMouseState.X < menuOffset.X + 200)
             {
                 for (int i = 0; i < max + 1; i++)
                 {
-                    if (InputHelper.CurrentMouseState.Y >= 300 + i * 50 && InputHelper.CurrentMouseState.Y < 300 + (i + 1) * 50)
+                    if (InputHelper.CurrentMouseState.Y >= menuOffset.Y + i * 50 && InputHelper.CurrentMouseState.Y < menuOffset.Y + (i + 1) * 50)
                     {
-                        selected = i;
+                        if (InputHelper.CurrentMouseState.Y != InputHelper.PreviousMouseState.Y)
+                        {
+                            selected = i;
+                        }
                         mouseover = true;
                     }
                 }
@@ -104,10 +109,9 @@ namespace GameJam
 
             if (selected > max) { selected = 0; }
             if (selected < 0) { selected = max; }
-
-            if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Enter) || InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Space) 
-                    || InputHelper.WasPadButtonPressedP1(Buttons.A)
-                        || (InputHelper.WasMouseClicked() && mouseover == true))
+            
+            if ((InputHelper.WasMouseClicked() && mouseover == true) | InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Enter) || InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Space) 
+                    || InputHelper.WasPadButtonPressedP1(Buttons.A))
             {
                 if (tree == 0)
                 {
@@ -338,37 +342,31 @@ namespace GameJam
 
             if (tree == 0)
             {
-                batch.DrawString(font, "New Game", new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Multiplayer", new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Options", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Controls", new Vector2(200, 450), colours[3], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Leaderboard", new Vector2(200, 500), colours[4], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Exit", new Vector2(200, 550), colours[5], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "New Game", menuOffset, colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Multiplayer", menuOffset + new Vector2(0, 50), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Options", menuOffset +  new Vector2(0, 100), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Controls", menuOffset +  new Vector2(0, 150), colours[3], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Leaderboard", menuOffset + new Vector2(0, 200), colours[4], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Exit", menuOffset + new Vector2(0, 250), colours[5], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
             }
             else if (tree == 1)
             {
-                batch.DrawString(font, "Hardcore", new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Easy", new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Back", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Hardcore", menuOffset + new Vector2(0, 0), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Easy", menuOffset + new Vector2(0, 50), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Back", menuOffset + new Vector2(0, 100), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
             }
 
             else if (tree == 2)
             {
-                batch.DrawString(font, "Toggle Fullscreen", new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Music Volume:" + ((int)(MediaPlayer.Volume * 100)).ToString(), new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "SFX Volume:"+((int)(SoundEffectPlayer.Volume*100)).ToString(), new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Mute Music", new Vector2(200, 450), colours[3], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Back", new Vector2(200, 500), colours[4], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Toggle Fullscreen", menuOffset + new Vector2(0, 0), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Music Volume:" + ((int)(MediaPlayer.Volume * 100)).ToString(), menuOffset + new Vector2(0, 50), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "SFX Volume:" + ((int)(SoundEffectPlayer.Volume * 100)).ToString(), menuOffset + new Vector2(0, 100), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Mute Music", menuOffset + new Vector2(0, 150), colours[3], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Back", menuOffset + new Vector2(0, 200), colours[4], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
             }
             else if (tree == 3)
             {
-                batch.DrawString(font, "Show Controls", new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Toggle keys/pad", new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Back", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-
-                batch.DrawString(font, "Pad 1 Connected: " + InputHelper.CurrentGamePadStatePlayer1.IsConnected.ToString(), new Vector2(200, 450), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "Pad 2 Connected: " + InputHelper.CurrentGamePadStatePlayer2.IsConnected.ToString(), new Vector2(200, 500), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-
+                // get info
                 string p1 = "pad";
                 string p2 = "pad";
                 if (InputHelper.Keys == 1)
@@ -380,9 +378,18 @@ namespace GameJam
                     p2 = "keys";
                 }
 
-                batch.DrawString(font, "P1: " + p1.ToString(), new Vector2(200, 550), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                batch.DrawString(font, "P2: " + p2.ToString(), new Vector2(200, 600), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                
+                // Display info
+                batch.DrawString(font, "Pad 1 Connected - " + InputHelper.CurrentGamePadStatePlayer1.IsConnected.ToString() + "       "
+                                        + "Pad 2 Connected - " + InputHelper.CurrentGamePadStatePlayer2.IsConnected.ToString(), menuOffset + new Vector2(-250, 0),
+                                            Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+
+                batch.DrawString(font, "P1 - " + p1.ToString() + "       " + "P2 - " + p2.ToString(), menuOffset + new Vector2(-50, 50), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+
+                // options
+                batch.DrawString(font, "Show Controls", menuOffset + new Vector2(0, 150), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Toggle keys or pad", menuOffset + new Vector2(0, 200), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Back", menuOffset + new Vector2(0, 250), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+
             }
 
         }

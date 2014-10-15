@@ -8,7 +8,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\font.xnb</Output>
-      <Time>2014-05-14T22:14:13.3974074+01:00</Time>
+      <Time>2014-10-15T21:23:46.5509421+01:00</Time>
     </Item>
     <Item>
       <Source>Copy of SpriteFont1.spritefont</Source>
@@ -136,7 +136,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Title screen copy.xnb</Output>
-      <Time>2014-05-11T22:36:31.816979+01:00</Time>
+      <Time>2014-10-15T21:15:58.6621804+01:00</Time>
     </Item>
     <Item>
       <Source>Pause Menu copy.png</Source>
@@ -335,6 +335,15 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\powerupText.xnb</Output>
       <Time>2014-10-12T18:24:33.48751+01:00</Time>
+    </Item>
+    <Item>
+      <Source>HighScore.png</Source>
+      <Name>HighScore</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\HighScore.xnb</Output>
+      <Time>2014-10-15T21:38:15.253629+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -37,3 +37,4 @@ Content\specials.xnb
 Content\cursor.xnb
 Content\circle_both.xnb
 Content\powerupText.xnb
+Content\HighScore.xnb
