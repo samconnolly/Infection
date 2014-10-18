@@ -51,10 +51,10 @@ namespace GameJam
         List<SpriteBase> usedItems = new List<SpriteBase> { };
 
         private bool itemSpawned = false;
-        private int itemTimer = 0;
-        private int itemTime = 2000; // too low!
+        //private int itemTimer = 0;
+        //private int itemTime = 2000; // too low!
         private int itemMax = 2;
-        private int itemMin = 10000;
+        //private int itemMin = 10000;
         private int itemCount = 0;
 
         private Random rand = new Random();

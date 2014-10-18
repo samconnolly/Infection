@@ -96,7 +96,8 @@ namespace GameJam
             {
                 for (int i = 0; i < max + 1; i++)
                 {
-                    if (InputHelper.CurrentMouseState.Y >= menuOffset.Y + i * 50 && InputHelper.CurrentMouseState.Y < menuOffset.Y + (i + 1) * 50)
+                    if ((tree != 3 && InputHelper.CurrentMouseState.Y >= menuOffset.Y + i * 50 && InputHelper.CurrentMouseState.Y < menuOffset.Y + (i + 1) * 50) |
+                            (tree == 3 && InputHelper.CurrentMouseState.Y >= menuOffset.Y + 150 + i * 50 && InputHelper.CurrentMouseState.Y < menuOffset.Y + 150 + (i + 1) * 50))
                     {
                         if (InputHelper.CurrentMouseState.Y != InputHelper.PreviousMouseState.Y)
                         {
