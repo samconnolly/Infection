@@ -50,7 +50,7 @@ namespace GameJam
                 av += wbc.Position;
             }
 
-            Position = av/3.0f;
+            Position = av/group.Count;
 
             foreach (Enemy wbc in group)
             {
@@ -72,6 +72,8 @@ namespace GameJam
 
             if (count <= 0)
             {
+                PowerUpBase powerUp = CellsHelper.Spawning.SpawnPowerUp(Position);
+                CellsHelper.AddItems.Add(powerUp);
                 Die();
             }
 

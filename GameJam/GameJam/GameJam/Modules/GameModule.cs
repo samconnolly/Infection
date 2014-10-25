@@ -25,6 +25,7 @@ namespace GameJam
         private List<SpriteBase> _items;
         private List<SpriteBase> _deadList;
         private List<SpriteBase> _addList;
+        private List<SpriteBase> _addItemList;
         private List<Virus> _virusList;
         private List<Virus> _deadPlayerList;
 
@@ -39,23 +40,24 @@ namespace GameJam
 
         private bool _isPaused = false;
         private Texture2D _pauseTexture;
+        private Texture2D _controller;
 
         private SpawnII spawn2;
         private int spawnTimer = 0;
-        private int level = 1;
-        private int wave = 1;
+        private int level = 0;
+        private int wave = 0;
         private bool spawning = false;
         //private bool health = false;
         List<SpriteBase> add = new List<SpriteBase> { };
         List<SpriteBase> addItem = new List<SpriteBase> { };
         List<SpriteBase> usedItems = new List<SpriteBase> { };
 
-        private bool itemSpawned = false;
+        //private bool itemSpawned = false;
         //private int itemTimer = 0;
         //private int itemTime = 2000; // too low!
-        private int itemMax = 2;
+        //private int itemMax = 2;
         //private int itemMin = 10000;
-        private int itemCount = 0;
+        //private int itemCount = 0;
 
         private Random rand = new Random();
 
@@ -85,23 +87,26 @@ namespace GameJam
 
         internal override void Initialize()
         {
+            CellsHelper.Colours = rand.Next(9);
+
             ScoreHelper.Score = 0;
             _cells = new List<SpriteBase>();
             _items = new List<SpriteBase>();
             _addList = new List<SpriteBase>();
+            _addItemList = new List<SpriteBase>();
             _deadList = new List<SpriteBase>();
             _virusList = new List<Virus>();
             _deadPlayerList = new List<Virus>();
                         
             VirusHelper.Radius1 = 30.0f;
             VirusHelper.Radius2 = 40.0f;
-            VirusHelper.Radius3 = 80.0f;
+            VirusHelper.Radius3 = 100.0f;
 
             VirusHelper.InnerSlow = 0.999f;
             VirusHelper.OuterSlow = 0.5f;
             VirusHelper.OuterOuterSlow = 1.0f;
 
-            VirusHelper.InnerAccn = 4.5f;
+            VirusHelper.InnerAccn = 3.5f;
             VirusHelper.OuterAccn = 5.0f;
             VirusHelper.OuterOuterAccn = 1.0f;
             VirusHelper.OuterOuterOuterAccn = 10.0f;
@@ -110,6 +115,24 @@ namespace GameJam
 
             VirusHelper.Rotation = 1;
             VirusHelper.RotationSpeed = 0.05f;
+
+            VirusHelper.Radius1P2 = 30.0f;
+            VirusHelper.Radius2P2 = 40.0f;
+            VirusHelper.Radius3P2 = 100.0f;
+
+            VirusHelper.InnerSlowP2 = 0.999f;
+            VirusHelper.OuterSlowP2 = 0.5f;
+            VirusHelper.OuterOuterSlowP2 = 1.0f;
+
+            VirusHelper.InnerAccnP2 = 3.5f;
+            VirusHelper.OuterAccnP2 = 5.0f;
+            VirusHelper.OuterOuterAccnP2 = 1.0f;
+            VirusHelper.OuterOuterOuterAccnP2 = 10.0f;
+
+            VirusHelper.RepelP2 = 0.001f;
+
+            VirusHelper.RotationP2 = 1;
+            VirusHelper.RotationSpeedP2 = 0.05f;
 
             ScoreHelper.DeadPlayers = _deadPlayerList;
             ScoreHelper.LivePlayers = _virusList;
@@ -126,6 +149,7 @@ namespace GameJam
 
             //Pause Texture
             _pauseTexture = this.Game.Content.Load<Texture2D>("Pause Menu copy");
+            _controller = this.Game.Content.Load<Texture2D>("controller");
 
             //Load virus Testure.
             Texture2D virusTexture = this.Game.Content.Load<Texture2D>("player");
@@ -173,7 +197,7 @@ namespace GameJam
             //_doubleUp = new DoubleUp(doubleTexture, new Vector2(450,450));
             //_reproduce = new Reproduce(reproduceTexture, new Vector2(30,400));
             
-            _cells.Add(new EnemyGroup(gruntTexture,spawnTexture,new Vector2(800,600),1,1,5,new Vector2(6,5),missileTexture,crossTexture,circleTexture));
+            //_cells.Add(new EnemyGroup(gruntTexture,spawnTexture,new Vector2(800,600),1,1,3,new Vector2(6,5),bombTexture,crossTexture,circleTexture));
             //_cells.Add(_doubleUp);
             //_cells.Add(_reproduce);
             
@@ -186,15 +210,16 @@ namespace GameJam
                                         sleeperTexture,turretTexture,artilleryTexture,
                                             missileTexture, crossTexture, bombTexture, spawnTexture,
                                                 powerupTexture,powerupTextTex, specialTexture, circleTexture);
-                      
+            CellsHelper.Spawning = spawn2;          
+
             // initial powerup(s)
             if (InputHelper.Players == 2)
             {
                 _items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(400, 400), 2));
             }
             _items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(400, 600), 2));
-            
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 300), 8));
+
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(500, 300), 11));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 500), 3));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 500), 4));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(300, 500), 7));
@@ -224,6 +249,12 @@ namespace GameJam
                 ScoreHelper.Lives = 3;
                 ScoreHelper.LivesP2 = 3;
             }
+
+            // check if music is playing already or not
+            if (ViewPortHelper.CurrentSong == beneath)
+            {
+                _isPlayingMusic = true;
+            }
         }
 
         internal override void UnloadContent()
@@ -237,6 +268,7 @@ namespace GameJam
 
             CellsHelper.Cells = _cells;
             CellsHelper.AddCells = _addList;
+            CellsHelper.AddItems = addItem;
             
             // antidote
             if (CellsHelper.Antidote == true)
@@ -248,8 +280,14 @@ namespace GameJam
             if (_cells.Count <= 0 && kill == false && spawning == false)
             {
                 spawning = true;
-                itemSpawned = false;
-                _items = new List<SpriteBase> { };
+                wave += 1;
+                if (wave > 5 | level == 0)
+                {
+                    wave = 1;
+                    level += 1;
+                }
+                //itemSpawned = false;
+                //_items = new List<SpriteBase> { };
             }
 
             if (spawning == true)
@@ -273,14 +311,15 @@ namespace GameJam
                     spawnTimer = 0;
                     //health = false;
                     spawning = false;
-                    wave += 1;
+                    
 
-                    if (wave > 5)
+                    if (wave > 5 | level == 0)
                     {
-                        wave = 1;
-                        level += 1;
+                        PowerUpBase powerup = spawn2.SpawnItem(new Vector2(540, 360)); // spawn item at end of each level
+                        addItem.Add(powerup);
                     }
 
+                    
                     //add = spawn.SpawnEnemies(level);
                     add = spawn2.SpawnEnemies(level);
                 }
@@ -305,25 +344,27 @@ namespace GameJam
                 //    itemTime = rand.Next(itemMin, itemMax);
                 //    itemTimer = 0;
                 //}
-                if (itemSpawned == false)
-                {
-                    addItem = spawn2.SpawnPowerUps(itemMax, wave);
-                    itemCount += 1;
-                    itemSpawned = true;
-                }
+                //if (itemSpawned == false)
+                //{
+                //    addItem = spawn2.SpawnPowerUps(itemMax, wave);
+                //    itemCount += 1;
+                //    itemSpawned = true;
+                //}
+
                 
             }
 
             // cheat!!!
-            if (InputHelper.WasButtonPressed(Keys.P))
-            {
-                addItem = spawn2.SpawnPowerUps(1,2);
-            }
+            //if (InputHelper.WasButtonPressed(Keys.P))
+            //{
+            //    addItem = spawn2.SpawnPowerUp(1,2);
+            //}
 
             //Play music if not playing already.
             if (!_isPlayingMusic)
             {
                 MediaPlayer.Play(beneath);
+                ViewPortHelper.CurrentSong = beneath;
                 MediaPlayer.IsRepeating = true;
                 _isPlayingMusic = true;
             }
@@ -396,23 +437,29 @@ namespace GameJam
                         _isPaused = false;
                         InputHelper.Game.IsMouseVisible = false;
                     }
-                    else
+                    else if (tree != 3)
                     {
                         tree = 0;
                         selected = 0;
                         max = 5;
                     }
+                    else
+                    {
+                        tree = 2;
+                        selected = 0;
+                        max = 2;
+                    }
                 }
-                if (InputHelper.WasButtonPressed(Keys.R) || InputHelper.WasPadButtonPressedP1(Buttons.A))
-                {
-                    _isPaused = false;
-                    InputHelper.Game.IsMouseVisible = IsMouseVisible;
-                }
-                if (InputHelper.WasButtonPressed(Keys.Down) | InputHelper.WasPadThumbstickDownP1())
+                //if (InputHelper.WasButtonPressed(Keys.R) || InputHelper.WasPadButtonPressedP1(Buttons.A))
+                //{
+                //    _isPaused = false;
+                //    InputHelper.Game.IsMouseVisible = IsMouseVisible;
+                //}
+                if (InputHelper.WasButtonPressed(Keys.Down) | InputHelper.WasPadThumbstickDownP1() | InputHelper.WasPadButtonPressedP1(Buttons.DPadDown))
                 {
                     selected += 1;
                 }
-                else if (InputHelper.WasButtonPressed(Keys.Up) | InputHelper.WasPadThumbstickUpP1())
+                else if (InputHelper.WasButtonPressed(Keys.Up) | InputHelper.WasPadThumbstickUpP1() | InputHelper.WasPadButtonPressedP1(Buttons.DPadUp))
                 {
                     selected -= 1;
                 }
@@ -514,7 +561,9 @@ namespace GameJam
                     {
                         if (selected == 0)
                         {
-                            // controls!
+                            tree = 3;
+                            max = 0;
+                            selected = 0;
                         }
                         else if (selected == 1)
                         {
@@ -533,6 +582,12 @@ namespace GameJam
                             selected = 0;
                             max = 5;
                         }
+                    }
+                    else if (tree == 3)
+                    {
+                        tree = 2;
+                        selected = 0;
+                        max = 2;
                     }
                 }
             }
@@ -589,6 +644,8 @@ namespace GameJam
 
                 _addList = new List<SpriteBase> { };
 
+                
+
                 // get rid of dead cells
 
                 _deadList = DeathHelper.KillCell;
@@ -601,7 +658,9 @@ namespace GameJam
                 _deadList = new List<SpriteBase> { };
 
                 // add new powerups
-                
+
+                addItem = CellsHelper.AddItems;
+
                 foreach (SpriteBase sprite in addItem)
                 {
                     _items.Add(sprite);
@@ -628,6 +687,8 @@ namespace GameJam
             {
                 List<Color>  colours = new List<Color> { Color.White, Color.White, Color.White, Color.White, Color.White, Color.White };
                 colours[selected] = Color.Black;
+
+                batch.DrawString(font2, "Paused", new Vector2(200, 150), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
 
                 if (tree == 0)
                 {
@@ -668,6 +729,12 @@ namespace GameJam
                     batch.DrawString(font, "P1 - " + p1.ToString(), new Vector2(200, 550), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                     batch.DrawString(font, "P2 - " + p2.ToString(), new Vector2(200, 600), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 }
+                else if (tree == 3)
+                {                   
+                    batch.DrawString(font, "Back", new Vector2(450, 600), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.Draw(_controller, new Vector2(200, 200), null, Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 0.49f);
+                }
+
                 batch.Draw(_pauseTexture, new Vector2(0, 0),null, Color.White,0,Vector2.Zero,1.0f,SpriteEffects.None,0.5f);
             }
 
@@ -696,11 +763,13 @@ namespace GameJam
                 }
 
                 //Draw the background.
-                _background.Draw(gameTime, batch);
+                
+                _background.Draw(gameTime, batch,level);
 
                 // Draw score
                 batch.DrawString(font, "Level - " + level.ToString() + " Wave -" + wave.ToString(), new Vector2(400, 20), Color.White);
                 batch.DrawString(font, "Score - " + ScoreHelper.Score.ToString(), new Vector2(450, 60), Color.White);
+
                 if (ScoreHelper.Hardcore == false)
                 {
                     if (InputHelper.Players == 2)
@@ -712,6 +781,12 @@ namespace GameJam
                     {
                         batch.DrawString(font, "Lives - " + ScoreHelper.Lives.ToString(), new Vector2(120, 40), Color.White);
                     }
+                }
+
+                // level text
+                if (spawning == true && wave == 1)
+                {
+                    batch.DrawString(font2, "Level " + (level).ToString(), new Vector2(400, 400), Color.White);
                 }
 
                 // circles

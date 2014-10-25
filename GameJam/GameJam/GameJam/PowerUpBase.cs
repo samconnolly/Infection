@@ -31,6 +31,10 @@ namespace GameJam
         private List<int> textY = new List<int> { 5, 5, 6, 0, 3, 3, 8, 4, 4, 1, 7, 7, 9, 8, 7, 2, 6, 9, 2, 1, 0 };
         private Vector2 textOffset = Vector2.Zero;
 
+        private int hoverReach = 15;
+        private int hoverDir = 1;
+        private int hoverHeight;
+
         public PowerUpBase(Texture2D texture, Texture2D specialTexture, Texture2D textTexture, Vector2 position, int Type)
             : base(texture)
         {
@@ -39,6 +43,8 @@ namespace GameJam
             type = Type;
             Scale = 0.3f;
             textTex = textTexture;
+
+            hoverHeight = InputHelper.Random.Next(hoverReach * 2) - hoverReach;
 
             if (cells[type - 1] > 8)
             {
@@ -71,6 +77,7 @@ namespace GameJam
                 {
                     PowerUp(1);
                     pickup = 1;
+                    SoundEffectPlayer.PlaySquelch();
                 }
                 if (InputHelper.Players == 2)
                 {
@@ -80,6 +87,7 @@ namespace GameJam
                     {
                         PowerUp(2);
                         pickup = 2;
+                        SoundEffectPlayer.PlaySquelch();
                     }
                 }
             }
@@ -92,6 +100,15 @@ namespace GameJam
                 {
                     Die();
                 }
+            }
+
+            // hover
+            Position += new Vector2(0, hoverDir*(hoverReach - Math.Abs(hoverHeight))*(gameTime.ElapsedGameTime.Milliseconds/200.0f));
+            hoverHeight += hoverDir;
+
+            if (Math.Abs(hoverHeight) >= hoverReach)
+            {
+                hoverDir *= -1;     // swap direction
             }
 
             base.Update(gameTime, bactch);
@@ -320,11 +337,19 @@ namespace GameJam
         {
             if (player == 1)
             {
-                VirusHelper.RotationSpeed += 0.02f; // problematic!!
+                if (VirusHelper.OrbitCount < 3)
+                {
+                    VirusHelper.OrbitCount += 1;
+                    VirusHelper.RotationSpeed += 0.02f; // problematic!!
+                }
             }
             else
             {
-                VirusHelper.RotationSpeedP2 += 0.02f; // problematic!!
+                if (VirusHelper.OrbitCountP2 < 3)
+                {
+                    VirusHelper.OrbitCountP2 += 1;
+                    VirusHelper.RotationSpeedP2 += 0.02f; // problematic!!
+                }
             }
         }
 
@@ -332,11 +357,19 @@ namespace GameJam
         {
             if (player == 1)
             {
-                VirusHelper.RotationSpeed -= 0.02f; // problematic!!
+                if (VirusHelper.OrbitCount > -3)
+                {
+                    VirusHelper.OrbitCount -= 1;
+                    VirusHelper.RotationSpeed -= 0.02f; // problematic!!
+                }
             }
             else
             {
-                VirusHelper.RotationSpeedP2 -= 0.02f; // problematic!!
+                if (VirusHelper.OrbitCountP2 > -3)
+                {
+                    VirusHelper.OrbitCountP2 -= 1;
+                    VirusHelper.RotationSpeedP2 -= 0.02f; // problematic!!
+                }
             }
         }
 
@@ -356,11 +389,19 @@ namespace GameJam
         {
             if (player == 1)
             {
-                VirusHelper.Radius1 += 10f;
+                if (VirusHelper.RadiusCount < 3)
+                {
+                    VirusHelper.RadiusCount += 1;
+                    VirusHelper.Radius1 += 10f; // problematic!!
+                }
             }
             else
             {
-                VirusHelper.Radius1P2 += 10f;
+                if (VirusHelper.RadiusCountP2 < 3)
+                {
+                    VirusHelper.RadiusCountP2 += 1;
+                    VirusHelper.Radius1P2 += 10f; // problematic!!
+                }
             }
         }
 
@@ -368,11 +409,19 @@ namespace GameJam
         {
             if (player == 1)
             {
-                VirusHelper.Radius1 -= 10f;
+                if (VirusHelper.RadiusCount > -3)
+                {
+                    VirusHelper.RadiusCount -= 1;
+                    VirusHelper.Radius1 -= 10f; // problematic!!
+                }
             }
             else
             {
-                VirusHelper.Radius1P2 -= 10f;
+                if (VirusHelper.RadiusCountP2 > -3)
+                {
+                    VirusHelper.RadiusCountP2 -= 1;
+                    VirusHelper.Radius1P2 -= 10f; // problematic!!
+                }
             }
         }
 
@@ -380,11 +429,19 @@ namespace GameJam
         {
             if (player == 1)
             {
-                VirusHelper.Virus.maxSpeed += 1;
+                if (VirusHelper.SpeedCount < 3)
+                {
+                    VirusHelper.SpeedCount += 1;
+                    VirusHelper.Virus.maxSpeed += 1;
+                }
             }
             else
             {
-                VirusHelper.VirusP2.maxSpeed += 1;
+                if (VirusHelper.SpeedCountP2 < 3)
+                {
+                    VirusHelper.SpeedCountP2 += 1;
+                    VirusHelper.VirusP2.maxSpeed += 1;
+                }
             }
         }
 
@@ -392,11 +449,19 @@ namespace GameJam
         {
             if (player == 1)
             {
-                VirusHelper.Virus.maxSpeed -= 1;
+                if (VirusHelper.SpeedCount > -3)
+                {
+                    VirusHelper.SpeedCount -= 1;
+                    VirusHelper.Virus.maxSpeed -= 1;
+                }
             }
             else
             {
-                VirusHelper.VirusP2.maxSpeed -= 1;
+                if (VirusHelper.SpeedCountP2 > -3)
+                {
+                    VirusHelper.SpeedCountP2 -= 1;
+                    VirusHelper.VirusP2.maxSpeed -= 1;
+                }
             }
         }
 

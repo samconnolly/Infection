@@ -36,6 +36,8 @@ namespace GameJam
         public bool firing = false;
         public bool shock = false;
 
+        private bool screaming = false;
+
         int spawnTimer = 0;
         int spawnTime = 1500;
 
@@ -514,6 +516,11 @@ namespace GameJam
                     if (fireTimer > fireTime - telegraphTime)
                     {
                         telegraph = true;
+                        if (screaming == false)
+                        {
+                            SoundEffectPlayer.PlayVoice(6);
+                            screaming = true;
+                        }
                     }
 
                     if (fireTimer > fireTime)
@@ -522,9 +529,10 @@ namespace GameJam
                         Bomb();
                         fireTime = (int)(random.NextDouble() * (fireTimeMax - fireTimeMin) + fireTimeMin);
                         telegraph = false;
+                        screaming = false;
                     }
                 }
-
+                // wave
                 else if (attack == 4)
                 {
                     fireTimer += gameTime.ElapsedGameTime.Milliseconds;
@@ -532,6 +540,11 @@ namespace GameJam
                     if (fireTimer > fireTime - telegraphTime)
                     {
                         telegraph = true;
+                        if (screaming == false)
+                        {
+                            SoundEffectPlayer.PlayVoice(7);
+                            screaming = true;
+                        }
                     }
 
                     if (fireTimer > fireTime)
@@ -540,6 +553,7 @@ namespace GameJam
                         Wave();
                         fireTime = (int)(random.NextDouble() * (fireTimeMax - fireTimeMin) + fireTimeMin);
                         telegraph = false;
+                        screaming = false;
                     }
                 }
 
@@ -551,6 +565,12 @@ namespace GameJam
                     if (fireTimer > fireTime - telegraphTime)
                     {
                         telegraph = true;
+                        telegraph = true;
+                        if (screaming == false)
+                        {
+                            SoundEffectPlayer.PlayVoice(8);
+                            screaming = true;
+                        }
                     }
 
                     if (fireTimer > fireTime)
@@ -559,10 +579,11 @@ namespace GameJam
                         Fire();
                         fireTime = (int)(random.NextDouble() * (fireTimeMax - fireTimeMin) + fireTimeMin);
                         telegraph = false;
+                        screaming = false;
                     }
 
                 }
-
+                // shock wave
                 else if (attack == 6)
                 {
                     fireTimer += gameTime.ElapsedGameTime.Milliseconds;
@@ -570,6 +591,12 @@ namespace GameJam
                     if (fireTimer > fireTime - telegraphTime)
                     {
                         telegraph = true;
+                        if (screaming == false)
+                        {
+                            SoundEffectPlayer.PlayVoice(9);
+                            screaming = true;
+                        }
+                        
                     }
 
                     if (fireTimer > fireTime)
@@ -579,6 +606,7 @@ namespace GameJam
                         fireTime = (int)(random.NextDouble() * (fireTimeMax - fireTimeMin) + fireTimeMin);
                         shock = true;
                         telegraph = false;
+                        screaming = false;
                     }
                 }
 
@@ -871,6 +899,11 @@ namespace GameJam
                 v.damaging = false;
 
                 hitPoints -= 1;
+
+                if (random.Next(4) == 0)
+                {
+                    SoundEffectPlayer.PlayVoice(attack);
+                }
             }
 
             if (random.NextDouble() < dieChance)
@@ -896,7 +929,12 @@ namespace GameJam
             ////////////////
             frame = 5;
 
-            hitPoints -= 1;            
+            hitPoints -= 1;
+
+            if (random.Next(4) == 0)
+            {
+                SoundEffectPlayer.PlayVoice(attack);
+            }
         }
     }
 }

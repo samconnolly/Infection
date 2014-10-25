@@ -5,13 +5,16 @@ using System.Text;
 
 namespace GameJam
 {
-    public static class CellsHelper
+    static class CellsHelper
     {
         private static List<SpriteBase> _cellList;
         private static List<SpriteBase> _addList = new List<SpriteBase> { };
+        private static List<SpriteBase> _addItemList = new List<SpriteBase> { };
         private static bool _freeze = false;
         private static bool _antidote = false;
         private static int _colours = InputHelper.Random.Next(9);
+        private static SpawnII _spawning;
+
 
         public static List<SpriteBase> Cells
         {
@@ -23,6 +26,12 @@ namespace GameJam
         {
             get { return _addList; }
             set { _addList = value; }
+        }
+
+        public static List<SpriteBase> AddItems
+        {
+            get { return _addItemList; }
+            set { _addItemList = value; }
         }
 
         public static bool Freeze
@@ -41,6 +50,12 @@ namespace GameJam
         {
             get { return _colours; }
             set { _colours = value; }
+        }
+
+        public static SpawnII Spawning
+        {
+            get { return _spawning; }
+            set { _spawning = value; }
         }
     }
 }

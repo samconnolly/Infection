@@ -24,6 +24,7 @@ namespace GameJam
         //private Rectangle _drawRectangle;
         private Vector2 _position = new Vector2(0, 0);
         private Texture2D _background;
+        private Texture2D _controller;
         private Rectangle _backRect;
         private bool _isPlayingMusic = false;
         private bool _isMuted = false;
@@ -55,6 +56,7 @@ namespace GameJam
         internal override void LoadContent(SpriteBatch batch)
         {
             _background = this.Game.Content.Load<Texture2D>("Title screen copy");
+            _controller = this.Game.Content.Load<Texture2D>("controller");
             _backRect = new Rectangle(0, 0, _background.Width, _background.Height);
 
             //Load atmospheric music.
@@ -76,6 +78,7 @@ namespace GameJam
             if (!_isPlayingMusic)
             {
                 MediaPlayer.Play(music);
+                ViewPortHelper.CurrentSong = music;
                 MediaPlayer.IsRepeating = true;
                 _isPlayingMusic = true;
             }
@@ -84,11 +87,11 @@ namespace GameJam
             // menu control
             mouseover = false;
 
-            if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Up) || InputHelper.WasPadThumbstickUpP1())
+            if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Up) || InputHelper.WasPadThumbstickUpP1() | InputHelper.WasPadButtonPressedP1(Buttons.DPadUp))
             {
                 selected -= 1;
             }
-            else if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Down) || InputHelper.WasPadThumbstickDownP1())
+            else if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Down) || InputHelper.WasPadThumbstickDownP1() | InputHelper.WasPadButtonPressedP1(Buttons.DPadDown))
             {
                 selected += 1;
             }
@@ -236,6 +239,9 @@ namespace GameJam
                     if (selected == 0)
                     {
                         // controls!
+                        tree = 4;
+                        selected = 0;
+                        max = 0;
                     }
                     else if (selected == 1)
                     {
@@ -255,6 +261,12 @@ namespace GameJam
                         max = 5;
                     }
                 }
+                else if (tree == 4)
+                {
+                    tree = 3;
+                    selected = 0;
+                    max = 2;
+                }
 
                 
             }
@@ -262,9 +274,19 @@ namespace GameJam
             {
                 if (InputHelper.WasPadButtonPressedP1(Buttons.B))
                 {
-                    tree = 0;
-                    selected = 0;
-                    max = 5;
+                    if (tree != 4)
+                    {
+                        tree = 0;
+                        selected = 0;
+                        max = 5;
+                    }
+                    else
+                    {
+                        tree = 3;
+                        selected = 0;
+                        max = 2;
+                    }
+                
                 }
             }
             // exit game
@@ -340,7 +362,7 @@ namespace GameJam
         internal override void Draw(GameTime gameTime, SpriteBatch batch)
         {
             batch.Draw(_background, new Vector2(0, 0), _backRect, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.5f);
-
+            
             if (tree == 0)
             {
                 batch.DrawString(font, "New Game", menuOffset, colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
@@ -391,6 +413,11 @@ namespace GameJam
                 batch.DrawString(font, "Toggle keys or pad", menuOffset + new Vector2(0, 200), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 batch.DrawString(font, "Back", menuOffset + new Vector2(0, 250), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
 
+            }
+            else if (tree == 4)
+            {
+                batch.Draw(_controller, new Vector2(200, 230), new Rectangle(0, 0, _controller.Width, _controller.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.49f);
+                batch.DrawString(font, "Back", menuOffset + new Vector2(0, 250), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
             }
 
         }

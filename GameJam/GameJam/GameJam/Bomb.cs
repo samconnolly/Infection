@@ -32,6 +32,8 @@ namespace GameJam
         private int frate;
         private int timer = 0;
 
+        private bool splash = false;
+
         public Bomb(Texture2D texture,Texture2D CrossTexture,Vector2 startPos, Vector2 target, float speed)
             : base(texture)
         {
@@ -50,6 +52,8 @@ namespace GameJam
 
             frate = ViewPortHelper.FrameRate;
             offset = DrawOffset;
+
+
         }
 
         public override void Update(GameTime gameTime, SpriteBatch bactch)
@@ -78,25 +82,34 @@ namespace GameJam
             
 
             // killing
-            if ((this.Position - VirusHelper.VirusPosition).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale && Position.Y >= crossPosition.Y + fallOffset)
+            if (Position.Y > crossPosition.Y + fallOffset && up == false)
             {
-                ScoreHelper.PlayerHit(VirusHelper.Virus);
-                DeathHelper.KillCell.Add(this);
-                hit = true;
-            }
-            else if (InputHelper.Players == 2)
-            {
-                if ((this.Position - VirusHelper.VirusPositionP2).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale && Position.Y >= crossPosition.Y + fallOffset)
+                if ((this.Position - VirusHelper.VirusPosition).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale && Position.Y >= crossPosition.Y + fallOffset)
                 {
-                    ScoreHelper.PlayerHit(VirusHelper.VirusP2);
+                    ScoreHelper.PlayerHit(VirusHelper.Virus);
                     DeathHelper.KillCell.Add(this);
                     hit = true;
+                }
+                else if (InputHelper.Players == 2)
+                {
+                    if ((this.Position - VirusHelper.VirusPositionP2).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale && Position.Y >= crossPosition.Y + fallOffset)
+                    {
+                        ScoreHelper.PlayerHit(VirusHelper.VirusP2);
+                        DeathHelper.KillCell.Add(this);
+                        hit = true;
+                    }
                 }
             }
 
             // anim
             if (Position.Y > crossPosition.Y + fallOffset && up == false)
             {
+                if (splash == false)
+                {
+                    SoundEffectPlayer.PlaySplash();
+                    splash = true;
+                }
+
                 timer += gameTime.ElapsedGameTime.Milliseconds;
 
                 if (timer > frate)

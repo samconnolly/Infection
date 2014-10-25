@@ -21,6 +21,14 @@ namespace GameJam
         private static List<Virusling> _viruslings2;
         private static Virus _virus2;
 
+
+        private static int radiusCount = 0;
+        private static int speedCount = 0;
+        private static int orbitCount = 0;
+
+        private static int radiusCountP2 = 0;
+        private static int speedCountP2 = 0;
+        private static int orbitCountP2 = 0;
         
         public static float radius1 = 30.0f;
         public static float radius2 = 40.0f;
@@ -262,6 +270,42 @@ namespace GameJam
         {
             get { return repelP2; }
             set { repelP2 = value; }
+        }
+
+        public static int RadiusCount
+        {
+            get { return radiusCount; }
+            set { radiusCount = value; }
+        }
+
+        public static int SpeedCount
+        {
+            get { return speedCount; }
+            set { speedCount = value; }
+        }
+
+        public static int OrbitCount
+        {
+            get { return orbitCount; }
+            set { orbitCount = value; }
+        }
+
+        public static int RadiusCountP2
+        {
+            get { return radiusCountP2; }
+            set { radiusCountP2 = value; }
+        }
+
+        public static int SpeedCountP2
+        {
+            get { return speedCountP2; }
+            set { speedCountP2 = value; }
+        }
+
+        public static int OrbitCountP2
+        {
+            get { return orbitCountP2; }
+            set { orbitCountP2 = value; }
         }
 
     }

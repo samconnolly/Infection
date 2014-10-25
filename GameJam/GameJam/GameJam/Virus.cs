@@ -41,7 +41,7 @@ namespace GameJam
         int powerupTimer = 0;
         int powerupTime = 500;
 
-        private int antidoteTime = 5000;
+        private int antidoteTime = 60000;
 
         // power ups
 
@@ -76,6 +76,8 @@ namespace GameJam
         public Rectangle laserRect;
         public float laserRot = 0.0f;
         public Vector2 laserOffset;
+        private int laserFrame;
+        private int laserTimer = 0;
         
         // player
         public int player;
@@ -118,7 +120,7 @@ namespace GameJam
             SheetSize = new Vector2(directions, colours);
             Velocity = new Vector2(0,0);
             acceleration = new Vector2(0,0);
-            maxSpeed = 4.0f;
+            maxSpeed = 4.5f;
             accelerationMagnitude = 15.0f;
             deccelerationMagnitude = 4.0f;
             accing = false;
@@ -132,7 +134,8 @@ namespace GameJam
             powerupRect = new Rectangle(0, 0, powerupTex.Width / 11, powerupTex.Height);
 
             laserTex = laserTexture;
-            laserRect = new Rectangle(0, 0, laserTex.Width, laserTex.Height);
+            laserRect = new Rectangle(0, 0, laserTex.Width, laserTex.Height/3);
+            laserFrame = 0;
 
             eyeTex = eyeTexture;
             eyeWidth = eyeTex.Width / directions;
@@ -393,25 +396,27 @@ namespace GameJam
 
                     // offset
 
-                    if (0.0f <= laserRot && laserRot < (float)(Math.PI / 2))
-                    {
-                        laserOffset = new Vector2(0, -laserRect.Height / 2);// -new Vector2(0, Rectangle.Height * Scale);
-                    }
+                    //if (0.0f <= laserRot && laserRot < (float)(Math.PI / 2))
+                    //{
+                    //    laserOffset = new Vector2(0, -laserRect.Height * 0.8f / 2);// -new Vector2(0, Rectangle.Height * Scale);
+                    //}
 
-                    else if ((float)(Math.PI / 2) <= laserRot && laserRot < (float)(Math.PI))
-                    {
-                        laserOffset = new Vector2(laserRect.Height / 2, 0);
-                    }
+                    //else if ((float)(Math.PI / 2) <= laserRot && laserRot < (float)(Math.PI))
+                    //{
+                    //    laserOffset = new Vector2(laserRect.Height * 0.8f / 2, 0);
+                    //}
 
-                    else if ((float)(Math.PI) <= laserRot && laserRot < (float)((3 * Math.PI) / 2))
-                    {
-                        laserOffset = new Vector2(0, laserRect.Height / 2);
-                    }
+                    //else if ((float)(Math.PI) <= laserRot && laserRot < (float)((3 * Math.PI) / 2))
+                    //{
+                    //    laserOffset = new Vector2(0, laserRect.Height * 0.8f / 2);
+                    //}
 
-                    else
-                    {
-                        laserOffset = new Vector2(-laserRect.Height / 2, 0);
-                    }
+                    //else
+                    //{
+                    //    laserOffset = new Vector2(-laserRect.Height * 0.8f / 2, 0);
+                    //}
+
+                    laserOffset = new Vector2(laserRect.Height * 0.5f * ((float)Math.Sin(laserRot)), -laserRect.Height * 0.5f * ((float)Math.Cos(laserRot)));
 
                     // firing
 
@@ -495,7 +500,7 @@ namespace GameJam
             if (InputHelper.Keys == player)
             {
 
-                if (InputHelper.IsButtonDown(Keys.Up) || InputHelper.IsButtonDown(Keys.W))
+                if (InputHelper.IsButtonDown(Keys.Up) || InputHelper.IsButtonDown(Keys.W) )
                 {
                     acceleration += new Vector2(0, -1);
                     accing = true;
@@ -528,6 +533,31 @@ namespace GameJam
                     acceleration = new Vector2(InputHelper.LeftThumbstickDirectionP1.X, -InputHelper.LeftThumbstickDirectionP1.Y);
                     accing = true;
                 }
+               
+                if (InputHelper.IsPadButtonDownP1(Buttons.DPadUp))
+                {
+                    acceleration += new Vector2(0, -1);
+                    accing = true;
+                }
+
+                if (InputHelper.IsPadButtonDownP1(Buttons.DPadDown))
+                {
+                    acceleration += new Vector2(0, 1);
+                    accing = true;
+                }
+
+                if (InputHelper.IsPadButtonDownP1(Buttons.DPadLeft))
+                {
+                    acceleration += new Vector2(-1, 0);
+                    accing = true;
+                }
+
+                if (InputHelper.IsPadButtonDownP1(Buttons.DPadRight))
+                {
+                    acceleration += new Vector2(1, 0);
+                    accing = true;
+                }
+                
             }
 
             else if (player == 2)
@@ -537,6 +567,31 @@ namespace GameJam
                     acceleration = new Vector2(InputHelper.LeftThumbstickDirectionP2.X, -InputHelper.LeftThumbstickDirectionP2.Y);
                     accing = true;
                 }
+
+                if (InputHelper.IsPadButtonDownP2(Buttons.DPadUp))
+                {
+                    acceleration += new Vector2(0, -1);
+                    accing = true;
+                }
+
+                if (InputHelper.IsPadButtonDownP2(Buttons.DPadDown))
+                {
+                    acceleration += new Vector2(0, 1);
+                    accing = true;
+                }
+
+                if (InputHelper.IsPadButtonDownP2(Buttons.DPadLeft))
+                {
+                    acceleration += new Vector2(-1, 0);
+                    accing = true;
+                }
+
+                if (InputHelper.IsPadButtonDownP2(Buttons.DPadRight))
+                {
+                    acceleration += new Vector2(1, 0);
+                    accing = true;
+                }
+                
             }
 
             // ================================================================================
@@ -850,17 +905,35 @@ namespace GameJam
                 powerupRect.X = (powerupList[activePowerup - 1]) * powerupRect.Width;
             }
 
+            // laser anim
+            if (laser == true)
+            {
+                laserTimer += gameTime.ElapsedGameTime.Milliseconds;
+                if (laserTimer > ViewPortHelper._frameRate)
+                {
+                    laserTimer = 0;
+                    laserFrame += 1;
+                    if (laserFrame > 2)
+                    {
+                        laserFrame = 0;
+                    }
+                    laserRect.Y = laserFrame * laserRect.Height;
+                }
+            }
+
             // hit
             if (hit == true)
             {
                 hitTimer += gameTime.ElapsedGameTime.Milliseconds;
                 base.Colour = Color.Red;
+                invincible = true;
 
                 if (hitTimer >= hitTime)
                 {
                     hit = false;
                     hitTimer = 0;
                     base.Colour = Color.White;
+                    invincible = false;
                 }
             }
 
@@ -882,7 +955,7 @@ namespace GameJam
 
             if (laser == true)
             {
-                batch.Draw(laserTex, Position + laserOffset, laserRect, Color.White, laserRot, Vector2.Zero, 1.0f, SpriteEffects.None, layer+0.01f);//LAZER TEX !!!!!!!!
+                batch.Draw(laserTex, Position + laserOffset, laserRect, Color.White, laserRot, Vector2.Zero, 0.8f, SpriteEffects.None, layer+0.01f);//LAZER TEX !!!!!!!!
             }
 
             if (circles == true)

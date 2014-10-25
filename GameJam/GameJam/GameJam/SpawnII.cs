@@ -15,7 +15,7 @@ namespace GameJam
     class SpawnII
     {
         List<Vector2> spawnPoints = new List<Vector2> { };
-
+        private List<int> spawnedItems = new List<int> { };
 
         Texture2D ChargerTex;
         
@@ -34,9 +34,6 @@ namespace GameJam
         Texture2D powerupTextTex;
         Texture2D heartTex;
         Texture2D circleTex;
-        int radiusCount = 0;
-        int speedCount = 0;
-        int orbitCount = 0;
 
         Vector2 dim = new Vector2(6, 5);
 
@@ -44,18 +41,17 @@ namespace GameJam
         Tuple<int, int, Texture2D, int> stats2;
         Tuple<int, int, Texture2D, int> stats3;
 
-        private float veryCommon = 0.50f;
-        private float common = 0.25f;
-        private float uncommon = 0.14f;
-        private float rare = 0.10f;
-        //private float veryRare = 0.01f;
+        private float nanitePowerUp = 0.43f;
+        private float physicsPowerUp = 0.22f;
+        private float speedPowerUp = 0.20f;
+        private float healthPowerUp = 0.15f;
 
         int movement;
         int attack;
 
         Random random = new Random();
 
-        public SpawnII(Texture2D GruntTexture, Texture2D ChargerTexture,
+         public SpawnII(Texture2D GruntTexture, Texture2D ChargerTexture,
                                 Texture2D SleeperTexture, Texture2D TurretTexture, Texture2D ArtilleyTexture,
                                         Texture2D missileTexture, Texture2D crossTexture, Texture2D bombTexture, Texture2D TextureSpawn,
                                             Texture2D powerupTexture, Texture2D powerupTextTexture, Texture2D heartTexture, Texture2D circleTexture)
@@ -261,7 +257,7 @@ namespace GameJam
                 movement = 5;
             }
 
-            return new Tuple<int, int, Texture2D, int>(movement, attack, ChargerTex,1);
+            return new Tuple<int, int, Texture2D, int>(movement, attack, ArtilleyTex,1);
         }
 
         public List<SpriteBase> SpawnEnemies(int level)
@@ -392,274 +388,215 @@ namespace GameJam
             return spawnList;
         }
 
-        public List<SpriteBase> SpawnPowerUps(int n, int wave)
-
+        public PowerUpBase SpawnPowerUp(Vector2 position)
         {
-            // Power Up spawning
-            Vector2 offset;
-            List<int> positions = new List<int> { };
-            for (int i = 0; i < n; i++)
+            int type = ChooseNormalPowerUp();    
+
+                PowerUpBase powerUp = new PowerUpBase(powerupTex, heartTex, powerupTextTex, position, type);
+                    
+            return powerUp;
+        }
+
+        public PowerUpBase SpawnItem(Vector2 position)
+        {
+            int type = ChooseSpecialPowerUp();
+            while (spawnedItems.Contains(type) == true | (ScoreHelper.Hardcore == true && type == 12))
             {
-                int pos = random.Next(4);
-                while (positions.Contains(pos))
-                {
-                    pos += 1;
-                    if (pos >= n)
-                    {
-                        pos = 0;
-                    }
-                }
-                positions.Add(pos);
+                type = ChooseSpecialPowerUp();
             }
-
-            List<SpriteBase> spawnList = new List<SpriteBase> { };
-
-
-
-            foreach (int pos in positions)
+                
+            PowerUpBase powerUp = new PowerUpBase(powerupTex, heartTex, powerupTextTex, position, type);
+            if (type >= 16 | type == 4 | type == 10)
             {
-                if (wave != 1 | positions.IndexOf(pos) != 0)
+                spawnedItems.Add(type);
+            }
+       
+            return powerUp;
+        }
+
+        public int ChooseNormalPowerUp()
+        {
+            int spawnChoice = 0;
+
+            double chance = random.NextDouble();
+
+            double choice = random.NextDouble();
+
+            if (choice < nanitePowerUp)
+            {
+                // nanites
+                double num = random.NextDouble()*100;
+
+                if (num <= 50)
                 {
-                    double chance = random.NextDouble();
-
-                    double choice = random.NextDouble();
-                    offset = new Vector2((float)(random.NextDouble() * 60.0 - 15), (float)(random.NextDouble() * 60.0 - 15));
-
-                    if (choice < veryCommon)
-                    {
-                        // very common
-                        int num = random.Next(2);
-
-                        if (num == 0)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex,heartTex, powerupTextTex, spawnPoints[pos], 1));
-                        }
-                        else
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex,heartTex, powerupTextTex, spawnPoints[pos], 2));
-                        }
-
-                    }
-                    else if (choice < veryCommon + common)
-                    {
-                        // common
-                        if (ScoreHelper.Hardcore == false)
-                        {
-                            int num = random.Next(3);
-
-                            if (num == 0)
-                            {
-                                if (speedCount < 2)
-                                {
-                                    spawnList.Add(new PowerUpBase(powerupTex,heartTex, powerupTextTex, spawnPoints[pos], 13));
-                                    speedCount += 1;
-                                }
-                                else
-                                {
-                                    spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 13));
-                                    speedCount += 1;
-                                }
-                            }
-                            else if (num == 1)
-                            {
-                                if (speedCount > -2)
-                                {
-                                    spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 14));
-                                    speedCount -= 1;
-                                }
-                                else
-                                {
-                                    spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 13));
-                                    speedCount += 1;
-                                }
-                            }
-                            else
-                            {
-                                spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 15));
-                            }
-                        }
-                        else
-                        {
-                            int num = random.Next(2);
-
-                            if (num == 0)
-                            {
-                                spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 13));
-                            }
-                            else
-                            {
-                                spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 14));
-                            }
-                        }
-                    }
-                    else if (choice < veryCommon + common + uncommon)
-                    {
-                        // uncommon
-                        int num = random.Next(10);
-
-                        if (num == 0)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 3));
-                        }
-                        else if (num == 1)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 5));
-                        }
-                        else if (num == 2)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 6));
-                        }
-                        else if (num == 3)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 7));
-                        }
-                        else if (num == 4)
-                        {
-                            if (orbitCount < 2)
-                            {
-                                spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 8));
-                                orbitCount += 1;
-                            }
-                            else
-                            {
-                                spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 9));
-                                orbitCount -= 1;
-                            }
-                        }
-                        else if (num == 5)
-                        {
-                            if (orbitCount > -2)
-                            {
-                                spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 9));
-                                orbitCount -= 1;
-                            }
-                            else
-                            {
-                                spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 8));
-                                orbitCount += 1;
-                            }
-                        }
-                        else if (num == 6)
-                        {
-                            if (radiusCount < 2)
-                            {
-                                spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 11));
-                                radiusCount += 1;
-                            }
-                            else
-                            {
-                                spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 12));
-                                radiusCount -= 1;
-                            }
-                        }
-                        else if (num == 7)
-                        {
-                            if (radiusCount > -2)
-                            {
-                                spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 12));
-                                radiusCount -= 1;
-                            }
-                            else
-                            {
-                                spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 11));
-                                radiusCount += 1;
-                            }
-                        }
-                        else if (num == 8)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 17));
-                        }
-                        else
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 18));
-                        }
-                    }
-                    else if (choice < veryCommon + common + uncommon + rare)
-                    {
-                        // rare
-                        int num = random.Next(10);
-
-                        if (num == 0)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 4));
-                        }
-                        else if (num == 1)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 10));
-                        }
-                        else if (num == 2)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 16));
-                        }
-                        else if (num == 3)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 19));
-
-
-
-                        }
-                        else
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 20));
-                        }
-
-                    }
-                    else
-                    {
-                        // very rare
-                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 21));
-                    }
+                    spawnChoice = 1;
+                }
+                else if (num <= 50 + 25)
+                {
+                    spawnChoice = 2;
+                }
+                else if (num <= 50 + 25 + 15)
+                {
+                    spawnChoice = 5;
                 }
                 else
                 {
-                    double chance = random.NextDouble();
+                    spawnChoice = 6;
+                }
 
-                    double choice = random.NextDouble();
-                    offset = new Vector2((float)(random.NextDouble() * 60.0 - 15), (float)(random.NextDouble() * 60.0 - 15));
+            }
+            else if (choice < nanitePowerUp + physicsPowerUp)
+            {
+                // physics
+                
+                double num = random.NextDouble()*100;
+                
 
-                   if (choice < (uncommon/0.25f))
-                    {
-                        // uncommon
-                        int num = random.Next(2);
-
-                        if (num == 0)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 17));
-                        }
-                        else
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 18));
-                        }
-                    }
-                    else if (choice < (uncommon + rare)/0.25f)
-                    {
-                        // rare
-                        int num = random.Next(3);
-
-                        if (num == 0)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 16));
-                        }
-                        else if (num == 1)
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 19));
-                        }
-                        else
-                        {
-                            spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 20));
-                        }
-
-                    }
-                    else
-                    {
-                        // very rare
-                        spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos], 21));
-                    }
+                if (num <= 16)
+                {
+                    spawnChoice = 7;
+                }
+                else if (num <= 16 + 25)
+                {
+                    spawnChoice = 8;
+                }
+                else if (num <= 16 + 25 + 16)
+                {
+                    spawnChoice = 9;
+                }
+                else if (num <= 16 + 25 + 16 + 25)
+                {
+                    spawnChoice = 11;
+                }
+                else
+                {
+                    spawnChoice = 12;
                 }
             }
-            
+            else if (choice < nanitePowerUp + physicsPowerUp + speedPowerUp)
+            {
+                // speed
+                double num = random.NextDouble() * 100;
 
-            return spawnList;
-        }        
+
+                if (num <= 75)
+                {
+                    spawnChoice = 13;
+                }                
+                else
+                {
+                    spawnChoice = 14;
+                }
+            }
+            else
+            {
+                // health up
+                spawnChoice = 15;
+            }
+
+            return spawnChoice;
+        }
+
+        public int ChooseSpecialPowerUp()
+        {
+            int spawnChoice = 0;
+
+            double chance = random.NextDouble();
+
+            if (chance <= 0.16)
+            {
+                spawnChoice = 3;
+            }
+            else if (chance <= 0.23)
+            {
+                spawnChoice = 4;
+            }
+            else if (chance <= 0.30)
+            {
+                spawnChoice = 10;
+            }
+            else if (chance <= 0.37)
+            {
+                spawnChoice = 16;
+            }
+            else if (chance <= 0.49)
+            {
+                spawnChoice = 17;
+            }
+            else if (chance <= 0.61)
+            {
+                spawnChoice = 18;
+            }
+            else if (chance <= 0.68)
+            {
+                spawnChoice = 19;
+            }
+            else if (chance <= 0.75)
+            {
+                spawnChoice = 20;
+            }
+            else if (chance <= 0.79)
+            {
+                spawnChoice = 21;
+            }
+            else if (chance <= 0.86)
+            {
+                spawnChoice = 2;
+            }
+            else if (chance <= 0.93)
+            {
+                spawnChoice = 15;
+            }
+            else
+            {
+                spawnChoice = 13;
+            }
+
+            return spawnChoice;
+        }
+
+
+        //public List<SpriteBase> SpawnPowerUps(int n, int wave)
+
+        //{
+        //    // Power Up spawning
+        //    Vector2 offset;
+        //    List<int> positions = new List<int> { };
+        //    for (int i = 0; i < n; i++)
+        //    {
+        //        int pos = random.Next(4);
+        //        while (positions.Contains(pos))
+        //        {
+        //            pos += 1;
+        //            if (pos >= n)
+        //            {
+        //                pos = 0;
+        //            }
+        //        }
+        //        positions.Add(pos);
+        //    }
+
+        //    List<SpriteBase> spawnList = new List<SpriteBase> { };
+        //    List<int> spawnTypeList = new List<int> { };
+
+        //    int num = 0;
+        //    foreach (int pos in positions)
+        //    {
+        //        int spawnChoice = ChoosePowerUps(num,wave);
+
+        //        while (spawnTypeList.Contains(spawnChoice))
+        //        {
+        //            spawnChoice = ChoosePowerUps(num,wave);
+        //        }
+
+        //        offset = new Vector2((float)(random.NextDouble() * 60.0 - 15), (float)(random.NextDouble() * 60.0 - 15));
+        //        spawnList.Add(new PowerUpBase(powerupTex, heartTex, powerupTextTex, spawnPoints[pos] + offset, spawnChoice));
+        //        spawnTypeList.Add(spawnChoice);
+        //        num += 1;
+        //    }
+
+
+        //    return spawnList;
+        //}
     }
 }

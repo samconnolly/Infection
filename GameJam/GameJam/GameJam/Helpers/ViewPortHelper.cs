@@ -30,7 +30,8 @@ namespace GameJam
         private static float _aspectRatio;
         public static int _frameRate = 60;
 
-        
+        private static Song _currentSong;
+                
 
         public static int X 
         {
@@ -140,6 +141,12 @@ namespace GameJam
         {
             set { _frameRate = value; }
             get { return _frameRate; }
+        }
+
+        public static Song CurrentSong
+        {
+            set { _currentSong = value; }
+            get { return _currentSong; }
         }
 
         public static void ToggleFullscreen()
