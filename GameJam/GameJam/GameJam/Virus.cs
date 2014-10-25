@@ -155,12 +155,12 @@ namespace GameJam
             if (player == 1)
             {
                 circle4 = new Circle(new Vector2(60, 60), 34, 2, Color.White);
-                coolDownBar = new CooldownBar(new Vector2(770, 85), 100);
+                coolDownBar = new CooldownBar(new Vector2(100, 85), 100);
             }
             else
             {
                 circle4 = new Circle(new Vector2(1020, 60), 34, 2, Color.White);
-                coolDownBar = new CooldownBar(new Vector2(870, 85), 100);
+                coolDownBar = new CooldownBar(new Vector2(970, 85), 100);
             }
 
             if (Velocity.Y < 0)

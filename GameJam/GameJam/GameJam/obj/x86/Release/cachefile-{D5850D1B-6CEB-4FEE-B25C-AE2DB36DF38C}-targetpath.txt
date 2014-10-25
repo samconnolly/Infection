@@ -8,7 +8,6 @@ Content\Squelch 2.xnb
 Content\Squelch 3.xnb
 Content\spore.xnb
 Content\Large Background.xnb
-Content\redblood.xnb
 Content\double.xnb
 Content\proliferate.xnb
 Content\reproduce.xnb
@@ -19,7 +18,6 @@ Content\Final Score.xnb
 Content\virusling.xnb
 Content\whitebloodspawn.xnb
 Content\bomb.xnb
-Content\font2.xnb
 Content\font3.xnb
 Content\player.xnb
 Content\eyes.xnb
@@ -35,3 +33,8 @@ Content\laser.xnb
 Content\heart.xnb
 Content\powerups.xnb
 Content\specials.xnb
+Content\font2.xnb
+Content\cursor.xnb
+Content\circle_both.xnb
+Content\powerupText.xnb
+Content\HighScore.xnb
