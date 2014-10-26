@@ -136,7 +136,7 @@ namespace GameJam
                 {
                     red = true;
                 }
-            }
+            }            
 
         }
 

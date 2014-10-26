@@ -219,8 +219,9 @@ namespace GameJam
             }
             _items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(400, 600), 2));
 
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(500, 300), 11));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 500), 3));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(500, 300), 9));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(100, 500), 9));
+            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(200, 500), 9));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 500), 4));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(300, 500), 7));
             //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 500), 10));
@@ -313,7 +314,7 @@ namespace GameJam
                     spawning = false;
                     
 
-                    if (wave > 5 | level == 0)
+                    if (wave == 1 | level == 0)
                     {
                         PowerUpBase powerup = spawn2.SpawnItem(new Vector2(540, 360)); // spawn item at end of each level
                         addItem.Add(powerup);
@@ -463,11 +464,12 @@ namespace GameJam
                 {
                     selected -= 1;
                 }
-                else if (InputHelper.CurrentMouseState.X > 200 && InputHelper.CurrentMouseState.X < 500)
+                else if (InputHelper.CurrentMouseState.X / ViewPortHelper.XScale > 200 && InputHelper.CurrentMouseState.X / ViewPortHelper.XScale < 500)
                 {
                     for (int i = 0; i < max + 1; i++)
                     {
-                        if (InputHelper.CurrentMouseState.Y != InputHelper.PreviousMouseState.Y && InputHelper.CurrentMouseState.Y >= 300 + i * 50 && InputHelper.CurrentMouseState.Y < 300 + (i + 1) * 50)
+                        if (InputHelper.CurrentMouseState.Y != InputHelper.PreviousMouseState.Y &&
+                                InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale >= 300 + i * 50 && InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale < 300 + (i + 1) * 50)
                         {
                             selected = i;
                             mouseover = true;

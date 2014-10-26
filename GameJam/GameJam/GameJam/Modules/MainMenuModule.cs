@@ -95,12 +95,15 @@ namespace GameJam
             {
                 selected += 1;
             }
-            else if (InputHelper.CurrentMouseState.X > menuOffset.X && InputHelper.CurrentMouseState.X < menuOffset.X + 200)
+            else if (InputHelper.CurrentMouseState.X / ViewPortHelper.XScale > menuOffset.X  && 
+                        InputHelper.CurrentMouseState.X / ViewPortHelper.XScale < menuOffset.X  + 200)
             {
                 for (int i = 0; i < max + 1; i++)
                 {
-                    if ((tree != 3 && InputHelper.CurrentMouseState.Y >= menuOffset.Y + i * 50 && InputHelper.CurrentMouseState.Y < menuOffset.Y + (i + 1) * 50) |
-                            (tree == 3 && InputHelper.CurrentMouseState.Y >= menuOffset.Y + 150 + i * 50 && InputHelper.CurrentMouseState.Y < menuOffset.Y + 150 + (i + 1) * 50))
+                    if ((tree != 3 && InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale >= menuOffset.Y  + i * 50 && 
+                                        InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale < menuOffset.Y  + (i + 1) * 50) |
+                            (tree == 3 && InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale >= menuOffset.Y + 150 + i * 50 &&
+                                            InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale < menuOffset.Y + 150 + (i + 1) * 50))
                     {
                         if (InputHelper.CurrentMouseState.Y != InputHelper.PreviousMouseState.Y)
                         {
@@ -419,7 +422,7 @@ namespace GameJam
                 batch.Draw(_controller, new Vector2(200, 230), new Rectangle(0, 0, _controller.Width, _controller.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.49f);
                 batch.DrawString(font, "Back", menuOffset + new Vector2(0, 250), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
             }
-
+            
         }
 
         #endregion

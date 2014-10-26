@@ -27,7 +27,6 @@ Content\artillery.xnb
 Content\turret.xnb
 Content\missile.xnb
 Content\cross.xnb
-Content\laser.xnb
 Content\heart.xnb
 Content\powerups.xnb
 Content\specials.xnb
@@ -36,5 +35,22 @@ Content\circle_both.xnb
 Content\powerupText.xnb
 Content\HighScore.xnb
 Content\font2.xnb
+Content\voice_01.xnb
+Content\voice_02.xnb
+Content\voice_03.xnb
+Content\voice_04.xnb
+Content\voice_05.xnb
+Content\voice_06.xnb
+Content\voice_07.xnb
+Content\voice_08.xnb
+Content\voice_09.xnb
+Content\controller.xnb
+Content\laser.xnb
+Content\level_1.xnb
+Content\level_2.xnb
+Content\level_3.xnb
+Content\level_4.xnb
+Content\level_5.xnb
+Content\splash.xnb
 Content\Beneath.wma
 Content\Controlled Chaos.wma

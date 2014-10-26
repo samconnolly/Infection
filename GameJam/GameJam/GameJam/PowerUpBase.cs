@@ -27,7 +27,7 @@ namespace GameJam
         private int textTimer = 0;
         private int textTime = 1000;
         private Rectangle textRect;
-        private List<int> textX = new List<int> { 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0 };
+        private List<int> textX = new List<int> { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0 };
         private List<int> textY = new List<int> { 5, 5, 6, 0, 3, 3, 8, 4, 4, 1, 7, 7, 9, 8, 7, 2, 6, 9, 2, 1, 0 };
         private Vector2 textOffset = Vector2.Zero;
 
@@ -56,7 +56,7 @@ namespace GameJam
             else
             {
                 SheetSize = new Vector2(9, 1);
-                int colour = cells[type-1] + CellsHelper.Colours;
+                int colour = cells[type - 1] + 3;//CellsHelper.Colours;
                 if (colour >= 9) {colour -= 9;}
                 XFrame = colour;
             }
@@ -341,6 +341,7 @@ namespace GameJam
                 {
                     VirusHelper.OrbitCount += 1;
                     VirusHelper.RotationSpeed += 0.02f; // problematic!!
+                    VirusHelper.InnerAccn += 0.5f;
                 }
             }
             else
@@ -349,6 +350,7 @@ namespace GameJam
                 {
                     VirusHelper.OrbitCountP2 += 1;
                     VirusHelper.RotationSpeedP2 += 0.02f; // problematic!!
+                    VirusHelper.InnerAccnP2 += 0.5f;
                 }
             }
         }
@@ -361,6 +363,7 @@ namespace GameJam
                 {
                     VirusHelper.OrbitCount -= 1;
                     VirusHelper.RotationSpeed -= 0.02f; // problematic!!
+                    VirusHelper.InnerAccn -= 0.5f;
                 }
             }
             else
@@ -369,6 +372,7 @@ namespace GameJam
                 {
                     VirusHelper.OrbitCountP2 -= 1;
                     VirusHelper.RotationSpeedP2 -= 0.02f; // problematic!!
+                    VirusHelper.InnerAccnP2 -= 0.5f;
                 }
             }
         }
@@ -392,7 +396,8 @@ namespace GameJam
                 if (VirusHelper.RadiusCount < 3)
                 {
                     VirusHelper.RadiusCount += 1;
-                    VirusHelper.Radius1 += 10f; // problematic!!
+                    VirusHelper.Radius1 += 10f; 
+                    VirusHelper.Radius2 += 10f; 
                 }
             }
             else
@@ -400,7 +405,8 @@ namespace GameJam
                 if (VirusHelper.RadiusCountP2 < 3)
                 {
                     VirusHelper.RadiusCountP2 += 1;
-                    VirusHelper.Radius1P2 += 10f; // problematic!!
+                    VirusHelper.Radius1P2 += 10f; 
+                    VirusHelper.Radius2P2 += 10f;
                 }
             }
         }
@@ -409,18 +415,20 @@ namespace GameJam
         {
             if (player == 1)
             {
-                if (VirusHelper.RadiusCount > -3)
+                if (VirusHelper.RadiusCount > -2)
                 {
                     VirusHelper.RadiusCount -= 1;
-                    VirusHelper.Radius1 -= 10f; // problematic!!
+                    VirusHelper.Radius1 -= 10f; 
+                    VirusHelper.Radius2 -= 10f; 
                 }
             }
             else
             {
-                if (VirusHelper.RadiusCountP2 > -3)
+                if (VirusHelper.RadiusCountP2 > -2)
                 {
                     VirusHelper.RadiusCountP2 -= 1;
-                    VirusHelper.Radius1P2 -= 10f; // problematic!!
+                    VirusHelper.Radius1P2 -= 10f; 
+                    VirusHelper.Radius2P2 -= 10f; 
                 }
             }
         }

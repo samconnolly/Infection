@@ -61,12 +61,12 @@ namespace GameJam
 
         internal override void Update(GameTime gameTime, SpriteBatch batch)
         {
-            if (InputHelper.WasButtonPressed(Keys.R) || InputHelper.WasPadButtonPressedP1(Buttons.A))
+            if (InputHelper.WasButtonPressed(Keys.R) || InputHelper.WasButtonPressed(Keys.Space) || InputHelper.WasButtonPressed(Keys.Enter) || InputHelper.WasPadButtonPressedP1(Buttons.A))
             {
                 GameStateManager.CurrentGameState = GameState.InGame;
                 GameStateManager.HasChanged = true;
             }
-            if (InputHelper.WasButtonPressed(Keys.Escape) || InputHelper.WasPadButtonPressedP1(Buttons.B))
+            if (InputHelper.WasButtonPressed(Keys.Escape) || InputHelper.WasPadButtonPressedP1(Buttons.B) || InputHelper.WasPadButtonPressedP1(Buttons.Back))
             {
                 GameStateManager.CurrentGameState = GameState.MainMenu;
                 GameStateManager.HasChanged = true;

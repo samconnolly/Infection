@@ -76,6 +76,7 @@ namespace GameJam
         public Rectangle laserRect;
         public float laserRot = 0.0f;
         public Vector2 laserOffset;
+        private float laserScale = 0.8f;
         private int laserFrame;
         private int laserTimer = 0;
         
@@ -145,7 +146,7 @@ namespace GameJam
             player = Player;
             if (player == 2)
             {
-                colour = 2;
+                Colour = Color.Yellow;
                 eyeColour = 1;
             }
 
@@ -182,6 +183,8 @@ namespace GameJam
             if (cooldown == false)
             {
                 invincible = true;
+                powerupActive = true;
+                invinceTimer = 0;
             }
         }
 
@@ -347,7 +350,7 @@ namespace GameJam
             if (invincible == true)
             {
                 cooldownTimer += gameTime.ElapsedGameTime.Milliseconds;
-                powerupActive = true;
+                
 
                 if (cooldownTimer > invinceTime && invincible == true)
                 {
@@ -416,7 +419,8 @@ namespace GameJam
                     //    laserOffset = new Vector2(-laserRect.Height * 0.8f / 2, 0);
                     //}
 
-                    laserOffset = new Vector2(laserRect.Height * 0.5f * ((float)Math.Sin(laserRot)), -laserRect.Height * 0.5f * ((float)Math.Cos(laserRot)));
+                    //laserOffset = new Vector2(laserRect.Height * 0.5f * ((float)Math.Sin(laserRot)), -laserRect.Height * 0.5f * ((float)Math.Cos(laserRot)));
+                    laserOffset = new Vector2(laserRect.Height * 0.5f * laserScale * ((float)Math.Sin(laserRot)), -laserRect.Height * 0.5f * laserScale * ((float)Math.Cos(laserRot)));
 
                     // firing
 
@@ -903,6 +907,7 @@ namespace GameJam
             if (activePowerup != 0)
             {
                 powerupRect.X = (powerupList[activePowerup - 1]) * powerupRect.Width;
+                YFrame = activePowerup;
             }
 
             // laser anim
@@ -955,7 +960,7 @@ namespace GameJam
 
             if (laser == true)
             {
-                batch.Draw(laserTex, Position + laserOffset, laserRect, Color.White, laserRot, Vector2.Zero, 0.8f, SpriteEffects.None, layer+0.01f);//LAZER TEX !!!!!!!!
+                batch.Draw(laserTex, Position + laserOffset, laserRect, Color.White, laserRot, Vector2.Zero, laserScale, SpriteEffects.None, layer + 0.01f);//LAZER TEX !!!!!!!!
             }
 
             if (circles == true)

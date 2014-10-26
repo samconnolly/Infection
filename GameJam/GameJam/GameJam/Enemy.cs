@@ -102,7 +102,7 @@ namespace GameJam
         int blink = 0;
         bool blinking = false;
 
-        private float fallSpeed = 6.0f;
+        private float fallSpeed = 10.0f;
 
         private int colours = 5;
         private int colour = 0;

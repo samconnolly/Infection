@@ -49,7 +49,7 @@ namespace GameJam
             this.Position += this.Velocity;
 
             //Check if going off the screen.
-            if (Position.X <= Rectangle.Width / 2.0f * Scale |
+            if (float.IsNaN(Position.X) | Position.X <= Rectangle.Width / 2.0f * Scale | 
                     Position.Y <= Rectangle.Height / 2.0f * Scale |
                         Position.X >= (ViewPortHelper.X - tex.Width / 2.0 * Scale) |
                             Position.Y >= (ViewPortHelper.Y - tex.Height / 2.0 * Scale))

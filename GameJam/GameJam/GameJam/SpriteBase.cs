@@ -240,6 +240,12 @@ namespace GameJam
                 Position = new Vector2(Position.X, (ViewPortHelper.Y / ViewPortHelper.YScale - Rectangle.Height / 2.0f * Scale));
                 Bounce(new Vector2(Position.X, -10), Vector2.Zero);
             }
+
+            // catch rogue sprites
+            if (float.IsNaN(Position.X) == true)
+            {
+                Die();
+            }
         }
 
         public virtual void Draw(GameTime gameTime, SpriteBatch batch, float layer)

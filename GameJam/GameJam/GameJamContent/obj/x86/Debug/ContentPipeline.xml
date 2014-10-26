@@ -136,7 +136,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Pause Menu copy.xnb</Output>
-      <Time>2014-05-11T22:36:31.7839771+01:00</Time>
+      <Time>2014-10-25T12:43:09.401533+01:00</Time>
     </Item>
     <Item>
       <Source>Fanal Score.png</Source>
@@ -265,15 +265,6 @@
       <Time>2014-08-21T21:28:13.8340316+01:00</Time>
     </Item>
     <Item>
-      <Source>laser.png</Source>
-      <Name>laser</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\laser.xnb</Output>
-      <Time>2014-08-25T11:34:43.1626752+01:00</Time>
-    </Item>
-    <Item>
       <Source>heart.png</Source>
       <Name>heart</Name>
       <Importer>TextureImporter</Importer>
@@ -344,6 +335,159 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\font2.xnb</Output>
       <Time>2014-10-15T21:59:40.1961235+01:00</Time>
+    </Item>
+    <Item>
+      <Source>voice_01.mp3</Source>
+      <Name>voice_01</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_01.xnb</Output>
+      <Time>2014-10-25T15:22:13.3144136+01:00</Time>
+    </Item>
+    <Item>
+      <Source>voice_02.mp3</Source>
+      <Name>voice_02</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_02.xnb</Output>
+      <Time>2014-10-25T15:22:13.3154136+01:00</Time>
+    </Item>
+    <Item>
+      <Source>voice_03.mp3</Source>
+      <Name>voice_03</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_03.xnb</Output>
+      <Time>2014-10-25T15:22:13.322414+01:00</Time>
+    </Item>
+    <Item>
+      <Source>voice_04.mp3</Source>
+      <Name>voice_04</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_04.xnb</Output>
+      <Time>2014-10-25T15:22:13.3234141+01:00</Time>
+    </Item>
+    <Item>
+      <Source>voice_05.mp3</Source>
+      <Name>voice_05</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_05.xnb</Output>
+      <Time>2014-10-25T15:22:13.3234141+01:00</Time>
+    </Item>
+    <Item>
+      <Source>voice_06.mp3</Source>
+      <Name>voice_06</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_06.xnb</Output>
+      <Time>2014-10-25T15:22:13.3244141+01:00</Time>
+    </Item>
+    <Item>
+      <Source>voice_07.mp3</Source>
+      <Name>voice_07</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_07.xnb</Output>
+      <Time>2014-10-25T15:22:13.3254142+01:00</Time>
+    </Item>
+    <Item>
+      <Source>voice_08.mp3</Source>
+      <Name>voice_08</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_08.xnb</Output>
+      <Time>2014-10-25T15:22:13.3254142+01:00</Time>
+    </Item>
+    <Item>
+      <Source>voice_09.mp3</Source>
+      <Name>voice_09</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_09.xnb</Output>
+      <Time>2014-10-25T15:22:13.3264143+01:00</Time>
+    </Item>
+    <Item>
+      <Source>622549.png</Source>
+      <Name>controller</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\controller.xnb</Output>
+      <Time>2014-10-25T11:09:32.4692628+01:00</Time>
+    </Item>
+    <Item>
+      <Source>player_laser.png</Source>
+      <Name>laser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\laser.xnb</Output>
+      <Time>2014-10-25T14:42:18.0554126+01:00</Time>
+    </Item>
+    <Item>
+      <Source>level_1.png</Source>
+      <Name>level_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\level_1.xnb</Output>
+      <Time>2014-10-25T16:00:06.6304398+01:00</Time>
+    </Item>
+    <Item>
+      <Source>level_2.png</Source>
+      <Name>level_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\level_2.xnb</Output>
+      <Time>2014-10-25T16:00:06.6314399+01:00</Time>
+    </Item>
+    <Item>
+      <Source>level_3.png</Source>
+      <Name>level_3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\level_3.xnb</Output>
+      <Time>2014-10-25T16:00:06.63344+01:00</Time>
+    </Item>
+    <Item>
+      <Source>level_4.png</Source>
+      <Name>level_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\level_4.xnb</Output>
+      <Time>2014-10-25T16:00:06.63444+01:00</Time>
+    </Item>
+    <Item>
+      <Source>level_5.png</Source>
+      <Name>level_5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\level_5.xnb</Output>
+      <Time>2014-10-25T16:00:06.6364402+01:00</Time>
+    </Item>
+    <Item>
+      <Source>110393__soundscalpel-com__water-splash.wav</Source>
+      <Name>splash</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\splash.xnb</Output>
+      <Time>2014-10-25T15:22:13.2924123+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
