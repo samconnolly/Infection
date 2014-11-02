@@ -138,3 +138,8 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\leve
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\level_4.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\level_5.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\splash.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\splash2.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Invincible.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\a_button.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\b_button.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\spawn.xnb

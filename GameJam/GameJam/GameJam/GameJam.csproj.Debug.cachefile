@@ -44,7 +44,6 @@ Content\voice_06.xnb
 Content\voice_07.xnb
 Content\voice_08.xnb
 Content\voice_09.xnb
-Content\controller.xnb
 Content\laser.xnb
 Content\level_1.xnb
 Content\level_2.xnb
@@ -52,5 +51,11 @@ Content\level_3.xnb
 Content\level_4.xnb
 Content\level_5.xnb
 Content\splash.xnb
+Content\splash2.xnb
+Content\Invincible.xnb
+Content\a_button.xnb
+Content\b_button.xnb
+Content\controller.xnb
+Content\spawn.xnb
 Content\Beneath.wma
 Content\Controlled Chaos.wma

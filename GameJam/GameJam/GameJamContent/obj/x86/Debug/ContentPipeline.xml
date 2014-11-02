@@ -325,7 +325,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\HighScore.xnb</Output>
-      <Time>2014-10-15T21:38:15.253629+01:00</Time>
+      <Time>2014-11-02T10:58:53.1568257+00:00</Time>
     </Item>
     <Item>
       <Source>SpriteFon2.spritefont</Source>
@@ -418,15 +418,6 @@
       <Time>2014-10-25T15:22:13.3264143+01:00</Time>
     </Item>
     <Item>
-      <Source>622549.png</Source>
-      <Name>controller</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\controller.xnb</Output>
-      <Time>2014-10-25T11:09:32.4692628+01:00</Time>
-    </Item>
-    <Item>
       <Source>player_laser.png</Source>
       <Name>laser</Name>
       <Importer>TextureImporter</Importer>
@@ -488,6 +479,60 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\splash.xnb</Output>
       <Time>2014-10-25T15:22:13.2924123+01:00</Time>
+    </Item>
+    <Item>
+      <Source>186748_rombart_splash-eau-goudron1.mp3</Source>
+      <Name>splash2</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\splash2.xnb</Output>
+      <Time>2014-10-26T12:18:58.8394537+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Invincible.png</Source>
+      <Name>Invincible</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Invincible.xnb</Output>
+      <Time>2014-10-26T13:07:02.5613931+00:00</Time>
+    </Item>
+    <Item>
+      <Source>a_button.png</Source>
+      <Name>a_button</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\a_button.xnb</Output>
+      <Time>2014-10-26T14:22:37.978883+00:00</Time>
+    </Item>
+    <Item>
+      <Source>b_button.png</Source>
+      <Name>b_button</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\b_button.xnb</Output>
+      <Time>2014-10-26T14:22:37.9818832+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Controller.png</Source>
+      <Name>controller</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\controller.xnb</Output>
+      <Time>2014-10-26T14:22:37.9828833+00:00</Time>
+    </Item>
+    <Item>
+      <Source>spawn_anim.png</Source>
+      <Name>spawn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\spawn.xnb</Output>
+      <Time>2014-10-27T09:41:00.9918811+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -30,7 +30,7 @@ namespace GameJam
             SoundEffect v9 = game.Content.Load<SoundEffect>("voice_09");
 
             SoundEffect splash = game.Content.Load<SoundEffect>("splash");
-            SoundEffect zap = game.Content.Load<SoundEffect>("splash"); 
+            SoundEffect zap = game.Content.Load<SoundEffect>("splash2"); 
 
             SoundEffectInstance si1 = s1.CreateInstance();
             SoundEffectInstance si2 = s2.CreateInstance();
@@ -82,7 +82,8 @@ namespace GameJam
 
         public static void PlaySplash()
         {
-            _sounds[12].Play();
+            Random rand = new Random();
+            _sounds[rand.Next(12, 14)].Play();
         }
 
          public static void PlayZap()
