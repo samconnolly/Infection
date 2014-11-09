@@ -21,10 +21,13 @@ namespace GameJam
 {
     public class MainMenuModule : ModuleBase
     {
+
         //private Rectangle _drawRectangle;
         private Vector2 _position = new Vector2(0, 0);
         private Texture2D _background;
         private Texture2D _controller;
+        private Texture2D _a_button;
+        private Texture2D _b_button;
         private Rectangle _backRect;
         private bool _isPlayingMusic = false;
         private bool _isMuted = false;
@@ -38,6 +41,16 @@ namespace GameJam
         private bool mouseover = false;
 
         private Vector2 menuOffset = new Vector2(450, 350);
+
+        private Line line1;
+        private Line line2;
+        private Line line3;
+        private Line line4;
+
+        // loading 
+        private List<int> scores;
+        private List<float> settings;
+        private bool settingsChange = false;
               
         public MainMenuModule(Game game)
             :base(game)
@@ -59,11 +72,56 @@ namespace GameJam
             _controller = this.Game.Content.Load<Texture2D>("controller");
             _backRect = new Rectangle(0, 0, _background.Width, _background.Height);
 
+            _a_button = this.Game.Content.Load<Texture2D>("a_button");
+            _b_button = this.Game.Content.Load<Texture2D>("b_button");
+
             //Load atmospheric music.
             music = this.Game.Content.Load<Song>("Controlled Chaos");
 
             // fonts
             font = this.Game.Content.Load<SpriteFont>("font");
+
+            line1 = new Line(new Vector2(360, 470), new Vector2(515, 465), 5, Color.Black);
+            line2 = new Line(new Vector2(670, 430), new Vector2(750, 470), 5, Color.Black);
+            line3 = new Line(new Vector2(360, 470), new Vector2(465, 400), 5, Color.Black);
+            line4 = new Line(new Vector2(610, 400), new Vector2(810, 340), 5, Color.Black);
+
+            // load menu actions from XML
+            System.IO.Stream stream = TitleContainer.OpenStream("gameData.xml");
+
+            XDocument doc = XDocument.Load(stream);
+
+            if (ScoreHelper.LoadData == false)
+            {
+                scores = (from action in doc.Descendants("HighScore")
+                          select Convert.ToInt32(action.Element("score").Value)).ToList();
+                settings = (from action in doc.Descendants("Volume")
+                            select (float)Convert.ToDouble(action.Element("value").Value)).ToList();
+
+                ScoreHelper.HighScores = scores;
+                MediaPlayer.Volume = settings[0];
+                SoundEffectPlayer.AdjustVolume(settings[1]);
+                stream.Close();
+                GC.Collect();
+                
+                ScoreHelper.LoadData = true;
+
+                                                          
+            }
+            // get storage device
+            //storageDevice = StorageDevice.BeginShowSelector();
+
+            //// Open a storage container.
+            //IAsyncResult result =
+            //    storageDevice.BeginOpenContainer("StorageDemo", null, null);
+
+            //// Wait for the WaitHandle to become signaled.
+            //result.AsyncWaitHandle.WaitOne();
+
+            //StorageContainer container =  storageDevice.EndOpenContainer(result);
+
+            //// Close the wait handle.
+            //result.AsyncWaitHandle.Close();
 
         }
 
@@ -71,7 +129,7 @@ namespace GameJam
         {
             
         }
-
+        
         internal override void Update(GameTime gameTime, SpriteBatch batch)
         {
             //Play music if not playing already.
@@ -100,10 +158,12 @@ namespace GameJam
             {
                 for (int i = 0; i < max + 1; i++)
                 {
-                    if ((tree != 3 && InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale >= menuOffset.Y  + i * 50 && 
+                    if ((tree != 3 && tree != 4 && InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale >= menuOffset.Y + i * 50 && 
                                         InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale < menuOffset.Y  + (i + 1) * 50) |
                             (tree == 3 && InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale >= menuOffset.Y + 150 + i * 50 &&
-                                            InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale < menuOffset.Y + 150 + (i + 1) * 50))
+                                            InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale < menuOffset.Y + 150 + (i + 1) * 50) |
+                            (tree == 4 && InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale >= menuOffset.Y + 250 + i * 50 &&
+                                            InputHelper.CurrentMouseState.Y / ViewPortHelper.YScale < menuOffset.Y + 250 + (i + 1) * 50))
                     {
                         if (InputHelper.CurrentMouseState.Y != InputHelper.PreviousMouseState.Y)
                         {
@@ -200,6 +260,7 @@ namespace GameJam
                             newVolume = 1.0f;
                         }      
                         MediaPlayer.Volume = newVolume;
+                        settingsChange = true;
                     }
                     else if (selected == 2)
                     {
@@ -213,6 +274,7 @@ namespace GameJam
                             newVolume = 1.0f;
                         }
                         SoundEffectPlayer.AdjustVolume(newVolume);
+                        settingsChange = true;
                     }
                     else if (selected == 3)
                     {
@@ -229,6 +291,10 @@ namespace GameJam
                     }
                     else
                     {
+                        if (settingsChange == true)
+                        {
+                            ScoreHelper.SaveSettings();
+                        }
                         tree = 0;
                         selected = 0;
                         max = 5;
@@ -419,10 +485,25 @@ namespace GameJam
             }
             else if (tree == 4)
             {
-                batch.Draw(_controller, new Vector2(200, 230), new Rectangle(0, 0, _controller.Width, _controller.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.49f);
+                batch.Draw(_controller, new Vector2(300, 280), new Rectangle(0, 0, _controller.Width, _controller.Height), Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, 0.49f);
+                batch.DrawString(font, "Use Item", new Vector2(760, 455), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Movement", new Vector2(250, 450), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(font, "Pause", new Vector2(815, 330), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 batch.DrawString(font, "Back", menuOffset + new Vector2(0, 250), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+
+                line1.Draw(batch);
+                line2.Draw(batch);
+                line3.Draw(batch);
+                line4.Draw(batch);
             }
-            
+
+            batch.Draw(_a_button, new Vector2(660, 610), new Rectangle(0, 0, _a_button.Width, _a_button.Height), Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, 0.49f);
+            batch.DrawString(font,"Select" , new Vector2(720, 615), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+            batch.Draw(_b_button, new Vector2(830, 610), new Rectangle(0, 0, _b_button.Width, _b_button.Height), Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, 0.49f);
+            batch.DrawString(font,"Back" , new Vector2(900, 615), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+    
+            //batch.DrawString(font, InputHelper.CurrentMouseState.X.ToString() + " : " + InputHelper.CurrentMouseState.Y.ToString(),  new Vector2(500, 20), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+
         }
 
         #endregion

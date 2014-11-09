@@ -573,7 +573,7 @@ namespace GameJam
             // testing!
             //batch.DrawString(FontHelper.Fonts[2], names[type-1],Position + new Vector2(0, 0), Color.White);
             //
-            if (pickup != 0)
+            if (pickup != 0 && type != 15)
             {
                 if (pickup == 1)
                 {

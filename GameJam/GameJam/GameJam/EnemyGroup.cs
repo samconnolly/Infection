@@ -50,6 +50,11 @@ namespace GameJam
                 av += wbc.Position;
             }
 
+            //if (float.IsNaN(Position.X))
+            //{
+            //    int d = 3;
+            //}
+
             Position = av/group.Count;
 
             foreach (Enemy wbc in group)
@@ -58,6 +63,7 @@ namespace GameJam
                 wbc.group = group;
 
                 wbc.Update(gameTime, bactch);
+
                 if (wbc.dead == true)
                 {
                     deadList.Add(wbc);

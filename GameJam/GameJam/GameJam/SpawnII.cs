@@ -44,7 +44,7 @@ namespace GameJam
         private float nanitePowerUp = 0.43f;
         private float physicsPowerUp = 0.22f;
         private float speedPowerUp = 0.20f;
-        private float healthPowerUp = 0.15f;
+        //private float healthPowerUp = 0.15f;
 
         int movement;
         int attack;

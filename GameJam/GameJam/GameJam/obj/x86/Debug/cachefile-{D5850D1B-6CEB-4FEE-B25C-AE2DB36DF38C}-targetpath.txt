@@ -9,15 +9,10 @@ Content\Squelch 2.xnb
 Content\Squelch 3.xnb
 Content\spore.xnb
 Content\Large Background.xnb
-Content\double.xnb
-Content\proliferate.xnb
-Content\reproduce.xnb
-Content\boss.xnb
 Content\Title screen copy.xnb
 Content\Pause Menu copy.xnb
 Content\Final Score.xnb
 Content\virusling.xnb
-Content\whitebloodspawn.xnb
 Content\bomb.xnb
 Content\player.xnb
 Content\eyes.xnb
@@ -32,7 +27,6 @@ Content\cross.xnb
 Content\heart.xnb
 Content\powerups.xnb
 Content\specials.xnb
-Content\cursor.xnb
 Content\circle_both.xnb
 Content\powerupText.xnb
 Content\HighScore.xnb

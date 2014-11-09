@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="106496">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="109056">
       <assemblyIdentity name="You have been infected!" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>OPzJSurr0VCiRI6gDYAkQ3McFKc=</dsig:DigestValue>
+        <dsig:DigestValue>MRIJFq+6VoHXKx0PTABmtPYways=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -158,15 +158,6 @@
       <dsig:DigestValue>A06BBx1xX4I6Kg36XiosSg1aDNU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\boss.xnb" size="86587">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>bAN9uQEUaNuJZ5fxZoTdZw548oQ=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="Content\charger.xnb" size="8400187">
     <hash>
       <dsig:Transforms>
@@ -219,24 +210,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>Sh5WjfEWnAOSeMU2/S2z/UCwkas=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\cursor.xnb" size="2119">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>3LImQmOswWE0UseqITxIid9Dq7c=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\double.xnb" size="3787">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>fAuHrZlwkinmzDeZtX/oR6+MOJA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\eyes.xnb" size="352987">
@@ -437,24 +410,6 @@
       <dsig:DigestValue>M6XOkdBhjYBLDokY3v1XjeJCTAg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\proliferate.xnb" size="3787">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>BYeNQ5hEobmc01kC9h7n+jRGIWc=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\reproduce.xnb" size="3787">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>bbHiZbGddbyLk7hDsOuAzrTzwzY=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="Content\sleeper.xnb" size="10212187">
     <hash>
       <dsig:Transforms>
@@ -644,15 +599,6 @@
       <dsig:DigestValue>awNejiNij6T79mJ7sc7EXgX6NbQ=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\whitebloodspawn.xnb" size="10987">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>UBvH8SagyFsviMThyxHfUTXjtA0=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="Game.ico" size="4286">
     <hash>
       <dsig:Transforms>
@@ -660,6 +606,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>/y21PfwGnUAkwpPwwaFuIIyWENo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="gameData.xml" size="825" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>0iwf9SDJCpzOf8eW53N5mny9SrQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="GameThumbnail.png" size="5734">

@@ -204,6 +204,7 @@ namespace GameJam
 
         public virtual void Update(GameTime gameTime, SpriteBatch bactch)
         {
+
             // avoid double bounces
             bounceCounter += gameTime.ElapsedGameTime.Milliseconds;
 

@@ -52,6 +52,9 @@ namespace GameJam
                     n += 1;
                 }
             }
+
+
+            ScoreHelper.SaveScores();
         }
 
         internal override void UnloadContent()

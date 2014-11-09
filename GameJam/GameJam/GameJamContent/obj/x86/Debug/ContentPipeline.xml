@@ -85,42 +85,6 @@
       <Time>2014-05-11T22:36:31.782977+01:00</Time>
     </Item>
     <Item>
-      <Source>Double copy.png</Source>
-      <Name>double</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\double.xnb</Output>
-      <Time>2014-05-11T22:36:31.7749766+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Proliferate copy.png</Source>
-      <Name>proliferate</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\proliferate.xnb</Output>
-      <Time>2014-05-11T22:36:31.7839771+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Replicate copy.png</Source>
-      <Name>reproduce</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\reproduce.xnb</Output>
-      <Time>2014-05-11T22:36:31.7849771+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Node copy.png</Source>
-      <Name>boss</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\boss.xnb</Output>
-      <Time>2014-05-11T22:36:31.782977+01:00</Time>
-    </Item>
-    <Item>
       <Source>Title screen copy.png</Source>
       <Name>Title screen copy</Name>
       <Importer>TextureImporter</Importer>
@@ -155,15 +119,6 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\virusling.xnb</Output>
       <Time>2014-05-11T22:45:22.0563069+01:00</Time>
-    </Item>
-    <Item>
-      <Source>White cell appear.png</Source>
-      <Name>whitebloodspawn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\whitebloodspawn.xnb</Output>
-      <Time>2014-07-08T23:02:22.7938801+01:00</Time>
     </Item>
     <Item>
       <Source>bomb.png</Source>
@@ -290,15 +245,6 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\specials.xnb</Output>
       <Time>2014-09-23T19:46:14.2235418+01:00</Time>
-    </Item>
-    <Item>
-      <Source>cursor.png</Source>
-      <Name>cursor</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\cursor.xnb</Output>
-      <Time>2014-09-27T20:05:35.1711335+01:00</Time>
     </Item>
     <Item>
       <Source>circle_both.png</Source>

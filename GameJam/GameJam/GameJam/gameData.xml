@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<HighScores xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <HighScore>
+    <score>100</score>
+  </HighScore>
+  <HighScore>
+    <score>90</score>
+  </HighScore>
+  <HighScore>
+    <score>80</score>
+  </HighScore>
+  <HighScore>
+    <score>70</score>
+  </HighScore>
+  <HighScore>
+    <score>60</score>
+  </HighScore>
+  <HighScore>
+    <score>50</score>
+  </HighScore>
+  <HighScore>
+    <score>40</score>
+  </HighScore>
+  <HighScore>
+    <score>30</score>
+  </HighScore>
+  <HighScore>
+    <score>20</score>
+  </HighScore>
+  <HighScore>
+    <score>10</score>
+  </HighScore>
+  <Settings>
+    <Volume>
+      <value>0.5</value>
+    </Volume>
+    <Volume>
+      <value>0.5</value>
+    </Volume>
+  </Settings>
+</HighScores>
+

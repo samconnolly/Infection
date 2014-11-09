@@ -81,15 +81,10 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Sque
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch 3.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\spore.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Large Background.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\double.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\proliferate.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\reproduce.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\boss.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Title screen copy.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Pause Menu copy.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Final Score.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\virusling.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\whitebloodspawn.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\bomb.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\player.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\eyes.xnb
@@ -118,7 +113,6 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Debug\You have bee
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Debug\You have been infected!.exe
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Debug\You have been infected!.pdb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\specials.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\cursor.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\circle_both.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\powerupText.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\HighScore.xnb
@@ -143,3 +137,4 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Invi
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\a_button.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\b_button.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\spawn.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\gameData.xml

@@ -15,6 +15,7 @@ namespace GameJam
         private string _title = "0";
         private Vector2 _position;
         private Texture2D _finalTexture;
+        private Texture2D _b_button;
 
         public HighScoreModule(Game game)
             :base(game)
@@ -38,6 +39,7 @@ namespace GameJam
             _finalTexture = this.Game.Content.Load<Texture2D>("HighScore");
             _font = this.Game.Content.Load<SpriteFont>("font2");
             _font2 = this.Game.Content.Load<SpriteFont>("font");
+            _b_button = this.Game.Content.Load<Texture2D>("b_button");
             Vector2 fontDim = _font.MeasureString(_title);
             _position = new Vector2(540, 20);
 
@@ -78,16 +80,18 @@ namespace GameJam
 
         internal override void Draw(GameTime gameTime, SpriteBatch batch)
         {
-            batch.DrawString(_font, "High Scores", _position + new Vector2(-250, 0), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+            batch.DrawString(_font, "High Scores", _position + new Vector2(-100, 50), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
 
             int n = 0;
             foreach (int score in ScoreHelper.HighScores)
             {
-                batch.DrawString(_font2, (n+1).ToString() + ". " + score.ToString(), _position + new Vector2(-150, 100 + n*40), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                batch.DrawString(_font2, (n+1).ToString() + ". " + score.ToString(), _position + new Vector2(-250, 150 + n*40), Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 n += 1;
             }
-            
-            batch.Draw(_finalTexture,Vector2.Zero,null,Color.White,0,Vector2.Zero,1.0f,SpriteEffects.None, 1.0f);
+
+            batch.Draw(_finalTexture, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
+            batch.Draw(_b_button, new Vector2(830, 610), new Rectangle(0, 0, _b_button.Width, _b_button.Height), Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, 0.49f);
+            batch.DrawString(_font2, "Back", new Vector2(900, 615), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
         }
 
         #endregion

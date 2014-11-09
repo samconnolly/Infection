@@ -52,12 +52,17 @@ namespace GameJam
         private int reproductionTimer = 0;
         private int reproductionCount = 0;
         private int reproductionTotal = 10;
-        
+
+        private Texture2D invinceTex;
         public bool invincible = false;
         public bool cooldown = false;
         public int invinceTimer = 0;
-        public int invinceTime = 2000;
+        public int invinceTime = 4000;
         private int invinceCoolTime = 3000;
+        private float invScale = 0.3f;
+        private float invRot = 0.0f;
+        private Vector2 invOffset;
+        private Rectangle invRect;
 
         public bool homing = false;
         public int homingTimer = 0;
@@ -110,7 +115,7 @@ namespace GameJam
         private int hitTimer = 0;
         public bool hit = false;
 
-        public Virus(Texture2D texture, Texture2D miniTexture,Texture2D eyeTexture, Texture2D laserTexture, Texture2D powerupTexture, Vector2 position, int Player = 1)
+        public Virus(Texture2D texture, Texture2D miniTexture,Texture2D eyeTexture, Texture2D laserTexture, Texture2D powerupTexture,Texture2D invinceTexture,  Vector2 position, int Player = 1)
             : base(texture)
         {
             Scale = 0.1f;
@@ -123,7 +128,7 @@ namespace GameJam
             acceleration = new Vector2(0,0);
             maxSpeed = 4.5f;
             accelerationMagnitude = 15.0f;
-            deccelerationMagnitude = 4.0f;
+            deccelerationMagnitude = 8.0f;
             accing = false;
             viruslingNo = 2;
             viruslingList = new List<Virusling> { };
@@ -133,6 +138,9 @@ namespace GameJam
             tex = texture;
             powerupTex = powerupTexture;
             powerupRect = new Rectangle(0, 0, powerupTex.Width / 11, powerupTex.Height);
+
+            invinceTex = invinceTexture;
+            invRect = new Rectangle(0, 0, invinceTex.Width, invinceTex.Height);
 
             laserTex = laserTexture;
             laserRect = new Rectangle(0, 0, laserTex.Width, laserTex.Height/3);
@@ -942,6 +950,14 @@ namespace GameJam
                 }
             }
 
+            // invince anim
+            if (invincible == true && powerupActive == true)
+            {
+                invRot += 0.03f;
+                float diag = (float) Math.Sqrt(2 * Math.Pow((double)invRect.Height,2.0));
+                invOffset = new Vector2(-(diag * 0.5f * invScale * ((float)Math.Cos(invRot + Math.PI / 4))), -(diag * 0.5f * invScale * ((float)Math.Cos(invRot - Math.PI / 4))));//new Vector2(-invRect.Height * 0.5f * invScale * ((float)Math.Cos(invRot)), -invRect.Height * 0.5f * invScale * ((float)Math.Cos(invRot)));
+            }
+
             base.Update(gameTime, batch);
 
 
@@ -961,6 +977,11 @@ namespace GameJam
             if (laser == true)
             {
                 batch.Draw(laserTex, Position + laserOffset, laserRect, Color.White, laserRot, Vector2.Zero, laserScale, SpriteEffects.None, layer + 0.01f);//LAZER TEX !!!!!!!!
+            }
+
+            if (invincible == true && powerupActive == true)
+            {
+                batch.Draw(invinceTex, Position + invOffset, invRect, Color.White, invRot , Vector2.Zero, invScale, SpriteEffects.None, layer + 0.01f);
             }
 
             if (circles == true)

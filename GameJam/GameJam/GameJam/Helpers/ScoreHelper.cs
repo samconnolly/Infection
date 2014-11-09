@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Xml.Linq;
+using Microsoft.Xna.Framework.Media;
 
 namespace GameJam
 {
@@ -14,6 +18,7 @@ namespace GameJam
         private static List<int> _highscores = new List<int> {0,0,0,0,0,0,0,0,0,0};
         private static List<Virus> _livePlayers = new List<Virus> { };
         private static List<Virus> _deadPlayers = new List<Virus> { };
+        private static bool _loadData = false;
 
         public static int Score
         {
@@ -56,6 +61,12 @@ namespace GameJam
             get { return _livePlayers; }
             set { _livePlayers = value; }
         }
+
+         public static bool LoadData
+         {
+             get { return _loadData; }
+             set { _loadData = value; }
+         }
 
         public static void PlayerHit(Virus player)
         {
@@ -137,5 +148,32 @@ namespace GameJam
             }
         }
 
+        public static void SaveScores()
+        {
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load("gameData.xml");
+            System.Xml.XmlNode root = xmlDoc.DocumentElement;
+            System.Xml.XmlNodeList nodes = root.SelectNodes("descendant::HighScore/score");
+            for (int i=0; i < 10; i++)
+            {
+                nodes[i].FirstChild.Value = _highscores[i].ToString();
+            }
+            xmlDoc.Save("gameData.xml");
+
+        }
+
+        public static void SaveSettings()
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load("gameData.xml");
+            System.Xml.XmlNode root = xmlDoc.DocumentElement;
+            System.Xml.XmlNodeList nodes = root.SelectNodes("descendant::Volume/value");
+
+            nodes[0].FirstChild.Value = MediaPlayer.Volume.ToString();
+            nodes[1].FirstChild.Value = SoundEffectPlayer.Volume.ToString();
+            
+            xmlDoc.Save("gameData.xml");
+        }
     }
 }

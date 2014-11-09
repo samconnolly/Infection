@@ -28,7 +28,7 @@ namespace GameJam
         private static int _windowedWidth;
         private static int _windowedHeight;
         private static float _aspectRatio;
-        public static int _frameRate = 60;
+        public static int _frameRate = 100;
 
         private static Song _currentSong;
                 

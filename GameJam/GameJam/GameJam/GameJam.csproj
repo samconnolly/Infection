@@ -20,7 +20,7 @@
     <Thumbnail>GameThumbnail.png</Thumbnail>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
-    <Install>false</Install>
+    <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
@@ -32,7 +32,7 @@
     <InstallUrl>http://www.astro.soton.ac.uk/~sdc1g08/Game.html/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -141,9 +141,11 @@
     <Compile Include="Background\Tile.cs" />
     <Compile Include="Bomb.cs" />
     <Compile Include="Circle.cs" />
+    <Compile Include="SaveGameData.cs" />
     <Compile Include="CooldownBar.cs" />
     <Compile Include="Helpers\FontHelper.cs" />
     <Compile Include="Modules\HighScoreModule.cs" />
+    <Compile Include="Line.cs" />
     <Compile Include="SpawnII.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="EnemyGroup.cs" />
@@ -174,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
+    <Content Include="gameData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="GameThumbnail.png" />
     <Content Include="Virus.ico" />
   </ItemGroup>

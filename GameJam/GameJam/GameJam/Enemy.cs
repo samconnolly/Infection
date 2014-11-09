@@ -27,6 +27,7 @@ namespace GameJam
         Random random;
 
         Vector2 startPos;
+        Vector2 spawnPosition;
 
         bool active = false;
         bool alert = false;
@@ -38,8 +39,8 @@ namespace GameJam
 
         private bool screaming = false;
 
-        int spawnTimer = 0;
-        int spawnTime = 1500;
+        //int spawnTimer = 0;
+        //int spawnTime = 1500;
 
         int frate;
         int ftimer = 0;
@@ -73,6 +74,9 @@ namespace GameJam
         Virusling deadSpore = null;
 
         Vector2 attackAim = new Vector2(300,300);
+
+        //int spawnFrame = 0;
+        Rectangle spawnRect;
 
         Texture2D normalTex;
         Texture2D spawnTex;
@@ -124,6 +128,9 @@ namespace GameJam
 
             normalTex = texture;
             spawnTex = spawnTexture;
+            spawnRect = new Rectangle(0, 0, spawnTex.Width, spawnTex.Height / 4);
+            spawnPosition = Position - new Vector2(spawnRect.Width / 2, spawnRect.Height / 2);
+
             missileTex = missileTexture;
             crossTex = crossTexture;
             circleTex = circleTexture;
@@ -148,7 +155,11 @@ namespace GameJam
             circle = new Circle(Vector2.Zero, 2, 2, Color.White);
 
             frate = ViewPortHelper.FrameRate;
+
             Scale = 0.2f;
+            Rectangle = new Rectangle(0, 0, Texture.Width / frames, Texture.Height / colours);
+            XFrame = frame;
+            YFrame = colour;
         }
 
 
@@ -244,6 +255,7 @@ namespace GameJam
             // once spawned, do this... standard behaviour
             if (active == true)
             {
+                
 
                 //------------- textures --------------------------------------------------------------------------------------------------------------
                 if (hit == true)
@@ -331,7 +343,7 @@ namespace GameJam
                 //==============================================================================================================================================
 
                 //----- attacks -------------
-                
+              
                 // set attack aim
                 if (attacking != true)
                 {
@@ -507,7 +519,7 @@ namespace GameJam
 
                     }
                 }
-
+           
                 // Bomb
                 else if (attack == 3)
                 {
@@ -611,7 +623,7 @@ namespace GameJam
                 }
 
                 // ------- standard movement --------------------
-
+       
                 if (benign)
                 {
                     // static
@@ -628,6 +640,7 @@ namespace GameJam
                         norm.Normalize();
                         Velocity = norm;
                         Velocity *= slow;
+                        
                     }
 
                     // fast standard - move towards player
@@ -639,6 +652,7 @@ namespace GameJam
                         norm.Normalize();
                         Velocity = norm;
                         Velocity *= medium;
+                        
                     }
 
                     // erratic
@@ -670,13 +684,14 @@ namespace GameJam
 
                         Velocity = new Vector2((float)(Velocity.X * Math.Cos(theta)) - (float)(Velocity.Y * Math.Sin(theta)),
                                                     (float)(Velocity.X * Math.Sin(theta)) + (float)(Velocity.Y * Math.Cos(theta)));
+                        
                     }
 
                     // pulse - slight movement around a point
                     else if (movement == 5)
                     {
 
-                        if ((startPos - Position).Length() > 100)
+                        if ((startPos - Position).Length() > 100 && groupCentre != Position)
                         {
                             Vector2 extra = (groupCentre - Position);
                             extra.Normalize();
@@ -685,7 +700,7 @@ namespace GameJam
                             norm.Normalize();
                             Velocity = norm;
                         }
-
+                        
                         if ((new Vector2(ViewPortHelper.X / 2, ViewPortHelper.Y / 2) - Position).Length() > 350)
                         {
                             Vector2 extra = (new Vector2(ViewPortHelper.X / 2, ViewPortHelper.Y / 2) - Position);
@@ -696,18 +711,16 @@ namespace GameJam
                             Velocity = norm;
                         }
 
-
                         double theta = random.NextDouble() - 0.5;
 
                         Velocity = new Vector2((float)(Velocity.X * Math.Cos(theta)) - (float)(Velocity.Y * Math.Sin(theta)),
-                                                    (float)(Velocity.X * Math.Sin(theta)) + (float)(Velocity.Y * Math.Cos(theta)));
-
+                                                    (float)(Velocity.X * Math.Sin(theta)) + (float)(Velocity.Y * Math.Cos(theta)));                       
                     }
                 }
 
                 // ----- keeping the cells apart ----------
 
-                if (movement != 1)
+                if (movement != 1 && group.Count() > 1)
                 {
                     Vector2 away = Vector2.Zero;
 
@@ -728,6 +741,7 @@ namespace GameJam
                     }
 
                     Velocity += away*slow;
+                    
                 }
 
                 if (CellsHelper.Freeze == false)
@@ -757,14 +771,28 @@ namespace GameJam
                 XFrame = frame;
                 YFrame = colour;
 
+                // spawn disappearance
+                if (sframe >= 0)
+                {
+                    if (ftimer < frate)
+                    {
+                        ftimer += gameTime.ElapsedGameTime.Milliseconds;
+                    }
+
+                    else
+                    {
+                        sframe -= 1;
+                        ftimer = 0;
+                        spawnRect.Y = spawnRect.Height * sframe;
+                    }
+                }
+
             }
 
 
             // ---------------- spawning warning ---------------------------------------------------
             else
             {
-                // textures
-                Texture = spawnTex;
 
                 if (ftimer < frate)
                 {
@@ -775,34 +803,35 @@ namespace GameJam
                 {
                     sframe += 1;
                     ftimer = 0;
+                    spawnRect.Y = spawnRect.Height * sframe;
 
-                    if (sframe > nframes)
+                    if (sframe >= nframes)
                     {
-                        sframe = 0;
+                        sframe -= 1;
+                        active = true;
                     }
                 }
 
-                Rectangle = new Rectangle(sframe * spawnTex.Width / 3, 0, spawnTex.Width / 3, spawnTex.Height);
-                Scale = 1.0f;
+                
 
                 // spawn delay
-                if (spawnTimer < spawnTime)
-                {
-                    spawnTimer += gameTime.ElapsedGameTime.Milliseconds;
-                    SheetSize = new Vector2(3, 1);
-                }
+                //if (spawnTimer < spawnTime)
+                //{
+                //    spawnTimer += gameTime.ElapsedGameTime.Milliseconds;
+                //    SheetSize = new Vector2(1, 4);
+                //}
 
-                else
-                {
-                    spawnTimer = 0;
-                    active = true;
-                    Texture = normalTex;
-                    Rectangle = new Rectangle(0, 0, Texture.Width / frames, Texture.Height / colours);
-                    Scale = 0.2f;
-                    SheetSize = new Vector2(frames, colours);
-                    XFrame = frame;
-                    YFrame = colour;
-                }
+                //else
+                //{
+                //    spawnTimer = 0;
+                //    active = true;
+                //    Texture = normalTex;
+                //    Rectangle = new Rectangle(0, 0, Texture.Width / frames, Texture.Height / colours);
+                //    Scale = 0.2f;
+                //    SheetSize = new Vector2(frames, colours);
+                //    XFrame = frame;
+                //    YFrame = colour;
+                //}
 
             }
 
@@ -863,7 +892,6 @@ namespace GameJam
                     XFrame = 0;
                 }
             }
-            
             base.Update(gameTime, bactch);
         }
 
@@ -876,8 +904,15 @@ namespace GameJam
                 //circle.Draw(batch);
                 batch.Draw(circleTex, Position + new Vector2(-circleTex.Width/4,-circleTex.Height/2)*circleScale,circleRect, Color.White, 0.0f, Vector2.Zero, circleScale , SpriteEffects.None, layer);
             }
-                                               
-           base.Draw(gameTime, batch, layer);
+
+            if (active == true)
+            {
+                base.Draw(gameTime, batch, layer);
+            }
+            if (sframe >= 0)
+            {
+                batch.Draw(spawnTex, spawnPosition, spawnRect, Color.White, 0.0f, Vector2.Zero, 0.6f, SpriteEffects.None, layer + 0.1f);
+            }
             
         }
 

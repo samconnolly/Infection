@@ -42,6 +42,9 @@ namespace GameJam
         private Texture2D _pauseTexture;
         private Texture2D _controller;
 
+        private Texture2D heartTex;
+        private Rectangle heartRect;
+
         private SpawnII spawn2;
         private int spawnTimer = 0;
         private int level = 0;
@@ -163,9 +166,13 @@ namespace GameJam
             Texture2D powerupTexture = this.Game.Content.Load<Texture2D>("powerups");
             Texture2D specialTexture = this.Game.Content.Load<Texture2D>("specials");
             Texture2D powerupTextTex = this.Game.Content.Load<Texture2D>("powerupText");
+            Texture2D invinceTexture = this.Game.Content.Load<Texture2D>("Invincible");
 
-            _virus = new Virus(virusTexture, viruslingTexture,eyeTexture,laserTexture,specialTexture, new Vector2(380,320));
-            _virus2 = new Virus(virusTexture2, viruslingTexture, eyeTexture, laserTexture, specialTexture, new Vector2(880, 120), 2);
+            heartTex = this.Game.Content.Load<Texture2D>("heart");
+            heartRect = new Rectangle(0, 0, heartTex.Width, heartTex.Height);
+
+            _virus = new Virus(virusTexture, viruslingTexture, eyeTexture, laserTexture, specialTexture, invinceTexture, new Vector2(380, 320));
+            _virus2 = new Virus(virusTexture2, viruslingTexture, eyeTexture, laserTexture, specialTexture, invinceTexture, new Vector2(880, 120), 2);
 
             _virusList.Add(_virus);
 
@@ -185,7 +192,7 @@ namespace GameJam
             Texture2D missileTexture = this.Game.Content.Load<Texture2D>("missile");
             Texture2D circleTexture = this.Game.Content.Load<Texture2D>("circle_both");
 
-            Texture2D spawnTexture = this.Game.Content.Load<Texture2D>("whitebloodspawn");
+            Texture2D spawnTexture = this.Game.Content.Load<Texture2D>("spawn");
 
             //// AntiViral Nodule
             //Texture2D antiViralNoduleTexture = this.Game.Content.Load<Texture2D>("boss");
@@ -776,12 +783,30 @@ namespace GameJam
                 {
                     if (InputHelper.Players == 2)
                     {
-                        batch.DrawString(font, "P1 Lives - " + ScoreHelper.Lives.ToString(), new Vector2(120, 40), Color.White);
-                        batch.DrawString(font, "P2 Lives - " + ScoreHelper.LivesP2.ToString(), new Vector2(760, 40), Color.White);
+                        if (VirusHelper.Virus.dead == false)
+                        {
+                            for (int i = 0; i < ScoreHelper.Lives; i++)
+                            {
+                                batch.Draw(heartTex, new Vector2(120 + i * 60, 40), heartRect, Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, 0.49f);
+                            }
+                        }
+                        if (VirusHelper.VirusP2.dead == false)
+                        {
+                            for (int j = 0; j < ScoreHelper.LivesP2; j++)
+                            {
+                                batch.Draw(heartTex, new Vector2(910 - j * 60, 40), heartRect, Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, 0.49f);
+                            }
+                        }
+                        //batch.DrawString(font, "P1 Lives - " + ScoreHelper.Lives.ToString(), new Vector2(120, 40), Color.White);
+                        //batch.DrawString(font, "P2 Lives - " + ScoreHelper.LivesP2.ToString(), new Vector2(760, 40), Color.White);
                     }
                     else
                     {
-                        batch.DrawString(font, "Lives - " + ScoreHelper.Lives.ToString(), new Vector2(120, 40), Color.White);
+                        for (int i = 0; i < ScoreHelper.Lives; i++)
+                        {
+                            batch.Draw(heartTex, new Vector2(120 + i*60, 40), heartRect, Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, 0.49f);
+                        }
+                        //batch.DrawString(font, "Lives - " + ScoreHelper.Lives.ToString(), new Vector2(120, 40), Color.White);
                     }
                 }
 
