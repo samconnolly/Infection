@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Sections>
+  <WaveBank Name="Wave Bank">Wave Bank
+{
+    Name = Wave Bank;
+    Xbox File = Xbox\Wave Bank.xwb;
+    Windows File = Win\Wave Bank.xwb;
+    Xbox Bank Path Edited = 0;
+    Windows Bank Path Edited = 0;
+    Seek Tables = 1;
+    Compression Preset Name = &lt;none&gt;;
+    Bank Last Revised Low = 2105497750;
+    Bank Last Revised High = 30407980;
+
+    Wave
+    {
+        Name = 110393__soundscalpel-com__water-splash;
+        File = 110393__soundscalpel-com__water-splash.wav;
+        Build Settings Last Modified Low = 1259234048;
+        Build Settings Last Modified High = 30407882;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 46;
+            Play Region Length = 221568;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 303331035;
+            Last Modified High = 30404703;
+        }
+    }
+
+    Wave
+    {
+        Name = 186748_rombart_splash-eau-goudron1_converted;
+        File = ..\..\..\..\..\..\Dropbox\Game Jam\Assets\SFX\186748_rombart_splash-eau-goudron1_converted.wav;
+        Build Settings Last Modified Low = 225680231;
+        Build Settings Last Modified High = 30407980;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 116;
+            Play Region Length = 135976;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 4268513106;
+            Last Modified High = 30407979;
+        }
+    }
+
+    Wave
+    {
+        Name = Squelch_1;
+        File = ..\..\..\..\..\..\Dropbox\Game Jam\Assets\SFX\Squelch_1.wav;
+        Build Settings Last Modified Low = 2001571806;
+        Build Settings Last Modified High = 30407980;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 78;
+            Play Region Length = 48478;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1201156025;
+            Last Modified High = 30407980;
+        }
+    }
+
+    Wave
+    {
+        Name = Squelch_2;
+        File = ..\..\..\..\..\..\Dropbox\Game Jam\Assets\SFX\Squelch_2.wav;
+        Build Settings Last Modified Low = 2001571806;
+        Build Settings Last Modified High = 30407980;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 78;
+            Play Region Length = 47484;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1645311429;
+            Last Modified High = 30407980;
+        }
+    }
+
+    Wave
+    {
+        Name = Squelch_3;
+        File = ..\..\..\..\..\..\Dropbox\Game Jam\Assets\SFX\Squelch_3.wav;
+        Build Settings Last Modified Low = 2001571806;
+        Build Settings Last Modified High = 30407980;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 78;
+            Play Region Length = 50044;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1387066658;
+            Last Modified High = 30407980;
+        }
+    }
+}
+
+</WaveBank>
+</Sections>

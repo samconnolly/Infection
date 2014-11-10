@@ -104,25 +104,8 @@ namespace GameJam
                 stream.Close();
                 GC.Collect();
                 
-                ScoreHelper.LoadData = true;
-
-                                                          
+                ScoreHelper.LoadData = true;                                                          
             }
-            // get storage device
-            //storageDevice = StorageDevice.BeginShowSelector();
-
-            //// Open a storage container.
-            //IAsyncResult result =
-            //    storageDevice.BeginOpenContainer("StorageDemo", null, null);
-
-            //// Wait for the WaitHandle to become signaled.
-            //result.AsyncWaitHandle.WaitOne();
-
-            //StorageContainer container =  storageDevice.EndOpenContainer(result);
-
-            //// Close the wait handle.
-            //result.AsyncWaitHandle.Close();
-
         }
 
         internal override void UnloadContent()

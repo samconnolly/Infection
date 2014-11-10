@@ -93,17 +93,35 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="109056">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="108544">
       <assemblyIdentity name="You have been infected!" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>MRIJFq+6VoHXKx0PTABmtPYways=</dsig:DigestValue>
+        <dsig:DigestValue>Z55JuHpOXMFHKLSTHGpbqcsbpdk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="Content\110393__soundscalpel-com__water-splash.xnb" size="221673">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>z6mhlW4aTNeoU0je11c3hehe5z8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\186748_rombart_splash-eau-goudron1_converted.xnb" size="136081">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>OJRovqBc39zlq5szAekYSk/55KI=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Content\a_button.xnb" size="40187">
     <hash>
       <dsig:Transforms>
@@ -284,6 +302,15 @@
       <dsig:DigestValue>EM1X80YIBmvx3GAh+uWfyQR3ztA=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="Content\infectionSound.xgs" size="462">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>XW6C6upi0Z9V3Z2DWlkDk2FH8HA=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Content\Invincible.xnb" size="269547">
     <hash>
       <dsig:Transforms>
@@ -419,6 +446,15 @@
       <dsig:DigestValue>Nnp+27RVp2wUNGNmFg4aGxW84WQ=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="Content\Sound Bank.xsb" size="397">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>U9pqYhm4w9Z9MG+bV4Uk1M9WjlM=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Content\spawn.xnb" size="640187">
     <hash>
       <dsig:Transforms>
@@ -437,24 +473,6 @@
       <dsig:DigestValue>HYvpsGjIEFfJYWf1msOrhO5XoOU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\splash.xnb" size="221673">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>z6mhlW4aTNeoU0je11c3hehe5z8=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\splash2.xnb" size="147561">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>Vy6TI3rj3sU2ws/5zxgu/Cs5Yuo=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="Content\spore.xnb" size="587">
     <hash>
       <dsig:Transforms>
@@ -464,31 +482,31 @@
       <dsig:DigestValue>xo+nciamv9/wGep4CX868mB9sBo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Squelch 1.xnb" size="53097">
+  <file name="Content\Squelch_1.xnb" size="48583">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>SZWpzkm44Cf5A/9cZVGDOWY6MPM=</dsig:DigestValue>
+      <dsig:DigestValue>e0vwGeOkfFdpOiGpvQIDPUZ0+jw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Squelch 2.xnb" size="53097">
+  <file name="Content\Squelch_2.xnb" size="47589">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>eqDnqyQJT4/wioTYeyy0plpZiSg=</dsig:DigestValue>
+      <dsig:DigestValue>35ThSE5lJjDyd1fvAZWcDzdNeYw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Squelch 3.xnb" size="55401">
+  <file name="Content\Squelch_3.xnb" size="50149">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>CkHhq72eusyCHsv3oPBObMP8f5s=</dsig:DigestValue>
+      <dsig:DigestValue>otSNhJfzMYsuSyxika5lOOGkllI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Title screen copy.xnb" size="3110587">
@@ -518,85 +536,13 @@
       <dsig:DigestValue>tiSDptetKASDEE5dhpxiuJr23dY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\voice_01.xnb" size="67721">
+  <file name="Content\Wave Bank.xwb" size="503820">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>8ZLyfYuQ8ggYHaaBjw3F2jBrzes=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\voice_02.xnb" size="67721">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>kWPkkS58qJj71+pRXhF0qRK6eEw=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\voice_03.xnb" size="67721">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>ZDPWK7iA9c14c/2SjqymZT/OHNg=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\voice_04.xnb" size="67721">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>Et+7LLa6MDbSqGYd1sxFAPNvQrI=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\voice_05.xnb" size="67721">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>nTg/JQr110vj8aGzk3l6ohnysis=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\voice_06.xnb" size="67721">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>L7EG08JEUwmRFf/58iOVad0k45M=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\voice_07.xnb" size="67721">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>Ki54TVQ1/xptZSQOSUr48S8/bAE=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\voice_08.xnb" size="67721">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>PSpyOExJJOEh0q+YuqZTARXhd2U=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\voice_09.xnb" size="67721">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>awNejiNij6T79mJ7sc7EXgX6NbQ=</dsig:DigestValue>
+      <dsig:DigestValue>NlXTFrCzNseGzAi03xlc1EuqN/Q=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">
@@ -608,13 +554,13 @@
       <dsig:DigestValue>/y21PfwGnUAkwpPwwaFuIIyWENo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="gameData.xml" size="825" writeableType="applicationData">
+  <file name="gameData.xml" size="814" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>0iwf9SDJCpzOf8eW53N5mny9SrQ=</dsig:DigestValue>
+      <dsig:DigestValue>9fFU4r5telOu+eJtJCfb7SS9LOM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="GameThumbnail.png" size="5734">
@@ -633,6 +579,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>xNBl0mSTEFey5Q2RT0os6aNM36w=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="You have been infected!.exe.config" size="392">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>9ttTlYzTVnycXepRovzfLvOXTuQ=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

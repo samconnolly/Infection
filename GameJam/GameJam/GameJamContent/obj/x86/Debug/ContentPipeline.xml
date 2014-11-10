@@ -40,33 +40,6 @@
       <Time>2014-05-11T22:36:31.7729764+01:00</Time>
     </Item>
     <Item>
-      <Source>Squelch 1.mp3</Source>
-      <Name>Squelch 1</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch 1.xnb</Output>
-      <Time>2014-05-11T22:36:31.7889774+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Squelch 2.mp3</Source>
-      <Name>Squelch 2</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch 2.xnb</Output>
-      <Time>2014-05-11T22:36:31.7899774+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Squelch 3.mp3</Source>
-      <Name>Squelch 3</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch 3.xnb</Output>
-      <Time>2014-05-11T22:36:31.7909775+01:00</Time>
-    </Item>
-    <Item>
       <Source>Spore alpha final.png</Source>
       <Name>spore</Name>
       <Importer>TextureImporter</Importer>
@@ -283,87 +256,6 @@
       <Time>2014-10-15T21:59:40.1961235+01:00</Time>
     </Item>
     <Item>
-      <Source>voice_01.mp3</Source>
-      <Name>voice_01</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_01.xnb</Output>
-      <Time>2014-10-25T15:22:13.3144136+01:00</Time>
-    </Item>
-    <Item>
-      <Source>voice_02.mp3</Source>
-      <Name>voice_02</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_02.xnb</Output>
-      <Time>2014-10-25T15:22:13.3154136+01:00</Time>
-    </Item>
-    <Item>
-      <Source>voice_03.mp3</Source>
-      <Name>voice_03</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_03.xnb</Output>
-      <Time>2014-10-25T15:22:13.322414+01:00</Time>
-    </Item>
-    <Item>
-      <Source>voice_04.mp3</Source>
-      <Name>voice_04</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_04.xnb</Output>
-      <Time>2014-10-25T15:22:13.3234141+01:00</Time>
-    </Item>
-    <Item>
-      <Source>voice_05.mp3</Source>
-      <Name>voice_05</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_05.xnb</Output>
-      <Time>2014-10-25T15:22:13.3234141+01:00</Time>
-    </Item>
-    <Item>
-      <Source>voice_06.mp3</Source>
-      <Name>voice_06</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_06.xnb</Output>
-      <Time>2014-10-25T15:22:13.3244141+01:00</Time>
-    </Item>
-    <Item>
-      <Source>voice_07.mp3</Source>
-      <Name>voice_07</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_07.xnb</Output>
-      <Time>2014-10-25T15:22:13.3254142+01:00</Time>
-    </Item>
-    <Item>
-      <Source>voice_08.mp3</Source>
-      <Name>voice_08</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_08.xnb</Output>
-      <Time>2014-10-25T15:22:13.3254142+01:00</Time>
-    </Item>
-    <Item>
-      <Source>voice_09.mp3</Source>
-      <Name>voice_09</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\voice_09.xnb</Output>
-      <Time>2014-10-25T15:22:13.3264143+01:00</Time>
-    </Item>
-    <Item>
       <Source>player_laser.png</Source>
       <Name>laser</Name>
       <Importer>TextureImporter</Importer>
@@ -418,24 +310,6 @@
       <Time>2014-10-25T16:00:06.6364402+01:00</Time>
     </Item>
     <Item>
-      <Source>110393__soundscalpel-com__water-splash.wav</Source>
-      <Name>splash</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\splash.xnb</Output>
-      <Time>2014-10-25T15:22:13.2924123+01:00</Time>
-    </Item>
-    <Item>
-      <Source>186748_rombart_splash-eau-goudron1.mp3</Source>
-      <Name>splash2</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\splash2.xnb</Output>
-      <Time>2014-10-26T12:18:58.8394537+00:00</Time>
-    </Item>
-    <Item>
       <Source>Invincible.png</Source>
       <Name>Invincible</Name>
       <Importer>TextureImporter</Importer>
@@ -479,6 +353,51 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\spawn.xnb</Output>
       <Time>2014-10-27T09:41:00.9918811+00:00</Time>
+    </Item>
+    <Item>
+      <Source>110393__soundscalpel-com__water-splash.wav</Source>
+      <Name>110393__soundscalpel-com__water-splash</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\110393__soundscalpel-com__water-splash.xnb</Output>
+      <Time>2014-11-10T21:32:08.8347011+00:00</Time>
+    </Item>
+    <Item>
+      <Source>186748_rombart_splash-eau-goudron1_converted.wav</Source>
+      <Name>186748_rombart_splash-eau-goudron1_converted</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\186748_rombart_splash-eau-goudron1_converted.xnb</Output>
+      <Time>2014-11-10T21:32:08.8377012+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Squelch_1.wav</Source>
+      <Name>Squelch_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch_1.xnb</Output>
+      <Time>2014-11-10T21:32:08.8397013+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Squelch_2.wav</Source>
+      <Name>Squelch_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch_2.xnb</Output>
+      <Time>2014-11-10T21:32:08.8407014+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Squelch_3.wav</Source>
+      <Name>Squelch_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch_3.xnb</Output>
+      <Time>2014-11-10T21:32:08.8417015+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
