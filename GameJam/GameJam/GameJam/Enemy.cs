@@ -911,7 +911,7 @@ namespace GameJam
             }
             if (sframe >= 0)
             {
-                batch.Draw(spawnTex, spawnPosition, spawnRect, Color.White, 0.0f, Vector2.Zero, 0.6f, SpriteEffects.None, layer + 0.1f);
+                batch.Draw(spawnTex, spawnPosition + DrawOffset*Scale, spawnRect, Color.White, 0.0f, Vector2.Zero, 0.6f, SpriteEffects.None, layer + 0.1f);
             }
             
         }

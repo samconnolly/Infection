@@ -70,7 +70,7 @@ namespace GameJam
 
         public static void PlayerHit(Virus player)
         {
-            if (VirusHelper.Virus.invincible == false)
+            if (player.player == 1 && VirusHelper.Virus.invincible == false || player.player == 2 && VirusHelper.VirusP2.invincible == false)
             {
                 player.hit = true;
 

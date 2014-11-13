@@ -54,12 +54,15 @@ namespace GameJam
             cue.Play();
         }
 
-        public static void AdjustVolume(float volume)
+        public static void AdjustVolume(float volume,bool silent=false)
         {
             soundCategory.SetVolume(volume);
             _volume = volume;
-            Cue cue = soundbank.GetCue("squelch");
-            cue.Play(); 
+            if (silent == false)
+            {
+                Cue cue = soundbank.GetCue("squelch");
+                cue.Play();
+            }
         }
     }
 }

@@ -193,24 +193,10 @@ namespace GameJam
             Texture2D circleTexture = this.Game.Content.Load<Texture2D>("circle_both");
 
             Texture2D spawnTexture = this.Game.Content.Load<Texture2D>("spawn");
+                        
+            testEnemies = new EnemyGroup(turretTexture, spawnTexture, new Vector2(300, 300), 3, 1, 3, new Vector2(6, 5),missileTexture,crossTexture);
 
-            //// AntiViral Nodule
-            //Texture2D antiViralNoduleTexture = this.Game.Content.Load<Texture2D>("boss");
-            //_antiViralNodule = new AntiViralNodule(antiViralNoduleTexture, new Vector2(750, 650));
-            //_cells.Add(_antiViralNodule);
-
-
-            //_proliferate = new Proliferate(proliferateTexture, new Vector2(30,30));
-            //_doubleUp = new DoubleUp(doubleTexture, new Vector2(450,450));
-            //_reproduce = new Reproduce(reproduceTexture, new Vector2(30,400));
-            
-            //_cells.Add(new EnemyGroup(gruntTexture,spawnTexture,new Vector2(800,600),1,1,3,new Vector2(6,5),bombTexture,crossTexture,circleTexture));
-            //_cells.Add(_doubleUp);
-            //_cells.Add(_reproduce);
-            
-            testEnemies = new EnemyGroup(turretTexture, spawnTexture, new Vector2(300, 300), 3, 1, 3, new Vector2(6, 5),bombTexture,crossTexture);
-
-            //_cells.Add(testEnemies);
+            _cells.Add(testEnemies);
 
 
             spawn2 = new SpawnII(gruntTexture,chargerTexture,
@@ -225,21 +211,7 @@ namespace GameJam
                 _items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(400, 400), 2));
             }
             _items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(400, 600), 2));
-
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(500, 300), 9));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(100, 500), 9));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, powerupTextTex, new Vector2(200, 500), 9));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 500), 4));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(300, 500), 7));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(400, 500), 10));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(500, 500), 15));
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(600, 500), 16)); // invincibility
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(700, 500), 17));// pulse
-           // _items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(800, 500), 18)); // stream
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(900, 500), 19));// laser
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(100, 600), 20));// freeze
-            //_items.Add(new PowerUpBase(powerupTexture, specialTexture, new Vector2(200, 600), 21));//antidote
-
+            
             //Load atmospheric music.
             beneath = this.Game.Content.Load<Song>("Beneath");
             
@@ -303,21 +275,11 @@ namespace GameJam
                 spawnTimer += gameTime.ElapsedGameTime.Milliseconds;
 
                 add.Clear();
-
-                // spawn red blood cells
-                //if (spawnTimer >= 1000 && health == false)
-                //{
-                //    health = true;
-                //    //add = spawn.SpawnRed(1);
-                //    add = spawn2.SpawnRed(1);
-
-                //}
-
+                
                 // spawn enemies
                 if (spawnTimer >= 2000)
                 {
                     spawnTimer = 0;
-                    //health = false;
                     spawning = false;
                     
 
@@ -327,8 +289,6 @@ namespace GameJam
                         addItem.Add(powerup);
                     }
 
-                    
-                    //add = spawn.SpawnEnemies(level);
                     add = spawn2.SpawnEnemies(level);
                 }
 
@@ -339,27 +299,7 @@ namespace GameJam
                     {
                         _cells.Add(sprite);
                     }
-                }
-
-
-                // spawn power-ups 
-
-                //itemTimer += gameTime.ElapsedGameTime.Milliseconds;
-
-                //if (itemTimer >= itemTime)
-                //{
-                //    addItem = spawn2.SpawnPowerUps();
-                //    itemTime = rand.Next(itemMin, itemMax);
-                //    itemTimer = 0;
-                //}
-                //if (itemSpawned == false)
-                //{
-                //    addItem = spawn2.SpawnPowerUps(itemMax, wave);
-                //    itemCount += 1;
-                //    itemSpawned = true;
-                //}
-
-                
+                }                                
             }
 
             // cheat!!!

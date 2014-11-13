@@ -26,6 +26,7 @@ namespace GameJam
         private Vector2 start;
         private bool up = true;
         private Vector2 offset;
+        private Vector2 crossOffset;
 
         public bool hit = false;
 
@@ -52,7 +53,7 @@ namespace GameJam
 
             frate = ViewPortHelper.FrameRate;
             offset = DrawOffset;
-
+            crossOffset = DrawOffset;
 
         }
 
@@ -147,11 +148,11 @@ namespace GameJam
             {
                 if (red == true)
                 {
-                    batch.Draw(crossTex, crossPosition - DrawOffset * Scale, drawRect, Color.Red, 0, Vector2.Zero, Scale, SpriteEffects.None, layer);
+                    batch.Draw(crossTex, crossPosition - crossOffset * Scale, drawRect, Color.Red, 0, Vector2.Zero, Scale, SpriteEffects.None, layer);
                 }
                 else
                 {
-                    batch.Draw(crossTex, crossPosition - DrawOffset * Scale, drawRect, Color.White, 0, Vector2.Zero, Scale, SpriteEffects.None, layer);
+                    batch.Draw(crossTex, crossPosition - crossOffset * Scale, drawRect, Color.White, 0, Vector2.Zero, Scale, SpriteEffects.None, layer);
                 }
             }
 

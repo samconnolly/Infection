@@ -64,6 +64,8 @@ namespace GameJam
         internal override void Initialize()
         {
             IsMouseVisible = true;
+
+            
         }
 
         internal override void LoadContent(SpriteBatch batch)
@@ -77,6 +79,12 @@ namespace GameJam
 
             //Load atmospheric music.
             music = this.Game.Content.Load<Song>("Controlled Chaos");
+
+            // check if music is playing already or not
+            if (ViewPortHelper.CurrentSong == music)
+            {
+                _isPlayingMusic = true;
+            }
 
             // fonts
             font = this.Game.Content.Load<SpriteFont>("font");
@@ -100,12 +108,13 @@ namespace GameJam
 
                 ScoreHelper.HighScores = scores;
                 MediaPlayer.Volume = settings[0];
-                SoundEffectPlayer.AdjustVolume(settings[1]);
+                SoundEffectPlayer.AdjustVolume(settings[1],true);
                 stream.Close();
                 GC.Collect();
                 
                 ScoreHelper.LoadData = true;                                                          
             }
+
         }
 
         internal override void UnloadContent()

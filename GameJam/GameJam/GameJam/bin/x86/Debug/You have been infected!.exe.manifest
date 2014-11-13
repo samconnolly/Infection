@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="108544">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="You have been infected!.exe" size="109056">
       <assemblyIdentity name="You have been infected!" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Z55JuHpOXMFHKLSTHGpbqcsbpdk=</dsig:DigestValue>
+        <dsig:DigestValue>65ryNEZgFsjIWCN6SPc8uVziYyQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -149,13 +149,13 @@
       <dsig:DigestValue>XNTiBNp34CgoJZG68d9KlKDDimo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Beneath.wma" size="5561687">
+  <file name="Content\Beneath.wma" size="5418519">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>Kfny40XxinysznOpH4j+GohXO5Y=</dsig:DigestValue>
+      <dsig:DigestValue>Se2N1Q+pYex8UAyTBamXgB0d294=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Beneath.xnb" size="125">
@@ -164,7 +164,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>j5zxlN+gYIeuC2yU3uAZ3RUY2iM=</dsig:DigestValue>
+      <dsig:DigestValue>+l3SVHXiG2diTaFgIjq4bQp/g0Y=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\bomb.xnb" size="577787">

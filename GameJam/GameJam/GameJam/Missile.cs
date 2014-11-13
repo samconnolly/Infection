@@ -57,8 +57,8 @@ namespace GameJam
                 DeathHelper.KillCell.Add(this);
             }
 
-
-            else if ((this.Position - VirusHelper.VirusPosition).Length() < VirusHelper.Virus.width * VirusHelper.Virus.Scale)
+            else if (((this.Position) - (VirusHelper.VirusPosition)).Length() 
+                            < VirusHelper.Virus.width * VirusHelper.Virus.Scale/2.0 + Rectangle.Width*Scale/2.0)
             {
                 ScoreHelper.PlayerHit(VirusHelper.Virus);
                 DeathHelper.KillCell.Add(this);

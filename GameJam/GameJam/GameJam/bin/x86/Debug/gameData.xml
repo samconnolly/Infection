@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <HighScores xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <HighScore>
-    <score>12</score>
+    <score>0</score>
   </HighScore>
   <HighScore>
     <score>0</score>
@@ -32,10 +32,11 @@
   </HighScore>
   <Settings>
     <Volume>
-      <value>0</value>
+      <value>1.0</value>
     </Volume>
     <Volume>
-      <value>1</value>
+      <value>1.0</value>
     </Volume>
   </Settings>
 </HighScores>
+
