@@ -3,12 +3,10 @@ Content\Beneath.xnb
 Content\Beneath.wma
 Content\Controlled Chaos.xnb
 Content\Controlled Chaos.wma
-Content\spore.xnb
 Content\Large Background.xnb
 Content\Title screen copy.xnb
 Content\Pause Menu copy.xnb
 Content\Final Score.xnb
-Content\virusling.xnb
 Content\bomb.xnb
 Content\font3.xnb
 Content\player.xnb

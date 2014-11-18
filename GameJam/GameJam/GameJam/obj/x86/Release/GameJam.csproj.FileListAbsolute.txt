@@ -74,12 +74,10 @@ K:\Documents\GitHub\GameJam\GameJam\GameJam\GameJam\bin\x86\Release\Content\oran
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\font.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Beneath.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Controlled Chaos.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\spore.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Large Background.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Title screen copy.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Pause Menu copy.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Final Score.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\virusling.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\bomb.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\cross.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Beneath.wma

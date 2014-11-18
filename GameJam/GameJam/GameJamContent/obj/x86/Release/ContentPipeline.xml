@@ -31,15 +31,6 @@
       <Time>2014-05-11T22:36:31.7729764+01:00</Time>
     </Item>
     <Item>
-      <Source>Spore alpha final.png</Source>
-      <Name>spore</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\spore.xnb</Output>
-      <Time>2014-05-11T22:36:31.7849771+01:00</Time>
-    </Item>
-    <Item>
       <Source>Large Background.png</Source>
       <Name>Large Background</Name>
       <Importer>TextureImporter</Importer>
@@ -74,15 +65,6 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Final Score.xnb</Output>
       <Time>2014-05-11T22:36:31.7769767+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Spore final.png</Source>
-      <Name>virusling</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\virusling.xnb</Output>
-      <Time>2014-05-11T22:45:22.0563069+01:00</Time>
     </Item>
     <Item>
       <Source>bomb.png</Source>

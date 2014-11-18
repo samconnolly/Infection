@@ -100,7 +100,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>4INCmdCCWuu1WSLW2clq5Oe9x0o=</dsig:DigestValue>
+        <dsig:DigestValue>AxAWl9j464/meCS/wy8hoCbTu+4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -473,15 +473,6 @@
       <dsig:DigestValue>ke0qzB9asNi55YutN5GBJ9FRAMM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\spore.xnb" size="562">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>tPoKHXLdIlEARgEQt5O1PFX3r2g=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="Content\Squelch_1.xnb" size="48583">
     <hash>
       <dsig:Transforms>
@@ -525,15 +516,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>zS4RF1MuQNF0Fb09yZKVjpWKsLI=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Content\virusling.xnb" size="438">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>4q1ZWItSJGRYJlkCRVPVL12UIok=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Wave Bank.xwb" size="503820">

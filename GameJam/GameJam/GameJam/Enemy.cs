@@ -837,27 +837,7 @@ namespace GameJam
                     {
                         preSpawn = false;
                     }
-                }
-
-                // spawn delay
-                //if (spawnTimer < spawnTime)
-                //{
-                //    spawnTimer += gameTime.ElapsedGameTime.Milliseconds;
-                //    SheetSize = new Vector2(1, 4);
-                //}
-
-                //else
-                //{
-                //    spawnTimer = 0;
-                //    active = true;
-                //    Texture = normalTex;
-                //    Rectangle = new Rectangle(0, 0, Texture.Width / frames, Texture.Height / colours);
-                //    Scale = 0.2f;
-                //    SheetSize = new Vector2(frames, colours);
-                //    XFrame = frame;
-                //    YFrame = colour;
-                //}
-
+                }                
             }
 
             if (firing == true)
@@ -947,8 +927,6 @@ namespace GameJam
 
         public Virusling Hit(Virusling v)
         {
-            SoundEffectPlayer.PlaySquelch();
-
             hit = true;
             hitTimer = 0;
             ////////////////
@@ -984,8 +962,6 @@ namespace GameJam
 
         public void LaserHit(int player)
         {
-            SoundEffectPlayer.PlaySquelch();
-
             hit = true;
             hitTimer = 0;
             ////////////////
