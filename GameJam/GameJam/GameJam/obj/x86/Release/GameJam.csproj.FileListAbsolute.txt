@@ -117,7 +117,6 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\le
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\level_3.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\level_4.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\level_5.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\gameData.xml
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Invincible.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\a_button.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\b_button.xnb
@@ -133,3 +132,4 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\So
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\You have been infected!.exe.config
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Release\Interop.WMPLib.dll
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Release\GameJam.csproj.ResolveComReference.cache
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\gameData.xml
