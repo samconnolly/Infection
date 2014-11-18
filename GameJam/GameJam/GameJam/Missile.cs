@@ -17,6 +17,7 @@ namespace GameJam
         private float speed;
         private Texture2D tex;
         public bool hit = false;
+        private Vector2 rotOffset;
        
         public Missile(Texture2D texture,Vector2 position, Vector2 target, float moveSpeed)
             : base(texture)
@@ -40,6 +41,9 @@ namespace GameJam
             {
                 Rotation = (float)Math.Atan((double)(-Velocity.X / Velocity.Y)) + (float)Math.PI;
             }
+
+            rotOffset = new Vector2(Rectangle.Height * 0.5f * Scale * ((float)Math.Sin(Rotation)), -Rectangle.Height * 0.5f * Scale * ((float)Math.Cos(Rotation)));
+
         }
 
         public override void Update(GameTime gameTime, SpriteBatch bactch)
@@ -57,8 +61,8 @@ namespace GameJam
                 DeathHelper.KillCell.Add(this);
             }
 
-            else if (((this.Position) - (VirusHelper.VirusPosition)).Length() 
-                            < VirusHelper.Virus.width * VirusHelper.Virus.Scale/2.0 + Rectangle.Width*Scale/2.0)
+            else if (((Position) - (VirusHelper.VirusPosition)).Length()
+                            < VirusHelper.Virus.width * VirusHelper.Virus.Scale / 2.0 + Rectangle.Width * Scale / 2.0) //
             {
                 ScoreHelper.PlayerHit(VirusHelper.Virus);
                 DeathHelper.KillCell.Add(this);
@@ -74,6 +78,11 @@ namespace GameJam
                 }
             }
 
+        }
+
+        public override void Draw(GameTime gameTime, SpriteBatch batch, float layer)
+        {
+            batch.Draw(Texture, Position + rotOffset, Rectangle, Colour, Rotation, Vector2.Zero, Scale, SpriteEffects.None, layer);
         }
     }
 }

@@ -56,13 +56,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Spore alpha final.png">
-      <Name>spore</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Large Background.png">
       <Name>Large Background</Name>
       <Importer>TextureImporter</Importer>
@@ -93,13 +86,6 @@
   <ItemGroup>
     <Compile Include="Fanal Score.png">
       <Name>Final Score</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Spore final.png">
-      <Name>virusling</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

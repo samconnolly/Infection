@@ -18,21 +18,20 @@
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Virus.ico</ApplicationIcon>
     <Thumbnail>GameThumbnail.png</Thumbnail>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://www.astro.soton.ac.uk/~sdc1g08/Game.html/</InstallUrl>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>2</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -132,16 +131,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnimatedSprite.cs" />
-    <Compile Include="AntiViralNodule.cs" />
     <Compile Include="Background\Background.cs" />
-    <Compile Include="Background\BackgroundGenerator.cs" />
-    <Compile Include="Background\Wall.cs" />
-    <Compile Include="Background\TileRef.cs" />
-    <Compile Include="Background\Tile.cs" />
     <Compile Include="Bomb.cs" />
     <Compile Include="Circle.cs" />
-    <Compile Include="SaveGameData.cs" />
     <Compile Include="CooldownBar.cs" />
     <Compile Include="Helpers\FontHelper.cs" />
     <Compile Include="Modules\HighScoreModule.cs" />
@@ -151,7 +143,6 @@
     <Compile Include="EnemyGroup.cs" />
     <Compile Include="GameState\GameState.cs" />
     <Compile Include="GameState\GameStateManager.cs" />
-    <Compile Include="HealthBar.cs" />
     <Compile Include="Helpers\CellsHelper.cs" />
     <Compile Include="Helpers\SpriteHelper.cs" />
     <Compile Include="Helpers\InputHelper.cs" />

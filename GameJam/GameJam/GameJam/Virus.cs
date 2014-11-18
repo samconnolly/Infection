@@ -16,7 +16,6 @@ namespace GameJam
     {
         public bool dead = false;
         
-        //Vector2 Velocity;
         Vector2 acceleration;
         public Vector2 direction;
         public float maxSpeed;
@@ -115,7 +114,8 @@ namespace GameJam
         private int hitTimer = 0;
         public bool hit = false;
 
-        public Virus(Texture2D texture, Texture2D miniTexture,Texture2D eyeTexture, Texture2D laserTexture, Texture2D powerupTexture,Texture2D invinceTexture,  Vector2 position, int Player = 1)
+        public Virus(Texture2D texture, Texture2D miniTexture,Texture2D eyeTexture, Texture2D laserTexture, Texture2D powerupTexture,
+                        Texture2D invinceTexture,  Vector2 position, int Player = 1)
             : base(texture)
         {
             Scale = 0.1f;
@@ -404,29 +404,7 @@ namespace GameJam
                             laserRot = (float)Math.Atan((double)(-Velocity.X / Velocity.Y)) + (float)(Math.PI / 2);
                         }
                     }
-
-                    // offset
-
-                    //if (0.0f <= laserRot && laserRot < (float)(Math.PI / 2))
-                    //{
-                    //    laserOffset = new Vector2(0, -laserRect.Height * 0.8f / 2);// -new Vector2(0, Rectangle.Height * Scale);
-                    //}
-
-                    //else if ((float)(Math.PI / 2) <= laserRot && laserRot < (float)(Math.PI))
-                    //{
-                    //    laserOffset = new Vector2(laserRect.Height * 0.8f / 2, 0);
-                    //}
-
-                    //else if ((float)(Math.PI) <= laserRot && laserRot < (float)((3 * Math.PI) / 2))
-                    //{
-                    //    laserOffset = new Vector2(0, laserRect.Height * 0.8f / 2);
-                    //}
-
-                    //else
-                    //{
-                    //    laserOffset = new Vector2(-laserRect.Height * 0.8f / 2, 0);
-                    //}
-
+                                   
                     //laserOffset = new Vector2(laserRect.Height * 0.5f * ((float)Math.Sin(laserRot)), -laserRect.Height * 0.5f * ((float)Math.Cos(laserRot)));
                     laserOffset = new Vector2(laserRect.Height * 0.5f * laserScale * ((float)Math.Sin(laserRot)), -laserRect.Height * 0.5f * laserScale * ((float)Math.Cos(laserRot)));
 
@@ -647,197 +625,200 @@ namespace GameJam
 
             // ------------ viruslings ---------------------
 
-            // CHEAT
-            if (InputHelper.WasButtonPressed(Keys.V))
-            {
-                AddViruslings(1);
-            }
+            // CHEATS
+            //- add viruslings
+            //if (InputHelper.WasButtonPressed(Keys.V))
+            //{
+            //    AddViruslings(1);
+            //}
 
-            // MOD ============================
+            // choose powerups
 
-            if (InputHelper.WasButtonPressed(Keys.Enter))
-            {
-                activePowerup += 1;
+            //if (InputHelper.WasButtonPressed(Keys.Enter))
+            //{
+            //    activePowerup += 1;
 
-                if (activePowerup > 6)
-                {
-                    activePowerup = 0;
-                }
-            }
+            //    if (activePowerup > 6)
+            //    {
+            //        activePowerup = 0;
+            //    }
+            //}
 
-            if (InputHelper.IsButtonDown(Keys.D1))
-            {
+            // EDIT PHYSICS (and active/deactivate physics circle display)
 
-
-                if (InputHelper.IsButtonDown(Keys.LeftShift))
-                {
-                    VirusHelper.Radius1 -= 1;
-                }
-
-                else
-                {
-                    VirusHelper.Radius1 += 1;
-                }
-            }
-
-            if (InputHelper.IsButtonDown(Keys.D2))
-            {
+            //if (InputHelper.IsButtonDown(Keys.D1))
+            //{
 
 
-                if (InputHelper.IsButtonDown(Keys.LeftShift))
-                {
-                    VirusHelper.Radius2 -= 1;
-                }
+            //    if (InputHelper.IsButtonDown(Keys.LeftShift))
+            //    {
+            //        VirusHelper.Radius1 -= 1;
+            //    }
 
-                else
-                {
-                    VirusHelper.Radius2 += 1;
-                }
-            }
+            //    else
+            //    {
+            //        VirusHelper.Radius1 += 1;
+            //    }
+            //}
 
-            if (InputHelper.IsButtonDown(Keys.D3))
-            {
-
-
-                if (InputHelper.IsButtonDown(Keys.LeftShift))
-                {
-                    VirusHelper.Radius3 -= 1;
-                }
-
-                else
-                {
-                    VirusHelper.Radius3 += 1;
-                }
-            }
-
-            if (InputHelper.IsButtonDown(Keys.D4))
-            {
+            //if (InputHelper.IsButtonDown(Keys.D2))
+            //{
 
 
-                if (InputHelper.IsButtonDown(Keys.LeftShift))
-                {
-                    VirusHelper.InnerSlow -= 0.1f;
-                }
+            //    if (InputHelper.IsButtonDown(Keys.LeftShift))
+            //    {
+            //        VirusHelper.Radius2 -= 1;
+            //    }
 
-                else
-                {
-                    VirusHelper.InnerSlow += 0.1f;
-                }
-            }
+            //    else
+            //    {
+            //        VirusHelper.Radius2 += 1;
+            //    }
+            //}
 
-            if (InputHelper.IsButtonDown(Keys.D5))
-            {
-
-
-                if (InputHelper.IsButtonDown(Keys.LeftShift))
-                {
-                    VirusHelper.OuterSlow -= 0.1f;
-                }
-
-                else
-                {
-                    VirusHelper.OuterSlow += 0.1f;
-                }
-            }
-
-            if (InputHelper.IsButtonDown(Keys.D6))
-            {
+            //if (InputHelper.IsButtonDown(Keys.D3))
+            //{
 
 
-                if (InputHelper.IsButtonDown(Keys.LeftShift))
-                {
-                    VirusHelper.InnerAccn -= 0.01f;
-                }
+            //    if (InputHelper.IsButtonDown(Keys.LeftShift))
+            //    {
+            //        VirusHelper.Radius3 -= 1;
+            //    }
 
-                else
-                {
-                    VirusHelper.InnerAccn += 0.01f;
-                }
-            }
+            //    else
+            //    {
+            //        VirusHelper.Radius3 += 1;
+            //    }
+            //}
 
-            if (InputHelper.IsButtonDown(Keys.D7))
-            {
-
-
-                if (InputHelper.IsButtonDown(Keys.LeftShift))
-                {
-                    VirusHelper.OuterAccn -= 0.1f;
-                }
-
-                else
-                {
-                    VirusHelper.OuterAccn += 0.1f;
-                }
-            }
-
-            if (InputHelper.IsButtonDown(Keys.D8))
-            {
+            //if (InputHelper.IsButtonDown(Keys.D4))
+            //{
 
 
-                if (InputHelper.IsButtonDown(Keys.LeftShift))
-                {
-                    VirusHelper.OuterOuterAccn -= 0.1f;
-                }
+            //    if (InputHelper.IsButtonDown(Keys.LeftShift))
+            //    {
+            //        VirusHelper.InnerSlow -= 0.1f;
+            //    }
 
-                else
-                {
-                    VirusHelper.OuterOuterAccn += 0.1f;
-                }
-            }
+            //    else
+            //    {
+            //        VirusHelper.InnerSlow += 0.1f;
+            //    }
+            //}
 
-            if (InputHelper.IsButtonDown(Keys.D9))
-            {
-
-
-                if (InputHelper.IsButtonDown(Keys.LeftShift))
-                {
-                    VirusHelper.OuterOuterOuterAccn -= 0.1f;
-                }
-
-                else
-                {
-                    VirusHelper.OuterOuterOuterAccn += 0.1f;
-                }
-            }
-
-            if (InputHelper.IsButtonDown(Keys.D0))
-            {
+            //if (InputHelper.IsButtonDown(Keys.D5))
+            //{
 
 
-                if (InputHelper.IsButtonDown(Keys.LeftShift))
-                {
-                    VirusHelper.OuterOuterSlow -= 0.1f;
-                }
+            //    if (InputHelper.IsButtonDown(Keys.LeftShift))
+            //    {
+            //        VirusHelper.OuterSlow -= 0.1f;
+            //    }
 
-                else
-                {
-                    VirusHelper.OuterOuterSlow += 0.1f;
-                }
-            }
+            //    else
+            //    {
+            //        VirusHelper.OuterSlow += 0.1f;
+            //    }
+            //}
 
-            if (InputHelper.WasButtonPressed(Keys.C))
-            {
-                if (circles == true) { circles = false; }
-                else { circles = true; }
-            }
+            //if (InputHelper.IsButtonDown(Keys.D6))
+            //{
 
-            if (InputHelper.WasButtonPressed(Keys.Add))
-            {
-                VirusHelper.Rotation *= -1;
-            }
 
-            if (InputHelper.IsButtonDown(Keys.F1))
-            {
-                if (InputHelper.IsButtonDown(Keys.LeftShift))
-                {
-                    this.Scale *= 0.99f;
-                }
+            //    if (InputHelper.IsButtonDown(Keys.LeftShift))
+            //    {
+            //        VirusHelper.InnerAccn -= 0.01f;
+            //    }
 
-                else
-                {
-                    this.Scale *= 1.01f;
-                }
-            }
+            //    else
+            //    {
+            //        VirusHelper.InnerAccn += 0.01f;
+            //    }
+            //}
+
+            //if (InputHelper.IsButtonDown(Keys.D7))
+            //{
+
+
+            //    if (InputHelper.IsButtonDown(Keys.LeftShift))
+            //    {
+            //        VirusHelper.OuterAccn -= 0.1f;
+            //    }
+
+            //    else
+            //    {
+            //        VirusHelper.OuterAccn += 0.1f;
+            //    }
+            //}
+
+            //if (InputHelper.IsButtonDown(Keys.D8))
+            //{
+
+
+            //    if (InputHelper.IsButtonDown(Keys.LeftShift))
+            //    {
+            //        VirusHelper.OuterOuterAccn -= 0.1f;
+            //    }
+
+            //    else
+            //    {
+            //        VirusHelper.OuterOuterAccn += 0.1f;
+            //    }
+            //}
+
+            //if (InputHelper.IsButtonDown(Keys.D9))
+            //{
+
+
+            //    if (InputHelper.IsButtonDown(Keys.LeftShift))
+            //    {
+            //        VirusHelper.OuterOuterOuterAccn -= 0.1f;
+            //    }
+
+            //    else
+            //    {
+            //        VirusHelper.OuterOuterOuterAccn += 0.1f;
+            //    }
+            //}
+
+            //if (InputHelper.IsButtonDown(Keys.D0))
+            //{
+
+
+            //    if (InputHelper.IsButtonDown(Keys.LeftShift))
+            //    {
+            //        VirusHelper.OuterOuterSlow -= 0.1f;
+            //    }
+
+            //    else
+            //    {
+            //        VirusHelper.OuterOuterSlow += 0.1f;
+            //    }
+            //}
+
+            //if (InputHelper.WasButtonPressed(Keys.C))
+            //{
+            //    if (circles == true) { circles = false; }
+            //    else { circles = true; }
+            //}
+
+            //if (InputHelper.WasButtonPressed(Keys.Add))
+            //{
+            //    VirusHelper.Rotation *= -1;
+            //}
+
+            //if (InputHelper.IsButtonDown(Keys.F1))
+            //{
+            //    if (InputHelper.IsButtonDown(Keys.LeftShift))
+            //    {
+            //        this.Scale *= 0.99f;
+            //    }
+
+            //    else
+            //    {
+            //        this.Scale *= 1.01f;
+            //    }
+            //}
 
             // =================================
 
@@ -955,7 +936,7 @@ namespace GameJam
             {
                 invRot += 0.03f;
                 float diag = (float) Math.Sqrt(2 * Math.Pow((double)invRect.Height,2.0));
-                invOffset = new Vector2(-(diag * 0.5f * invScale * ((float)Math.Cos(invRot + Math.PI / 4))), -(diag * 0.5f * invScale * ((float)Math.Cos(invRot - Math.PI / 4))));//new Vector2(-invRect.Height * 0.5f * invScale * ((float)Math.Cos(invRot)), -invRect.Height * 0.5f * invScale * ((float)Math.Cos(invRot)));
+                invOffset = new Vector2(-(diag * 0.5f * invScale * ((float)Math.Cos(invRot + Math.PI / 4))), -(diag * 0.5f * invScale * ((float)Math.Cos(invRot - Math.PI / 4))));
             }
 
             base.Update(gameTime, batch);

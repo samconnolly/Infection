@@ -93,9 +93,16 @@ namespace GameJam
         private int circleTimer = 0;
         private Rectangle  circleRect;
 
-        float fireSpeed = 10.0f;
-        int fireTimeMin = 3000;
-        int fireTimeMax = 5000;
+
+        private Circle spawnCircle;
+        private int spawnCircleInitialRadius = 5;
+        private int spawnTime = 1500;
+        private int spawnTimer = 0;
+        private bool preSpawn = true;
+
+        float fireSpeed = 7.0f;
+        int fireTimeMin = 5000;
+        int fireTimeMax = 6000;
         int fireTime = 4000;
         int fireTimer = 0;
 
@@ -129,7 +136,7 @@ namespace GameJam
             normalTex = texture;
             spawnTex = spawnTexture;
             spawnRect = new Rectangle(0, 0, spawnTex.Width, spawnTex.Height / 4);
-            spawnPosition = Position - new Vector2(spawnRect.Width / 2, spawnRect.Height / 2);
+            spawnPosition = Position - new Vector2(spawnRect.Width / 2 * 0.6f, spawnRect.Height / 2 * 0.6f);
 
             missileTex = missileTexture;
             crossTex = crossTexture;
@@ -153,6 +160,7 @@ namespace GameJam
             colour = skinColour;
 
             circle = new Circle(Vector2.Zero, 2, 2, Color.White);
+            spawnCircle = new Circle(Position, 10, 2, Color.White);
 
             frate = ViewPortHelper.FrameRate;
 
@@ -793,26 +801,43 @@ namespace GameJam
             // ---------------- spawning warning ---------------------------------------------------
             else
             {
-
-                if (ftimer < frate)
+                if (preSpawn == false)
                 {
-                    ftimer += gameTime.ElapsedGameTime.Milliseconds;
+                    if (ftimer < frate)
+                    {
+                        ftimer += gameTime.ElapsedGameTime.Milliseconds;
+                    }
+
+                    else
+                    {
+                        sframe += 1;
+                        ftimer = 0;
+                        spawnRect.Y = spawnRect.Height * sframe;
+
+                        if (sframe >= nframes)
+                        {
+                            sframe -= 1;
+                            active = true;
+                        }
+                    }
                 }
 
                 else
                 {
-                    sframe += 1;
-                    ftimer = 0;
-                    spawnRect.Y = spawnRect.Height * sframe;
+                    spawnTimer += gameTime.ElapsedGameTime.Milliseconds;
+                    spawnCircle.radius += gameTime.ElapsedGameTime.Milliseconds / 10.0f;
+                    spawnCircle.Update();
 
-                    if (sframe >= nframes)
+                    if (spawnCircle.radius > 30)
                     {
-                        sframe -= 1;
-                        active = true;
+                        spawnCircle.radius = spawnCircleInitialRadius;
+                    }
+
+                    if (spawnTimer >= spawnTime)
+                    {
+                        preSpawn = false;
                     }
                 }
-
-                
 
                 // spawn delay
                 //if (spawnTimer < spawnTime)
@@ -909,9 +934,13 @@ namespace GameJam
             {
                 base.Draw(gameTime, batch, layer);
             }
-            if (sframe >= 0)
+            if (sframe >= 0 && preSpawn == false)
             {
-                batch.Draw(spawnTex, spawnPosition + DrawOffset*Scale, spawnRect, Color.White, 0.0f, Vector2.Zero, 0.6f, SpriteEffects.None, layer + 0.1f);
+                batch.Draw(spawnTex, spawnPosition, spawnRect, Color.White, 0.0f, Vector2.Zero, 0.6f, SpriteEffects.None, layer + 0.1f);
+            }
+            else if (preSpawn == true)
+            {
+                spawnCircle.Draw(batch);
             }
             
         }

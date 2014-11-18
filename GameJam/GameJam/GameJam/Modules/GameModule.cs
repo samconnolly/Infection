@@ -14,12 +14,7 @@ namespace GameJam
         private Virus _virus;
         private Virus _virus2;
 
-        private EnemyGroup testEnemies;
-        //private AntiViralNodule _antiViralNodule;
-
-        //private Proliferate _proliferate;
-        //private DoubleUp _doubleUp;
-        //private Reproduce _reproduce;
+        // private EnemyGroup testEnemies;
         
         private List<SpriteBase> _cells;
         private List<SpriteBase> _items;
@@ -50,17 +45,9 @@ namespace GameJam
         private int level = 0;
         private int wave = 0;
         private bool spawning = false;
-        //private bool health = false;
         List<SpriteBase> add = new List<SpriteBase> { };
         List<SpriteBase> addItem = new List<SpriteBase> { };
         List<SpriteBase> usedItems = new List<SpriteBase> { };
-
-        //private bool itemSpawned = false;
-        //private int itemTimer = 0;
-        //private int itemTime = 2000; // too low!
-        //private int itemMax = 2;
-        //private int itemMin = 10000;
-        //private int itemCount = 0;
 
         private Random rand = new Random();
 
@@ -82,12 +69,7 @@ namespace GameJam
         }
 
         #region ModuleBase Overrides
-
-        //public override bool IsMouseVisible
-        //{
-        //    get { return false; }
-        //}
-
+        
         internal override void Initialize()
         {
             CellsHelper.Colours = rand.Next(9);
@@ -102,8 +84,8 @@ namespace GameJam
             _deadPlayerList = new List<Virus>();
                         
             VirusHelper.Radius1 = 30.0f;
-            VirusHelper.Radius2 = 40.0f;
-            VirusHelper.Radius3 = 100.0f;
+            VirusHelper.Radius2 = 65.0f;
+            VirusHelper.Radius3 = 130.0f;
 
             VirusHelper.InnerSlow = 0.999f;
             VirusHelper.OuterSlow = 0.5f;
@@ -119,20 +101,20 @@ namespace GameJam
             VirusHelper.Rotation = 1;
             VirusHelper.RotationSpeed = 0.05f;
 
-            VirusHelper.Radius1P2 = 30.0f;
-            VirusHelper.Radius2P2 = 40.0f;
-            VirusHelper.Radius3P2 = 100.0f;
+            VirusHelper.Radius1P2 = VirusHelper.Radius1;
+            VirusHelper.Radius2P2 = VirusHelper.Radius2;
+            VirusHelper.Radius3P2 = VirusHelper.Radius3;
 
-            VirusHelper.InnerSlowP2 = 0.999f;
-            VirusHelper.OuterSlowP2 = 0.5f;
-            VirusHelper.OuterOuterSlowP2 = 1.0f;
+            VirusHelper.InnerSlowP2 = VirusHelper.InnerSlow;
+            VirusHelper.OuterSlowP2 = VirusHelper.OuterSlow;
+            VirusHelper.OuterOuterSlowP2 = VirusHelper.OuterOuterSlow;
 
-            VirusHelper.InnerAccnP2 = 3.5f;
-            VirusHelper.OuterAccnP2 = 5.0f;
-            VirusHelper.OuterOuterAccnP2 = 1.0f;
-            VirusHelper.OuterOuterOuterAccnP2 = 10.0f;
+            VirusHelper.InnerAccnP2 = VirusHelper.InnerAccn;
+            VirusHelper.OuterAccnP2 = VirusHelper.OuterAccn;
+            VirusHelper.OuterOuterAccnP2 = VirusHelper.OuterOuterAccn;
+            VirusHelper.OuterOuterOuterAccnP2 = VirusHelper.OuterOuterOuterAccn;
 
-            VirusHelper.RepelP2 = 0.001f;
+            VirusHelper.RepelP2 = VirusHelper.Repel;
 
             VirusHelper.RotationP2 = 1;
             VirusHelper.RotationSpeedP2 = 0.05f;
@@ -148,13 +130,12 @@ namespace GameJam
             //Load the Background set refrence in SpriteHelper.
             _background = new Background();
             _background.LoadContent(batch, this.Game);
-            //SpriteHelper.CurrentBackground = _background;
 
-            //Pause Texture
+            //Pause Texture & menu
             _pauseTexture = this.Game.Content.Load<Texture2D>("Pause Menu copy");
             _controller = this.Game.Content.Load<Texture2D>("controller");
 
-            //Load virus Testure.
+            //virus Textures
             Texture2D virusTexture = this.Game.Content.Load<Texture2D>("player");
             Texture2D eyeTexture = this.Game.Content.Load<Texture2D>("eyes");
             Texture2D virusTexture2 = this.Game.Content.Load<Texture2D>("player");
@@ -194,10 +175,8 @@ namespace GameJam
 
             Texture2D spawnTexture = this.Game.Content.Load<Texture2D>("spawn");
                         
-            testEnemies = new EnemyGroup(turretTexture, spawnTexture, new Vector2(300, 300), 3, 1, 3, new Vector2(6, 5),missileTexture,crossTexture);
-
-            _cells.Add(testEnemies);
-
+            //testEnemies = new EnemyGroup(turretTexture, spawnTexture, new Vector2(300, 300), 3, 1, 5, new Vector2(6, 5),missileTexture,crossTexture);
+            //_cells.Add(testEnemies);
 
             spawn2 = new SpawnII(gruntTexture,chargerTexture,
                                         sleeperTexture,turretTexture,artilleryTexture,
@@ -266,8 +245,6 @@ namespace GameJam
                     wave = 1;
                     level += 1;
                 }
-                //itemSpawned = false;
-                //_items = new List<SpriteBase> { };
             }
 
             if (spawning == true)
@@ -302,10 +279,26 @@ namespace GameJam
                 }                                
             }
 
-            // cheat!!!
+            // ------------ cheats!!! ---------------------------
+            // spawn powerups
             //if (InputHelper.WasButtonPressed(Keys.P))
             //{
             //    addItem = spawn2.SpawnPowerUp(1,2);
+            //}
+            // Destroy Everything!
+            //if (InputHelper.WasButtonPressed(Keys.K))
+            //{
+            //    _cells = new List<SpriteBase> { };
+
+            //    if (kill == false)
+            //    {
+            //        kill = true;
+            //    }
+
+            //    else
+            //    {
+            //        kill = false;
+            //    }
             //}
 
             //Play music if not playing already.
@@ -331,23 +324,6 @@ namespace GameJam
                     _isMuted = true;
                 }
             }
-
-             // Destroy Everything!
-            if (InputHelper.WasButtonPressed(Keys.K))
-            {
-                _cells = new List<SpriteBase> { };
-
-                if (kill == false)
-                {
-                    kill = true;
-                }
-
-                else
-                {
-                    kill = false;
-                }
-            }
-
 
 
             //Update accordingly
@@ -398,11 +374,7 @@ namespace GameJam
                         max = 2;
                     }
                 }
-                //if (InputHelper.WasButtonPressed(Keys.R) || InputHelper.WasPadButtonPressedP1(Buttons.A))
-                //{
-                //    _isPaused = false;
-                //    InputHelper.Game.IsMouseVisible = IsMouseVisible;
-                //}
+
                 if (InputHelper.WasButtonPressed(Keys.Down) | InputHelper.WasPadThumbstickDownP1() | InputHelper.WasPadButtonPressedP1(Buttons.DPadDown))
                 {
                     selected += 1;
@@ -433,7 +405,8 @@ namespace GameJam
                     selected = max;
                 }
 
-                if (InputHelper.WasButtonPressed(Keys.Enter) | InputHelper.WasButtonPressed(Keys.Space) | InputHelper.WasPadButtonPressedP1(Buttons.A) | (InputHelper.WasMouseClicked() && mouseover == true))
+                if (InputHelper.WasButtonPressed(Keys.Enter) | InputHelper.WasButtonPressed(Keys.Space) | 
+                        InputHelper.WasPadButtonPressedP1(Buttons.A) | (InputHelper.WasMouseClicked() && mouseover == true))
                 {
                     if (tree == 0)
                     {
@@ -650,8 +623,10 @@ namespace GameJam
                 }
                 else if (tree == 1)
                 {
-                    batch.DrawString(font, "Music Volume -" + ((int)(MediaPlayer.Volume * 100)).ToString(), new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                    batch.DrawString(font, "SFX Volume -" + ((int)(SoundEffectPlayer.Volume * 100)).ToString(), new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Music Volume -" + ((int)(MediaPlayer.Volume * 100)).ToString(), 
+                                                new Vector2(200, 300), colours[0], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "SFX Volume -" + ((int)(SoundEffectPlayer.Volume * 100)).ToString(), 
+                                                new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                     batch.DrawString(font, "Back", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                 }
                 else if (tree == 2)
@@ -661,8 +636,10 @@ namespace GameJam
                     batch.DrawString(font, "Toggle keys/pad", new Vector2(200, 350), colours[1], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
                     batch.DrawString(font, "Back", new Vector2(200, 400), colours[2], 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
 
-                    batch.DrawString(font, "Pad 1 Connected - " + InputHelper.CurrentGamePadStatePlayer1.IsConnected.ToString(), new Vector2(200, 450), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
-                    batch.DrawString(font, "Pad 2 Connected - " + InputHelper.CurrentGamePadStatePlayer2.IsConnected.ToString(), new Vector2(200, 500), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Pad 1 Connected - " + InputHelper.CurrentGamePadStatePlayer1.IsConnected.ToString(), 
+                                                new Vector2(200, 450), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+                    batch.DrawString(font, "Pad 2 Connected - " + InputHelper.CurrentGamePadStatePlayer2.IsConnected.ToString(), 
+                                                new Vector2(200, 500), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
 
                     string p1 = "pad";
                     string p2 = "pad";
@@ -737,8 +714,6 @@ namespace GameJam
                                 batch.Draw(heartTex, new Vector2(910 - j * 60, 40), heartRect, Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, 0.49f);
                             }
                         }
-                        //batch.DrawString(font, "P1 Lives - " + ScoreHelper.Lives.ToString(), new Vector2(120, 40), Color.White);
-                        //batch.DrawString(font, "P2 Lives - " + ScoreHelper.LivesP2.ToString(), new Vector2(760, 40), Color.White);
                     }
                     else
                     {
@@ -746,7 +721,6 @@ namespace GameJam
                         {
                             batch.Draw(heartTex, new Vector2(120 + i*60, 40), heartRect, Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, 0.49f);
                         }
-                        //batch.DrawString(font, "Lives - " + ScoreHelper.Lives.ToString(), new Vector2(120, 40), Color.White);
                     }
                 }
 
@@ -756,7 +730,7 @@ namespace GameJam
                     batch.DrawString(font2, "Level " + (level).ToString(), new Vector2(400, 400), Color.White);
                 }
 
-                // circles
+                // circles - testing
                 if (VirusHelper.Virus.circles == true)
                 {
                     batch.DrawString(font3, "1 - Radius 1 - " + VirusHelper.Radius1.ToString(), new Vector2(20, 20), Color.White);
@@ -764,7 +738,6 @@ namespace GameJam
                     batch.DrawString(font3, "3 - Radius 3 - " + VirusHelper.Radius3.ToString(), new Vector2(20, 60), Color.White);
 
                     batch.DrawString(font3, "4 - fractional Slowing - " + VirusHelper.InnerSlow.ToString(), new Vector2(20, 80), Color.White);
-                    //batch.DrawString(font3, "5 - Outer Slow - " + VirusHelper.OuterSlow.ToString(), new Vector2(20, 100), Color.White);
 
                     batch.DrawString(font3, "6 - reverse slowing - " + VirusHelper.InnerAccn.ToString(), new Vector2(20, 120), Color.White);
                     batch.DrawString(font3, "7 - inward accn - " + VirusHelper.OuterAccn.ToString(), new Vector2(20, 140), Color.White);
