@@ -15,19 +15,19 @@ namespace GameJam
 
         static void Main(string[] args)
         {
-            //try
-            //{
+            try
+            {
                 AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
 
                 using (Game1 game = new Game1())
                 {
                     game.Run();
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Whoops! An error has occured...." + ex.ToString());
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Whoops! An error has occured...." + ex.ToString());
+            }
         }
     
 
