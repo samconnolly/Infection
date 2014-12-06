@@ -31,6 +31,7 @@ namespace GameJam
         private bool _isPlayingMusic = false;
         private bool _isMuted = false;
         private Song beneath;
+        private Song infectious;
         private Background _background;
 
         private bool _isPaused = false;
@@ -193,6 +194,7 @@ namespace GameJam
             
             //Load atmospheric music.
             beneath = this.Game.Content.Load<Song>("Beneath");
+            infectious = this.Game.Content.Load<Song>("infectiousgaze");
             
             // load fonts
             font = this.Game.Content.Load<SpriteFont>("font");
@@ -210,7 +212,7 @@ namespace GameJam
             }
 
             // check if music is playing already or not
-            if (ViewPortHelper.CurrentSong == beneath)
+            if (ViewPortHelper.CurrentSong == beneath || ViewPortHelper.CurrentSong == infectious)
             {
                 _isPlayingMusic = true;
             }
@@ -304,8 +306,18 @@ namespace GameJam
             //Play music if not playing already.
             if (!_isPlayingMusic)
             {
-                MediaPlayer.Play(beneath);
-                ViewPortHelper.CurrentSong = beneath;
+                int thisSong = rand.Next(2);
+                if (thisSong == 0)
+                {
+                    MediaPlayer.Play(beneath);
+                    ViewPortHelper.CurrentSong = beneath;
+                }
+                else
+                {
+                    MediaPlayer.Play(infectious);
+                    ViewPortHelper.CurrentSong = infectious;
+                }
+
                 MediaPlayer.IsRepeating = true;
                 _isPlayingMusic = true;
             }
