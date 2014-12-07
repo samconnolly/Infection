@@ -318,7 +318,7 @@ namespace GameJam
                     ViewPortHelper.CurrentSong = infectious;
                 }
 
-                MediaPlayer.IsRepeating = true;
+                //MediaPlayer.IsRepeating = true;
                 _isPlayingMusic = true;
             }
 

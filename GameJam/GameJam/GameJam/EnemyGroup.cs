@@ -79,7 +79,12 @@ namespace GameJam
             if (count <= 0)
             {
                 PowerUpBase powerUp = CellsHelper.Spawning.SpawnPowerUp(Position);
-                CellsHelper.AddItems.Add(powerUp);
+
+                int drop = InputHelper.Random.Next(2);
+                if (drop == 0)
+                {
+                    CellsHelper.AddItems.Add(powerUp);
+                }
                 Die();
             }
 

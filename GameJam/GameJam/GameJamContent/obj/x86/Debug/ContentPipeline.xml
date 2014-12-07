@@ -40,15 +40,6 @@
       <Time>2014-05-11T22:36:31.7729764+01:00</Time>
     </Item>
     <Item>
-      <Source>Spore alpha final.png</Source>
-      <Name>spore</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\spore.xnb</Output>
-      <Time>2014-05-11T22:36:31.7849771+01:00</Time>
-    </Item>
-    <Item>
       <Source>Large Background.png</Source>
       <Name>Large Background</Name>
       <Importer>TextureImporter</Importer>
@@ -83,15 +74,6 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Final Score.xnb</Output>
       <Time>2014-05-11T22:36:31.7769767+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Spore final.png</Source>
-      <Name>virusling</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\virusling.xnb</Output>
-      <Time>2014-05-11T22:45:22.0563069+01:00</Time>
     </Item>
     <Item>
       <Source>bomb.png</Source>
@@ -398,6 +380,61 @@
       <Options>None</Options>
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch_3.xnb</Output>
       <Time>2014-11-10T21:32:08.8417015+00:00</Time>
+    </Item>
+    <Item>
+      <Source>infectious gaze.wav</Source>
+      <Name>infectiousgaze</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\infectiousgaze.xnb</Output>
+      <Extra>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\infectiousgaze.wma</Extra>
+      <Time>2014-11-25T20:20:04.5174176+00:00</Time>
+    </Item>
+    <Item>
+      <Source>01noise.wav</Source>
+      <Name>01noise</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\01noise.xnb</Output>
+      <Time>2014-12-04T15:18:14+00:00</Time>
+    </Item>
+    <Item>
+      <Source>02noise.wav</Source>
+      <Name>02noise</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\02noise.xnb</Output>
+      <Time>2014-12-04T15:18:30+00:00</Time>
+    </Item>
+    <Item>
+      <Source>04noise.wav</Source>
+      <Name>04noise</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\04noise.xnb</Output>
+      <Time>2014-12-04T15:20:08+00:00</Time>
+    </Item>
+    <Item>
+      <Source>05noise.wav</Source>
+      <Name>05noise</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\05noise.xnb</Output>
+      <Time>2014-12-04T15:20:36+00:00</Time>
+    </Item>
+    <Item>
+      <Source>06noise.wav</Source>
+      <Name>06noise</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\06noise.xnb</Output>
+      <Time>2014-12-04T15:20:56+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

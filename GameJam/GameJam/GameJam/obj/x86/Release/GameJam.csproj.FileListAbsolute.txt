@@ -133,3 +133,10 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\You have b
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Release\Interop.WMPLib.dll
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\obj\x86\Release\GameJam.csproj.ResolveComReference.cache
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\gameData.xml
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\infectiousgaze.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\01noise.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\02noise.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\04noise.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\05noise.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\06noise.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\infectiousgaze.wma

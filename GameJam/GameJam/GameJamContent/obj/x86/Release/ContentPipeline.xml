@@ -381,6 +381,61 @@
       <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\Squelch_3.xnb</Output>
       <Time>2014-11-10T21:32:08.8417015+00:00</Time>
     </Item>
+    <Item>
+      <Source>infectious gaze.wav</Source>
+      <Name>infectiousgaze</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\infectiousgaze.xnb</Output>
+      <Extra>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\infectiousgaze.wma</Extra>
+      <Time>2014-11-25T20:20:04.5174176+00:00</Time>
+    </Item>
+    <Item>
+      <Source>01noise.wav</Source>
+      <Name>01noise</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\01noise.xnb</Output>
+      <Time>2014-12-04T15:18:14+00:00</Time>
+    </Item>
+    <Item>
+      <Source>02noise.wav</Source>
+      <Name>02noise</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\02noise.xnb</Output>
+      <Time>2014-12-04T15:18:30+00:00</Time>
+    </Item>
+    <Item>
+      <Source>04noise.wav</Source>
+      <Name>04noise</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\04noise.xnb</Output>
+      <Time>2014-12-04T15:20:08+00:00</Time>
+    </Item>
+    <Item>
+      <Source>05noise.wav</Source>
+      <Name>05noise</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\05noise.xnb</Output>
+      <Time>2014-12-04T15:20:36+00:00</Time>
+    </Item>
+    <Item>
+      <Source>06noise.wav</Source>
+      <Name>06noise</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Release\Content\06noise.xnb</Output>
+      <Time>2014-12-04T15:20:56+00:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

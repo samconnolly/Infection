@@ -124,6 +124,13 @@ namespace GameJam
         
         internal override void Update(GameTime gameTime, SpriteBatch batch)
         {
+
+            // exit game
+            if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Escape) && tree == 0)
+            {
+                Game.Exit();
+            }
+
             //Play music if not playing already.
             if (!_isPlayingMusic)
             {
@@ -333,7 +340,7 @@ namespace GameJam
             }
             if (tree != 0)
             {
-                if (InputHelper.WasPadButtonPressedP1(Buttons.B))
+                if (InputHelper.WasPadButtonPressedP1(Buttons.B) | InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Escape))
                 {
                     if (tree != 4)
                     {
@@ -349,11 +356,6 @@ namespace GameJam
                     }
                 
                 }
-            }
-            // exit game
-            if (InputHelper.WasButtonPressed(Microsoft.Xna.Framework.Input.Keys.Escape))
-            {
-                Game.Exit();
             }
             
             // switch number of players

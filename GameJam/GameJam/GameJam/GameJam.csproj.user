@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PublishUrlHistory>publish\</PublishUrlHistory>
     <InstallUrlHistory>http://www.astro.soton.ac.uk/~sdc1g08/Game.html/</InstallUrlHistory>
-    <SupportUrlHistory />
+    <SupportUrlHistory>http://www.plasmonicgames.com</SupportUrlHistory>
     <UpdateUrlHistory />
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />

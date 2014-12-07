@@ -56,8 +56,8 @@ namespace GameJam
         public bool invincible = false;
         public bool cooldown = false;
         public int invinceTimer = 0;
-        public int invinceTime = 4000;
-        private int invinceCoolTime = 3000;
+        public int invinceTime = 3000;
+        private int invinceCoolTime = 15000;
         private float invScale = 0.3f;
         private float invRot = 0.0f;
         private Vector2 invOffset;
@@ -65,10 +65,10 @@ namespace GameJam
 
         public bool homing = false;
         public int homingTimer = 0;
-        public int homingTime = 20000;
+        public int homingTime = 3000;
 
         private int freezeTime = 3000;
-        private int freezeCoolTime = 3000;
+        private int freezeCoolTime = 5000;
         private int cooldownTimer = 0;
         private int cooldownTime = 0;
 

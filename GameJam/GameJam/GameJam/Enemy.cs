@@ -14,8 +14,8 @@ namespace GameJam
 {
     class Enemy:SpriteBase
     {
-        int hitPoints = 10;
-        float dieChance = 0.1f;
+        int hitPoints = 2;
+        float dieChance = 0.01f;
 
         //Vector2 Velocity;
         float slow = 1.0f;
@@ -52,7 +52,7 @@ namespace GameJam
         int retreatDistance = 100;
         int attackTime = 3000;
 
-        int hitTime = 300;
+        int hitTime = 1000;
         int hitTimer = 0;
         bool hit = false;
         int hitBy = 1;
@@ -106,6 +106,11 @@ namespace GameJam
         int fireTime = 4000;
         int fireTimer = 0;
 
+
+        int bombTimeMin = 1000;
+        int bombTimeMax = 2000;
+        int bombTime = 2000;
+
         int blinkTimer = 0;
         int blinkMin = 1000;
         int blinkMax = 3000;
@@ -133,6 +138,15 @@ namespace GameJam
 
             Velocity = new Vector2(x, y);
 
+            if (attackType == 4 | attackType == 5 | attackType == 6 | (attackType == 2 && movementType == 1))
+            {
+                hitPoints = 3;
+            }
+            else if (attackType == 1)
+            {
+                hitPoints = 1;
+            }
+
             normalTex = texture;
             spawnTex = spawnTexture;
             spawnRect = new Rectangle(0, 0, spawnTex.Width, spawnTex.Height / 4);
@@ -147,6 +161,12 @@ namespace GameJam
             }
             movement = movementType;
             attack = attackType;
+            if (attack == 3)
+            {
+                fireTimeMin = bombTimeMin;
+                fireTimeMax = bombTimeMax;
+                fireTime = bombTime;
+            }
 
             colours = (int)sheetDimensions.Y;
             frames = (int)sheetDimensions.X;
@@ -927,24 +947,27 @@ namespace GameJam
 
         public Virusling Hit(Virusling v)
         {
-            hit = true;
-            hitTimer = 0;
-            ////////////////
-            hitBy = v.player;
-            ////////////////
-            frame = 5;
+            v.Bounce(Position, Velocity);
 
-            v.Bounce(Position,Velocity);
-
-            if (v.damaging == true)
+            if (hit == false)
             {
-                v.damaging = false;
-
-                hitPoints -= 1;
-
-                if (random.Next(4) == 0)
+                hit = true;
+                hitTimer = 0;
+                ////////////////
+                hitBy = v.player;
+                ////////////////
+                frame = 5;
+                
+                if (v.damaging == true)
                 {
-                    SoundEffectPlayer.PlayVoice(attack);
+                    v.damaging = false;
+
+                    hitPoints -= 1;
+
+                    if (random.Next(4) == 0)
+                    {
+                        SoundEffectPlayer.PlayVoice(attack);
+                    }
                 }
             }
 
@@ -958,6 +981,7 @@ namespace GameJam
             {
                 return null;
             }
+            
         }
 
         public void LaserHit(int player)

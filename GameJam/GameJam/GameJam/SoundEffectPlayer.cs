@@ -44,7 +44,7 @@ namespace GameJam
 
         public static void PlayVoice(int n)
         {
-            Cue cue = soundbank.GetCue("squelch");
+            Cue cue = soundbank.GetCue("voice");
             cue.Play();            
         }
 

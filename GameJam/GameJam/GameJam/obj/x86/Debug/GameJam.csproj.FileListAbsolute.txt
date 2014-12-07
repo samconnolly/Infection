@@ -76,12 +76,10 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\font
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\font3.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Beneath.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Controlled Chaos.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\spore.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Large Background.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Title screen copy.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Pause Menu copy.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Final Score.xnb
-K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\virusling.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\bomb.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\player.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\eyes.xnb
@@ -135,3 +133,10 @@ K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\1867
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch_1.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch_2.xnb
 K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\Squelch_3.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\infectiousgaze.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\infectiousgaze.wma
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\01noise.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\02noise.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\04noise.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\05noise.xnb
+K:\Documents\GitHub\Infection\GameJam\GameJam\GameJam\bin\x86\Debug\Content\06noise.xnb

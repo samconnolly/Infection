@@ -39,12 +39,13 @@ namespace GameJam
 
         Tuple<int, int, Texture2D,int> stats1;
         Tuple<int, int, Texture2D, int> stats2;
-        Tuple<int, int, Texture2D, int> stats3;
+        //Tuple<int, int, Texture2D, int> stats3;
+        List<Tuple<int, int, Texture2D, int>> stats;
 
-        private float nanitePowerUp = 0.43f;
-        private float physicsPowerUp = 0.22f;
-        private float speedPowerUp = 0.20f;
-        //private float healthPowerUp = 0.15f;
+        private float nanitePowerUp = 0.45f;
+        private float physicsPowerUp = 0.25f;
+        private float speedPowerUp = 0.25f;
+        //private float healthPowerUp = 0.05f;
 
         int movement;
         int attack;
@@ -305,39 +306,46 @@ namespace GameJam
                 stats2 = GenerateTurrets();
             }
 
+            stats = new List<Tuple<int, int, Texture2D, int>> { stats1, stats2 };
 
             // group 3
             if (level > 2)
             {
-                double type3 = random.NextDouble();
+                for (int i=0; i<(level-2); i++)
+                {
+                    Tuple<int, int, Texture2D, int> nextStats;
+                    double type3 = random.NextDouble();
 
-                // Artillery
-                if (type3 < 0.25)
-                {
-                    stats3 = GenerateArtillery();
-                }
-                // Turrets
-                else if (type3 < 0.5)
-                {
-                    stats3 = GenerateTurrets();
+                    // Artillery
+                    if (type3 < 0.25)
+                    {
+                        nextStats = GenerateArtillery();
+                    }
+                    // Turrets
+                    else if (type3 < 0.5)
+                    {
+                        nextStats = GenerateTurrets();
 
-                }
-                // Specials
-                else if (type3 < 0.75)
-                {
-                    stats3 = GenerateSpecials();
+                    }
+                    // Specials
+                    else if (type3 < 0.75)
+                    {
+                        nextStats = GenerateSpecials();
 
-                }
-                // Sleepers
-                else if (type3 < 0.9)
-                {
-                    stats3 = GenerateSleepers();
+                    }
+                    // Sleepers
+                    else if (type3 < 0.9)
+                    {
+                        nextStats = GenerateSleepers();
 
-                }
-                // Grunts
-                else
-                {
-                    stats3 = GenerateGrunts();
+                    }
+                    // Grunts
+                    else
+                    {
+                        nextStats = GenerateGrunts();
+                    }
+
+                    stats.Add(nextStats);
                 }
             }
 
@@ -346,33 +354,10 @@ namespace GameJam
 
             List<SpriteBase> spawnList = new List<SpriteBase> {};
              
-            // group 1               
-            int pos = random.Next(4);
-                                
-            Vector2 offset = new Vector2((float)(random.NextDouble() * 60.0 - 15), (float)(random.NextDouble() * 60.0 - 15));
-
-            spawnList.Add(new EnemyGroup(stats1.Item3, SpawnTex, spawnPoints[pos] + offset, stats1.Item4, stats1.Item1, stats1.Item2, dim, missile, crossTex));
-
-            // group 2
-            pos = random.Next(4);
-            if (stats2.Item2 == 3)
+            foreach (Tuple<int, int, Texture2D, int> stat in stats)
             {
-                missile = bombTex;
-            }
-            else
-            {
-                missile = MissileTex;
-            }
-
-            offset = new Vector2((float)(random.NextDouble() * 60.0 - 15), (float)(random.NextDouble() * 60.0 - 15));
-
-            spawnList.Add(new EnemyGroup(stats2.Item3, SpawnTex, spawnPoints[pos] + offset, stats2.Item4, stats2.Item1, stats2.Item2, dim, missile, crossTex));
-
-            // group 3
-            if (level > 2)
-            {
-                pos = random.Next(4);
-                if (stats3.Item2 == 3)
+                int pos = random.Next(4);
+                if (stat.Item2 == 3)
                 {
                     missile = bombTex;
                 }
@@ -381,10 +366,10 @@ namespace GameJam
                     missile = MissileTex;
                 }
 
-                offset = new Vector2((float)(random.NextDouble() * 60.0 - 15), (float)(random.NextDouble() * 60.0 - 15));
+                Vector2 offset = new Vector2((float)(random.NextDouble() * 60.0 - 15), (float)(random.NextDouble() * 60.0 - 15));
 
-                spawnList.Add(new EnemyGroup(stats3.Item3, SpawnTex, spawnPoints[pos] + offset, stats3.Item4, stats3.Item1, stats3.Item2, dim, missile, crossTex, circleTex));
-            }            
+                spawnList.Add(new EnemyGroup(stat.Item3, SpawnTex, spawnPoints[pos] + offset, stat.Item4, stat.Item1, stat.Item2, dim, missile, crossTex, circleTex));
+            }  
             return spawnList;
         }
 
